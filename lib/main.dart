@@ -9,6 +9,5 @@ Future<void> main() async {
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: await getApplicationDocumentsDirectory());
   await di.setup();
-
   runApp(const App());
 }
