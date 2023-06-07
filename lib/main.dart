@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:player/src/common/core/app/app.dart';
-import 'package:player/src/common/core/di/locator_service.dart' as di;
+import 'package:player/src/common/core/di/di_service.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

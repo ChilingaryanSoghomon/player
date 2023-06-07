@@ -22,6 +22,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
   }
   Future<void> _search(
       _SearchAlbumEvent event, Emitter<AlbumState> emit) async {
+
     List<Album> albums =  await _albumRepository.searchAlbum();
     if(albums.isNotEmpty) {
       emit(AlbumState.loaded(albums: albums));

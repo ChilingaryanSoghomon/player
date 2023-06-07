@@ -18,6 +18,7 @@ class TrackListScreen extends StatelessWidget {
         child: BlocConsumer<TrackBloc, TrackState>(
           listener: (context, state) {},
           builder: (context, state) {
+           
             return state.map(
               loading: (state) =>
                   const Center(child: CircularProgressIndicator()),

@@ -8,15 +8,17 @@ enum TracksStatus {
 
 @freezed
 class TrackState with _$TrackState {
+  // bool get error => map(
+  //       loading: (_) => true,
+  //       empty: (_) => true,
+  //       loaded: (_) => false,
+  //     );
+
   const factory TrackState.loading() = _LoadingTrackState;
   const factory TrackState.empty() = _EmptyTrackState;
   const factory TrackState.loaded({
     required List<Track> tracks,
   }) = _LoadedTrackState;
-  // const factory TrackState({
-  //   @Default(TracksStatus.loading) TracksStatus status,
-  //   @Default([]) List<Track> tracks,
-  // }) = _Initial;
   factory TrackState.fromJson(Map<String, Object?> json) =>
       _$TrackStateFromJson(json);
 }

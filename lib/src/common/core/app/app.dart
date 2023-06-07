@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/core/di/locator_service.dart';
+import 'package:player/src/common/core/di/di_service.dart';
 import 'package:player/src/common/navigation/app_navigation.dart';
 import 'package:player/src/common/res/app_theme.dart';
 import 'package:player/src/features/album/data/repositories/album_repository.dart';
