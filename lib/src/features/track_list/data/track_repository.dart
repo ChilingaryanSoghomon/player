@@ -1,5 +1,5 @@
 import 'package:player/src/common/core/domain/entities/track/track.dart';
-import 'package:player/src/features/track_list/domain/repositories/track_repository.dart';
+import 'package:player/src/features/track_list/domain/track_repository.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class TrackRepositoryImp implements ITrackRepository {

@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:player/src/features/mp3_player/domain/repositories/player_repository.dart';
+import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 
 part 'player_event.dart';
 part 'player_state.dart';

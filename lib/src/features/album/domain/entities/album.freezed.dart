@@ -20,7 +20,8 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Album {
-  int get albumId => throw _privateConstructorUsedError;
+  Duration get albumDuration => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get artist => throw _privateConstructorUsedError;
   int get songQuantity => throw _privateConstructorUsedError;
@@ -35,7 +36,12 @@ abstract class $AlbumCopyWith<$Res> {
   factory $AlbumCopyWith(Album value, $Res Function(Album) then) =
       _$AlbumCopyWithImpl<$Res, Album>;
   @useResult
-  $Res call({int albumId, String name, String artist, int songQuantity});
+  $Res call(
+      {Duration albumDuration,
+      int id,
+      String name,
+      String artist,
+      int songQuantity});
 }
 
 /// @nodoc
@@ -51,15 +57,20 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? albumId = null,
+    Object? albumDuration = null,
+    Object? id = null,
     Object? name = null,
     Object? artist = null,
     Object? songQuantity = null,
   }) {
     return _then(_value.copyWith(
-      albumId: null == albumId
-          ? _value.albumId
-          : albumId // ignore: cast_nullable_to_non_nullable
+      albumDuration: null == albumDuration
+          ? _value.albumDuration
+          : albumDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -83,7 +94,12 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
       __$$_AlbumCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int albumId, String name, String artist, int songQuantity});
+  $Res call(
+      {Duration albumDuration,
+      int id,
+      String name,
+      String artist,
+      int songQuantity});
 }
 
 /// @nodoc
@@ -95,15 +111,20 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? albumId = null,
+    Object? albumDuration = null,
+    Object? id = null,
     Object? name = null,
     Object? artist = null,
     Object? songQuantity = null,
   }) {
     return _then(_$_Album(
-      albumId: null == albumId
-          ? _value.albumId
-          : albumId // ignore: cast_nullable_to_non_nullable
+      albumDuration: null == albumDuration
+          ? _value.albumDuration
+          : albumDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -125,7 +146,8 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
 @JsonSerializable()
 class _$_Album implements _Album {
   const _$_Album(
-      {required this.albumId,
+      {required this.albumDuration,
+      required this.id,
       required this.name,
       required this.artist,
       required this.songQuantity});
@@ -134,7 +156,9 @@ class _$_Album implements _Album {
       _$$_AlbumFromJson(json);
 
   @override
-  final int albumId;
+  final Duration albumDuration;
+  @override
+  final int id;
   @override
   final String name;
   @override
@@ -144,7 +168,7 @@ class _$_Album implements _Album {
 
   @override
   String toString() {
-    return 'Album(albumId: $albumId, name: $name, artist: $artist, songQuantity: $songQuantity)';
+    return 'Album(albumDuration: $albumDuration, id: $id, name: $name, artist: $artist, songQuantity: $songQuantity)';
   }
 
   @override
@@ -152,7 +176,9 @@ class _$_Album implements _Album {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Album &&
-            (identical(other.albumId, albumId) || other.albumId == albumId) &&
+            (identical(other.albumDuration, albumDuration) ||
+                other.albumDuration == albumDuration) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.artist, artist) || other.artist == artist) &&
             (identical(other.songQuantity, songQuantity) ||
@@ -162,7 +188,7 @@ class _$_Album implements _Album {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, albumId, name, artist, songQuantity);
+      Object.hash(runtimeType, albumDuration, id, name, artist, songQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +206,8 @@ class _$_Album implements _Album {
 
 abstract class _Album implements Album {
   const factory _Album(
-      {required final int albumId,
+      {required final Duration albumDuration,
+      required final int id,
       required final String name,
       required final String artist,
       required final int songQuantity}) = _$_Album;
@@ -188,7 +215,9 @@ abstract class _Album implements Album {
   factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
 
   @override
-  int get albumId;
+  Duration get albumDuration;
+  @override
+  int get id;
   @override
   String get name;
   @override

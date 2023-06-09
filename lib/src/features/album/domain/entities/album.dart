@@ -11,7 +11,8 @@ part 'album.g.dart';
 @freezed
 class Album  with  _$Album {
   const factory Album({
-    required int albumId,
+    required Duration albumDuration,
+    required int id,
   required String name,
   required String artist,
   required int songQuantity,

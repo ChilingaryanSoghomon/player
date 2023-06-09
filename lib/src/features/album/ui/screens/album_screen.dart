@@ -47,7 +47,7 @@ class AlbumScreen extends StatelessWidget {
                         child: ListTile(
                           onTap: () {
                             context.read<TrackBloc>().add(
-                                TrackEvent.clickAlbum(albumId: album.albumId));
+                                TrackEvent.clickAlbum(albumId: album.id));
                             context.push(AppRouts.trackListScreen);
                           },
                           leading: const FlutterLogo(size: 56.0),

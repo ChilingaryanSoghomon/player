@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:player/src/common/core/domain/entities/track/track.dart';
-import 'package:player/src/features/track_list/domain/repositories/track_repository.dart';
+import 'package:player/src/features/track_list/domain/track_repository.dart';
 
 part 'track_bloc.freezed.dart';
 part 'track_bloc.g.dart';
@@ -18,9 +18,9 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> {
   TrackBloc({required ITrackRepository trackRepository})
       : _trackRepository = trackRepository,
         super(const TrackState.loading()) {
-    on<TrackEvent>((event, emit) async {
-      await event.map(
-        clickAlbum: (event) async => await _clickAlbum(event, emit),
+    on<TrackEvent>((event, emit) async  {
+      await event.map<Future<void>>(
+         clickAlbum: (event) async => await _clickAlbum(event, emit),
       );
     });
   }

@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:just_audio/just_audio.dart';
 import 'package:player/src/common/functions/create_system_entity_from_path.dart';
-import 'package:player/src/features/mp3_player/domain/repositories/player_repository.dart';
+import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as path;
-
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   int _index = 0;
   final AudioPlayer _player = AudioPlayer();
@@ -15,17 +14,18 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     final List<AudioSource> audioSource = [];
     final Directory audioDirectory = Directory(audioFilePath);
     final folderPath = audioDirectory.parent.path;
-    // Duration globalDuration = const Duration();
+    // Duration? _durationAlbum = const Duration();
 
     List<FileSystemEntity>? fileSystem =
         GlobalFunction.createSystemEntityFromPath(filePath: folderPath);
     if (fileSystem != null) {
       for (int i = 0; i < fileSystem.length; i++) {
-        if (fileSystem[i].path == audioFilePath) {
+        final filepath = fileSystem[i].path;
+        if (filepath == audioFilePath) {
           _index = i;
         }
-        if (path.extension(fileSystem[i].path) == '.mp3') {
-          audioSource.add(AudioSource.uri(Uri.parse(fileSystem[i].path)));
+        if (path.extension(filepath) == '.mp3') {
+          audioSource.add(AudioSource.uri(Uri.parse(filepath)));
         }
       }
     }
@@ -43,7 +43,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     );
 
     await _player.setAudioSource(playlist, initialIndex: _index);
-
     play();
   }
 
