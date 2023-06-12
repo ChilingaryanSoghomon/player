@@ -3,7 +3,9 @@ part of 'player_bloc.dart';
 @freezed
 class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.addMusic({
-    required String audioFilePath,
+    // required Album album,
+    required List<Track> tracks,
+    required Track track,
   }) = _PlayerAddMusicEvent;
 
   const factory PlayerEvent.changePosition({
@@ -13,7 +15,9 @@ class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.changeTotal({
     required Duration? total,
   }) = _PlayerChangeTotalEvent;
-
+ const factory PlayerEvent.changeTrackIndex({
+    required int? index
+  }) = _PlayerChangeTrackIndexEvent;
   const factory PlayerEvent.play() = _PlayerPlayEvent;
 
   const factory PlayerEvent.pause() = _PlayerPauseEvent;

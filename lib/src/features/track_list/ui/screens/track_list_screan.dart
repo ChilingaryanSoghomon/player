@@ -18,7 +18,6 @@ class TrackListScreen extends StatelessWidget {
         child: BlocConsumer<TrackBloc, TrackState>(
           listener: (context, state) {},
           builder: (context, state) {
-           
             return state.map(
               loading: (state) =>
                   const Center(child: CircularProgressIndicator()),
@@ -27,13 +26,11 @@ class TrackListScreen extends StatelessWidget {
                 itemCount: state.tracks.length,
                 itemBuilder: (context, index) {
                   final track = state.tracks[index];
-
                   return Card(
                       child: ListTile(
                     onTap: () {
-                      context
-                          .read<PlayerBloc>()
-                          .add(PlayerEvent.addMusic(audioFilePath: track.path));
+                      context.read<PlayerBloc>().add(PlayerEvent.addMusic(
+                          track: track, tracks: state.tracks));
                       context.go(AppRouts.playerScreen);
                     },
                     leading: const FlutterLogo(size: 56.0),

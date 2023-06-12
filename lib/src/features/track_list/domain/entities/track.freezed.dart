@@ -20,10 +20,14 @@ Track _$TrackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Track {
+  List<int> get artwork => throw _privateConstructorUsedError;
+  int get trackId => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
   String get path => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get album => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  Duration get position => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +39,15 @@ abstract class $TrackCopyWith<$Res> {
   factory $TrackCopyWith(Track value, $Res Function(Track) then) =
       _$TrackCopyWithImpl<$Res, Track>;
   @useResult
-  $Res call({String path, String? name, String? album, Duration duration});
+  $Res call(
+      {List<int> artwork,
+      int trackId,
+      int index,
+      String path,
+      String? name,
+      String? album,
+      Duration duration,
+      Duration position});
 }
 
 /// @nodoc
@@ -51,12 +63,28 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? artwork = null,
+    Object? trackId = null,
+    Object? index = null,
     Object? path = null,
     Object? name = freezed,
     Object? album = freezed,
     Object? duration = null,
+    Object? position = null,
   }) {
     return _then(_value.copyWith(
+      artwork: null == artwork
+          ? _value.artwork
+          : artwork // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      trackId: null == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as int,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -72,6 +100,10 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as Duration,
     ) as $Val);
   }
@@ -83,7 +115,15 @@ abstract class _$$_TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
       __$$_TrackCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String path, String? name, String? album, Duration duration});
+  $Res call(
+      {List<int> artwork,
+      int trackId,
+      int index,
+      String path,
+      String? name,
+      String? album,
+      Duration duration,
+      Duration position});
 }
 
 /// @nodoc
@@ -95,12 +135,28 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? artwork = null,
+    Object? trackId = null,
+    Object? index = null,
     Object? path = null,
     Object? name = freezed,
     Object? album = freezed,
     Object? duration = null,
+    Object? position = null,
   }) {
     return _then(_$_Track(
+      artwork: null == artwork
+          ? _value._artwork
+          : artwork // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      trackId: null == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as int,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -117,6 +173,10 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Duration,
     ));
   }
 }
@@ -125,14 +185,31 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
 @JsonSerializable()
 class _$_Track implements _Track {
   const _$_Track(
-      {required this.path,
+      {required final List<int> artwork,
+      required this.trackId,
+      required this.index,
+      required this.path,
       required this.name,
       required this.album,
-      required this.duration});
+      required this.duration,
+      required this.position})
+      : _artwork = artwork;
 
   factory _$_Track.fromJson(Map<String, dynamic> json) =>
       _$$_TrackFromJson(json);
 
+  final List<int> _artwork;
+  @override
+  List<int> get artwork {
+    if (_artwork is EqualUnmodifiableListView) return _artwork;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_artwork);
+  }
+
+  @override
+  final int trackId;
+  @override
+  final int index;
   @override
   final String path;
   @override
@@ -141,10 +218,12 @@ class _$_Track implements _Track {
   final String? album;
   @override
   final Duration duration;
+  @override
+  final Duration position;
 
   @override
   String toString() {
-    return 'Track(path: $path, name: $name, album: $album, duration: $duration)';
+    return 'Track(artwork: $artwork, trackId: $trackId, index: $index, path: $path, name: $name, album: $album, duration: $duration, position: $position)';
   }
 
   @override
@@ -152,16 +231,30 @@ class _$_Track implements _Track {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Track &&
+            const DeepCollectionEquality().equals(other._artwork, _artwork) &&
+            (identical(other.trackId, trackId) || other.trackId == trackId) &&
+            (identical(other.index, index) || other.index == index) &&
             (identical(other.path, path) || other.path == path) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.album, album) || other.album == album) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, path, name, album, duration);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_artwork),
+      trackId,
+      index,
+      path,
+      name,
+      album,
+      duration,
+      position);
 
   @JsonKey(ignore: true)
   @override
@@ -179,13 +272,23 @@ class _$_Track implements _Track {
 
 abstract class _Track implements Track {
   const factory _Track(
-      {required final String path,
+      {required final List<int> artwork,
+      required final int trackId,
+      required final int index,
+      required final String path,
       required final String? name,
       required final String? album,
-      required final Duration duration}) = _$_Track;
+      required final Duration duration,
+      required final Duration position}) = _$_Track;
 
   factory _Track.fromJson(Map<String, dynamic> json) = _$_Track.fromJson;
 
+  @override
+  List<int> get artwork;
+  @override
+  int get trackId;
+  @override
+  int get index;
   @override
   String get path;
   @override
@@ -194,6 +297,8 @@ abstract class _Track implements Track {
   String? get album;
   @override
   Duration get duration;
+  @override
+  Duration get position;
   @override
   @JsonKey(ignore: true)
   _$$_TrackCopyWith<_$_Track> get copyWith =>

@@ -1,50 +1,54 @@
-import 'dart:io';
-
 import 'package:just_audio/just_audio.dart';
-import 'package:player/src/common/functions/create_system_entity_from_path.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
-import 'package:path/path.dart' as path;
+import 'package:player/src/features/track_list/domain/entities/track.dart';
+
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
-  int _index = 0;
   final AudioPlayer _player = AudioPlayer();
-
   @override
-  Future<void> addMusicDirectory({required String audioFilePath}) async {
-    final List<AudioSource> audioSource = [];
-    final Directory audioDirectory = Directory(audioFilePath);
-    final folderPath = audioDirectory.parent.path;
-    // Duration? _durationAlbum = const Duration();
+  Future<void> addMusicDirectory({required List<Track> tracks,required Track track}) async {
+    final List<UriAudioSource> audioSource = [];
+    for (var track in tracks) {
+      final UriAudioSource audio = AudioSource.file(track.path);
 
-    List<FileSystemEntity>? fileSystem =
-        GlobalFunction.createSystemEntityFromPath(filePath: folderPath);
-    if (fileSystem != null) {
-      for (int i = 0; i < fileSystem.length; i++) {
-        final filepath = fileSystem[i].path;
-        if (filepath == audioFilePath) {
-          _index = i;
-        }
-        if (path.extension(filepath) == '.mp3') {
-          audioSource.add(AudioSource.uri(Uri.parse(filepath)));
-        }
-      }
+      audioSource.add(audio);
     }
-    // for (var element in audioSource)  {
-    //   AudioPlayer pl = AudioPlayer();
-    //    pl.setAudioSource(element);
+    // final Directory audioDirectory = Directory(track.path);
+    // final folderPath = audioDirectory.parent.path;
 
-    //   globalDuration += pl.duration ?? Duration.zero;
+    // List<FileSystemEntity>? fileSystem =
+    //     GlobalFunction.createSystemEntityFromPath(filePath: folderPath);
+    // if (fileSystem != null) {
+    //   for (int i = 0; i < fileSystem.length; i++) {
+    //     final filepath = fileSystem[i].path;
+    //     if (filepath == audioFilePath) {
+    //       _index = i;
+    //     }
+    //     if (path.extension(filepath) == '.mp3') {
+    //       final UriAudioSource audio = AudioSource.uri(Uri.parse(filepath));
+    //       if (await audio.duration != null) {
+    //         _durationAlbum.add(audio.duration!);
+    //       }
+    //       audioSource.add(audio);
+    //     }
+    //   }
     // }
-
-    ConcatenatingAudioSource playlist = ConcatenatingAudioSource(
+    ConcatenatingAudioSource concatenatingAudioSource =
+        ConcatenatingAudioSource(
       useLazyPreparation: true,
-      shuffleOrder: DefaultShuffleOrder(),
       children: audioSource,
     );
 
-    await _player.setAudioSource(playlist, initialIndex: _index);
+    await _player.setAudioSource(concatenatingAudioSource,
+        initialPosition: track.position, initialIndex: track.index);
     play();
   }
+
+  @override
+  int? get currentIndex => _player.currentIndex;
+
+  @override
+  Stream<int?> get trackIndexStream => _player.currentIndexStream;
 
   @override
   Stream<bool> get playingStream => _player.playingStream;
@@ -54,6 +58,10 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   Stream<Duration?> get totalStream => _player.durationStream;
   @override
   Stream<Duration> get bufferedPosition => _player.bufferedPositionStream;
+
+  Stream<Duration> get albumPosition async* {
+    _player.positionStream.listen((event) {});
+  }
 
   @override
   Future<void> play() async {
@@ -81,7 +89,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     int? currentIndex = _player.currentIndex;
     Duration rewindPosition = position - Duration(seconds: seconds);
     if (currentIndex != null) {
-      _index = currentIndex;
       await _player.seek(rewindPosition, index: currentIndex);
     }
   }
@@ -92,7 +99,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     int? currentIndex = _player.currentIndex;
     Duration rewindPosition = position + Duration(seconds: seconds);
     if (currentIndex != null) {
-      _index = currentIndex;
       await _player.seek(rewindPosition, index: currentIndex);
     }
   }
@@ -101,8 +107,12 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   Future<void> changeProgressBarr({required Duration duration}) async {
     int? currentIndex = _player.currentIndex;
     if (currentIndex != null) {
-      _index = currentIndex;
       await _player.seek(duration, index: currentIndex);
     }
+  }
+
+  @override
+  List<int> getArtwork({required int trackId}) {
+    return [];
   }
 }

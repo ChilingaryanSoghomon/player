@@ -20,7 +20,10 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Album {
-  Duration get albumDuration => throw _privateConstructorUsedError;
+  List<Track> get tracks => throw _privateConstructorUsedError;
+  Map<int, Duration> get albumDuration => throw _privateConstructorUsedError;
+  Duration get albumTotalDuration => throw _privateConstructorUsedError;
+  Duration get albumPosition => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get artist => throw _privateConstructorUsedError;
@@ -37,7 +40,10 @@ abstract class $AlbumCopyWith<$Res> {
       _$AlbumCopyWithImpl<$Res, Album>;
   @useResult
   $Res call(
-      {Duration albumDuration,
+      {List<Track> tracks,
+      Map<int, Duration> albumDuration,
+      Duration albumTotalDuration,
+      Duration albumPosition,
       int id,
       String name,
       String artist,
@@ -57,16 +63,31 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tracks = null,
     Object? albumDuration = null,
+    Object? albumTotalDuration = null,
+    Object? albumPosition = null,
     Object? id = null,
     Object? name = null,
     Object? artist = null,
     Object? songQuantity = null,
   }) {
     return _then(_value.copyWith(
+      tracks: null == tracks
+          ? _value.tracks
+          : tracks // ignore: cast_nullable_to_non_nullable
+              as List<Track>,
       albumDuration: null == albumDuration
           ? _value.albumDuration
           : albumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
+      albumTotalDuration: null == albumTotalDuration
+          ? _value.albumTotalDuration
+          : albumTotalDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      albumPosition: null == albumPosition
+          ? _value.albumPosition
+          : albumPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
       id: null == id
           ? _value.id
@@ -95,7 +116,10 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {Duration albumDuration,
+      {List<Track> tracks,
+      Map<int, Duration> albumDuration,
+      Duration albumTotalDuration,
+      Duration albumPosition,
       int id,
       String name,
       String artist,
@@ -111,16 +135,31 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tracks = null,
     Object? albumDuration = null,
+    Object? albumTotalDuration = null,
+    Object? albumPosition = null,
     Object? id = null,
     Object? name = null,
     Object? artist = null,
     Object? songQuantity = null,
   }) {
     return _then(_$_Album(
+      tracks: null == tracks
+          ? _value._tracks
+          : tracks // ignore: cast_nullable_to_non_nullable
+              as List<Track>,
       albumDuration: null == albumDuration
-          ? _value.albumDuration
+          ? _value._albumDuration
           : albumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
+      albumTotalDuration: null == albumTotalDuration
+          ? _value.albumTotalDuration
+          : albumTotalDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      albumPosition: null == albumPosition
+          ? _value.albumPosition
+          : albumPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
       id: null == id
           ? _value.id
@@ -146,17 +185,40 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
 @JsonSerializable()
 class _$_Album implements _Album {
   const _$_Album(
-      {required this.albumDuration,
+      {required final List<Track> tracks,
+      required final Map<int, Duration> albumDuration,
+      required this.albumTotalDuration,
+      required this.albumPosition,
       required this.id,
       required this.name,
       required this.artist,
-      required this.songQuantity});
+      required this.songQuantity})
+      : _tracks = tracks,
+        _albumDuration = albumDuration;
 
   factory _$_Album.fromJson(Map<String, dynamic> json) =>
       _$$_AlbumFromJson(json);
 
+  final List<Track> _tracks;
   @override
-  final Duration albumDuration;
+  List<Track> get tracks {
+    if (_tracks is EqualUnmodifiableListView) return _tracks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tracks);
+  }
+
+  final Map<int, Duration> _albumDuration;
+  @override
+  Map<int, Duration> get albumDuration {
+    if (_albumDuration is EqualUnmodifiableMapView) return _albumDuration;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_albumDuration);
+  }
+
+  @override
+  final Duration albumTotalDuration;
+  @override
+  final Duration albumPosition;
   @override
   final int id;
   @override
@@ -168,7 +230,7 @@ class _$_Album implements _Album {
 
   @override
   String toString() {
-    return 'Album(albumDuration: $albumDuration, id: $id, name: $name, artist: $artist, songQuantity: $songQuantity)';
+    return 'Album(tracks: $tracks, albumDuration: $albumDuration, albumTotalDuration: $albumTotalDuration, albumPosition: $albumPosition, id: $id, name: $name, artist: $artist, songQuantity: $songQuantity)';
   }
 
   @override
@@ -176,8 +238,13 @@ class _$_Album implements _Album {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Album &&
-            (identical(other.albumDuration, albumDuration) ||
-                other.albumDuration == albumDuration) &&
+            const DeepCollectionEquality().equals(other._tracks, _tracks) &&
+            const DeepCollectionEquality()
+                .equals(other._albumDuration, _albumDuration) &&
+            (identical(other.albumTotalDuration, albumTotalDuration) ||
+                other.albumTotalDuration == albumTotalDuration) &&
+            (identical(other.albumPosition, albumPosition) ||
+                other.albumPosition == albumPosition) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.artist, artist) || other.artist == artist) &&
@@ -187,8 +254,16 @@ class _$_Album implements _Album {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, albumDuration, id, name, artist, songQuantity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_tracks),
+      const DeepCollectionEquality().hash(_albumDuration),
+      albumTotalDuration,
+      albumPosition,
+      id,
+      name,
+      artist,
+      songQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +281,10 @@ class _$_Album implements _Album {
 
 abstract class _Album implements Album {
   const factory _Album(
-      {required final Duration albumDuration,
+      {required final List<Track> tracks,
+      required final Map<int, Duration> albumDuration,
+      required final Duration albumTotalDuration,
+      required final Duration albumPosition,
       required final int id,
       required final String name,
       required final String artist,
@@ -215,7 +293,13 @@ abstract class _Album implements Album {
   factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
 
   @override
-  Duration get albumDuration;
+  List<Track> get tracks;
+  @override
+  Map<int, Duration> get albumDuration;
+  @override
+  Duration get albumTotalDuration;
+  @override
+  Duration get albumPosition;
   @override
   int get id;
   @override

@@ -9,40 +9,27 @@ class AudioProgressGlobalBarrWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: ProgressBar(
-            baseBarColor: AppColors.mainThemColor[50],
-            barCapShape: BarCapShape.square,
-            barHeight: 19,
-            bufferedBarColor: AppColors.mainThemColor[100],
-            progressBarColor: AppColors.mainThemColor[300],
-            thumbRadius: 0,
-            progress: const Duration(milliseconds: 1000),
-            buffered: const Duration(milliseconds: 39000),
-            total: const Duration(milliseconds: 1000000),
-            onSeek: (duration) {},
-            timeLabelLocation: TimeLabelLocation.sides,
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: BlocBuilder<PlayerBloc, PlayerState>(
+        buildWhen: (previous, current) =>
+            previous.position != current.position ||
+            previous.total != current.total,
+        builder: (context, state) => CustomProgressBarWidget(
+          progress: state.albumPosition,
+          total: state.albumDuration,
+          function: (Duration duration) {
+            print(duration);
+          },
         ),
-        Container()
-      ],
+      ),
     );
   }
 }
 
-class AudioProgressLocalBarrWidget extends StatefulWidget {
+class AudioProgressLocalBarrWidget extends StatelessWidget {
   const AudioProgressLocalBarrWidget({super.key});
 
-  @override
-  State<AudioProgressLocalBarrWidget> createState() =>
-      _AudioProgressLocalBarrWidgetState();
-}
-
-class _AudioProgressLocalBarrWidgetState
-    extends State<AudioProgressLocalBarrWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,6 +41,11 @@ class _AudioProgressLocalBarrWidgetState
         builder: (context, state) => CustomProgressBarWidget(
           progress: state.position,
           total: state.total,
+          function: (Duration duration) {
+            context
+                .read<PlayerBloc>()
+                .add(PlayerEvent.changeProgressBar(duration: duration));
+          },
         ),
       ),
     );
@@ -65,11 +57,13 @@ class CustomProgressBarWidget extends StatelessWidget {
     super.key,
     required Duration progress,
     required Duration total,
+    required this.function,
   })  : _progress = progress,
         _total = total;
 
   final Duration _progress;
   final Duration _total;
+  final Function(Duration duration) function;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +74,10 @@ class CustomProgressBarWidget extends StatelessWidget {
       bufferedBarColor: AppColors.mainThemColor[100],
       progressBarColor: AppColors.mainThemColor[300],
       thumbRadius: 0,
-      timeLabelLocation: TimeLabelLocation.sides,
+      timeLabelLocation: TimeLabelLocation.below,
       progress: _progress,
       total: _total,
-      onSeek: (duration) => context
-          .read<PlayerBloc>()
-          .add(PlayerEvent.changeProgressBar(duration: duration)),
+      onSeek: (duration) => function(duration),
     );
   }
 }
