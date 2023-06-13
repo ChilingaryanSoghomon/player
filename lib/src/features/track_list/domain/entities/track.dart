@@ -13,6 +13,7 @@ class Track with _$Track {
     required String path,
     required String? name,
     required String? album,
+    required String? artist,
     required Duration duration,
     required Duration position,
   }) = _Track;

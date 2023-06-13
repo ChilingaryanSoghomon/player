@@ -26,6 +26,7 @@ mixin _$Track {
   String get path => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get album => throw _privateConstructorUsedError;
+  String? get artist => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
   Duration get position => throw _privateConstructorUsedError;
 
@@ -46,6 +47,7 @@ abstract class $TrackCopyWith<$Res> {
       String path,
       String? name,
       String? album,
+      String? artist,
       Duration duration,
       Duration position});
 }
@@ -69,6 +71,7 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
     Object? path = null,
     Object? name = freezed,
     Object? album = freezed,
+    Object? artist = freezed,
     Object? duration = null,
     Object? position = null,
   }) {
@@ -97,6 +100,10 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
               as String?,
+      artist: freezed == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as String?,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -122,6 +129,7 @@ abstract class _$$_TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
       String path,
       String? name,
       String? album,
+      String? artist,
       Duration duration,
       Duration position});
 }
@@ -141,6 +149,7 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
     Object? path = null,
     Object? name = freezed,
     Object? album = freezed,
+    Object? artist = freezed,
     Object? duration = null,
     Object? position = null,
   }) {
@@ -169,6 +178,10 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
               as String?,
+      artist: freezed == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as String?,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -191,6 +204,7 @@ class _$_Track implements _Track {
       required this.path,
       required this.name,
       required this.album,
+      required this.artist,
       required this.duration,
       required this.position})
       : _artwork = artwork;
@@ -217,13 +231,15 @@ class _$_Track implements _Track {
   @override
   final String? album;
   @override
+  final String? artist;
+  @override
   final Duration duration;
   @override
   final Duration position;
 
   @override
   String toString() {
-    return 'Track(artwork: $artwork, trackId: $trackId, index: $index, path: $path, name: $name, album: $album, duration: $duration, position: $position)';
+    return 'Track(artwork: $artwork, trackId: $trackId, index: $index, path: $path, name: $name, album: $album, artist: $artist, duration: $duration, position: $position)';
   }
 
   @override
@@ -237,6 +253,7 @@ class _$_Track implements _Track {
             (identical(other.path, path) || other.path == path) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.album, album) || other.album == album) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.position, position) ||
@@ -253,6 +270,7 @@ class _$_Track implements _Track {
       path,
       name,
       album,
+      artist,
       duration,
       position);
 
@@ -278,6 +296,7 @@ abstract class _Track implements Track {
       required final String path,
       required final String? name,
       required final String? album,
+      required final String? artist,
       required final Duration duration,
       required final Duration position}) = _$_Track;
 
@@ -295,6 +314,8 @@ abstract class _Track implements Track {
   String? get name;
   @override
   String? get album;
+  @override
+  String? get artist;
   @override
   Duration get duration;
   @override

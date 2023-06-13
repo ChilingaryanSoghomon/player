@@ -11,7 +11,7 @@ class UpperButtonsWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         OutlinedButton(
-          style: AppButtonStyle.playerButton,
+          style: AppButtonStyle.player,
           onPressed: () {},
           child: const Icon(
             Icons.speed_rounded,
@@ -28,7 +28,7 @@ class UpperButtonsWidget extends StatelessWidget {
           child: const Text('Open File'),
         ),
         OutlinedButton(
-          style: AppButtonStyle.playerButton,
+          style: AppButtonStyle.player,
           onPressed: () {},
           child: const Icon(Icons.more_vert),
         ),

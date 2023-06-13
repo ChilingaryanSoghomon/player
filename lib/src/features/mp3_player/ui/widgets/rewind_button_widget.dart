@@ -14,7 +14,7 @@ class RewindButtonsWidget extends StatelessWidget {
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.rewind(seconds: 30)),
-        style: AppButtonStyle.playerButton,
+        style: AppButtonStyle.player,
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
@@ -27,7 +27,7 @@ class RewindButtonsWidget extends StatelessWidget {
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.rewind(seconds: 10)),
-        style: AppButtonStyle.playerButton,
+        style: AppButtonStyle.player,
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
@@ -40,7 +40,7 @@ class RewindButtonsWidget extends StatelessWidget {
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.push(seconds: 10)),
-        style: AppButtonStyle.playerButton,
+        style: AppButtonStyle.player,
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
@@ -53,7 +53,7 @@ class RewindButtonsWidget extends StatelessWidget {
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.push(seconds: 30)),
-        style: AppButtonStyle.playerButton,
+        style: AppButtonStyle.player,
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(

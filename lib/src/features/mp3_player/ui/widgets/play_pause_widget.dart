@@ -17,7 +17,7 @@ class PlayPauseWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ElevatedButton(
-            style: AppButtonStyle.playerButton,
+            style: AppButtonStyle.player,
             onPressed: () =>
                 context.read<PlayerBloc>().add(const PlayerEvent.prev()),
             child: const Padding(
@@ -33,7 +33,7 @@ class PlayPauseWidget extends StatelessWidget {
             buildWhen: (previous, current) => previous.status != current.status,
             builder: (context, state) {
               return ElevatedButton(
-                style: AppButtonStyle.playerButton,
+                style: AppButtonStyle.player,
                 onPressed: () {
                   if (state.status == PlayerStatus.playing) {
                     context.read<PlayerBloc>().add(const PlayerEvent.pause());
@@ -55,7 +55,7 @@ class PlayPauseWidget extends StatelessWidget {
             },
           ),
           ElevatedButton(
-            style: AppButtonStyle.playerButton,
+            style: AppButtonStyle.player,
             onPressed: () =>
                 context.read<PlayerBloc>().add(const PlayerEvent.next()),
             child: const Padding(

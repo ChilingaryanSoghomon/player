@@ -34,6 +34,8 @@ class TrackRepositoryImp implements ITrackRepository {
             position: Duration.zero,
             artwork: convertedListArtwork,
             trackId: song.id,
+            artist: song.artist,
+            // artist: song.isAudioBook,
           ));
           trackIndex += 1;
         }
