@@ -20,7 +20,6 @@ Track _$TrackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Track {
-  List<int> get artwork => throw _privateConstructorUsedError;
   int get trackId => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
   String get path => throw _privateConstructorUsedError;
@@ -41,8 +40,7 @@ abstract class $TrackCopyWith<$Res> {
       _$TrackCopyWithImpl<$Res, Track>;
   @useResult
   $Res call(
-      {List<int> artwork,
-      int trackId,
+      {int trackId,
       int index,
       String path,
       String? name,
@@ -65,7 +63,6 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? artwork = null,
     Object? trackId = null,
     Object? index = null,
     Object? path = null,
@@ -76,10 +73,6 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
     Object? position = null,
   }) {
     return _then(_value.copyWith(
-      artwork: null == artwork
-          ? _value.artwork
-          : artwork // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       trackId: null == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
@@ -123,8 +116,7 @@ abstract class _$$_TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<int> artwork,
-      int trackId,
+      {int trackId,
       int index,
       String path,
       String? name,
@@ -143,7 +135,6 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? artwork = null,
     Object? trackId = null,
     Object? index = null,
     Object? path = null,
@@ -154,10 +145,6 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
     Object? position = null,
   }) {
     return _then(_$_Track(
-      artwork: null == artwork
-          ? _value._artwork
-          : artwork // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       trackId: null == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
@@ -198,27 +185,17 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
 @JsonSerializable()
 class _$_Track implements _Track {
   const _$_Track(
-      {required final List<int> artwork,
-      required this.trackId,
+      {required this.trackId,
       required this.index,
       required this.path,
       required this.name,
       required this.album,
       required this.artist,
       required this.duration,
-      required this.position})
-      : _artwork = artwork;
+      required this.position});
 
   factory _$_Track.fromJson(Map<String, dynamic> json) =>
       _$$_TrackFromJson(json);
-
-  final List<int> _artwork;
-  @override
-  List<int> get artwork {
-    if (_artwork is EqualUnmodifiableListView) return _artwork;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_artwork);
-  }
 
   @override
   final int trackId;
@@ -239,7 +216,7 @@ class _$_Track implements _Track {
 
   @override
   String toString() {
-    return 'Track(artwork: $artwork, trackId: $trackId, index: $index, path: $path, name: $name, album: $album, artist: $artist, duration: $duration, position: $position)';
+    return 'Track(trackId: $trackId, index: $index, path: $path, name: $name, album: $album, artist: $artist, duration: $duration, position: $position)';
   }
 
   @override
@@ -247,7 +224,6 @@ class _$_Track implements _Track {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Track &&
-            const DeepCollectionEquality().equals(other._artwork, _artwork) &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.path, path) || other.path == path) &&
@@ -262,17 +238,8 @@ class _$_Track implements _Track {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_artwork),
-      trackId,
-      index,
-      path,
-      name,
-      album,
-      artist,
-      duration,
-      position);
+  int get hashCode => Object.hash(runtimeType, trackId, index, path, name,
+      album, artist, duration, position);
 
   @JsonKey(ignore: true)
   @override
@@ -290,8 +257,7 @@ class _$_Track implements _Track {
 
 abstract class _Track implements Track {
   const factory _Track(
-      {required final List<int> artwork,
-      required final int trackId,
+      {required final int trackId,
       required final int index,
       required final String path,
       required final String? name,
@@ -302,8 +268,6 @@ abstract class _Track implements Track {
 
   factory _Track.fromJson(Map<String, dynamic> json) = _$_Track.fromJson;
 
-  @override
-  List<int> get artwork;
   @override
   int get trackId;
   @override

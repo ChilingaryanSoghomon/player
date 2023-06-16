@@ -18,7 +18,7 @@ Future<void> setup() async {
   Bloc.observer = MyBlocObserver();
 
   getIt.registerLazySingleton<AudioPlayerRepositoryImpl>(
-      () => AudioPlayerRepositoryImpl());
+      () => AudioPlayerRepositoryImpl(audioQuery: audioQuery));
   getIt.registerLazySingleton<TrackRepositoryImp>(
       () => TrackRepositoryImp(audioQuery: audioQuery));
   getIt.registerLazySingleton<AlbumRepositoryImp>(

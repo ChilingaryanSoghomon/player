@@ -30,6 +30,7 @@ class TrackListScreen extends StatelessWidget {
                 itemCount: state.tracks.length,
                 itemBuilder: (context, index) {
                   final track = state.tracks[index];
+                  final artwork = state.artworks[index];
                   return Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -49,9 +50,9 @@ class TrackListScreen extends StatelessWidget {
                               children: [
                                 Flexible(
                                   flex: 3,
-                                  child: track.artwork.isNotEmpty
+                                  child: artwork.isNotEmpty
                                       ? Image.memory(
-                                          Uint8List.fromList(track.artwork))
+                                          Uint8List.fromList(artwork))
                                       : const Image(
                                           image:
                                               AssetImage(AppAssets.shortwave),
@@ -70,13 +71,11 @@ class TrackListScreen extends StatelessWidget {
                                             style:
                                                 const TextStyle(fontSize: 20),
                                             maxLines: 1),
-                                            const Divider(),
+                                        const Divider(),
                                         Text(('${track.name}'),
                                             style:
                                                 const TextStyle(fontSize: 18),
                                             maxLines: 2),
-                                        
-                                        // Text('${track.album}', maxLines: 1),
                                       ],
                                     ),
                                   ),

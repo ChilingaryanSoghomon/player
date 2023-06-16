@@ -7,7 +7,6 @@ part of 'track.dart';
 // **************************************************************************
 
 _$_Track _$$_TrackFromJson(Map<String, dynamic> json) => _$_Track(
-      artwork: (json['artwork'] as List<dynamic>).map((e) => e as int).toList(),
       trackId: json['trackId'] as int,
       index: json['index'] as int,
       path: json['path'] as String,
@@ -19,7 +18,6 @@ _$_Track _$$_TrackFromJson(Map<String, dynamic> json) => _$_Track(
     );
 
 Map<String, dynamic> _$$_TrackToJson(_$_Track instance) => <String, dynamic>{
-      'artwork': instance.artwork,
       'trackId': instance.trackId,
       'index': instance.index,
       'path': instance.path,

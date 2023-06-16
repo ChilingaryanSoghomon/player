@@ -54,9 +54,10 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
   Future<void> _addMusic(
       _PlayerAddMusicEvent event, Emitter<PlayerState> emit) async {
-    _playerRepository.addMusicDirectory(
+    List<int> artwork = await _playerRepository.addMusicDirectory(
         tracks: event.tracks, track: event.track);
     emit(state.copyWith(
+      artwork: artwork,
       tracks: event.tracks,
       status: PlayerStatus.playing,
       mapAlbumDuration: _mapAlbumDuration(event.tracks),

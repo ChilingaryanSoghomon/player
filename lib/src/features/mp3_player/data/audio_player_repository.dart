@@ -1,47 +1,40 @@
+import 'dart:typed_data';
+
 import 'package:just_audio/just_audio.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
+  final OnAudioQuery _audioQuery;
   final AudioPlayer _player = AudioPlayer();
+  AudioPlayerRepositoryImpl({required OnAudioQuery audioQuery})
+      : _audioQuery = audioQuery;
+
   @override
-  Future<void> addMusicDirectory({required List<Track> tracks,required Track track}) async {
+  Future<List<int>> addMusicDirectory(
+      {required List<Track> tracks, required Track track}) async {
     final List<UriAudioSource> audioSource = [];
     for (var track in tracks) {
       final UriAudioSource audio = AudioSource.file(track.path);
-
       audioSource.add(audio);
     }
-    // final Directory audioDirectory = Directory(track.path);
-    // final folderPath = audioDirectory.parent.path;
-
-    // List<FileSystemEntity>? fileSystem =
-    //     GlobalFunction.createSystemEntityFromPath(filePath: folderPath);
-    // if (fileSystem != null) {
-    //   for (int i = 0; i < fileSystem.length; i++) {
-    //     final filepath = fileSystem[i].path;
-    //     if (filepath == audioFilePath) {
-    //       _index = i;
-    //     }
-    //     if (path.extension(filepath) == '.mp3') {
-    //       final UriAudioSource audio = AudioSource.uri(Uri.parse(filepath));
-    //       if (await audio.duration != null) {
-    //         _durationAlbum.add(audio.duration!);
-    //       }
-    //       audioSource.add(audio);
-    //     }
-    //   }
-    // }
     ConcatenatingAudioSource concatenatingAudioSource =
         ConcatenatingAudioSource(
       useLazyPreparation: true,
       children: audioSource,
     );
-
     await _player.setAudioSource(concatenatingAudioSource,
         initialPosition: track.position, initialIndex: track.index);
     play();
+    Future<Uint8List?> uint8List =
+        _audioQuery.queryArtwork(track.trackId, ArtworkType.AUDIO);
+    Uint8List? uint8ListArtwork = await uint8List;
+    if (uint8ListArtwork != null) {
+      return uint8ListArtwork.toList();
+    }
+    return [];
   }
 
   @override

@@ -7,7 +7,7 @@ abstract class IAudioPlayerRepository {
   Stream<bool> get playingStream;
   int? get currentIndex;
    Stream<int?> get trackIndexStream;
-  Future<void> addMusicDirectory({required List<Track> tracks,required Track track});
+  Future<List<int>> addMusicDirectory({required List<Track> tracks,required Track track});
 
   Future<void> next();
 

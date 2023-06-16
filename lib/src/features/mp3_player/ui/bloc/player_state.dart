@@ -18,21 +18,10 @@ class PlayerState with _$PlayerState {
       @Default(Duration.zero) Duration albumDuration,
       @Default(Duration.zero) Duration albumPosition,
       @Default({}) Map<int, Duration> mapAlbumDuration,
-
-      // @Default([]) List<int> artwork,
       @Default(0) int trackIndex,
       @Default([])  List<Track> tracks,
-      // @Default(Album(
-      //   tracks: [],
-      //   albumDuration: {},
-      //   albumPosition: Duration.zero,
-      //   id: 0,
-      //   name: '',
-      //   artist: '',
-      //   songQuantity: 0,
-      //   albumTotalDuration: Duration.zero,
-      // ))
-      // Album album,
+      @Default([]) List<int> artwork,
+
       }) = Initial;
   factory PlayerState.fromJson(Map<String, Object?> json) =>
       _$PlayerStateFromJson(json);

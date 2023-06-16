@@ -242,21 +242,22 @@ mixin _$TrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks) loaded,
+    required TResult Function(List<Track> tracks, List<List<int>> artworks)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks)? loaded,
+    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks)? loaded,
+    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -351,7 +352,8 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks) loaded,
+    required TResult Function(List<Track> tracks, List<List<int>> artworks)
+        loaded,
   }) {
     return loading();
   }
@@ -361,7 +363,7 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks)? loaded,
+    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
   }) {
     return loading?.call();
   }
@@ -371,7 +373,7 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks)? loaded,
+    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -476,7 +478,8 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks) loaded,
+    required TResult Function(List<Track> tracks, List<List<int>> artworks)
+        loaded,
   }) {
     return empty();
   }
@@ -486,7 +489,7 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks)? loaded,
+    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
   }) {
     return empty?.call();
   }
@@ -496,7 +499,7 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks)? loaded,
+    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -560,7 +563,7 @@ abstract class _$$_LoadedTrackStateCopyWith<$Res> {
           _$_LoadedTrackState value, $Res Function(_$_LoadedTrackState) then) =
       __$$_LoadedTrackStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Track> tracks});
+  $Res call({List<Track> tracks, List<List<int>> artworks});
 }
 
 /// @nodoc
@@ -575,12 +578,17 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tracks = null,
+    Object? artworks = null,
   }) {
     return _then(_$_LoadedTrackState(
       tracks: null == tracks
           ? _value._tracks
           : tracks // ignore: cast_nullable_to_non_nullable
               as List<Track>,
+      artworks: null == artworks
+          ? _value._artworks
+          : artworks // ignore: cast_nullable_to_non_nullable
+              as List<List<int>>,
     ));
   }
 }
@@ -589,8 +597,11 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LoadedTrackState implements _LoadedTrackState {
   const _$_LoadedTrackState(
-      {required final List<Track> tracks, final String? $type})
+      {required final List<Track> tracks,
+      required final List<List<int>> artworks,
+      final String? $type})
       : _tracks = tracks,
+        _artworks = artworks,
         $type = $type ?? 'loaded';
 
   factory _$_LoadedTrackState.fromJson(Map<String, dynamic> json) =>
@@ -604,12 +615,20 @@ class _$_LoadedTrackState implements _LoadedTrackState {
     return EqualUnmodifiableListView(_tracks);
   }
 
+  final List<List<int>> _artworks;
+  @override
+  List<List<int>> get artworks {
+    if (_artworks is EqualUnmodifiableListView) return _artworks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_artworks);
+  }
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'TrackState.loaded(tracks: $tracks)';
+    return 'TrackState.loaded(tracks: $tracks, artworks: $artworks)';
   }
 
   @override
@@ -617,13 +636,16 @@ class _$_LoadedTrackState implements _LoadedTrackState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadedTrackState &&
-            const DeepCollectionEquality().equals(other._tracks, _tracks));
+            const DeepCollectionEquality().equals(other._tracks, _tracks) &&
+            const DeepCollectionEquality().equals(other._artworks, _artworks));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tracks));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_tracks),
+      const DeepCollectionEquality().hash(_artworks));
 
   @JsonKey(ignore: true)
   @override
@@ -636,9 +658,10 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks) loaded,
+    required TResult Function(List<Track> tracks, List<List<int>> artworks)
+        loaded,
   }) {
-    return loaded(tracks);
+    return loaded(tracks, artworks);
   }
 
   @override
@@ -646,9 +669,9 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks)? loaded,
+    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
   }) {
-    return loaded?.call(tracks);
+    return loaded?.call(tracks, artworks);
   }
 
   @override
@@ -656,11 +679,11 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks)? loaded,
+    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(tracks);
+      return loaded(tracks, artworks);
     }
     return orElse();
   }
@@ -708,13 +731,15 @@ class _$_LoadedTrackState implements _LoadedTrackState {
 }
 
 abstract class _LoadedTrackState implements TrackState {
-  const factory _LoadedTrackState({required final List<Track> tracks}) =
-      _$_LoadedTrackState;
+  const factory _LoadedTrackState(
+      {required final List<Track> tracks,
+      required final List<List<int>> artworks}) = _$_LoadedTrackState;
 
   factory _LoadedTrackState.fromJson(Map<String, dynamic> json) =
       _$_LoadedTrackState.fromJson;
 
   List<Track> get tracks;
+  List<List<int>> get artworks;
   @JsonKey(ignore: true)
   _$$_LoadedTrackStateCopyWith<_$_LoadedTrackState> get copyWith =>
       throw _privateConstructorUsedError;

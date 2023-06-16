@@ -17,10 +17,10 @@ class ImageWidget extends StatelessWidget {
           padding: EdgeInsets.all(size),
           child: BlocBuilder<PlayerBloc, PlayerState>(
             buildWhen: (previous, current) =>
-                previous.trackIndex != current.trackIndex,
+                previous.artwork != current.artwork,
             builder: (context, state) {
               if (state.tracks.isNotEmpty) {
-                final artwork = state.tracks[state.trackIndex].artwork;
+                final artwork = state.artwork;
                 if (artwork.isNotEmpty) {
                   return Image.memory(Uint8List.fromList(artwork));
                 }

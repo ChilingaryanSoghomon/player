@@ -32,11 +32,15 @@ _$_LoadedTrackState _$$_LoadedTrackStateFromJson(Map<String, dynamic> json) =>
       tracks: (json['tracks'] as List<dynamic>)
           .map((e) => Track.fromJson(e as Map<String, dynamic>))
           .toList(),
+      artworks: (json['artworks'] as List<dynamic>)
+          .map((e) => (e as List<dynamic>).map((e) => e as int).toList())
+          .toList(),
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$_LoadedTrackStateToJson(_$_LoadedTrackState instance) =>
     <String, dynamic>{
       'tracks': instance.tracks,
+      'artworks': instance.artworks,
       'runtimeType': instance.$type,
     };

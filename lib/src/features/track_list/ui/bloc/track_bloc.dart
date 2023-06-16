@@ -18,9 +18,9 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> {
   TrackBloc({required ITrackRepository trackRepository})
       : _trackRepository = trackRepository,
         super(const TrackState.loading()) {
-    on<TrackEvent>((event, emit) async  {
+    on<TrackEvent>((event, emit) async {
       await event.map<Future<void>>(
-         clickAlbum: (event) async => await _clickAlbum(event, emit),
+        clickAlbum: (event) async => await _clickAlbum(event, emit),
       );
     });
   }
@@ -29,8 +29,10 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> {
       _ClickAlbumTrackEvent event, Emitter<TrackState> emit) async {
     emit(const TrackState.loading());
     try {
-      final tracks =  await _trackRepository.queryFromAlbumId(albumId: event.albumId);
-      emit(TrackState.loaded(tracks: tracks));
+      final tracks =
+          await _trackRepository.queryFromAlbumId(albumId: event.albumId);
+      final artworks = await _trackRepository.getTrackArtworks(tracks: tracks);
+      emit(TrackState.loaded(tracks: tracks, artworks: artworks));
     } catch (e) {}
   }
 }

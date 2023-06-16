@@ -32,6 +32,9 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
               ?.map((e) => Track.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      artwork:
+          (json['artwork'] as List<dynamic>?)?.map((e) => e as int).toList() ??
+              const [],
     );
 
 Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
@@ -44,6 +47,7 @@ Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
           .map((k, e) => MapEntry(k.toString(), e.inMicroseconds)),
       'trackIndex': instance.trackIndex,
       'tracks': instance.tracks,
+      'artwork': instance.artwork,
     };
 
 const _$PlayerStatusEnumMap = {

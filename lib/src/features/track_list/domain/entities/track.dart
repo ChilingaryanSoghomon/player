@@ -7,7 +7,6 @@ part 'track.g.dart';
 @freezed
 class Track with _$Track {
   const factory Track({
-    required List<int> artwork,
     required int trackId,
     required int index,
     required String path,

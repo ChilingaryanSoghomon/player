@@ -15,14 +15,7 @@ class TrackRepositoryImp implements ITrackRepository {
     int trackIndex = 0;
 
     for (var song in songs) {
-      List<int> convertedListArtwork = [];
       if (song.albumId == albumId) {
-        Future<Uint8List?> uint8List =
-            _audioQuery.queryArtwork(song.id, ArtworkType.AUDIO);
-        Uint8List? uint8ListArtwork = await uint8List;
-        if (uint8ListArtwork != null) {
-          convertedListArtwork = uint8ListArtwork.toList();
-        }
         if (song.duration != null) {
           final Duration songDuration = Duration(milliseconds: song.duration!);
           tracks.add(Track(
@@ -32,15 +25,30 @@ class TrackRepositoryImp implements ITrackRepository {
             album: song.album,
             duration: songDuration,
             position: Duration.zero,
-            artwork: convertedListArtwork,
             trackId: song.id,
             artist: song.artist,
-            // artist: song.isAudioBook,
           ));
           trackIndex += 1;
         }
       }
     }
     return tracks;
+  }
+
+  @override
+  Future <List<List<int>>> getTrackArtworks({required List<Track> tracks}) async {
+    List<List<int>> convertedListArtwork = [];
+    for (var track in tracks) {
+      Future<Uint8List?> uint8List =
+          _audioQuery.queryArtwork(track.trackId, ArtworkType.AUDIO);
+      Uint8List? uint8ListArtwork = await uint8List;
+      if (uint8ListArtwork != null) {
+        final List<int>  trackArtwork = uint8ListArtwork.toList();
+        convertedListArtwork.add(trackArtwork);
+      }else{
+        convertedListArtwork.add([]);
+      }
+    }
+    return  Future.value(convertedListArtwork);
   }
 }
