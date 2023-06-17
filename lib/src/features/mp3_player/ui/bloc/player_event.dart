@@ -3,7 +3,6 @@ part of 'player_bloc.dart';
 @freezed
 class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.addMusic({
-    // required Album album,
     required List<Track> tracks,
     required Track track,
   }) = _PlayerAddMusicEvent;
@@ -12,12 +11,6 @@ class PlayerEvent with _$PlayerEvent {
     required Duration? position,
   }) = _PlayerChangePositionEvent;
 
-  const factory PlayerEvent.changeTotal({
-    required Duration? total,
-  }) = _PlayerChangeTotalEvent;
- const factory PlayerEvent.changeTrackIndex({
-    required int? index
-  }) = _PlayerChangeTrackIndexEvent;
   const factory PlayerEvent.play() = _PlayerPlayEvent;
 
   const factory PlayerEvent.pause() = _PlayerPauseEvent;
@@ -36,4 +29,10 @@ class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.changeProgressBar({
     required Duration duration,
   }) = _PlayerChangeProgressBarEvent;
+
+
+
+
+  const factory PlayerEvent.changeState(
+  ) = _PlayerChangeStateEvent;
 }

@@ -20,8 +20,6 @@ mixin _$PlayerEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -29,14 +27,13 @@ mixin _$PlayerEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -44,14 +41,13 @@ mixin _$PlayerEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -59,6 +55,7 @@ mixin _$PlayerEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,9 +63,6 @@ mixin _$PlayerEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -77,14 +71,13 @@ mixin _$PlayerEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -92,14 +85,13 @@ mixin _$PlayerEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -107,6 +99,7 @@ mixin _$PlayerEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,9 +176,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
       {required final List<Track> tracks, required this.track})
       : _tracks = tracks;
 
-// required Album album,
   final List<Track> _tracks;
-// required Album album,
   @override
   List<Track> get tracks {
     if (_tracks is EqualUnmodifiableListView) return _tracks;
@@ -226,8 +217,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -235,6 +224,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return addMusic(tracks, track);
   }
@@ -244,8 +234,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -253,6 +241,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return addMusic?.call(tracks, track);
   }
@@ -262,8 +251,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -271,6 +258,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (addMusic != null) {
@@ -284,9 +272,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -295,6 +280,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return addMusic(this);
   }
@@ -304,8 +290,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -313,6 +297,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return addMusic?.call(this);
   }
@@ -322,8 +307,6 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -331,6 +314,7 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (addMusic != null) {
@@ -345,7 +329,6 @@ abstract class _PlayerAddMusicEvent implements PlayerEvent {
       {required final List<Track> tracks,
       required final Track track}) = _$_PlayerAddMusicEvent;
 
-// required Album album,
   List<Track> get tracks;
   Track get track;
   @JsonKey(ignore: true)
@@ -423,8 +406,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -432,6 +413,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return changePosition(position);
   }
@@ -441,8 +423,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -450,6 +430,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return changePosition?.call(position);
   }
@@ -459,8 +440,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -468,6 +447,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (changePosition != null) {
@@ -481,9 +461,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -492,6 +469,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return changePosition(this);
   }
@@ -501,8 +479,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -510,6 +486,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return changePosition?.call(this);
   }
@@ -519,8 +496,6 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -528,6 +503,7 @@ class _$_PlayerChangePositionEvent implements _PlayerChangePositionEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (changePosition != null) {
@@ -544,390 +520,6 @@ abstract class _PlayerChangePositionEvent implements PlayerEvent {
   Duration? get position;
   @JsonKey(ignore: true)
   _$$_PlayerChangePositionEventCopyWith<_$_PlayerChangePositionEvent>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PlayerChangeTotalEventCopyWith<$Res> {
-  factory _$$_PlayerChangeTotalEventCopyWith(_$_PlayerChangeTotalEvent value,
-          $Res Function(_$_PlayerChangeTotalEvent) then) =
-      __$$_PlayerChangeTotalEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Duration? total});
-}
-
-/// @nodoc
-class __$$_PlayerChangeTotalEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerChangeTotalEvent>
-    implements _$$_PlayerChangeTotalEventCopyWith<$Res> {
-  __$$_PlayerChangeTotalEventCopyWithImpl(_$_PlayerChangeTotalEvent _value,
-      $Res Function(_$_PlayerChangeTotalEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? total = freezed,
-  }) {
-    return _then(_$_PlayerChangeTotalEvent(
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as Duration?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PlayerChangeTotalEvent implements _PlayerChangeTotalEvent {
-  const _$_PlayerChangeTotalEvent({required this.total});
-
-  @override
-  final Duration? total;
-
-  @override
-  String toString() {
-    return 'PlayerEvent.changeTotal(total: $total)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PlayerChangeTotalEvent &&
-            (identical(other.total, total) || other.total == total));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, total);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PlayerChangeTotalEventCopyWith<_$_PlayerChangeTotalEvent> get copyWith =>
-      __$$_PlayerChangeTotalEventCopyWithImpl<_$_PlayerChangeTotalEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Track> tracks, Track track) addMusic,
-    required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
-    required TResult Function() play,
-    required TResult Function() pause,
-    required TResult Function() prev,
-    required TResult Function() next,
-    required TResult Function(int seconds) rewind,
-    required TResult Function(int seconds) push,
-    required TResult Function(Duration duration) changeProgressBar,
-  }) {
-    return changeTotal(total);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Track> tracks, Track track)? addMusic,
-    TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
-    TResult? Function()? play,
-    TResult? Function()? pause,
-    TResult? Function()? prev,
-    TResult? Function()? next,
-    TResult? Function(int seconds)? rewind,
-    TResult? Function(int seconds)? push,
-    TResult? Function(Duration duration)? changeProgressBar,
-  }) {
-    return changeTotal?.call(total);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Track> tracks, Track track)? addMusic,
-    TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
-    TResult Function()? play,
-    TResult Function()? pause,
-    TResult Function()? prev,
-    TResult Function()? next,
-    TResult Function(int seconds)? rewind,
-    TResult Function(int seconds)? push,
-    TResult Function(Duration duration)? changeProgressBar,
-    required TResult orElse(),
-  }) {
-    if (changeTotal != null) {
-      return changeTotal(total);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
-    required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
-    required TResult Function(_PlayerPlayEvent value) play,
-    required TResult Function(_PlayerPauseEvent value) pause,
-    required TResult Function(_PlayerPrevEvent value) prev,
-    required TResult Function(_PlayerNextEvent value) next,
-    required TResult Function(_PlayerRewindEvent value) rewind,
-    required TResult Function(_PlayerPushEvent value) push,
-    required TResult Function(_PlayerChangeProgressBarEvent value)
-        changeProgressBar,
-  }) {
-    return changeTotal(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
-    TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
-    TResult? Function(_PlayerPlayEvent value)? play,
-    TResult? Function(_PlayerPauseEvent value)? pause,
-    TResult? Function(_PlayerPrevEvent value)? prev,
-    TResult? Function(_PlayerNextEvent value)? next,
-    TResult? Function(_PlayerRewindEvent value)? rewind,
-    TResult? Function(_PlayerPushEvent value)? push,
-    TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
-  }) {
-    return changeTotal?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
-    TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
-    TResult Function(_PlayerPlayEvent value)? play,
-    TResult Function(_PlayerPauseEvent value)? pause,
-    TResult Function(_PlayerPrevEvent value)? prev,
-    TResult Function(_PlayerNextEvent value)? next,
-    TResult Function(_PlayerRewindEvent value)? rewind,
-    TResult Function(_PlayerPushEvent value)? push,
-    TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
-    required TResult orElse(),
-  }) {
-    if (changeTotal != null) {
-      return changeTotal(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PlayerChangeTotalEvent implements PlayerEvent {
-  const factory _PlayerChangeTotalEvent({required final Duration? total}) =
-      _$_PlayerChangeTotalEvent;
-
-  Duration? get total;
-  @JsonKey(ignore: true)
-  _$$_PlayerChangeTotalEventCopyWith<_$_PlayerChangeTotalEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PlayerChangeTrackIndexEventCopyWith<$Res> {
-  factory _$$_PlayerChangeTrackIndexEventCopyWith(
-          _$_PlayerChangeTrackIndexEvent value,
-          $Res Function(_$_PlayerChangeTrackIndexEvent) then) =
-      __$$_PlayerChangeTrackIndexEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? index});
-}
-
-/// @nodoc
-class __$$_PlayerChangeTrackIndexEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerChangeTrackIndexEvent>
-    implements _$$_PlayerChangeTrackIndexEventCopyWith<$Res> {
-  __$$_PlayerChangeTrackIndexEventCopyWithImpl(
-      _$_PlayerChangeTrackIndexEvent _value,
-      $Res Function(_$_PlayerChangeTrackIndexEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = freezed,
-  }) {
-    return _then(_$_PlayerChangeTrackIndexEvent(
-      index: freezed == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PlayerChangeTrackIndexEvent implements _PlayerChangeTrackIndexEvent {
-  const _$_PlayerChangeTrackIndexEvent({required this.index});
-
-  @override
-  final int? index;
-
-  @override
-  String toString() {
-    return 'PlayerEvent.changeTrackIndex(index: $index)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PlayerChangeTrackIndexEvent &&
-            (identical(other.index, index) || other.index == index));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PlayerChangeTrackIndexEventCopyWith<_$_PlayerChangeTrackIndexEvent>
-      get copyWith => __$$_PlayerChangeTrackIndexEventCopyWithImpl<
-          _$_PlayerChangeTrackIndexEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Track> tracks, Track track) addMusic,
-    required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
-    required TResult Function() play,
-    required TResult Function() pause,
-    required TResult Function() prev,
-    required TResult Function() next,
-    required TResult Function(int seconds) rewind,
-    required TResult Function(int seconds) push,
-    required TResult Function(Duration duration) changeProgressBar,
-  }) {
-    return changeTrackIndex(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Track> tracks, Track track)? addMusic,
-    TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
-    TResult? Function()? play,
-    TResult? Function()? pause,
-    TResult? Function()? prev,
-    TResult? Function()? next,
-    TResult? Function(int seconds)? rewind,
-    TResult? Function(int seconds)? push,
-    TResult? Function(Duration duration)? changeProgressBar,
-  }) {
-    return changeTrackIndex?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Track> tracks, Track track)? addMusic,
-    TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
-    TResult Function()? play,
-    TResult Function()? pause,
-    TResult Function()? prev,
-    TResult Function()? next,
-    TResult Function(int seconds)? rewind,
-    TResult Function(int seconds)? push,
-    TResult Function(Duration duration)? changeProgressBar,
-    required TResult orElse(),
-  }) {
-    if (changeTrackIndex != null) {
-      return changeTrackIndex(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
-    required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
-    required TResult Function(_PlayerPlayEvent value) play,
-    required TResult Function(_PlayerPauseEvent value) pause,
-    required TResult Function(_PlayerPrevEvent value) prev,
-    required TResult Function(_PlayerNextEvent value) next,
-    required TResult Function(_PlayerRewindEvent value) rewind,
-    required TResult Function(_PlayerPushEvent value) push,
-    required TResult Function(_PlayerChangeProgressBarEvent value)
-        changeProgressBar,
-  }) {
-    return changeTrackIndex(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
-    TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
-    TResult? Function(_PlayerPlayEvent value)? play,
-    TResult? Function(_PlayerPauseEvent value)? pause,
-    TResult? Function(_PlayerPrevEvent value)? prev,
-    TResult? Function(_PlayerNextEvent value)? next,
-    TResult? Function(_PlayerRewindEvent value)? rewind,
-    TResult? Function(_PlayerPushEvent value)? push,
-    TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
-  }) {
-    return changeTrackIndex?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
-    TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
-    TResult Function(_PlayerPlayEvent value)? play,
-    TResult Function(_PlayerPauseEvent value)? pause,
-    TResult Function(_PlayerPrevEvent value)? prev,
-    TResult Function(_PlayerNextEvent value)? next,
-    TResult Function(_PlayerRewindEvent value)? rewind,
-    TResult Function(_PlayerPushEvent value)? push,
-    TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
-    required TResult orElse(),
-  }) {
-    if (changeTrackIndex != null) {
-      return changeTrackIndex(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PlayerChangeTrackIndexEvent implements PlayerEvent {
-  const factory _PlayerChangeTrackIndexEvent({required final int? index}) =
-      _$_PlayerChangeTrackIndexEvent;
-
-  int? get index;
-  @JsonKey(ignore: true)
-  _$$_PlayerChangeTrackIndexEventCopyWith<_$_PlayerChangeTrackIndexEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -971,8 +563,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -980,6 +570,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return play();
   }
@@ -989,8 +580,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -998,6 +587,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return play?.call();
   }
@@ -1007,8 +597,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1016,6 +604,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -1029,9 +618,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1040,6 +626,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return play(this);
   }
@@ -1049,8 +636,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1058,6 +643,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return play?.call(this);
   }
@@ -1067,8 +653,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1076,6 +660,7 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -1129,8 +714,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -1138,6 +721,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return pause();
   }
@@ -1147,8 +731,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -1156,6 +738,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return pause?.call();
   }
@@ -1165,8 +748,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1174,6 +755,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -1187,9 +769,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1198,6 +777,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return pause(this);
   }
@@ -1207,8 +787,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1216,6 +794,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return pause?.call(this);
   }
@@ -1225,8 +804,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1234,6 +811,7 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -1287,8 +865,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -1296,6 +872,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return prev();
   }
@@ -1305,8 +882,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -1314,6 +889,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return prev?.call();
   }
@@ -1323,8 +899,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1332,6 +906,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (prev != null) {
@@ -1345,9 +920,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1356,6 +928,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return prev(this);
   }
@@ -1365,8 +938,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1374,6 +945,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return prev?.call(this);
   }
@@ -1383,8 +955,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1392,6 +962,7 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (prev != null) {
@@ -1445,8 +1016,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -1454,6 +1023,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return next();
   }
@@ -1463,8 +1033,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -1472,6 +1040,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return next?.call();
   }
@@ -1481,8 +1050,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1490,6 +1057,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (next != null) {
@@ -1503,9 +1071,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1514,6 +1079,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return next(this);
   }
@@ -1523,8 +1089,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1532,6 +1096,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return next?.call(this);
   }
@@ -1541,8 +1106,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1550,6 +1113,7 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (next != null) {
@@ -1630,8 +1194,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -1639,6 +1201,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return rewind(seconds);
   }
@@ -1648,8 +1211,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -1657,6 +1218,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return rewind?.call(seconds);
   }
@@ -1666,8 +1228,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1675,6 +1235,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (rewind != null) {
@@ -1688,9 +1249,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1699,6 +1257,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return rewind(this);
   }
@@ -1708,8 +1267,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1717,6 +1274,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return rewind?.call(this);
   }
@@ -1726,8 +1284,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1735,6 +1291,7 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (rewind != null) {
@@ -1820,8 +1377,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -1829,6 +1384,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return push(seconds);
   }
@@ -1838,8 +1394,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -1847,6 +1401,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return push?.call(seconds);
   }
@@ -1856,8 +1411,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -1865,6 +1418,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -1878,9 +1432,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -1889,6 +1440,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return push(this);
   }
@@ -1898,8 +1450,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -1907,6 +1457,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return push?.call(this);
   }
@@ -1916,8 +1467,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -1925,6 +1474,7 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -2014,8 +1564,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Track> tracks, Track track) addMusic,
     required TResult Function(Duration? position) changePosition,
-    required TResult Function(Duration? total) changeTotal,
-    required TResult Function(int? index) changeTrackIndex,
     required TResult Function() play,
     required TResult Function() pause,
     required TResult Function() prev,
@@ -2023,6 +1571,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     required TResult Function(int seconds) rewind,
     required TResult Function(int seconds) push,
     required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
   }) {
     return changeProgressBar(duration);
   }
@@ -2032,8 +1581,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Track> tracks, Track track)? addMusic,
     TResult? Function(Duration? position)? changePosition,
-    TResult? Function(Duration? total)? changeTotal,
-    TResult? Function(int? index)? changeTrackIndex,
     TResult? Function()? play,
     TResult? Function()? pause,
     TResult? Function()? prev,
@@ -2041,6 +1588,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     TResult? Function(int seconds)? rewind,
     TResult? Function(int seconds)? push,
     TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
   }) {
     return changeProgressBar?.call(duration);
   }
@@ -2050,8 +1598,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Track> tracks, Track track)? addMusic,
     TResult Function(Duration? position)? changePosition,
-    TResult Function(Duration? total)? changeTotal,
-    TResult Function(int? index)? changeTrackIndex,
     TResult Function()? play,
     TResult Function()? pause,
     TResult Function()? prev,
@@ -2059,6 +1605,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     TResult Function(int seconds)? rewind,
     TResult Function(int seconds)? push,
     TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (changeProgressBar != null) {
@@ -2072,9 +1619,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerAddMusicEvent value) addMusic,
     required TResult Function(_PlayerChangePositionEvent value) changePosition,
-    required TResult Function(_PlayerChangeTotalEvent value) changeTotal,
-    required TResult Function(_PlayerChangeTrackIndexEvent value)
-        changeTrackIndex,
     required TResult Function(_PlayerPlayEvent value) play,
     required TResult Function(_PlayerPauseEvent value) pause,
     required TResult Function(_PlayerPrevEvent value) prev,
@@ -2083,6 +1627,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     required TResult Function(_PlayerPushEvent value) push,
     required TResult Function(_PlayerChangeProgressBarEvent value)
         changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return changeProgressBar(this);
   }
@@ -2092,8 +1637,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerAddMusicEvent value)? addMusic,
     TResult? Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult? Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult? Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult? Function(_PlayerPlayEvent value)? play,
     TResult? Function(_PlayerPauseEvent value)? pause,
     TResult? Function(_PlayerPrevEvent value)? prev,
@@ -2101,6 +1644,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     TResult? Function(_PlayerRewindEvent value)? rewind,
     TResult? Function(_PlayerPushEvent value)? push,
     TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return changeProgressBar?.call(this);
   }
@@ -2110,8 +1654,6 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerAddMusicEvent value)? addMusic,
     TResult Function(_PlayerChangePositionEvent value)? changePosition,
-    TResult Function(_PlayerChangeTotalEvent value)? changeTotal,
-    TResult Function(_PlayerChangeTrackIndexEvent value)? changeTrackIndex,
     TResult Function(_PlayerPlayEvent value)? play,
     TResult Function(_PlayerPauseEvent value)? pause,
     TResult Function(_PlayerPrevEvent value)? prev,
@@ -2119,6 +1661,7 @@ class _$_PlayerChangeProgressBarEvent implements _PlayerChangeProgressBarEvent {
     TResult Function(_PlayerRewindEvent value)? rewind,
     TResult Function(_PlayerPushEvent value)? push,
     TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (changeProgressBar != null) {
@@ -2138,6 +1681,158 @@ abstract class _PlayerChangeProgressBarEvent implements PlayerEvent {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$_PlayerChangeStateEventCopyWith<$Res> {
+  factory _$$_PlayerChangeStateEventCopyWith(_$_PlayerChangeStateEvent value,
+          $Res Function(_$_PlayerChangeStateEvent) then) =
+      __$$_PlayerChangeStateEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PlayerChangeStateEventCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerChangeStateEvent>
+    implements _$$_PlayerChangeStateEventCopyWith<$Res> {
+  __$$_PlayerChangeStateEventCopyWithImpl(_$_PlayerChangeStateEvent _value,
+      $Res Function(_$_PlayerChangeStateEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
+  const _$_PlayerChangeStateEvent();
+
+  @override
+  String toString() {
+    return 'PlayerEvent.changeState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PlayerChangeStateEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Track> tracks, Track track) addMusic,
+    required TResult Function(Duration? position) changePosition,
+    required TResult Function() play,
+    required TResult Function() pause,
+    required TResult Function() prev,
+    required TResult Function() next,
+    required TResult Function(int seconds) rewind,
+    required TResult Function(int seconds) push,
+    required TResult Function(Duration duration) changeProgressBar,
+    required TResult Function() changeState,
+  }) {
+    return changeState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Track> tracks, Track track)? addMusic,
+    TResult? Function(Duration? position)? changePosition,
+    TResult? Function()? play,
+    TResult? Function()? pause,
+    TResult? Function()? prev,
+    TResult? Function()? next,
+    TResult? Function(int seconds)? rewind,
+    TResult? Function(int seconds)? push,
+    TResult? Function(Duration duration)? changeProgressBar,
+    TResult? Function()? changeState,
+  }) {
+    return changeState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Track> tracks, Track track)? addMusic,
+    TResult Function(Duration? position)? changePosition,
+    TResult Function()? play,
+    TResult Function()? pause,
+    TResult Function()? prev,
+    TResult Function()? next,
+    TResult Function(int seconds)? rewind,
+    TResult Function(int seconds)? push,
+    TResult Function(Duration duration)? changeProgressBar,
+    TResult Function()? changeState,
+    required TResult orElse(),
+  }) {
+    if (changeState != null) {
+      return changeState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerChangePositionEvent value) changePosition,
+    required TResult Function(_PlayerPlayEvent value) play,
+    required TResult Function(_PlayerPauseEvent value) pause,
+    required TResult Function(_PlayerPrevEvent value) prev,
+    required TResult Function(_PlayerNextEvent value) next,
+    required TResult Function(_PlayerRewindEvent value) rewind,
+    required TResult Function(_PlayerPushEvent value) push,
+    required TResult Function(_PlayerChangeProgressBarEvent value)
+        changeProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
+  }) {
+    return changeState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerChangePositionEvent value)? changePosition,
+    TResult? Function(_PlayerPlayEvent value)? play,
+    TResult? Function(_PlayerPauseEvent value)? pause,
+    TResult? Function(_PlayerPrevEvent value)? prev,
+    TResult? Function(_PlayerNextEvent value)? next,
+    TResult? Function(_PlayerRewindEvent value)? rewind,
+    TResult? Function(_PlayerPushEvent value)? push,
+    TResult? Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
+  }) {
+    return changeState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerChangePositionEvent value)? changePosition,
+    TResult Function(_PlayerPlayEvent value)? play,
+    TResult Function(_PlayerPauseEvent value)? pause,
+    TResult Function(_PlayerPrevEvent value)? prev,
+    TResult Function(_PlayerNextEvent value)? next,
+    TResult Function(_PlayerRewindEvent value)? rewind,
+    TResult Function(_PlayerPushEvent value)? push,
+    TResult Function(_PlayerChangeProgressBarEvent value)? changeProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
+    required TResult orElse(),
+  }) {
+    if (changeState != null) {
+      return changeState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerChangeStateEvent implements PlayerEvent {
+  const factory _PlayerChangeStateEvent() = _$_PlayerChangeStateEvent;
+}
+
 PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
   return Initial.fromJson(json);
 }
@@ -2145,8 +1840,8 @@ PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PlayerState {
   PlayerStatus get status => throw _privateConstructorUsedError;
-  Duration get position => throw _privateConstructorUsedError;
-  Duration get total => throw _privateConstructorUsedError;
+  Duration get trackPosition => throw _privateConstructorUsedError;
+  Duration get trackDuration => throw _privateConstructorUsedError;
   Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
@@ -2168,8 +1863,8 @@ abstract class $PlayerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {PlayerStatus status,
-      Duration position,
-      Duration total,
+      Duration trackPosition,
+      Duration trackDuration,
       Duration albumDuration,
       Duration albumPosition,
       Map<int, Duration> mapAlbumDuration,
@@ -2192,8 +1887,8 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   @override
   $Res call({
     Object? status = null,
-    Object? position = null,
-    Object? total = null,
+    Object? trackPosition = null,
+    Object? trackDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
     Object? mapAlbumDuration = null,
@@ -2206,13 +1901,13 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PlayerStatus,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
+      trackPosition: null == trackPosition
+          ? _value.trackPosition
+          : trackPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
+      trackDuration: null == trackDuration
+          ? _value.trackDuration
+          : trackDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
       albumDuration: null == albumDuration
           ? _value.albumDuration
@@ -2250,8 +1945,8 @@ abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {PlayerStatus status,
-      Duration position,
-      Duration total,
+      Duration trackPosition,
+      Duration trackDuration,
       Duration albumDuration,
       Duration albumPosition,
       Map<int, Duration> mapAlbumDuration,
@@ -2271,8 +1966,8 @@ class __$$InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? position = null,
-    Object? total = null,
+    Object? trackPosition = null,
+    Object? trackDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
     Object? mapAlbumDuration = null,
@@ -2285,13 +1980,13 @@ class __$$InitialCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PlayerStatus,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
+      trackPosition: null == trackPosition
+          ? _value.trackPosition
+          : trackPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
+      trackDuration: null == trackDuration
+          ? _value.trackDuration
+          : trackDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
       albumDuration: null == albumDuration
           ? _value.albumDuration
@@ -2326,8 +2021,8 @@ class __$$InitialCopyWithImpl<$Res>
 class _$Initial implements Initial {
   const _$Initial(
       {this.status = PlayerStatus.initial,
-      this.position = Duration.zero,
-      this.total = Duration.zero,
+      this.trackPosition = Duration.zero,
+      this.trackDuration = Duration.zero,
       this.albumDuration = Duration.zero,
       this.albumPosition = Duration.zero,
       final Map<int, Duration> mapAlbumDuration = const {},
@@ -2346,10 +2041,10 @@ class _$Initial implements Initial {
   final PlayerStatus status;
   @override
   @JsonKey()
-  final Duration position;
+  final Duration trackPosition;
   @override
   @JsonKey()
-  final Duration total;
+  final Duration trackDuration;
   @override
   @JsonKey()
   final Duration albumDuration;
@@ -2388,7 +2083,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'PlayerState(status: $status, position: $position, total: $total, albumDuration: $albumDuration, albumPosition: $albumPosition, mapAlbumDuration: $mapAlbumDuration, trackIndex: $trackIndex, tracks: $tracks, artwork: $artwork)';
+    return 'PlayerState(status: $status, trackPosition: $trackPosition, trackDuration: $trackDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, mapAlbumDuration: $mapAlbumDuration, trackIndex: $trackIndex, tracks: $tracks, artwork: $artwork)';
   }
 
   @override
@@ -2397,9 +2092,10 @@ class _$Initial implements Initial {
         (other.runtimeType == runtimeType &&
             other is _$Initial &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.position, position) ||
-                other.position == position) &&
-            (identical(other.total, total) || other.total == total) &&
+            (identical(other.trackPosition, trackPosition) ||
+                other.trackPosition == trackPosition) &&
+            (identical(other.trackDuration, trackDuration) ||
+                other.trackDuration == trackDuration) &&
             (identical(other.albumDuration, albumDuration) ||
                 other.albumDuration == albumDuration) &&
             (identical(other.albumPosition, albumPosition) ||
@@ -2417,8 +2113,8 @@ class _$Initial implements Initial {
   int get hashCode => Object.hash(
       runtimeType,
       status,
-      position,
-      total,
+      trackPosition,
+      trackDuration,
       albumDuration,
       albumPosition,
       const DeepCollectionEquality().hash(_mapAlbumDuration),
@@ -2443,8 +2139,8 @@ class _$Initial implements Initial {
 abstract class Initial implements PlayerState {
   const factory Initial(
       {final PlayerStatus status,
-      final Duration position,
-      final Duration total,
+      final Duration trackPosition,
+      final Duration trackDuration,
       final Duration albumDuration,
       final Duration albumPosition,
       final Map<int, Duration> mapAlbumDuration,
@@ -2457,9 +2153,9 @@ abstract class Initial implements PlayerState {
   @override
   PlayerStatus get status;
   @override
-  Duration get position;
+  Duration get trackPosition;
   @override
-  Duration get total;
+  Duration get trackDuration;
   @override
   Duration get albumDuration;
   @override

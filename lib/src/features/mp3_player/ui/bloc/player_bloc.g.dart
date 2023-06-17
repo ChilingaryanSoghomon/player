@@ -9,12 +9,12 @@ part of 'player_bloc.dart';
 _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
       status: $enumDecodeNullable(_$PlayerStatusEnumMap, json['status']) ??
           PlayerStatus.initial,
-      position: json['position'] == null
+      trackPosition: json['trackPosition'] == null
           ? Duration.zero
-          : Duration(microseconds: json['position'] as int),
-      total: json['total'] == null
+          : Duration(microseconds: json['trackPosition'] as int),
+      trackDuration: json['trackDuration'] == null
           ? Duration.zero
-          : Duration(microseconds: json['total'] as int),
+          : Duration(microseconds: json['trackDuration'] as int),
       albumDuration: json['albumDuration'] == null
           ? Duration.zero
           : Duration(microseconds: json['albumDuration'] as int),
@@ -39,8 +39,8 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
 
 Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
       'status': _$PlayerStatusEnumMap[instance.status]!,
-      'position': instance.position.inMicroseconds,
-      'total': instance.total.inMicroseconds,
+      'trackPosition': instance.trackPosition.inMicroseconds,
+      'trackDuration': instance.trackDuration.inMicroseconds,
       'albumDuration': instance.albumDuration.inMicroseconds,
       'albumPosition': instance.albumPosition.inMicroseconds,
       'mapAlbumDuration': instance.mapAlbumDuration

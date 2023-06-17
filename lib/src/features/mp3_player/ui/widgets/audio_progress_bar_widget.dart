@@ -13,8 +13,8 @@ class AudioProgressGlobalBarrWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
-            previous.position != current.position ||
-            previous.total != current.total,
+            previous.albumPosition != current.albumPosition ||
+            previous.albumDuration != current.albumDuration,
         builder: (context, state) => CustomProgressBarWidget(
           progress: state.albumPosition,
           total: state.albumDuration,
@@ -36,11 +36,11 @@ class AudioProgressLocalBarrWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
-            previous.position != current.position ||
-            previous.total != current.total,
+            previous.trackPosition != current.trackPosition ||
+            previous.trackDuration != current.trackDuration,
         builder: (context, state) => CustomProgressBarWidget(
-          progress: state.position,
-          total: state.total,
+          progress: state.trackPosition,
+          total: state.trackDuration,
           function: (Duration duration) {
             context
                 .read<PlayerBloc>()

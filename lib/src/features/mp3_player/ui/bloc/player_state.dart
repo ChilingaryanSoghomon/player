@@ -13,8 +13,8 @@ enum PlayerStatus {
 class PlayerState with _$PlayerState {
   const factory PlayerState(
       {@Default(PlayerStatus.initial) PlayerStatus status,
-      @Default(Duration.zero) Duration position,
-      @Default(Duration.zero) Duration total,
+      @Default(Duration.zero) Duration trackPosition,
+      @Default(Duration.zero) Duration trackDuration,
       @Default(Duration.zero) Duration albumDuration,
       @Default(Duration.zero) Duration albumPosition,
       @Default({}) Map<int, Duration> mapAlbumDuration,

@@ -37,9 +37,13 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     return [];
   }
 
+  
   @override
-  int? get currentIndex => _player.currentIndex;
-
+  Duration get trackPosition => _player.position;
+  @override
+  int? get currentIndex => _player.currentIndex ?? 0;
+  @override
+  Duration get trackDuration => _player.duration ?? Duration.zero;
   @override
   Stream<int?> get trackIndexStream => _player.currentIndexStream;
 
@@ -50,11 +54,7 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   @override
   Stream<Duration?> get totalStream => _player.durationStream;
   @override
-  Stream<Duration> get bufferedPosition => _player.bufferedPositionStream;
 
-  Stream<Duration> get albumPosition async* {
-    _player.positionStream.listen((event) {});
-  }
 
   @override
   Future<void> play() async {
@@ -104,8 +104,4 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     }
   }
 
-  @override
-  List<int> getArtwork({required int trackId}) {
-    return [];
-  }
 }

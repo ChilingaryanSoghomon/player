@@ -26,6 +26,9 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
     List<Album> albums =  await _albumRepository.searchAlbum();
     if(albums.isNotEmpty) {
       emit(AlbumState.loaded(albums: albums));
+    }else {
+      emit(const AlbumState.empty());
     }
+
   }
 }
