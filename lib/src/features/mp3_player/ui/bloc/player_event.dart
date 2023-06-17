@@ -7,9 +7,9 @@ class PlayerEvent with _$PlayerEvent {
     required Track track,
   }) = _PlayerAddMusicEvent;
 
-  const factory PlayerEvent.changePosition({
+  const factory PlayerEvent.changeTrackPositionInSeconds({
     required Duration? position,
-  }) = _PlayerChangePositionEvent;
+  }) = _PlayerChangePositionInSecondsEvent;
 
   const factory PlayerEvent.play() = _PlayerPlayEvent;
 
@@ -26,11 +26,13 @@ class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.push({
     required int seconds,
   }) = _PlayerPushEvent;
-  const factory PlayerEvent.changeProgressBar({
-    required Duration duration,
-  }) = _PlayerChangeProgressBarEvent;
+  const factory PlayerEvent.changeTrackProgressBar({
+    required Duration newPosition,
+  }) = _PlayerChangeTrackProgressBarEvent;
 
-
+const factory PlayerEvent.changeAlbumProgressBar({
+    required Duration newPosition,
+  }) = _PlayerChangeAlbumProgressBarEvent;
 
 
   const factory PlayerEvent.changeState(

@@ -5,11 +5,12 @@ abstract class IAudioPlayerRepository {
   Stream<Duration?> get totalStream;
   Stream<bool> get playingStream;
 
-
   int? get currentIndex;
   Duration get trackDuration;
   Duration get trackPosition;
+  Map<int, Duration> get getMapAlbumDuration;
 
+  Duration get albumDuration;
   Stream<int?> get trackIndexStream;
   Future<List<int>> addMusicDirectory(
       {required List<Track> tracks, required Track track});
@@ -24,5 +25,6 @@ abstract class IAudioPlayerRepository {
   Future<void> rewind({required int seconds});
 
   Future<void> push({required int seconds});
-  Future<void> changeProgressBarr({required Duration duration});
+  Future<void> changeTrackProgressBar({required Duration duration});
+  Future<void> changeAlbumProgressBar({required Duration duration});
 }

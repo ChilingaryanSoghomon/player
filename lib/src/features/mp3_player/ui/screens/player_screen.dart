@@ -24,11 +24,11 @@ class _PlayerScreenState extends State<PlayerScreen> {
             UpperButtonsWidget(),
             Padding(
               padding:EdgeInsets.only(top: 10),
-              child: AudioProgressGlobalBarrWidget(),
+              child: AlbumProgressBarrWidget(),
             ),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: AudioProgressLocalBarrWidget()),
+                child: TrackProgressBarrWidget()),
             RewindButtonsWidget(),
             SizedBox(height: 10),
             PlayPauseWidget()

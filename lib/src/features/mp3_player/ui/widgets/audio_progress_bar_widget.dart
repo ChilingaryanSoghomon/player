@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/res/app_colors.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
-class AudioProgressGlobalBarrWidget extends StatelessWidget {
-  const AudioProgressGlobalBarrWidget({super.key});
+class AlbumProgressBarrWidget extends StatelessWidget {
+  const AlbumProgressBarrWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,9 @@ class AudioProgressGlobalBarrWidget extends StatelessWidget {
           progress: state.albumPosition,
           total: state.albumDuration,
           function: (Duration duration) {
-            print(duration);
+             context
+                .read<PlayerBloc>()
+                .add(PlayerEvent.changeAlbumProgressBar(newPosition: duration));
           },
         ),
       ),
@@ -27,8 +29,8 @@ class AudioProgressGlobalBarrWidget extends StatelessWidget {
   }
 }
 
-class AudioProgressLocalBarrWidget extends StatelessWidget {
-  const AudioProgressLocalBarrWidget({super.key});
+class TrackProgressBarrWidget extends StatelessWidget {
+  const TrackProgressBarrWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class AudioProgressLocalBarrWidget extends StatelessWidget {
           function: (Duration duration) {
             context
                 .read<PlayerBloc>()
-                .add(PlayerEvent.changeProgressBar(duration: duration));
+                .add(PlayerEvent.changeTrackProgressBar(newPosition: duration));
           },
         ),
       ),

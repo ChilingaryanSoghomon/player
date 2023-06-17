@@ -16,14 +16,15 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       : _playerRepository = playerRepository,
         super(const PlayerState()) {
     _playerRepository.positionStream.listen((event) async {
-      await Future.delayed(const Duration(microseconds: 100));
-      add(PlayerEvent.changePosition(position: event));
+      // await Future.delayed(const Duration(microseconds: 100));
+      add(PlayerEvent.changeTrackPositionInSeconds(position: event));
     }, cancelOnError: false);
 
     on<PlayerEvent>((event, emit) async {
       await event.map(
         addMusic: (event) async => await _addMusic(event, emit),
-        changePosition: (event) async => await _changePosition(event, emit),
+        changeTrackPositionInSeconds: (event) async =>
+            await _changeTrackPositionInSeconds(event, emit),
         play: (event) async => await _playEvent(event, emit),
         pause: (event) async => await _pauseEvent(event, emit),
         prev: (event) async => await _prevTrack(event, emit),
@@ -31,8 +32,10 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
         rewind: (event) async =>
             _playerRepository.rewind(seconds: event.seconds),
         push: (event) async => _playerRepository.push(seconds: event.seconds),
-        changeProgressBar: (event) async =>
-            await _changeProgressBarEvent(event, emit),
+        changeTrackProgressBar: (event) async =>
+            await _changeTrackProgressBar(event, emit),
+        changeAlbumProgressBar: (event) async =>
+            await _changeAlbumProgressBar(event, emit),
         changeState: (event) async => await _changeState(event, emit),
       );
     });
@@ -42,8 +45,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       _PlayerAddMusicEvent event, Emitter<PlayerState> emit) async {
     List<int> artwork = await _playerRepository.addMusicDirectory(
         tracks: event.tracks, track: event.track);
-    final mapAlbumDuration = _mapAlbumDuration(event.tracks);
-    final albumDuration = _albumDuration(mapAlbumDuration, event.tracks);
+    final mapAlbumDuration = _playerRepository.getMapAlbumDuration;
+    final albumDuration = _playerRepository.albumDuration;
     emit(state.copyWith(
       artwork: artwork,
       tracks: event.tracks,
@@ -65,13 +68,19 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     emit(state.copyWith(status: PlayerStatus.paused));
   }
 
-  Future<void> _changeProgressBarEvent(
-      _PlayerChangeProgressBarEvent event, Emitter<PlayerState> emit) async {
-    await _playerRepository.changeProgressBarr(duration: event.duration);
+  Future<void> _changeTrackProgressBar(_PlayerChangeTrackProgressBarEvent event,
+      Emitter<PlayerState> emit) async {
+    await _playerRepository.changeTrackProgressBar(duration: event.newPosition);
   }
 
-  Future<void> _changePosition(
-      _PlayerChangePositionEvent event, Emitter<PlayerState> emit) async {
+  _changeAlbumProgressBar(_PlayerChangeAlbumProgressBarEvent event,
+      Emitter<PlayerState> emit) async {
+    await _playerRepository.changeAlbumProgressBar(duration: event.newPosition);
+  }
+
+  Future<void> _changeTrackPositionInSeconds(
+      _PlayerChangePositionInSecondsEvent event,
+      Emitter<PlayerState> emit) async {
     if (event.position != null) {
       emit(state.copyWith(trackPosition: event.position!));
     }
@@ -101,24 +110,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       albumPosition: albumPosition,
     ));
   }
-
-  Map<int, Duration> _mapAlbumDuration(List<Track> tracks) {
-    Duration duration = Duration.zero;
-    Map<int, Duration> mapAlbumDuration = {};
-    for (var i = 0; i < tracks.length; i++) {
-      mapAlbumDuration[i] = duration;
-      duration += tracks[i].duration;
-    }
-    return mapAlbumDuration;
-  }
-
-  Duration _albumDuration(
-      Map<int, Duration> mapAlbumDuration, List<Track> tracks) {
-    final int length = mapAlbumDuration.length;
-    final duration = mapAlbumDuration[length - 1] ?? Duration.zero;
-    return duration + tracks.last.duration;
-  }
-
   @override
   PlayerState? fromJson(Map<String, dynamic> json) =>
       json['value'] as PlayerState;
