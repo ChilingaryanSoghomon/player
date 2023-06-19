@@ -1,18 +1,9 @@
 part of 'track_bloc.dart';
 
-enum TracksStatus {
-  loading,
-  empty,
-  loaded,
-}
+
 
 @freezed
 class TrackState with _$TrackState {
-  // bool get error => map(
-  //       loading: (_) => true,
-  //       empty: (_) => true,
-  //       loaded: (_) => false,
-  //     );
 
   const factory TrackState.loading() = _LoadingTrackState;
   const factory TrackState.empty() = _EmptyTrackState;

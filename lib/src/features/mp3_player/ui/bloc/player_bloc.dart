@@ -22,6 +22,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
     on<PlayerEvent>((event, emit) async {
       await event.map(
+        initial: (event) async => await _initial(event, emit),
         addMusic: (event) async => await _addMusic(event, emit),
         changeTrackPositionInSeconds: (event) async =>
             await _changeTrackPositionInSeconds(event, emit),
@@ -43,17 +44,22 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
   Future<void> _addMusic(
       _PlayerAddMusicEvent event, Emitter<PlayerState> emit) async {
-    List<int> artwork = await _playerRepository.addMusicDirectory(
-        tracks: event.tracks, track: event.track);
+    _playerRepository.addMusicDirectory(
+      tracks: event.tracks,
+      trackIndex: event.track.index,
+      trackPosition: event.track.position,
+    );
     final mapAlbumDuration = _playerRepository.getMapAlbumDuration;
     final albumDuration = _playerRepository.albumDuration;
+    final artwork =
+        await _playerRepository.getArtwork(index: event.track.index);
     emit(state.copyWith(
       artwork: artwork,
       tracks: event.tracks,
-      status: PlayerStatus.playing,
       mapAlbumDuration: mapAlbumDuration,
       albumDuration: albumDuration,
     ));
+    add(const PlayerEvent.play());
   }
 
   Future<void> _playEvent(
@@ -87,7 +93,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     add(const PlayerEvent.changeState());
   }
 
-  _prevTrack(_PlayerPrevEvent event, Emitter<PlayerState> emit) {
+  _prevTrack(_PlayerPrevEvent event, Emitter<PlayerState> emit) async {
     _playerRepository.prev();
     add(const PlayerEvent.changeState());
   }
@@ -98,8 +104,12 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   }
 
   _changeState(_PlayerChangeStateEvent event, Emitter<PlayerState> emit) async {
-    Duration trackDuration = _playerRepository.trackDuration;
-    int currentIndex = _playerRepository.currentIndex ?? 0;
+    Duration trackDuration = state.tracks[state.trackIndex].duration;
+    int currentIndex = _playerRepository.currentIndex;
+    if (currentIndex != state.trackIndex) {
+      final artwork = await _playerRepository.getArtwork(index: currentIndex);
+      emit(state.copyWith(artwork: artwork));
+    }
     Duration trackPosition = _playerRepository.trackPosition;
     Duration position = state.mapAlbumDuration[currentIndex] ?? Duration.zero;
     final albumPosition = position + trackPosition;
@@ -110,10 +120,28 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       albumPosition: albumPosition,
     ));
   }
-  @override
-  PlayerState? fromJson(Map<String, dynamic> json) =>
-      json['value'] as PlayerState;
+
+  _initial(_PlayerInitialEvent event, Emitter<PlayerState> emit) {
+    if (state.status == PlayerStatus.initial) {
+      return;
+    } else {
+      emit(state.copyWith(status: PlayerStatus.paused));
+      _playerRepository.addMusicDirectory(
+        tracks: state.tracks,
+        trackPosition: state.trackPosition,
+        trackIndex: state.trackIndex,
+      );
+    }
+  }
 
   @override
-  Map<String, dynamic>? toJson(PlayerState state) => {'value': state};
+  PlayerState fromJson(Map<String, dynamic> json) {
+    add(const PlayerEvent.initial());
+    return PlayerState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(PlayerState state) {
+    return state.toJson();
+  }
 }

@@ -2,10 +2,8 @@ part of 'player_bloc.dart';
 
 enum PlayerStatus {
   initial,
-  loading,
   playing,
   paused,
-  stopped,
   error,
 }
 

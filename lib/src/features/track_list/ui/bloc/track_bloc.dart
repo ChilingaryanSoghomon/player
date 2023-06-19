@@ -1,9 +1,9 @@
 // ignore: depend_on_referenced_packages
 
 // ignore: depend_on_referenced_packages
-import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 import 'package:player/src/features/track_list/domain/repository/track_repository.dart';
 
@@ -13,7 +13,7 @@ part 'track_bloc.g.dart';
 part 'track_event.dart';
 part 'track_state.dart';
 
-class TrackBloc extends Bloc<TrackEvent, TrackState> {
+class TrackBloc extends Bloc<TrackEvent, TrackState> with HydratedMixin {
   final ITrackRepository _trackRepository;
   TrackBloc({required ITrackRepository trackRepository})
       : _trackRepository = trackRepository,
@@ -35,4 +35,15 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> {
       emit(TrackState.loaded(tracks: tracks, artworks: artworks));
     } catch (e) {}
   }
+
+     @override
+  TrackState fromJson(Map<String, dynamic> json) {
+    return TrackState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(TrackState state) {
+    return state.toJson();
+  }
+
 }

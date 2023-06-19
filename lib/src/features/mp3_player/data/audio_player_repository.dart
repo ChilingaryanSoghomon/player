@@ -17,8 +17,11 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
       : _audioQuery = audioQuery;
 
   @override
-  Future<List<int>> addMusicDirectory(
-      {required List<Track> tracks, required Track track}) async {
+  addMusicDirectory({
+    required List<Track> tracks,
+    required Duration trackPosition,
+    required int trackIndex,
+  }) async {
     final List<UriAudioSource> audioSource = [];
     _tracks = tracks;
     _createMapAlbumDuration(tracks);
@@ -26,20 +29,10 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
       final UriAudioSource audio = AudioSource.file(track.path);
       audioSource.add(audio);
     }
-
     _concatenatingAudioSource = ConcatenatingAudioSource(
         useLazyPreparation: true, children: audioSource);
-        
     await _player.setAudioSource(_concatenatingAudioSource,
-        initialPosition: track.position, initialIndex: track.index);
-    play();
-    Future<Uint8List?> uint8List =
-        _audioQuery.queryArtwork(track.trackId, ArtworkType.AUDIO);
-    Uint8List? uint8ListArtwork = await uint8List;
-    if (uint8ListArtwork != null) {
-      return uint8ListArtwork.toList();
-    }
-    return [];
+        initialPosition: trackPosition, initialIndex: trackIndex);
   }
 
   @override
@@ -47,18 +40,12 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   @override
   Duration get trackPosition => _player.position;
   @override
-  int? get currentIndex => _player.currentIndex ?? 0;
+  int get currentIndex => _player.currentIndex ?? 0;
   @override
   Duration get trackDuration => _player.duration ?? Duration.zero;
   @override
-  Stream<int?> get trackIndexStream => _player.currentIndexStream;
-
-  @override
-  Stream<bool> get playingStream => _player.playingStream;
-  @override
   Stream<Duration> get positionStream => _player.positionStream;
-  @override
-  Stream<Duration?> get totalStream => _player.durationStream;
+
   @override
   Duration get albumDuration => _albumDuration();
   @override
@@ -73,12 +60,12 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
 
   @override
   Future<void> next() async {
-    _player.seekToNext();
+   await _player.seekToNext();
   }
 
   @override
   Future<void> prev() async {
-    _player.seekToPrevious();
+   await _player.seekToPrevious();
   }
 
   @override
@@ -114,12 +101,27 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     for (var index = 0; index < _mapAlbumDuration.length; index++) {
       final Duration albumPositionByTrack = _mapAlbumDuration[index]!;
       if (duration < albumPositionByTrack) {
-        Duration position = duration - _mapAlbumDuration[index -1 ]!;
+        Duration position = duration - _mapAlbumDuration[index - 1]!;
         await _player.setAudioSource(_concatenatingAudioSource,
             initialPosition: position, initialIndex: index - 1);
-            break;
+        break;
       }
     }
+  }
+
+  @override
+  Future<List<int>> getArtwork({required int index}) async {
+    for (var track in _tracks) {
+      if (track.index == index) {
+        Future<Uint8List?> uint8List =
+            _audioQuery.queryArtwork(track.trackId, ArtworkType.AUDIO);
+        Uint8List? uint8ListArtwork = await uint8List;
+        if (uint8ListArtwork != null) {
+          return uint8ListArtwork.toList();
+        }
+      }
+    }
+    return [];
   }
 
   _createMapAlbumDuration(List<Track> tracks) {

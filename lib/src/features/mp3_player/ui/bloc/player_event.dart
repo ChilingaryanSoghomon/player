@@ -2,6 +2,9 @@ part of 'player_bloc.dart';
 
 @freezed
 class PlayerEvent with _$PlayerEvent {
+
+  const factory PlayerEvent.initial()= _PlayerInitialEvent;
+
   const factory PlayerEvent.addMusic({
     required List<Track> tracks,
     required Track track,

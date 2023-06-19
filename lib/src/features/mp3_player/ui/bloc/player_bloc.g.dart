@@ -52,9 +52,7 @@ Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
 
 const _$PlayerStatusEnumMap = {
   PlayerStatus.initial: 'initial',
-  PlayerStatus.loading: 'loading',
   PlayerStatus.playing: 'playing',
   PlayerStatus.paused: 'paused',
-  PlayerStatus.stopped: 'stopped',
   PlayerStatus.error: 'error',
 };

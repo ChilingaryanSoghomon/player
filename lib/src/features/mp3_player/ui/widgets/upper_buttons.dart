@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 class UpperButtonsWidget extends StatelessWidget {
@@ -19,7 +18,7 @@ class UpperButtonsWidget extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            context.push(AppRouts.albumScreen);
+            Navigator.of(context).pushNamed(AppRouts.albumScreen);
           },
           child: const Text('Open Folder'),
         ),

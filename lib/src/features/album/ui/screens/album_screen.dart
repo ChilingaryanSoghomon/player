@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
@@ -37,7 +36,8 @@ class AlbumScreen extends StatelessWidget {
                           onTap: () {
                             context.read<TrackBloc>().add(
                                 TrackEvent.clickAlbum(albumId: album.id));
-                            context.push(AppRouts.trackListScreen);
+                            // context.push(AppRouts.trackListScreen);
+                            Navigator.of(context).pushNamed(AppRouts.trackListScreen);
                           },
                           leading: const FlutterLogo(size: 56.0),
                           title: Text((album.name),

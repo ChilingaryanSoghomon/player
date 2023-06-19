@@ -2,11 +2,11 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_assets.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
+import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 import 'package:player/src/features/track_list/ui/bloc/track_bloc.dart';
 
 class TrackListScreen extends StatelessWidget {
@@ -43,7 +43,9 @@ class TrackListScreen extends StatelessWidget {
                               context.read<PlayerBloc>().add(
                                   PlayerEvent.addMusic(
                                       track: track, tracks: state.tracks));
-                              context.go(AppRouts.playerScreen);
+                              // context.go(AppRouts.playerScreen);
+                              Navigator.of(context).pushNamed(AppRouts.playerScreen);
+                              context.read<SplashBloc>().add(const SplashEvent.playing());
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
