@@ -19,6 +19,7 @@ class PlayerState with _$PlayerState {
       @Default(0) int trackIndex,
       @Default([])  List<Track> tracks,
       @Default([]) List<int> artwork,
+      // @Default(false) bool isPlaying,
 
       }) = Initial;
   factory PlayerState.fromJson(Map<String, Object?> json) =>

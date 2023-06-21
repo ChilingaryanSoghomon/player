@@ -4,5 +4,6 @@
         "rewinlittle",
         "Splashinitial",
         "Trackartworks"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/monch/Project/MY/player/windows"
 }

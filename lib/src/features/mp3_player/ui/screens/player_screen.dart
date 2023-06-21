@@ -15,8 +15,9 @@ class PlayerScreen extends StatefulWidget {
 class _PlayerScreenState extends State<PlayerScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return  Scaffold(
+      // backgroundColor: Colors.grey[300],
+      body: const SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

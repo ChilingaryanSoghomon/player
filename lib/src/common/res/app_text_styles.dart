@@ -9,7 +9,7 @@ abstract class AppTextStyles {
   );
   static const iconTextStyle = TextStyle(
     color: AppColors.mainColor,
-    fontSize: 15,
+    fontSize: 20,
   );
 
 }
