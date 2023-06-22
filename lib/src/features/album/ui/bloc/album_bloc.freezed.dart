@@ -19,32 +19,38 @@ mixin _$AlbumEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function() initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function()? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function()? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchAlbumEvent value) search,
+    required TResult Function(_AlbumInitialEvent value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SearchAlbumEvent value)? search,
+    TResult? Function(_AlbumInitialEvent value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SearchAlbumEvent value)? search,
+    TResult Function(_AlbumInitialEvent value)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function() initial,
   }) {
     return search();
   }
@@ -115,6 +122,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function()? initial,
   }) {
     return search?.call();
   }
@@ -123,6 +131,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -135,6 +144,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchAlbumEvent value) search,
+    required TResult Function(_AlbumInitialEvent value) initial,
   }) {
     return search(this);
   }
@@ -143,6 +153,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SearchAlbumEvent value)? search,
+    TResult? Function(_AlbumInitialEvent value)? initial,
   }) {
     return search?.call(this);
   }
@@ -151,6 +162,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SearchAlbumEvent value)? search,
+    TResult Function(_AlbumInitialEvent value)? initial,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -162,6 +174,108 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
 
 abstract class _SearchAlbumEvent implements AlbumEvent {
   const factory _SearchAlbumEvent() = _$_SearchAlbumEvent;
+}
+
+/// @nodoc
+abstract class _$$_AlbumInitialEventCopyWith<$Res> {
+  factory _$$_AlbumInitialEventCopyWith(_$_AlbumInitialEvent value,
+          $Res Function(_$_AlbumInitialEvent) then) =
+      __$$_AlbumInitialEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AlbumInitialEventCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$_AlbumInitialEvent>
+    implements _$$_AlbumInitialEventCopyWith<$Res> {
+  __$$_AlbumInitialEventCopyWithImpl(
+      _$_AlbumInitialEvent _value, $Res Function(_$_AlbumInitialEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_AlbumInitialEvent implements _AlbumInitialEvent {
+  const _$_AlbumInitialEvent();
+
+  @override
+  String toString() {
+    return 'AlbumEvent.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_AlbumInitialEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() search,
+    required TResult Function() initial,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? search,
+    TResult? Function()? initial,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? search,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchAlbumEvent value) search,
+    required TResult Function(_AlbumInitialEvent value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchAlbumEvent value)? search,
+    TResult? Function(_AlbumInitialEvent value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchAlbumEvent value)? search,
+    TResult Function(_AlbumInitialEvent value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AlbumInitialEvent implements AlbumEvent {
+  const factory _AlbumInitialEvent() = _$_AlbumInitialEvent;
 }
 
 AlbumState _$AlbumStateFromJson(Map<String, dynamic> json) {

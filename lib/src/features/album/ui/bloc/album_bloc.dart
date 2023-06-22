@@ -12,14 +12,15 @@ part 'album_bloc.g.dart';
 part 'album_event.dart';
 part 'album_state.dart';
 
-class AlbumBloc extends Bloc<AlbumEvent, AlbumState>  {
+class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   final IAlbumRepository _albumRepository;
   AlbumBloc({required IAlbumRepository albumRepository})
       : _albumRepository = albumRepository,
         super(const AlbumState.loading()) {
     on<AlbumEvent>((event, emit) async {
-      await event.map(
-        search: (event) async => await _search(event, emit),
+       await event.map(
+        search: (event)  =>  _search(event, emit),
+        initial: (event)  =>  _initial(event, emit),
       );
     });
   }
@@ -32,13 +33,24 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState>  {
       emit(const AlbumState.empty());
     }
   }
-  // @override
-  // AlbumState fromJson(Map<String, dynamic> json) {
-  //   return AlbumState.fromJson(json);
-  // }
 
-  // @override
-  // Map<String, dynamic> toJson(AlbumState state) {
-  //   return state.toJson();
-  // }
+  _initial(_AlbumInitialEvent event, Emitter<AlbumState> emit) {
+   
+  }
+
+  @override
+  AlbumState fromJson(Map<String, dynamic> json) {
+    final albumState = AlbumState.fromJson(json);
+    if (albumState == _LoadedAlbumState) {
+      add(const AlbumEvent.initial());
+    } else {
+      add(const AlbumEvent.search());
+    }
+    return AlbumState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(AlbumState state) {
+    return state.toJson();
+  }
 }

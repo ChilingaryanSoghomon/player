@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   static const mainColor = Color(0xffFF9800);
+  static const dark = Color(0xFF1D1D1D);
 
   static const MaterialColor mainThemColor = MaterialColor(
     0xffFF9800,
@@ -18,11 +19,10 @@ abstract class AppColors {
       900: Color(0xffE65100), //100%
     },
   );
-  static const dark = Color(0xFF1D1D1D);
-}
 
-
-// <int, Color>{
+//  static const MaterialColor mainThemColor = MaterialColor(
+//     0xffFF9800,
+//     <int, Color>{
 //       50:  Color(0xffF9FBE7), //10%
 //       100: Color(0xffF0F4C3), //20%
 //       200: Color(0xffE6EE9C), //30%
@@ -34,3 +34,10 @@ abstract class AppColors {
 //       800: Color(0xff9E9D24), //90%
 //       900: Color(0xff827717), //100%
 //     },
+//   );
+
+
+
+}
+
+

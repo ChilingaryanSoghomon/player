@@ -69,17 +69,34 @@ class CustomProgressBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProgressBar(
-      baseBarColor: AppColors.mainThemColor[50],
-      barCapShape: BarCapShape.square,
-      barHeight: 19,
-      bufferedBarColor: AppColors.mainThemColor[100],
-      progressBarColor: AppColors.mainThemColor[300],
-      thumbRadius: 0,
-      timeLabelLocation: TimeLabelLocation.below,
-      progress: _progress,
-      total: _total,
-      onSeek: (duration) => function(duration),
+    return Container(
+              decoration: BoxDecoration(
+          // color: Colors.grey[200],
+          boxShadow:  [
+            BoxShadow(
+              color: Colors.grey.shade400,
+              blurRadius: 15,
+              offset: Offset(5, 5),
+            ),
+            // BoxShadow(
+            //   color: Colors.white,
+            //   blurRadius: 15,
+            //   offset: Offset(-5, -5),
+            // ),
+          ],
+        ),
+      child: ProgressBar(
+        // baseBarColor: AppColors.mainThemColor[50],
+        barCapShape: BarCapShape.square,
+        barHeight: 19,
+        bufferedBarColor: AppColors.mainThemColor[100],
+        progressBarColor: AppColors.mainThemColor[200],
+        thumbRadius: 0,
+        timeLabelLocation: TimeLabelLocation.below,
+        progress: _progress,
+        total: _total,
+        onSeek: (duration) => function(duration),
+      ),
     );
   }
 }

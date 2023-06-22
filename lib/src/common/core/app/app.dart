@@ -42,6 +42,7 @@ class App extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'player',
+        darkTheme: AppTheme.darkTheme,
         theme: AppTheme.lightTheme,
         // initialRoute: AppRouts.playerScreen,
         home: const SplashScreen(),

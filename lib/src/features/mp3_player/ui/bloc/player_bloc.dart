@@ -22,22 +22,19 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
     on<PlayerEvent>((event, emit) async {
       await event.map(
-        initial: (event) async => await _initial(event, emit),
-        addMusic: (event) async => await _addMusic(event, emit),
-        changeTrackPositionInSeconds: (event) async =>
-            await _changeTrackPositionInSeconds(event, emit),
-        play: (event) async => await _playEvent(event, emit),
-        pause: (event) async => await _pauseEvent(event, emit),
-        prev: (event) async => await _prevTrack(event, emit),
-        next: (event) async => _nextTrack(event, emit),
-        rewind: (event) async =>
-            _playerRepository.rewind(seconds: event.seconds),
-        push: (event) async => _playerRepository.push(seconds: event.seconds),
-        changeTrackProgressBar: (event) async =>
-            await _changeTrackProgressBar(event, emit),
-        changeAlbumProgressBar: (event) async =>
-            await _changeAlbumProgressBar(event, emit),
-        changeState: (event) async => await _changeState(event, emit),
+        initial: (event) => _initial(event, emit),
+        addMusic: (event) => _addMusic(event, emit),
+        changeTrackPositionInSeconds: (event) =>
+            _changeTrackPositionInSeconds(event, emit),
+        play: (event) => _playEvent(event, emit),
+        pause: (event) => _pauseEvent(event, emit),
+        prev: (event) => _prevTrack(event, emit),
+        next: (event) => _nextTrack(event, emit),
+        rewind: (event) => _playerRepository.rewind(seconds: event.seconds),
+        push: (event) => _playerRepository.push(seconds: event.seconds),
+        changeTrackProgressBar: (event) => _changeTrackProgressBar(event, emit),
+        changeAlbumProgressBar: (event) => _changeAlbumProgressBar(event, emit),
+        changeState: (event) => _changeState(event, emit),
       );
     });
   }

@@ -20,7 +20,7 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> with HydratedMixin {
         super(const TrackState.loading()) {
     on<TrackEvent>((event, emit) async {
       await event.map<Future<void>>(
-        clickAlbum: (event) async => await _clickAlbum(event, emit),
+        clickAlbum: (event)  =>  _clickAlbum(event, emit),
       );
     });
   }

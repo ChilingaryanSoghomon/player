@@ -15,13 +15,7 @@ class AlbumScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-
-            Expanded(
-                child: BlocConsumer<AlbumBloc, AlbumState>(
-              listener: (context, state) {
-                state.whenOrNull();
-
-              },
+            Expanded(child: BlocBuilder<AlbumBloc, AlbumState>(
               builder: (context, state) {
                 return state.map(
                   loading: (state) =>
@@ -34,10 +28,12 @@ class AlbumScreen extends StatelessWidget {
                       return Card(
                         child: ListTile(
                           onTap: () {
-                            context.read<TrackBloc>().add(
-                                TrackEvent.clickAlbum(albumId: album.id));
+                            context
+                                .read<TrackBloc>()
+                                .add(TrackEvent.clickAlbum(albumId: album.id));
                             // context.push(AppRouts.trackListScreen);
-                            Navigator.of(context).pushNamed(AppRouts.trackListScreen);
+                            Navigator.of(context)
+                                .pushNamed(AppRouts.trackListScreen);
                           },
                           leading: const FlutterLogo(size: 56.0),
                           title: Text((album.name),
@@ -58,11 +54,6 @@ class AlbumScreen extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: ElevatedButton(
-      //   onPressed: () => context
-      //       .read<PlaylistBloc>()
-      //       .add(const PlaylistEvent.openTracksFolders()),
-      //   child: const Icon(Icons.folder_outlined),
     );
   }
 }

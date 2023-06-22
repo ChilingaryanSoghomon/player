@@ -12,13 +12,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
   SplashBloc() : super(const SplashState()) {
     on<SplashEvent>((event, emit) async {
       await event.map<Future<void>>(
-        initial: (event) async => await _initial(event, emit),
-        playing: (event) async => await _playing(event, emit),
+        initial: (event)  =>  _initial(event, emit),
+        playing: (event)  =>  _playing(event, emit),
         // empty: (event) async => await _empty(event, emit),
       );
     });
   }
-  _initial(_SplashInitialEvent event, Emitter<SplashState> emit) {
+  _initial(_SplashInitialEvent event, Emitter<SplashState> emit) async {
     if (state.status == AppStatus.initial || state.status == AppStatus.empty) {
       emit(state.copyWith(status: AppStatus.empty));
     } else {
@@ -29,7 +29,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
   // _empty(_SplashEmptyEvent event, Emitter<SplashState> emit) {
   // }
 
-  _playing(_SplashPlayingEvent event, Emitter<SplashState> emit) {
+  _playing(_SplashPlayingEvent event, Emitter<SplashState> emit) async {
     emit(state.copyWith(status: AppStatus.haveAnAlbum));
   }
 
