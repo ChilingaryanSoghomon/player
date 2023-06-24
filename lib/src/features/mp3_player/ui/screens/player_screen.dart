@@ -15,8 +15,9 @@ class PlayerScreen extends StatefulWidget {
 class _PlayerScreenState extends State<PlayerScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      // backgroundColor: Colors.grey[300],
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      // backgroundColor: Colors.black,
       body: const SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -24,9 +25,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
             Expanded(child: ImageWidget()),
             UpperButtonsWidget(),
             Padding(
-              padding:EdgeInsets.only(top: 10),
-              child: AlbumProgressBarrWidget(),
-            ),
+                padding: EdgeInsets.only(top: 10),
+                child: AlbumProgressBarrWidget()),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: TrackProgressBarrWidget()),

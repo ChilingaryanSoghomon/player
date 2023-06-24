@@ -10,7 +10,7 @@ class RewindButtonsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            CustomChangeChildButtonWidget(
+      CustomChangeChildButtonWidget(
         borderRadius: 40,
         onPressed: () => context
             .read<PlayerBloc>()
@@ -36,7 +36,7 @@ class RewindButtonsWidget extends StatelessWidget {
       // ),
       CustomChangeChildButtonWidget(
         borderRadius: 40,
-      onPressed: () => context
+        onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.rewind(seconds: 10)),
         size: 50,

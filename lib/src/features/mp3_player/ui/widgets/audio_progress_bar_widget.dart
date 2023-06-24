@@ -71,12 +71,12 @@ class CustomProgressBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
               decoration: BoxDecoration(
-          // color: Colors.grey[200],
+          // color: Colors.grey[200], 
           boxShadow:  [
             BoxShadow(
               color: Colors.grey.shade400,
               blurRadius: 15,
-              offset: Offset(5, 5),
+              offset: Offset(2, 2),
             ),
             // BoxShadow(
             //   color: Colors.white,

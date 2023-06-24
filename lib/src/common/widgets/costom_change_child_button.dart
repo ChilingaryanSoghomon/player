@@ -1,76 +1,76 @@
 import 'package:flutter/material.dart';
 
-// // class CustomChangeChildButtonWidget extends StatefulWidget {
-// //   final void Function() onPressed;
-// //   final Widget child;
-// //   final double size;
-// //   final double borderRadius;
+// class CustomChangeChildButtonWidget extends StatefulWidget {
+//   final void Function() onPressed;
+//   final Widget child;
+//   final double size;
+//   final double borderRadius;
 
-// //   const CustomChangeChildButtonWidget({
-// //     super.key,
-// //     required this.onPressed,
-// //     required this.child,
-// //     required this.size,
-// //     required this.borderRadius,
-// //   });
+//   const CustomChangeChildButtonWidget({
+//     super.key,
+//     required this.onPressed,
+//     required this.child,
+//     required this.size,
+//     required this.borderRadius,
+//   });
 
-// //   @override
-// //   State<CustomChangeChildButtonWidget> createState() =>
-// //       // ignore: no_logic_in_create_state
-// //       _CustomChangeChildButtonWidgetState(
-// //         onPressed: onPressed,
-// //         child: child,
-// //         size: size,
-// //         borderRadius: borderRadius,
-// //       );
-// // }
+//   @override
+//   State<CustomChangeChildButtonWidget> createState() =>
+//       // ignore: no_logic_in_create_state
+//       _CustomChangeChildButtonWidgetState(
+//         onPressed: onPressed,
+//         child: child,
+//         size: size,
+//         borderRadius: borderRadius,
+//       );
+// }
 
-// // class _CustomChangeChildButtonWidgetState
-// //     extends State<CustomChangeChildButtonWidget> {
-// //   final void Function() onPressed;
-// //   final Widget child;
-// //   final double borderRadius;
-// //   final double size;
+// class _CustomChangeChildButtonWidgetState
+//     extends State<CustomChangeChildButtonWidget> {
+//   final void Function() onPressed;
+//   final Widget child;
+//   final double borderRadius;
+//   final double size;
 
-// //   bool isButtonPressed = true;
+//   bool isButtonPressed = true;
 
-// //   _CustomChangeChildButtonWidgetState({
-// //     required this.borderRadius,
-// //     required this.size,
-// //     required this.onPressed,
-// //     required this.child,
-// //   });
+//   _CustomChangeChildButtonWidgetState({
+//     required this.borderRadius,
+//     required this.size,
+//     required this.onPressed,
+//     required this.child,
+//   });
 
-// //   void _toggleButtonState() {
-// //     setState(() {
-// //       isButtonPressed = !isButtonPressed;
-// //     });
-// //   }
+//   void _toggleButtonState() {
+//     setState(() {
+//       isButtonPressed = !isButtonPressed;
+//     });
+//   }
 
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return GestureDetector(
-// //       onTap: onPressed,
-// //       onTapDown: (_) {
-// //         _toggleButtonState();
-// //       },
-// //       onTapUp: (_) {
-// //         _toggleButtonState();
-// //       },
-// //       child: isButtonPressed
-// //           ? CustomButtonNotPress(
-// //               size: size,
-// //               borderRadius: borderRadius,
-// //               child: child,
-// //             )
-// //           : CustomPressedButton(
-// //               size: size,
-// //               borderRadius: borderRadius,
-// //               child: child,
-// //             ),
-// //     );
-// //   }
-// // }
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: onPressed,
+//       onTapDown: (_) {
+//         _toggleButtonState();
+//       },
+//       onTapUp: (_) {
+//         _toggleButtonState();
+//       },
+//       child: isButtonPressed
+//           ? CustomButtonNotPress(
+//               size: size,
+//               borderRadius: borderRadius,
+//               child: child,
+//             )
+//           : CustomPressedButton(
+//               size: size,
+//               borderRadius: borderRadius,
+//               child: child,
+//             ),
+//     );
+//   }
+// }
 
 // class CustomPressedButton extends StatelessWidget {
 //   final Widget child;
@@ -231,133 +231,150 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
+// class CustomChangeChildButtonWidget extends StatefulWidget {
+//   final void Function() onPressed;
+//   final Widget child;
+//   final double size;
+//   final double borderRadius;
 
-// // import 'package:flutter/material.dart';
+//   const CustomChangeChildButtonWidget({
+//     Key? key,
+//     required this.onPressed,
+//     required this.child,
+//     required this.size,
+//     required this.borderRadius,
+//   }) : super(key: key);
 
-// // class CustomChangeChildButtonWidget extends StatefulWidget {
-// //   final void Function() onPressed;
-// //   final Widget child;
-// //   final double size;
-// //   final double borderRadius;
+//   @override
+//   State<CustomChangeChildButtonWidget> createState() =>
+//       _CustomChangeChildButtonWidgetState();
+// }
 
-// //   const CustomChangeChildButtonWidget({
-// //     Key? key,
-// //     required this.onPressed,
-// //     required this.child,
-// //     required this.size,
-// //     required this.borderRadius,
-// //   }) : super(key: key);
+// class _CustomChangeChildButtonWidgetState
+//     extends State<CustomChangeChildButtonWidget>
+//     with SingleTickerProviderStateMixin {
+//   late AnimationController _controller;
+//   bool isButtonPressed = true;
 
-// //   @override
-// //   State<CustomChangeChildButtonWidget> createState() =>
-// //       _CustomChangeChildButtonWidgetState();
-// // }
+//   @override
+//   void initState() {
+//     super.initState();
+//     _controller = AnimationController(
+//       duration: const Duration(milliseconds: 200),
+//       vsync: this,
+//     );
+//   }
 
-// // class _CustomChangeChildButtonWidgetState
-// //     extends State<CustomChangeChildButtonWidget>
-// //     with SingleTickerProviderStateMixin {
-// //   late AnimationController _controller;
-// //   bool isButtonPressed = true;
+//   void _toggleButtonState() {
+//     setState(() {
+//       isButtonPressed = !isButtonPressed;
+//       isButtonPressed ? _controller.reverse() : _controller.forward();
+//     });
+//   }
 
-// //   @override
-// //   void initState() {
-// //     super.initState();
-// //     _controller = AnimationController(
-// //       duration: const Duration(milliseconds: 200),
-// //       vsync: this,
-// //     );
-// //   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: widget.onPressed,
+//       onTapDown: (_) {
+//         _toggleButtonState();
+//       },
+//       onTapUp: (_) {
+//         _toggleButtonState();
+//       },
+//       child: AnimatedContainer(
+//         duration: const Duration(milliseconds: 200),
+//         width: widget.size,
+//         height: widget.size,
+//         decoration: BoxDecoration(
+//           color: Colors.grey[200],
+//           borderRadius: BorderRadius.circular(widget.borderRadius),
+//           boxShadow: [
+//             const BoxShadow(
+//               color: Colors.white,
+//               blurRadius: 15,
+//               offset: Offset(-5, -5),
+//             ),
+//             BoxShadow(
+//               color: Colors.grey.shade500,
+//               blurRadius: 15,
+//               offset: const Offset(5, 5),
+//             ),
+//           ],
+//         ),
+//         alignment: Alignment.center,
+//         child: AnimatedOpacity(
+//           duration: const Duration(milliseconds: 200),
+//           opacity: isButtonPressed ? 0.5 : 1.0,
+//           child: Container(
+//             decoration: BoxDecoration(
+//               color: Colors.grey[200],
+//               borderRadius: BorderRadius.circular(widget.borderRadius),
+//               boxShadow: const [
+//                 BoxShadow(
+//                   color: Colors.white,
+//                   blurRadius: 15,
+//                   offset: Offset(5, 5),
+//                 ),
+//                 BoxShadow(
+//                   color: Colors.white,
+//                   blurRadius: 15,
+//                   offset: Offset(-5, -5),
+//                 ),
+//               ],
+//             ),
+//             alignment: Alignment.center,
+//             child: Container(
+//               decoration: BoxDecoration(
+//                 color: Colors.grey[200],
+//                 borderRadius: BorderRadius.circular(widget.borderRadius),
+//                 boxShadow: [
+//                   BoxShadow(
+//                     color: Colors.grey.shade300,
+//                     blurRadius: 15,
+//                     offset: const Offset(-15, -15),
+//                   ),
+//                   const BoxShadow(
+//                     color: Colors.white,
+//                     blurRadius: 15,
+//                     offset: Offset(15, 15),
+//                   ),
+//                 ],
+//               ),
+//               child: widget.child,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
 
-// //   void _toggleButtonState() {
-// //     setState(() {
-// //       isButtonPressed = !isButtonPressed;
-// //       isButtonPressed ? _controller.reverse() : _controller.forward();
-// //     });
-// //   }
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+// }
 
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return GestureDetector(
-// //       onTap: widget.onPressed,
-// //       onTapDown: (_) {
-// //         _toggleButtonState();
-// //       },
-// //       onTapUp: (_) {
-// //         _toggleButtonState();
-// //       },
-// //       child: AnimatedContainer(
-// //         duration: const Duration(milliseconds: 200),
-// //         width: widget.size,
-// //         height: widget.size,
-// //         decoration: BoxDecoration(
-// //           color: Colors.grey[200],
-// //           borderRadius: BorderRadius.circular(widget.borderRadius),
-// //           boxShadow: [
-// //             const BoxShadow(
-// //               color: Colors.white,
-// //               blurRadius: 15,
-// //               offset: Offset(-5, -5),
-// //             ),
-// //             BoxShadow(
-// //               color: Colors.grey.shade500,
-// //               blurRadius: 15,
-// //               offset: const Offset(5, 5),
-// //             ),
-// //           ],
-// //         ),
-// //         alignment: Alignment.center,
-// //         child: AnimatedOpacity(
-// //           duration: const Duration(milliseconds: 200),
-// //           opacity: isButtonPressed ? 0.5 : 1.0,
-// //           child: Container(
-// //             decoration: BoxDecoration(
-// //               color: Colors.grey[200],
-// //               borderRadius: BorderRadius.circular(widget.borderRadius),
-// //               boxShadow: const [
-// //                 BoxShadow(
-// //                   color: Colors.white,
-// //                   blurRadius: 15,
-// //                   offset: Offset(5, 5),
-// //                 ),
-// //                 BoxShadow(
-// //                   color: Colors.white,
-// //                   blurRadius: 15,
-// //                   offset: Offset(-5, -5),
-// //                 ),
-// //               ],
-// //             ),
-// //             alignment: Alignment.center,
-// //             child: Container(
-// //               decoration: BoxDecoration(
-// //                 color: Colors.grey[200],
-// //                 borderRadius: BorderRadius.circular(widget.borderRadius),
-// //                 boxShadow: [
-// //                   BoxShadow(
-// //                     color: Colors.grey.shade300,
-// //                     blurRadius: 15,
-// //                     offset: const Offset(-15, -15),
-// //                   ),
-// //                   const BoxShadow(
-// //                     color: Colors.white,
-// //                     blurRadius: 15,
-// //                     offset: Offset(15, 15),
-// //                   ),
-// //                 ],
-// //               ),
-// //               child: widget.child,
-// //             ),
-// //           ),
-// //         ),
-// //       ),
-// //     );
-// //   }
 
-// //   @override
-// //   void dispose() {
-// //     _controller.dispose();
-// //     super.dispose();
-// //   }
-// // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -412,23 +429,25 @@ class _CustomChangeChildButtonWidgetState
       onTapUp: (_) {
         _toggleButtonState();
       },
-      child: AnimatedCrossFade(      
-        
-        duration: const Duration(milliseconds: 200),
-        firstChild: CustomButtonNotPress(
-          size: widget.size,
-          borderRadius: widget.borderRadius,
-          child: widget.child,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(widget.borderRadius),
+        child: AnimatedCrossFade(
+          duration: const Duration(milliseconds: 200),
+          firstChild: CustomButtonNotPress(
+            size: widget.size,
+            borderRadius: widget.borderRadius,
+            child: widget.child,
+          ),
+          secondChild: CustomPressedButton(
+            size: widget.size,
+            borderRadius: widget.borderRadius,
+            child: widget.child,
+          ),
+          crossFadeState: isButtonPressed
+              ? CrossFadeState.showFirst
+              : CrossFadeState.showSecond,
+          alignment: Alignment.center,
         ),
-        secondChild: CustomPressedButton(
-          size: widget.size,
-          borderRadius: widget.borderRadius,
-          child: widget.child,
-        ),
-        crossFadeState: isButtonPressed
-            ? CrossFadeState.showFirst
-            : CrossFadeState.showSecond,
-        alignment: Alignment.center,
       ),
     );
   }
@@ -439,8 +458,6 @@ class _CustomChangeChildButtonWidgetState
     super.dispose();
   }
 }
-
-
 
 class CustomPressedButton extends StatelessWidget {
   final Widget child;
@@ -460,28 +477,28 @@ class CustomPressedButton extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        // color: Colors.grey[300],
-      //   borderRadius: BorderRadius.circular(borderRadius), 
-      //   boxShadow: [
-      //     const BoxShadow(
-      //       color: Colors.white,
-      //       blurRadius: 15,
-      //       offset: Offset(-5, -5),
-      //     ),
-      //     BoxShadow(
-      //       color: Colors.grey.shade500,
-      //       blurRadius: 15,
-      //       offset: const Offset(5, 5),
-      //     ),
-      //   ],
-      ),
+          // color: Colors.grey[300],
+          //   borderRadius: BorderRadius.circular(borderRadius),
+          //   boxShadow: [
+          //     const BoxShadow(
+          //       color: Colors.white,
+          //       blurRadius: 15,
+          //       offset: Offset(-5, -5),
+          //     ),
+          //     BoxShadow(
+          //       color: Colors.grey.shade500,
+          //       blurRadius: 15,
+          //       offset: const Offset(5, 5),
+          //     ),
+          //   ],
+          ),
       alignment: Alignment.center,
       child: Container(
         width: size - 5,
         height: size - 5,
         decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(borderRadius), 
+          // color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(borderRadius),
           boxShadow: const [
             BoxShadow(
               color: Colors.white,
@@ -499,7 +516,7 @@ class CustomPressedButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(borderRadius), 
+            borderRadius: BorderRadius.circular(borderRadius),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.shade400,
@@ -519,6 +536,7 @@ class CustomPressedButton extends StatelessWidget {
     );
   }
 }
+
 class CustomButtonNotPress extends StatelessWidget {
   final Widget child;
   final double size;
