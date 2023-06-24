@@ -18,9 +18,9 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       : _albumRepository = albumRepository,
         super(const AlbumState.loading()) {
     on<AlbumEvent>((event, emit) async {
-       await event.map(
-        search: (event)  =>  _search(event, emit),
-        initial: (event)  =>  _initial(event, emit),
+      await event.map(
+        search: (event) => _search(event, emit),
+        initial: (event) => _initial(event, emit),
       );
     });
   }
@@ -28,24 +28,22 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       _SearchAlbumEvent event, Emitter<AlbumState> emit) async {
     List<Album> albums = await _albumRepository.searchAlbum();
     if (albums.isNotEmpty) {
-      emit(AlbumState.loaded(albums: albums));
+      emit(AlbumState.haveAlbum(albums: albums));
     } else {
       emit(const AlbumState.empty());
     }
   }
 
   _initial(_AlbumInitialEvent event, Emitter<AlbumState> emit) {
-   
+    state.maybeWhen(
+      orElse: () {},
+      loading: () => add(const AlbumEvent.search()),
+      empty:() => add(const AlbumEvent.search()),
+    );
   }
 
   @override
   AlbumState fromJson(Map<String, dynamic> json) {
-    final albumState = AlbumState.fromJson(json);
-    if (albumState == _LoadedAlbumState) {
-      add(const AlbumEvent.initial());
-    } else {
-      add(const AlbumEvent.search());
-    }
     return AlbumState.fromJson(json);
   }
 

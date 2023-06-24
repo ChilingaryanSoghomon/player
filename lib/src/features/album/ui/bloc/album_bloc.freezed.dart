@@ -284,8 +284,8 @@ AlbumState _$AlbumStateFromJson(Map<String, dynamic> json) {
       return _LoadingAlbumState.fromJson(json);
     case 'empty':
       return _EmptyAlbumState.fromJson(json);
-    case 'loaded':
-      return _LoadedAlbumState.fromJson(json);
+    case 'haveAlbum':
+      return _AlbumHaveAlbumState.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'AlbumState',
@@ -299,21 +299,21 @@ mixin _$AlbumState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Album> albums) loaded,
+    required TResult Function(List<Album> albums) haveAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? loaded,
+    TResult? Function(List<Album> albums)? haveAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Album> albums)? loaded,
+    TResult Function(List<Album> albums)? haveAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -321,21 +321,21 @@ mixin _$AlbumState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingAlbumState value) loading,
     required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_LoadedAlbumState value) loaded,
+    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingAlbumState value)? loading,
     TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_LoadedAlbumState value)? loaded,
+    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingAlbumState value)? loading,
     TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_LoadedAlbumState value)? loaded,
+    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -408,7 +408,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Album> albums) loaded,
+    required TResult Function(List<Album> albums) haveAlbum,
   }) {
     return loading();
   }
@@ -418,7 +418,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? loaded,
+    TResult? Function(List<Album> albums)? haveAlbum,
   }) {
     return loading?.call();
   }
@@ -428,7 +428,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Album> albums)? loaded,
+    TResult Function(List<Album> albums)? haveAlbum,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -442,7 +442,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingAlbumState value) loading,
     required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_LoadedAlbumState value) loaded,
+    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
   }) {
     return loading(this);
   }
@@ -452,7 +452,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingAlbumState value)? loading,
     TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_LoadedAlbumState value)? loaded,
+    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
   }) {
     return loading?.call(this);
   }
@@ -462,7 +462,7 @@ class _$_LoadingAlbumState implements _LoadingAlbumState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingAlbumState value)? loading,
     TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_LoadedAlbumState value)? loaded,
+    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -533,7 +533,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Album> albums) loaded,
+    required TResult Function(List<Album> albums) haveAlbum,
   }) {
     return empty();
   }
@@ -543,7 +543,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? loaded,
+    TResult? Function(List<Album> albums)? haveAlbum,
   }) {
     return empty?.call();
   }
@@ -553,7 +553,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Album> albums)? loaded,
+    TResult Function(List<Album> albums)? haveAlbum,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -567,7 +567,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingAlbumState value) loading,
     required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_LoadedAlbumState value) loaded,
+    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
   }) {
     return empty(this);
   }
@@ -577,7 +577,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingAlbumState value)? loading,
     TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_LoadedAlbumState value)? loaded,
+    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
   }) {
     return empty?.call(this);
   }
@@ -587,7 +587,7 @@ class _$_EmptyAlbumState implements _EmptyAlbumState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingAlbumState value)? loading,
     TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_LoadedAlbumState value)? loaded,
+    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -612,20 +612,20 @@ abstract class _EmptyAlbumState implements AlbumState {
 }
 
 /// @nodoc
-abstract class _$$_LoadedAlbumStateCopyWith<$Res> {
-  factory _$$_LoadedAlbumStateCopyWith(
-          _$_LoadedAlbumState value, $Res Function(_$_LoadedAlbumState) then) =
-      __$$_LoadedAlbumStateCopyWithImpl<$Res>;
+abstract class _$$_AlbumHaveAlbumStateCopyWith<$Res> {
+  factory _$$_AlbumHaveAlbumStateCopyWith(_$_AlbumHaveAlbumState value,
+          $Res Function(_$_AlbumHaveAlbumState) then) =
+      __$$_AlbumHaveAlbumStateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Album> albums});
 }
 
 /// @nodoc
-class __$$_LoadedAlbumStateCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$_LoadedAlbumState>
-    implements _$$_LoadedAlbumStateCopyWith<$Res> {
-  __$$_LoadedAlbumStateCopyWithImpl(
-      _$_LoadedAlbumState _value, $Res Function(_$_LoadedAlbumState) _then)
+class __$$_AlbumHaveAlbumStateCopyWithImpl<$Res>
+    extends _$AlbumStateCopyWithImpl<$Res, _$_AlbumHaveAlbumState>
+    implements _$$_AlbumHaveAlbumStateCopyWith<$Res> {
+  __$$_AlbumHaveAlbumStateCopyWithImpl(_$_AlbumHaveAlbumState _value,
+      $Res Function(_$_AlbumHaveAlbumState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -633,7 +633,7 @@ class __$$_LoadedAlbumStateCopyWithImpl<$Res>
   $Res call({
     Object? albums = null,
   }) {
-    return _then(_$_LoadedAlbumState(
+    return _then(_$_AlbumHaveAlbumState(
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -644,14 +644,14 @@ class __$$_LoadedAlbumStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LoadedAlbumState implements _LoadedAlbumState {
-  const _$_LoadedAlbumState(
+class _$_AlbumHaveAlbumState implements _AlbumHaveAlbumState {
+  const _$_AlbumHaveAlbumState(
       {required final List<Album> albums, final String? $type})
       : _albums = albums,
-        $type = $type ?? 'loaded';
+        $type = $type ?? 'haveAlbum';
 
-  factory _$_LoadedAlbumState.fromJson(Map<String, dynamic> json) =>
-      _$$_LoadedAlbumStateFromJson(json);
+  factory _$_AlbumHaveAlbumState.fromJson(Map<String, dynamic> json) =>
+      _$$_AlbumHaveAlbumStateFromJson(json);
 
   final List<Album> _albums;
   @override
@@ -666,14 +666,14 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
 
   @override
   String toString() {
-    return 'AlbumState.loaded(albums: $albums)';
+    return 'AlbumState.haveAlbum(albums: $albums)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedAlbumState &&
+            other is _$_AlbumHaveAlbumState &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
@@ -685,17 +685,18 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedAlbumStateCopyWith<_$_LoadedAlbumState> get copyWith =>
-      __$$_LoadedAlbumStateCopyWithImpl<_$_LoadedAlbumState>(this, _$identity);
+  _$$_AlbumHaveAlbumStateCopyWith<_$_AlbumHaveAlbumState> get copyWith =>
+      __$$_AlbumHaveAlbumStateCopyWithImpl<_$_AlbumHaveAlbumState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Album> albums) loaded,
+    required TResult Function(List<Album> albums) haveAlbum,
   }) {
-    return loaded(albums);
+    return haveAlbum(albums);
   }
 
   @override
@@ -703,9 +704,9 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? loaded,
+    TResult? Function(List<Album> albums)? haveAlbum,
   }) {
-    return loaded?.call(albums);
+    return haveAlbum?.call(albums);
   }
 
   @override
@@ -713,11 +714,11 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Album> albums)? loaded,
+    TResult Function(List<Album> albums)? haveAlbum,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(albums);
+    if (haveAlbum != null) {
+      return haveAlbum(albums);
     }
     return orElse();
   }
@@ -727,9 +728,9 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingAlbumState value) loading,
     required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_LoadedAlbumState value) loaded,
+    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
   }) {
-    return loaded(this);
+    return haveAlbum(this);
   }
 
   @override
@@ -737,9 +738,9 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingAlbumState value)? loading,
     TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_LoadedAlbumState value)? loaded,
+    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
   }) {
-    return loaded?.call(this);
+    return haveAlbum?.call(this);
   }
 
   @override
@@ -747,32 +748,32 @@ class _$_LoadedAlbumState implements _LoadedAlbumState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingAlbumState value)? loading,
     TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_LoadedAlbumState value)? loaded,
+    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (haveAlbum != null) {
+      return haveAlbum(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoadedAlbumStateToJson(
+    return _$$_AlbumHaveAlbumStateToJson(
       this,
     );
   }
 }
 
-abstract class _LoadedAlbumState implements AlbumState {
-  const factory _LoadedAlbumState({required final List<Album> albums}) =
-      _$_LoadedAlbumState;
+abstract class _AlbumHaveAlbumState implements AlbumState {
+  const factory _AlbumHaveAlbumState({required final List<Album> albums}) =
+      _$_AlbumHaveAlbumState;
 
-  factory _LoadedAlbumState.fromJson(Map<String, dynamic> json) =
-      _$_LoadedAlbumState.fromJson;
+  factory _AlbumHaveAlbumState.fromJson(Map<String, dynamic> json) =
+      _$_AlbumHaveAlbumState.fromJson;
 
   List<Album> get albums;
   @JsonKey(ignore: true)
-  _$$_LoadedAlbumStateCopyWith<_$_LoadedAlbumState> get copyWith =>
+  _$$_AlbumHaveAlbumStateCopyWith<_$_AlbumHaveAlbumState> get copyWith =>
       throw _privateConstructorUsedError;
 }

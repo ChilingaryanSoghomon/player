@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TrackEvent {
   int get albumId => throw _privateConstructorUsedError;
+  List<Track> get treks => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int albumId) clickAlbum,
+    required TResult Function(int albumId, List<Track> treks) clickAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int albumId)? clickAlbum,
+    TResult? Function(int albumId, List<Track> treks)? clickAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int albumId)? clickAlbum,
+    TResult Function(int albumId, List<Track> treks)? clickAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $TrackEventCopyWith<$Res> {
           TrackEvent value, $Res Function(TrackEvent) then) =
       _$TrackEventCopyWithImpl<$Res, TrackEvent>;
   @useResult
-  $Res call({int albumId});
+  $Res call({int albumId, List<Track> treks});
 }
 
 /// @nodoc
@@ -78,12 +79,17 @@ class _$TrackEventCopyWithImpl<$Res, $Val extends TrackEvent>
   @override
   $Res call({
     Object? albumId = null,
+    Object? treks = null,
   }) {
     return _then(_value.copyWith(
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
               as int,
+      treks: null == treks
+          ? _value.treks
+          : treks // ignore: cast_nullable_to_non_nullable
+              as List<Track>,
     ) as $Val);
   }
 }
@@ -96,7 +102,7 @@ abstract class _$$_ClickAlbumTrackEventCopyWith<$Res>
       __$$_ClickAlbumTrackEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int albumId});
+  $Res call({int albumId, List<Track> treks});
 }
 
 /// @nodoc
@@ -111,12 +117,17 @@ class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? albumId = null,
+    Object? treks = null,
   }) {
     return _then(_$_ClickAlbumTrackEvent(
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
               as int,
+      treks: null == treks
+          ? _value._treks
+          : treks // ignore: cast_nullable_to_non_nullable
+              as List<Track>,
     ));
   }
 }
@@ -124,14 +135,23 @@ class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
-  const _$_ClickAlbumTrackEvent({required this.albumId});
+  const _$_ClickAlbumTrackEvent(
+      {required this.albumId, required final List<Track> treks})
+      : _treks = treks;
 
   @override
   final int albumId;
+  final List<Track> _treks;
+  @override
+  List<Track> get treks {
+    if (_treks is EqualUnmodifiableListView) return _treks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_treks);
+  }
 
   @override
   String toString() {
-    return 'TrackEvent.clickAlbum(albumId: $albumId)';
+    return 'TrackEvent.clickAlbum(albumId: $albumId, treks: $treks)';
   }
 
   @override
@@ -139,11 +159,13 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClickAlbumTrackEvent &&
-            (identical(other.albumId, albumId) || other.albumId == albumId));
+            (identical(other.albumId, albumId) || other.albumId == albumId) &&
+            const DeepCollectionEquality().equals(other._treks, _treks));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, albumId);
+  int get hashCode => Object.hash(
+      runtimeType, albumId, const DeepCollectionEquality().hash(_treks));
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +177,27 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int albumId) clickAlbum,
+    required TResult Function(int albumId, List<Track> treks) clickAlbum,
   }) {
-    return clickAlbum(albumId);
+    return clickAlbum(albumId, treks);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int albumId)? clickAlbum,
+    TResult? Function(int albumId, List<Track> treks)? clickAlbum,
   }) {
-    return clickAlbum?.call(albumId);
+    return clickAlbum?.call(albumId, treks);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int albumId)? clickAlbum,
+    TResult Function(int albumId, List<Track> treks)? clickAlbum,
     required TResult orElse(),
   }) {
     if (clickAlbum != null) {
-      return clickAlbum(albumId);
+      return clickAlbum(albumId, treks);
     }
     return orElse();
   }
@@ -210,11 +232,14 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
 }
 
 abstract class _ClickAlbumTrackEvent implements TrackEvent {
-  const factory _ClickAlbumTrackEvent({required final int albumId}) =
-      _$_ClickAlbumTrackEvent;
+  const factory _ClickAlbumTrackEvent(
+      {required final int albumId,
+      required final List<Track> treks}) = _$_ClickAlbumTrackEvent;
 
   @override
   int get albumId;
+  @override
+  List<Track> get treks;
   @override
   @JsonKey(ignore: true)
   _$$_ClickAlbumTrackEventCopyWith<_$_ClickAlbumTrackEvent> get copyWith =>

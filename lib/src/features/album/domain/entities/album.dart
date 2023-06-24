@@ -9,7 +9,7 @@ part 'album.g.dart';
 class Album with _$Album {
   const factory Album({
     required List<Track> tracks,
-    required Map<int, Duration> albumDuration,
+    required List<int> artworkAlbum,
     required Duration albumTotalDuration,
     required Duration albumPosition,
     required int id,

@@ -36,7 +36,7 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())
-            ..add(const AlbumEvent.search()),
+            ..add(const AlbumEvent.initial()),
         ),
       ],
       child: MaterialApp(

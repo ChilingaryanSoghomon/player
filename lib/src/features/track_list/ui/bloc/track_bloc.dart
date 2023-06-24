@@ -13,14 +13,14 @@ part 'track_bloc.g.dart';
 part 'track_event.dart';
 part 'track_state.dart';
 
-class TrackBloc extends Bloc<TrackEvent, TrackState> with HydratedMixin {
+class TrackBloc extends Bloc<TrackEvent, TrackState> {
   final ITrackRepository _trackRepository;
   TrackBloc({required ITrackRepository trackRepository})
       : _trackRepository = trackRepository,
         super(const TrackState.loading()) {
     on<TrackEvent>((event, emit) async {
       await event.map<Future<void>>(
-        clickAlbum: (event)  =>  _clickAlbum(event, emit),
+        clickAlbum: (event) => _clickAlbum(event, emit),
       );
     });
   }
@@ -29,21 +29,10 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> with HydratedMixin {
       _ClickAlbumTrackEvent event, Emitter<TrackState> emit) async {
     emit(const TrackState.loading());
     try {
-      final tracks =
-          await _trackRepository.queryFromAlbumId(albumId: event.albumId);
-      final artworks = await _trackRepository.getTrackArtworks(tracks: tracks);
-      emit(TrackState.loaded(tracks: tracks, artworks: artworks));
+      final artworks =
+          await _trackRepository.getTrackArtworks(tracks: event.treks);
+      emit(TrackState.loaded(tracks: event.treks, artworks: artworks));
     } catch (e) {}
-  }
-
-     @override
-  TrackState fromJson(Map<String, dynamic> json) {
-    return TrackState.fromJson(json);
-  }
-
-  @override
-  Map<String, dynamic> toJson(TrackState state) {
-    return state.toJson();
   }
 
 }

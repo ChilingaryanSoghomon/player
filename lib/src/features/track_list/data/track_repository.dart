@@ -8,32 +8,32 @@ class TrackRepositoryImp implements ITrackRepository {
   TrackRepositoryImp({required OnAudioQuery audioQuery})
       : _audioQuery = audioQuery;
   final OnAudioQuery _audioQuery;
-  @override
-  Future<List<Track>> queryFromAlbumId({required int albumId}) async {
-    final List<SongModel> songs = await _audioQuery.querySongs();
-    final List<Track> tracks = [];
-    int trackIndex = 0;
+  // @override
+  // Future<List<Track>> queryFromAlbumId({required int albumId}) async {
+  //   final List<SongModel> songs = await _audioQuery.querySongs();
+  //   final List<Track> tracks = [];
+  //   int trackIndex = 0;
 
-    for (var song in songs) {
-      if (song.albumId == albumId) {
-        if (song.duration != null) {
-          final Duration songDuration = Duration(milliseconds: song.duration!);
-          tracks.add(Track(
-            index: trackIndex,
-            path: song.data,
-            name: song.title,
-            album: song.album,
-            duration: songDuration,
-            position: Duration.zero,
-            trackId: song.id,
-            artist: song.artist,
-          ));
-          trackIndex += 1;
-        }
-      }
-    }
-    return tracks;
-  }
+  //   for (var song in songs) {
+  //     if (song.albumId == albumId) {
+  //       if (song.duration != null) {
+  //         final Duration songDuration = Duration(milliseconds: song.duration!);
+  //         tracks.add(Track(
+  //           index: trackIndex,
+  //           path: song.data,
+  //           name: song.title,
+  //           album: song.album,
+  //           duration: songDuration,
+  //           position: Duration.zero,
+  //           trackId: song.id,
+  //           artist: song.artist,
+  //         ));
+  //         trackIndex += 1;
+  //       }
+  //     }
+  //   }
+  //   return tracks;
+  // }
 
   @override
   Future <List<List<int>>> getTrackArtworks({required List<Track> tracks}) async {

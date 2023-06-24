@@ -10,9 +10,8 @@ _$_Album _$$_AlbumFromJson(Map<String, dynamic> json) => _$_Album(
       tracks: (json['tracks'] as List<dynamic>)
           .map((e) => Track.fromJson(e as Map<String, dynamic>))
           .toList(),
-      albumDuration: (json['albumDuration'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(int.parse(k), Duration(microseconds: e as int)),
-      ),
+      artworkAlbum:
+          (json['artworkAlbum'] as List<dynamic>).map((e) => e as int).toList(),
       albumTotalDuration:
           Duration(microseconds: json['albumTotalDuration'] as int),
       albumPosition: Duration(microseconds: json['albumPosition'] as int),
@@ -24,8 +23,7 @@ _$_Album _$$_AlbumFromJson(Map<String, dynamic> json) => _$_Album(
 
 Map<String, dynamic> _$$_AlbumToJson(_$_Album instance) => <String, dynamic>{
       'tracks': instance.tracks,
-      'albumDuration': instance.albumDuration
-          .map((k, e) => MapEntry(k.toString(), e.inMicroseconds)),
+      'artworkAlbum': instance.artworkAlbum,
       'albumTotalDuration': instance.albumTotalDuration.inMicroseconds,
       'albumPosition': instance.albumPosition.inMicroseconds,
       'id': instance.id,
