@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_assets.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
@@ -44,7 +43,7 @@ class TrackListScreen extends StatelessWidget {
                                   PlayerEvent.addMusic(
                                       track: track, tracks: state.tracks));
                               // context.go(AppRouts.playerScreen);
-                              Navigator.of(context).pushNamed(AppRouts.playerScreen);
+                              // Navigator.of(context).pushNamed(AppRouts.playerScreen);
                               context.read<SplashBloc>().add(const SplashEvent.playing());
                             },
                             child: Row(

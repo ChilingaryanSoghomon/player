@@ -15,16 +15,17 @@ abstract class IAudioPlayerRepository {
     required int trackIndex,
   });
 
-  Future<void> next();
 
   Future<void> pause();
-
   Future<void> play();
-
+  Future<void> next();
   Future<void> prev();
-  Future<void> rewind({required int seconds});
 
-  Future<void> push({required int seconds});
+  Future<void> rewind({required Duration newPosition,required int trackIndex});
+  Future<void> push({required int seconds,required int trackIndex});
+
+  Future<void> setSpeed({required double speed});
+
   Future<void> changeTrackProgressBar({required Duration duration});
   Future<void> changeAlbumProgressBar({required Duration duration});
   Future<List<int>> getArtwork({required int index});

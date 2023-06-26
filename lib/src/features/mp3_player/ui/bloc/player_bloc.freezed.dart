@@ -2459,6 +2459,7 @@ mixin _$PlayerState {
   Duration get albumPosition => throw _privateConstructorUsedError;
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   int get trackIndex => throw _privateConstructorUsedError;
+  double get trackSpeed => throw _privateConstructorUsedError;
   List<Track> get tracks => throw _privateConstructorUsedError;
   List<int> get artwork => throw _privateConstructorUsedError;
 
@@ -2482,6 +2483,7 @@ abstract class $PlayerStateCopyWith<$Res> {
       Duration albumPosition,
       Map<int, Duration> mapAlbumDuration,
       int trackIndex,
+      double trackSpeed,
       List<Track> tracks,
       List<int> artwork});
 }
@@ -2506,6 +2508,7 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
     Object? albumPosition = null,
     Object? mapAlbumDuration = null,
     Object? trackIndex = null,
+    Object? trackSpeed = null,
     Object? tracks = null,
     Object? artwork = null,
   }) {
@@ -2538,6 +2541,10 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      trackSpeed: null == trackSpeed
+          ? _value.trackSpeed
+          : trackSpeed // ignore: cast_nullable_to_non_nullable
+              as double,
       tracks: null == tracks
           ? _value.tracks
           : tracks // ignore: cast_nullable_to_non_nullable
@@ -2564,6 +2571,7 @@ abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
       Duration albumPosition,
       Map<int, Duration> mapAlbumDuration,
       int trackIndex,
+      double trackSpeed,
       List<Track> tracks,
       List<int> artwork});
 }
@@ -2585,6 +2593,7 @@ class __$$InitialCopyWithImpl<$Res>
     Object? albumPosition = null,
     Object? mapAlbumDuration = null,
     Object? trackIndex = null,
+    Object? trackSpeed = null,
     Object? tracks = null,
     Object? artwork = null,
   }) {
@@ -2617,6 +2626,10 @@ class __$$InitialCopyWithImpl<$Res>
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      trackSpeed: null == trackSpeed
+          ? _value.trackSpeed
+          : trackSpeed // ignore: cast_nullable_to_non_nullable
+              as double,
       tracks: null == tracks
           ? _value._tracks
           : tracks // ignore: cast_nullable_to_non_nullable
@@ -2640,6 +2653,7 @@ class _$Initial implements Initial {
       this.albumPosition = Duration.zero,
       final Map<int, Duration> mapAlbumDuration = const {},
       this.trackIndex = 0,
+      this.trackSpeed = 1.0,
       final List<Track> tracks = const [],
       final List<int> artwork = const []})
       : _mapAlbumDuration = mapAlbumDuration,
@@ -2676,6 +2690,9 @@ class _$Initial implements Initial {
   @override
   @JsonKey()
   final int trackIndex;
+  @override
+  @JsonKey()
+  final double trackSpeed;
   final List<Track> _tracks;
   @override
   @JsonKey()
@@ -2696,7 +2713,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'PlayerState(status: $status, trackPosition: $trackPosition, trackDuration: $trackDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, mapAlbumDuration: $mapAlbumDuration, trackIndex: $trackIndex, tracks: $tracks, artwork: $artwork)';
+    return 'PlayerState(status: $status, trackPosition: $trackPosition, trackDuration: $trackDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, mapAlbumDuration: $mapAlbumDuration, trackIndex: $trackIndex, trackSpeed: $trackSpeed, tracks: $tracks, artwork: $artwork)';
   }
 
   @override
@@ -2717,6 +2734,8 @@ class _$Initial implements Initial {
                 .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
             (identical(other.trackIndex, trackIndex) ||
                 other.trackIndex == trackIndex) &&
+            (identical(other.trackSpeed, trackSpeed) ||
+                other.trackSpeed == trackSpeed) &&
             const DeepCollectionEquality().equals(other._tracks, _tracks) &&
             const DeepCollectionEquality().equals(other._artwork, _artwork));
   }
@@ -2732,6 +2751,7 @@ class _$Initial implements Initial {
       albumPosition,
       const DeepCollectionEquality().hash(_mapAlbumDuration),
       trackIndex,
+      trackSpeed,
       const DeepCollectionEquality().hash(_tracks),
       const DeepCollectionEquality().hash(_artwork));
 
@@ -2758,6 +2778,7 @@ abstract class Initial implements PlayerState {
       final Duration albumPosition,
       final Map<int, Duration> mapAlbumDuration,
       final int trackIndex,
+      final double trackSpeed,
       final List<Track> tracks,
       final List<int> artwork}) = _$Initial;
 
@@ -2777,6 +2798,8 @@ abstract class Initial implements PlayerState {
   Map<int, Duration> get mapAlbumDuration;
   @override
   int get trackIndex;
+  @override
+  double get trackSpeed;
   @override
   List<Track> get tracks;
   @override

@@ -28,6 +28,7 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
               ) ??
               const {},
       trackIndex: json['trackIndex'] as int? ?? 0,
+      trackSpeed: (json['trackSpeed'] as num?)?.toDouble() ?? 1.0,
       tracks: (json['tracks'] as List<dynamic>?)
               ?.map((e) => Track.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -46,6 +47,7 @@ Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
       'mapAlbumDuration': instance.mapAlbumDuration
           .map((k, e) => MapEntry(k.toString(), e.inMicroseconds)),
       'trackIndex': instance.trackIndex,
+      'trackSpeed': instance.trackSpeed,
       'tracks': instance.tracks,
       'artwork': instance.artwork,
     };

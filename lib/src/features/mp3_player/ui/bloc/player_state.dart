@@ -17,6 +17,7 @@ class PlayerState with _$PlayerState {
       @Default(Duration.zero) Duration albumPosition,
       @Default({}) Map<int, Duration> mapAlbumDuration,
       @Default(0) int trackIndex,
+      @Default(1.0) double trackSpeed,
       @Default([])  List<Track> tracks,
       @Default([]) List<int> artwork,
 

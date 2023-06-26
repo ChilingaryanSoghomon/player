@@ -29,10 +29,12 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
       final UriAudioSource audio = AudioSource.file(track.path);
       audioSource.add(audio);
     }
-    _concatenatingAudioSource = ConcatenatingAudioSource(
-        useLazyPreparation: true, children: audioSource);
-    await _player.setAudioSource(_concatenatingAudioSource,
-        initialPosition: trackPosition, initialIndex: trackIndex);
+    if (audioSource.isNotEmpty) {
+      _concatenatingAudioSource = ConcatenatingAudioSource(
+          useLazyPreparation: true, children: audioSource);
+      await _player.setAudioSource(_concatenatingAudioSource,
+          initialPosition: trackPosition, initialIndex: trackIndex);
+    }
   }
 
   @override
@@ -60,32 +62,29 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
 
   @override
   Future<void> next() async {
-   await _player.seekToNext();
+    await _player.seekToNext();
   }
 
   @override
   Future<void> prev() async {
-   await _player.seekToPrevious();
+    await _player.seekToPrevious();
   }
 
   @override
-  Future<void> rewind({required int seconds}) async {
-    Duration position = _player.position;
-    int? currentIndex = _player.currentIndex;
-    Duration rewindPosition = position - Duration(seconds: seconds);
-    if (currentIndex != null) {
-      await _player.seek(rewindPosition, index: currentIndex);
-    }
+  Future<void> setSpeed({required double speed}) async {
+    _player.setSpeed(speed);
   }
 
   @override
-  Future<void> push({required int seconds}) async {
+  Future<void> rewind({required Duration newPosition, required int trackIndex}) async {
+     _player.seek(newPosition, index: trackIndex);
+  }
+
+  @override
+  Future<void> push({required int seconds, required int trackIndex}) async {
     Duration position = _player.position;
-    int? currentIndex = _player.currentIndex;
     Duration rewindPosition = position + Duration(seconds: seconds);
-    if (currentIndex != null) {
-      await _player.seek(rewindPosition, index: currentIndex);
-    }
+    await _player.seek(rewindPosition, index: currentIndex);
   }
 
   @override

@@ -13,49 +13,44 @@ class AlbumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(child: BlocBuilder<AlbumBloc, AlbumState>(
-              builder: (context, state) {
-                return state.map(
-                  loading: (state) =>
-                      const Center(child: CircularProgressIndicator()),
-                  empty: (state) => const Center(child: Text('Empty')),
-                  haveAlbum: (state) => ListView.builder(
-                    itemCount: state.albums.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final album = state.albums[index];
-                      final artWork = album.artworkAlbum;
-                      return Card(
-                        child: ListTile(
-                          onTap: () {
-                            context.read<TrackBloc>().add(TrackEvent.clickAlbum(
-                                albumId: album.id, treks: album.tracks));
-                            // context.push(AppRouts.trackListScreen);
-                            Navigator.of(context)
-                                .pushNamed(AppRouts.trackListScreen);
-                          },
-                          leading: artWork.isNotEmpty
-                              ? Image.memory(Uint8List.fromList(artWork))
-                              : const FlutterLogo(size: 56.0),
-                          title: Text((album.name),
-                              style: const TextStyle(fontSize: 20)),
-                          subtitle: Text(album.artist),
-                          trailing: TextButton(
-                            onPressed: () {},
-                            style: AppButtonStyle.moreVert,
-                            child: const Icon(Icons.more_vert),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            )),
-          ],
+        child: BlocBuilder<AlbumBloc, AlbumState>(
+          builder: (context, state) {
+            return state.map(
+              loading: (state) =>
+                  const Center(child: CircularProgressIndicator()),
+              empty: (state) => const Center(child: Text('Empty')),
+              haveAlbum: (state) => ListView.builder(
+                itemCount: state.albums.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final album = state.albums[index];
+                  final artWork = album.artworkAlbum;
+                  return Card(
+                    child: ListTile(
+                      onTap: () {
+                        context.read<TrackBloc>().add(TrackEvent.clickAlbum(
+                            albumId: album.id, treks: album.tracks));
+                        // context.push(AppRouts.trackListScreen);
+                        Navigator.of(context)
+                            .pushNamed(AppRouts.trackListScreen);
+                      },
+                      leading: artWork.isNotEmpty
+                          ? Image.memory(Uint8List.fromList(artWork))
+                          : const FlutterLogo(size: 56.0),
+                      title: Text((album.name),
+                          style: const TextStyle(fontSize: 20)),
+                      subtitle: Text(album.artist),
+                      trailing: TextButton(
+                        onPressed: () {},
+                        style: AppButtonStyle.moreVert,
+                        child: const Icon(Icons.more_vert),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );
