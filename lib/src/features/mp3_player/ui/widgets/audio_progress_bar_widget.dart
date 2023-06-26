@@ -13,11 +13,11 @@ class AlbumProgressBarrWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
-            previous.albumPosition != current.albumPosition ||
-            previous.albumDuration != current.albumDuration,
+            previous.album.albumPosition != current.album.albumPosition ||
+            previous.album.albumDuration != current.album.albumDuration,
         builder: (context, state) => CustomProgressBarWidget(
-          progress: state.albumPosition,
-          total: state.albumDuration,
+          progress: state.album.albumPosition,
+          total: state.album.albumDuration,
           function: (Duration duration) {
              context
                 .read<PlayerBloc>()

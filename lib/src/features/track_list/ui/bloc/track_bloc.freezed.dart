@@ -16,21 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TrackEvent {
-  int get albumId => throw _privateConstructorUsedError;
-  List<Track> get treks => throw _privateConstructorUsedError;
+  Album get album => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int albumId, List<Track> treks) clickAlbum,
+    required TResult Function(Album album) clickAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int albumId, List<Track> treks)? clickAlbum,
+    TResult? Function(Album album)? clickAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int albumId, List<Track> treks)? clickAlbum,
+    TResult Function(Album album)? clickAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +61,9 @@ abstract class $TrackEventCopyWith<$Res> {
           TrackEvent value, $Res Function(TrackEvent) then) =
       _$TrackEventCopyWithImpl<$Res, TrackEvent>;
   @useResult
-  $Res call({int albumId, List<Track> treks});
+  $Res call({Album album});
+
+  $AlbumCopyWith<$Res> get album;
 }
 
 /// @nodoc
@@ -78,19 +79,22 @@ class _$TrackEventCopyWithImpl<$Res, $Val extends TrackEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? albumId = null,
-    Object? treks = null,
+    Object? album = null,
   }) {
     return _then(_value.copyWith(
-      albumId: null == albumId
-          ? _value.albumId
-          : albumId // ignore: cast_nullable_to_non_nullable
-              as int,
-      treks: null == treks
-          ? _value.treks
-          : treks // ignore: cast_nullable_to_non_nullable
-              as List<Track>,
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AlbumCopyWith<$Res> get album {
+    return $AlbumCopyWith<$Res>(_value.album, (value) {
+      return _then(_value.copyWith(album: value) as $Val);
+    });
   }
 }
 
@@ -102,7 +106,10 @@ abstract class _$$_ClickAlbumTrackEventCopyWith<$Res>
       __$$_ClickAlbumTrackEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int albumId, List<Track> treks});
+  $Res call({Album album});
+
+  @override
+  $AlbumCopyWith<$Res> get album;
 }
 
 /// @nodoc
@@ -116,18 +123,13 @@ class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? albumId = null,
-    Object? treks = null,
+    Object? album = null,
   }) {
     return _then(_$_ClickAlbumTrackEvent(
-      albumId: null == albumId
-          ? _value.albumId
-          : albumId // ignore: cast_nullable_to_non_nullable
-              as int,
-      treks: null == treks
-          ? _value._treks
-          : treks // ignore: cast_nullable_to_non_nullable
-              as List<Track>,
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
     ));
   }
 }
@@ -135,23 +137,14 @@ class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
-  const _$_ClickAlbumTrackEvent(
-      {required this.albumId, required final List<Track> treks})
-      : _treks = treks;
+  const _$_ClickAlbumTrackEvent({required this.album});
 
   @override
-  final int albumId;
-  final List<Track> _treks;
-  @override
-  List<Track> get treks {
-    if (_treks is EqualUnmodifiableListView) return _treks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_treks);
-  }
+  final Album album;
 
   @override
   String toString() {
-    return 'TrackEvent.clickAlbum(albumId: $albumId, treks: $treks)';
+    return 'TrackEvent.clickAlbum(album: $album)';
   }
 
   @override
@@ -159,13 +152,11 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClickAlbumTrackEvent &&
-            (identical(other.albumId, albumId) || other.albumId == albumId) &&
-            const DeepCollectionEquality().equals(other._treks, _treks));
+            (identical(other.album, album) || other.album == album));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, albumId, const DeepCollectionEquality().hash(_treks));
+  int get hashCode => Object.hash(runtimeType, album);
 
   @JsonKey(ignore: true)
   @override
@@ -177,27 +168,27 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int albumId, List<Track> treks) clickAlbum,
+    required TResult Function(Album album) clickAlbum,
   }) {
-    return clickAlbum(albumId, treks);
+    return clickAlbum(album);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int albumId, List<Track> treks)? clickAlbum,
+    TResult? Function(Album album)? clickAlbum,
   }) {
-    return clickAlbum?.call(albumId, treks);
+    return clickAlbum?.call(album);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int albumId, List<Track> treks)? clickAlbum,
+    TResult Function(Album album)? clickAlbum,
     required TResult orElse(),
   }) {
     if (clickAlbum != null) {
-      return clickAlbum(albumId, treks);
+      return clickAlbum(album);
     }
     return orElse();
   }
@@ -232,14 +223,11 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
 }
 
 abstract class _ClickAlbumTrackEvent implements TrackEvent {
-  const factory _ClickAlbumTrackEvent(
-      {required final int albumId,
-      required final List<Track> treks}) = _$_ClickAlbumTrackEvent;
+  const factory _ClickAlbumTrackEvent({required final Album album}) =
+      _$_ClickAlbumTrackEvent;
 
   @override
-  int get albumId;
-  @override
-  List<Track> get treks;
+  Album get album;
   @override
   @JsonKey(ignore: true)
   _$$_ClickAlbumTrackEventCopyWith<_$_ClickAlbumTrackEvent> get copyWith =>
@@ -267,22 +255,21 @@ mixin _$TrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks, List<List<int>> artworks)
-        loaded,
+    required TResult Function(Album album, List<List<int>> artworks) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult? Function(Album album, List<List<int>> artworks)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult Function(Album album, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -377,8 +364,7 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks, List<List<int>> artworks)
-        loaded,
+    required TResult Function(Album album, List<List<int>> artworks) loaded,
   }) {
     return loading();
   }
@@ -388,7 +374,7 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult? Function(Album album, List<List<int>> artworks)? loaded,
   }) {
     return loading?.call();
   }
@@ -398,7 +384,7 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult Function(Album album, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -503,8 +489,7 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks, List<List<int>> artworks)
-        loaded,
+    required TResult Function(Album album, List<List<int>> artworks) loaded,
   }) {
     return empty();
   }
@@ -514,7 +499,7 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult? Function(Album album, List<List<int>> artworks)? loaded,
   }) {
     return empty?.call();
   }
@@ -524,7 +509,7 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult Function(Album album, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -588,7 +573,9 @@ abstract class _$$_LoadedTrackStateCopyWith<$Res> {
           _$_LoadedTrackState value, $Res Function(_$_LoadedTrackState) then) =
       __$$_LoadedTrackStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Track> tracks, List<List<int>> artworks});
+  $Res call({Album album, List<List<int>> artworks});
+
+  $AlbumCopyWith<$Res> get album;
 }
 
 /// @nodoc
@@ -602,19 +589,27 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tracks = null,
+    Object? album = null,
     Object? artworks = null,
   }) {
     return _then(_$_LoadedTrackState(
-      tracks: null == tracks
-          ? _value._tracks
-          : tracks // ignore: cast_nullable_to_non_nullable
-              as List<Track>,
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
       artworks: null == artworks
           ? _value._artworks
           : artworks // ignore: cast_nullable_to_non_nullable
               as List<List<int>>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AlbumCopyWith<$Res> get album {
+    return $AlbumCopyWith<$Res>(_value.album, (value) {
+      return _then(_value.copyWith(album: value));
+    });
   }
 }
 
@@ -622,24 +617,18 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LoadedTrackState implements _LoadedTrackState {
   const _$_LoadedTrackState(
-      {required final List<Track> tracks,
+      {required this.album,
       required final List<List<int>> artworks,
       final String? $type})
-      : _tracks = tracks,
-        _artworks = artworks,
+      : _artworks = artworks,
         $type = $type ?? 'loaded';
 
   factory _$_LoadedTrackState.fromJson(Map<String, dynamic> json) =>
       _$$_LoadedTrackStateFromJson(json);
 
-  final List<Track> _tracks;
+// required List<Track> tracks,
   @override
-  List<Track> get tracks {
-    if (_tracks is EqualUnmodifiableListView) return _tracks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tracks);
-  }
-
+  final Album album;
   final List<List<int>> _artworks;
   @override
   List<List<int>> get artworks {
@@ -653,7 +642,7 @@ class _$_LoadedTrackState implements _LoadedTrackState {
 
   @override
   String toString() {
-    return 'TrackState.loaded(tracks: $tracks, artworks: $artworks)';
+    return 'TrackState.loaded(album: $album, artworks: $artworks)';
   }
 
   @override
@@ -661,16 +650,14 @@ class _$_LoadedTrackState implements _LoadedTrackState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadedTrackState &&
-            const DeepCollectionEquality().equals(other._tracks, _tracks) &&
+            (identical(other.album, album) || other.album == album) &&
             const DeepCollectionEquality().equals(other._artworks, _artworks));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_tracks),
-      const DeepCollectionEquality().hash(_artworks));
+      runtimeType, album, const DeepCollectionEquality().hash(_artworks));
 
   @JsonKey(ignore: true)
   @override
@@ -683,10 +670,9 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() empty,
-    required TResult Function(List<Track> tracks, List<List<int>> artworks)
-        loaded,
+    required TResult Function(Album album, List<List<int>> artworks) loaded,
   }) {
-    return loaded(tracks, artworks);
+    return loaded(album, artworks);
   }
 
   @override
@@ -694,9 +680,9 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? empty,
-    TResult? Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult? Function(Album album, List<List<int>> artworks)? loaded,
   }) {
-    return loaded?.call(tracks, artworks);
+    return loaded?.call(album, artworks);
   }
 
   @override
@@ -704,11 +690,11 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? empty,
-    TResult Function(List<Track> tracks, List<List<int>> artworks)? loaded,
+    TResult Function(Album album, List<List<int>> artworks)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(tracks, artworks);
+      return loaded(album, artworks);
     }
     return orElse();
   }
@@ -757,13 +743,14 @@ class _$_LoadedTrackState implements _LoadedTrackState {
 
 abstract class _LoadedTrackState implements TrackState {
   const factory _LoadedTrackState(
-      {required final List<Track> tracks,
+      {required final Album album,
       required final List<List<int>> artworks}) = _$_LoadedTrackState;
 
   factory _LoadedTrackState.fromJson(Map<String, dynamic> json) =
       _$_LoadedTrackState.fromJson;
 
-  List<Track> get tracks;
+// required List<Track> tracks,
+  Album get album;
   List<List<int>> get artworks;
   @JsonKey(ignore: true)
   _$$_LoadedTrackStateCopyWith<_$_LoadedTrackState> get copyWith =>

@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 
@@ -46,7 +47,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     } else {
       emit(state.copyWith(status: PlayerStatus.paused));
       _playerRepository.addMusicDirectory(
-        tracks: state.tracks,
+        tracks: state.album.tracks,
         trackPosition: state.trackPosition,
         trackIndex: state.trackIndex,
       );
@@ -56,7 +57,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   Future<void> _addMusic(
       _PlayerAddMusicEvent event, Emitter<PlayerState> emit) async {
     _playerRepository.addMusicDirectory(
-      tracks: event.tracks,
+      tracks: event.album.tracks,
       trackIndex: event.track.index,
       trackPosition: event.track.position,
     );
@@ -66,9 +67,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
         await _playerRepository.getArtwork(index: event.track.index);
     emit(state.copyWith(
       artwork: artwork,
-      tracks: event.tracks,
+      album: event.album.copyWith(albumDuration: albumDuration),
       mapAlbumDuration: mapAlbumDuration,
-      albumDuration: albumDuration,
     ));
     add(const PlayerEvent.play());
   }
@@ -109,8 +109,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     //       newPosition: prevTrackPosition, trackIndex: trackIndex - 1);
     //       add(const PlayerEvent.changeState());
     // } else {
-      _playerRepository.rewind(
-          newPosition: rewindPosition, trackIndex: trackIndex);
+    _playerRepository.rewind(
+        newPosition: rewindPosition, trackIndex: trackIndex);
     // }
   }
 
@@ -140,7 +140,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
   Future<void> _changeState(
       _PlayerChangeStateEvent event, Emitter<PlayerState> emit) async {
-    Duration trackDuration = state.tracks[state.trackIndex].duration;
+    Duration trackDuration = state.album.tracks[state.trackIndex].duration;
     int currentIndex = _playerRepository.currentIndex;
     if (currentIndex != state.trackIndex) {
       final artwork = await _playerRepository.getArtwork(index: currentIndex);
@@ -153,7 +153,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       trackDuration: trackDuration,
       trackIndex: currentIndex,
       trackPosition: trackPosition,
-      albumPosition: albumPosition,
+      album: state.album.copyWith(albumPosition: albumPosition),
     ));
   }
 

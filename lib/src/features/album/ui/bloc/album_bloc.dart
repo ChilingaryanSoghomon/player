@@ -21,6 +21,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       await event.map(
         search: (event) => _search(event, emit),
         initial: (event) => _initial(event, emit),
+        openAlbumFolder: (event) => _openAlbumFolder(event, emit),
       );
     });
   }
@@ -38,7 +39,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
     state.maybeWhen(
       orElse: () {},
       loading: () => add(const AlbumEvent.search()),
-      empty:() => add(const AlbumEvent.search()),
+      empty: () => add(const AlbumEvent.search()),
     );
   }
 
@@ -50,5 +51,24 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   @override
   Map<String, dynamic> toJson(AlbumState state) {
     return state.toJson();
+  }
+
+  Future<void> _openAlbumFolder(
+      _AlbumOpenAlbumFolderEvent event, Emitter<AlbumState> emit) async {
+    state.maybeMap(
+      orElse: () {},
+      haveAlbum: (state) {
+        List<Album> albums = [];
+        for (var i = 0; i < state.albums.length; i++) {
+          final album = state.albums[i];
+          if (event.album.id == album.id) {
+            albums.add(event.album);
+          } else {
+            albums.add(album);
+          }
+        }
+        emit(state.copyWith(albums: albums));
+      },
+    );
   }
 }

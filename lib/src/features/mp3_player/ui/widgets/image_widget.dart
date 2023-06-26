@@ -19,7 +19,7 @@ class ImageWidget extends StatelessWidget {
             buildWhen: (previous, current) =>
                 previous.artwork != current.artwork,
             builder: (context, state) {
-              if (state.tracks.isNotEmpty) {
+              if (state.album.tracks.isNotEmpty) {
                 final artwork = state.artwork;
                 if (artwork.isNotEmpty) {
                   return Image.memory(Uint8List.fromList(artwork));

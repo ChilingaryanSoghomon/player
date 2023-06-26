@@ -4,7 +4,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/track_list/domain/repository/track_repository.dart';
 
 part 'track_bloc.freezed.dart';
@@ -30,8 +30,8 @@ class TrackBloc extends Bloc<TrackEvent, TrackState> {
     emit(const TrackState.loading());
     try {
       final artworks =
-          await _trackRepository.getTrackArtworks(tracks: event.treks);
-      emit(TrackState.loaded(tracks: event.treks, artworks: artworks));
+          await _trackRepository.getTrackArtworks(tracks: event.album.tracks);
+      emit(TrackState.loaded( artworks: artworks, album: event.album));
     } catch (e) {}
   }
 

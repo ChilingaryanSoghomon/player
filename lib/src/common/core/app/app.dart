@@ -35,9 +35,8 @@ class App extends StatelessWidget {
               TrackBloc(trackRepository: getIt<TrackRepositoryImp>()),
         ),
         BlocProvider(
-          create: (_) => AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())
-            ..add(const AlbumEvent.initial()),
-        ),
+            create: (_) =>
+                AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

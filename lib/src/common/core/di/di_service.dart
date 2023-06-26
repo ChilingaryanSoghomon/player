@@ -10,9 +10,13 @@ import 'package:player/src/features/track_list/data/track_repository.dart';
 GetIt getIt = GetIt.instance;
 
 Future<void> setup() async {
-    Permission status = Permission.storage;
+  Permission status = Permission.storage;
   if (await status.isDenied) {
-    await Permission.storage.request();
+    try {
+      await Permission.storage.request();
+    } catch (e) {
+      rethrow;
+    }
   }
   final OnAudioQuery audioQuery = OnAudioQuery();
 

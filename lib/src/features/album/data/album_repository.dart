@@ -19,11 +19,10 @@ class AlbumRepositoryImp implements IAlbumRepository {
       final artworkAlbum = await _artworkAlbum(tracks: tracksInAlbum);
       myAlbums.add(Album(
         albumPosition: Duration.zero,
-        albumTotalDuration: Duration.zero,
+        albumDuration: Duration.zero,
         id: album.id,
         name: album.album,
         artist: album.artist == '<unknown>' ? 'unknown' : album.artist ?? '',
-        songQuantity: album.numOfSongs,
         tracks: tracksInAlbum,
         artworkAlbum: artworkAlbum,
       ));

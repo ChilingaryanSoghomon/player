@@ -26,9 +26,9 @@ class TrackListScreen extends StatelessWidget {
                   const Center(child: CircularProgressIndicator()),
               empty: (state) => const Center(child: Text('Empty')),
               loaded: (state) => ListView.separated(
-                itemCount: state.tracks.length,
+                itemCount: state.album.tracks.length,
                 itemBuilder: (context, index) {
-                  final track = state.tracks[index];
+                  final track = state.album.tracks[index];
                   final artwork = state.artworks[index];
                   return Padding(
                     padding:
@@ -41,10 +41,12 @@ class TrackListScreen extends StatelessWidget {
                             onTap: () {
                               context.read<PlayerBloc>().add(
                                   PlayerEvent.addMusic(
-                                      track: track, tracks: state.tracks));
+                                      track: track, album: state.album));
                               // context.go(AppRouts.playerScreen);
                               // Navigator.of(context).pushNamed(AppRouts.playerScreen);
-                              context.read<SplashBloc>().add(const SplashEvent.playing());
+                              context
+                                  .read<SplashBloc>()
+                                  .add(const SplashEvent.playing());
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,

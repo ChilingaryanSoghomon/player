@@ -18,7 +18,8 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
       );
     });
   }
-  _initial(_SplashInitialEvent event, Emitter<SplashState> emit) async {
+  Future<void> _initial(
+      _SplashInitialEvent event, Emitter<SplashState> emit) async {
     if (state.status == AppStatus.initial || state.status == AppStatus.empty) {
       emit(state.copyWith(status: AppStatus.empty));
     } else {
@@ -26,7 +27,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
     }
   }
 
-  _playing(_SplashPlayingEvent event, Emitter<SplashState> emit) async {
+  Future<void> _playing(
+      _SplashPlayingEvent event, Emitter<SplashState> emit) async {
+    emit(state.copyWith(status: AppStatus.empty));
+
     emit(state.copyWith(status: AppStatus.haveAnAlbum));
   }
 

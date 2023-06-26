@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
@@ -25,27 +26,36 @@ class AlbumScreen extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final album = state.albums[index];
                   final artWork = album.artworkAlbum;
-                  return Card(
-                    child: ListTile(
-                      onTap: () {
-                        context.read<TrackBloc>().add(TrackEvent.clickAlbum(
-                            albumId: album.id, treks: album.tracks));
-                        // context.push(AppRouts.trackListScreen);
-                        Navigator.of(context)
-                            .pushNamed(AppRouts.trackListScreen);
-                      },
-                      leading: artWork.isNotEmpty
-                          ? Image.memory(Uint8List.fromList(artWork))
-                          : const FlutterLogo(size: 56.0),
-                      title: Text((album.name),
-                          style: const TextStyle(fontSize: 20)),
-                      subtitle: Text(album.artist),
-                      trailing: TextButton(
-                        onPressed: () {},
-                        style: AppButtonStyle.moreVert,
-                        child: const Icon(Icons.more_vert),
+                  return Column(
+                    children: [
+                      Card(
+                        child: ListTile(
+                          onTap: () {
+                            context
+                                .read<TrackBloc>()
+                                .add(TrackEvent.clickAlbum(album: album));
+                            // context.push(AppRouts.trackListScreen);
+                            Navigator.of(context)
+                                .pushNamed(AppRouts.trackListScreen);
+                          },
+                          leading: artWork.isNotEmpty
+                              ? Image.memory(Uint8List.fromList(artWork))
+                              : const FlutterLogo(size: 56.0),
+                          title: Text((album.name),
+                              style: const TextStyle(fontSize: 20)),
+                          subtitle: Text(album.artist),
+                          trailing: TextButton(
+                            onPressed: () {},
+                            style: AppButtonStyle.moreVert,
+                            child: const Icon(Icons.more_vert),
+                          ),
+                        ),
                       ),
-                    ),
+                      ProgressBar(
+                        progress: album.albumPosition,
+                        total: album.albumDuration,
+                      ),
+                    ],
                   );
                 },
               ),

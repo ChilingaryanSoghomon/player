@@ -22,12 +22,11 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 mixin _$Album {
   List<Track> get tracks => throw _privateConstructorUsedError;
   List<int> get artworkAlbum => throw _privateConstructorUsedError;
-  Duration get albumTotalDuration => throw _privateConstructorUsedError;
+  Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get artist => throw _privateConstructorUsedError;
-  int get songQuantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,12 +41,11 @@ abstract class $AlbumCopyWith<$Res> {
   $Res call(
       {List<Track> tracks,
       List<int> artworkAlbum,
-      Duration albumTotalDuration,
+      Duration albumDuration,
       Duration albumPosition,
       int id,
       String name,
-      String artist,
-      int songQuantity});
+      String artist});
 }
 
 /// @nodoc
@@ -65,12 +63,11 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   $Res call({
     Object? tracks = null,
     Object? artworkAlbum = null,
-    Object? albumTotalDuration = null,
+    Object? albumDuration = null,
     Object? albumPosition = null,
     Object? id = null,
     Object? name = null,
     Object? artist = null,
-    Object? songQuantity = null,
   }) {
     return _then(_value.copyWith(
       tracks: null == tracks
@@ -81,9 +78,9 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.artworkAlbum
           : artworkAlbum // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      albumTotalDuration: null == albumTotalDuration
-          ? _value.albumTotalDuration
-          : albumTotalDuration // ignore: cast_nullable_to_non_nullable
+      albumDuration: null == albumDuration
+          ? _value.albumDuration
+          : albumDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
       albumPosition: null == albumPosition
           ? _value.albumPosition
@@ -101,10 +98,6 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      songQuantity: null == songQuantity
-          ? _value.songQuantity
-          : songQuantity // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -118,12 +111,11 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
   $Res call(
       {List<Track> tracks,
       List<int> artworkAlbum,
-      Duration albumTotalDuration,
+      Duration albumDuration,
       Duration albumPosition,
       int id,
       String name,
-      String artist,
-      int songQuantity});
+      String artist});
 }
 
 /// @nodoc
@@ -137,12 +129,11 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
   $Res call({
     Object? tracks = null,
     Object? artworkAlbum = null,
-    Object? albumTotalDuration = null,
+    Object? albumDuration = null,
     Object? albumPosition = null,
     Object? id = null,
     Object? name = null,
     Object? artist = null,
-    Object? songQuantity = null,
   }) {
     return _then(_$_Album(
       tracks: null == tracks
@@ -153,9 +144,9 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value._artworkAlbum
           : artworkAlbum // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      albumTotalDuration: null == albumTotalDuration
-          ? _value.albumTotalDuration
-          : albumTotalDuration // ignore: cast_nullable_to_non_nullable
+      albumDuration: null == albumDuration
+          ? _value.albumDuration
+          : albumDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
       albumPosition: null == albumPosition
           ? _value.albumPosition
@@ -173,10 +164,6 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      songQuantity: null == songQuantity
-          ? _value.songQuantity
-          : songQuantity // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -187,12 +174,11 @@ class _$_Album implements _Album {
   const _$_Album(
       {required final List<Track> tracks,
       required final List<int> artworkAlbum,
-      required this.albumTotalDuration,
+      required this.albumDuration,
       required this.albumPosition,
       required this.id,
       required this.name,
-      required this.artist,
-      required this.songQuantity})
+      required this.artist})
       : _tracks = tracks,
         _artworkAlbum = artworkAlbum;
 
@@ -216,7 +202,7 @@ class _$_Album implements _Album {
   }
 
   @override
-  final Duration albumTotalDuration;
+  final Duration albumDuration;
   @override
   final Duration albumPosition;
   @override
@@ -225,12 +211,10 @@ class _$_Album implements _Album {
   final String name;
   @override
   final String artist;
-  @override
-  final int songQuantity;
 
   @override
   String toString() {
-    return 'Album(tracks: $tracks, artworkAlbum: $artworkAlbum, albumTotalDuration: $albumTotalDuration, albumPosition: $albumPosition, id: $id, name: $name, artist: $artist, songQuantity: $songQuantity)';
+    return 'Album(tracks: $tracks, artworkAlbum: $artworkAlbum, albumDuration: $albumDuration, albumPosition: $albumPosition, id: $id, name: $name, artist: $artist)';
   }
 
   @override
@@ -241,15 +225,13 @@ class _$_Album implements _Album {
             const DeepCollectionEquality().equals(other._tracks, _tracks) &&
             const DeepCollectionEquality()
                 .equals(other._artworkAlbum, _artworkAlbum) &&
-            (identical(other.albumTotalDuration, albumTotalDuration) ||
-                other.albumTotalDuration == albumTotalDuration) &&
+            (identical(other.albumDuration, albumDuration) ||
+                other.albumDuration == albumDuration) &&
             (identical(other.albumPosition, albumPosition) ||
                 other.albumPosition == albumPosition) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.artist, artist) || other.artist == artist) &&
-            (identical(other.songQuantity, songQuantity) ||
-                other.songQuantity == songQuantity));
+            (identical(other.artist, artist) || other.artist == artist));
   }
 
   @JsonKey(ignore: true)
@@ -258,12 +240,11 @@ class _$_Album implements _Album {
       runtimeType,
       const DeepCollectionEquality().hash(_tracks),
       const DeepCollectionEquality().hash(_artworkAlbum),
-      albumTotalDuration,
+      albumDuration,
       albumPosition,
       id,
       name,
-      artist,
-      songQuantity);
+      artist);
 
   @JsonKey(ignore: true)
   @override
@@ -283,12 +264,11 @@ abstract class _Album implements Album {
   const factory _Album(
       {required final List<Track> tracks,
       required final List<int> artworkAlbum,
-      required final Duration albumTotalDuration,
+      required final Duration albumDuration,
       required final Duration albumPosition,
       required final int id,
       required final String name,
-      required final String artist,
-      required final int songQuantity}) = _$_Album;
+      required final String artist}) = _$_Album;
 
   factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
 
@@ -297,7 +277,7 @@ abstract class _Album implements Album {
   @override
   List<int> get artworkAlbum;
   @override
-  Duration get albumTotalDuration;
+  Duration get albumDuration;
   @override
   Duration get albumPosition;
   @override
@@ -306,8 +286,6 @@ abstract class _Album implements Album {
   String get name;
   @override
   String get artist;
-  @override
-  int get songQuantity;
   @override
   @JsonKey(ignore: true)
   _$$_AlbumCopyWith<_$_Album> get copyWith =>

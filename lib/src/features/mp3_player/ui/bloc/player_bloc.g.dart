@@ -15,12 +15,6 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
       trackDuration: json['trackDuration'] == null
           ? Duration.zero
           : Duration(microseconds: json['trackDuration'] as int),
-      albumDuration: json['albumDuration'] == null
-          ? Duration.zero
-          : Duration(microseconds: json['albumDuration'] as int),
-      albumPosition: json['albumPosition'] == null
-          ? Duration.zero
-          : Duration(microseconds: json['albumPosition'] as int),
       mapAlbumDuration:
           (json['mapAlbumDuration'] as Map<String, dynamic>?)?.map(
                 (k, e) =>
@@ -28,11 +22,18 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
               ) ??
               const {},
       trackIndex: json['trackIndex'] as int? ?? 0,
+      albumId: json['albumId'] as int? ?? 0,
       trackSpeed: (json['trackSpeed'] as num?)?.toDouble() ?? 1.0,
-      tracks: (json['tracks'] as List<dynamic>?)
-              ?.map((e) => Track.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      album: json['album'] == null
+          ? const Album(
+              tracks: [],
+              artworkAlbum: [],
+              albumDuration: Duration.zero,
+              albumPosition: Duration.zero,
+              id: 0,
+              name: '',
+              artist: '')
+          : Album.fromJson(json['album'] as Map<String, dynamic>),
       artwork:
           (json['artwork'] as List<dynamic>?)?.map((e) => e as int).toList() ??
               const [],
@@ -42,13 +43,12 @@ Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
       'status': _$PlayerStatusEnumMap[instance.status]!,
       'trackPosition': instance.trackPosition.inMicroseconds,
       'trackDuration': instance.trackDuration.inMicroseconds,
-      'albumDuration': instance.albumDuration.inMicroseconds,
-      'albumPosition': instance.albumPosition.inMicroseconds,
       'mapAlbumDuration': instance.mapAlbumDuration
           .map((k, e) => MapEntry(k.toString(), e.inMicroseconds)),
       'trackIndex': instance.trackIndex,
+      'albumId': instance.albumId,
       'trackSpeed': instance.trackSpeed,
-      'tracks': instance.tracks,
+      'album': instance.album,
       'artwork': instance.artwork,
     };
 
