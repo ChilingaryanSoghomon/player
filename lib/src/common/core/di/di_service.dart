@@ -3,6 +3,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:player/src/common/core/app/bloc_observer.dart';
+import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/album/data/album_repository.dart';
 import 'package:player/src/features/mp3_player/data/audio_player_repository.dart';
 import 'package:player/src/features/track_list/data/track_repository.dart';
@@ -26,10 +27,15 @@ Future<void> setup() async {
   }
   Bloc.observer = MyBlocObserver();
 
+  getIt.registerLazySingleton<SearchArtwork>(
+      () => SearchArtwork(audioQuery: audioQuery));
+
   getIt.registerLazySingleton<AudioPlayerRepositoryImpl>(
-      () => AudioPlayerRepositoryImpl(audioQuery: audioQuery));
+      () => AudioPlayerRepositoryImpl(searchArtwork: getIt<SearchArtwork>()));
+
   getIt.registerLazySingleton<TrackRepositoryImp>(
       () => TrackRepositoryImp(audioQuery: audioQuery));
-  getIt.registerLazySingleton<AlbumRepositoryImp>(
-      () => AlbumRepositoryImp(audioQuery: audioQuery));
+
+  getIt.registerLazySingleton<AlbumRepositoryImp>(() => AlbumRepositoryImp(
+      audioQuery: audioQuery, searchArtwork: getIt<SearchArtwork>()));
 }

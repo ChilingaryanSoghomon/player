@@ -9,12 +9,16 @@ part 'album.g.dart';
 class Album with _$Album {
   const factory Album({
     required List<Track> tracks,
-    required List<int> artworkAlbum,
+    required List<int> albumArtwork,
+    required List<int> trackArtwork,
     required Duration albumDuration,
     required Duration albumPosition,
-    required int id,
+    required int albumId,
     required String name,
     required String artist,
+    required Duration trackPosition,
+    required Duration trackDuration,
+    required int trackIndex,
   }) = _Album;
 
   factory Album.fromJson(Map<String, Object?> json) => _$AlbumFromJson(json);

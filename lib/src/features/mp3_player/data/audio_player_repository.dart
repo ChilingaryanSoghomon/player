@@ -1,20 +1,19 @@
-import 'dart:typed_data';
-
 import 'package:just_audio/just_audio.dart';
-import 'package:on_audio_query/on_audio_query.dart';
+import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
-  final OnAudioQuery _audioQuery;
+  final SearchArtwork _searchArtwork;
   final AudioPlayer _player = AudioPlayer();
   final Map<int, Duration> _mapAlbumDuration = {};
   List<Track> _tracks = [];
   ConcatenatingAudioSource _concatenatingAudioSource =
       ConcatenatingAudioSource(children: []);
-  AudioPlayerRepositoryImpl({required OnAudioQuery audioQuery})
-      : _audioQuery = audioQuery;
+  AudioPlayerRepositoryImpl({
+    required SearchArtwork searchArtwork,
+  }) : _searchArtwork = searchArtwork;
 
   @override
   addMusicDirectory({
@@ -76,8 +75,9 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<void> rewind({required Duration newPosition, required int trackIndex}) async {
-     _player.seek(newPosition, index: trackIndex);
+  Future<void> rewind(
+      {required Duration newPosition, required int trackIndex}) async {
+    _player.seek(newPosition, index: trackIndex);
   }
 
   @override
@@ -109,19 +109,8 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<List<int>> getArtwork({required int index}) async {
-    for (var track in _tracks) {
-      if (track.index == index) {
-        Future<Uint8List?> uint8List =
-            _audioQuery.queryArtwork(track.trackId, ArtworkType.AUDIO);
-        Uint8List? uint8ListArtwork = await uint8List;
-        if (uint8ListArtwork != null) {
-          return uint8ListArtwork.toList();
-        }
-      }
-    }
-    return [];
-  }
+  Future<List<int>> getTrackArtwork({required int trackId}) =>
+      _searchArtwork.getTrackArtwork(trackId: trackId);
 
   _createMapAlbumDuration(List<Track> tracks) {
     Duration duration = Duration.zero;

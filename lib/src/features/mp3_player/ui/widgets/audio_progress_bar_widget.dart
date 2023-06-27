@@ -38,11 +38,11 @@ class TrackProgressBarrWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
-            previous.trackPosition != current.trackPosition ||
-            previous.trackDuration != current.trackDuration,
+            previous.album.trackPosition != current.album.trackPosition ||
+            previous.album.trackDuration != current.album.trackDuration,
         builder: (context, state) => CustomProgressBarWidget(
-          progress: state.trackPosition,
-          total: state.trackDuration,
+          progress: state.album.trackPosition,
+          total: state.album.trackDuration,
           function: (Duration duration) {
             context
                 .read<PlayerBloc>()

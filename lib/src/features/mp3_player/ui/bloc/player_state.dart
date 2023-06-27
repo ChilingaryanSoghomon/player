@@ -11,20 +11,19 @@ enum PlayerStatus {
 class PlayerState with _$PlayerState {
   const factory PlayerState({
     @Default(PlayerStatus.initial) PlayerStatus status,
-    @Default(Duration.zero) Duration trackPosition,
-    @Default(Duration.zero) Duration trackDuration,
-    @Default({}) Map<int, Duration> mapAlbumDuration,
-    @Default(0) int trackIndex,
-    @Default(0) int albumId,
     @Default(1.0) double trackSpeed,
     @Default(Album(
       tracks: [],
-      artworkAlbum: [],
       albumDuration: Duration.zero,
       albumPosition: Duration.zero,
-      id: 0,
+      albumId: 0,
       name: '',
       artist: '',
+      trackDuration: Duration.zero,
+      trackPosition: Duration.zero,
+      trackIndex: 0,
+      albumArtwork: [],
+      trackArtwork: [],
     ))
     Album album,
     @Default([]) List<int> artwork,

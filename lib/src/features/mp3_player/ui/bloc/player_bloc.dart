@@ -48,8 +48,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       emit(state.copyWith(status: PlayerStatus.paused));
       _playerRepository.addMusicDirectory(
         tracks: state.album.tracks,
-        trackPosition: state.trackPosition,
-        trackIndex: state.trackIndex,
+        trackPosition: state.album.trackPosition,
+        trackIndex: state.album.trackIndex,
       );
     }
   }
@@ -61,14 +61,12 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       trackIndex: event.track.index,
       trackPosition: event.track.position,
     );
-    final mapAlbumDuration = _playerRepository.getMapAlbumDuration;
     final albumDuration = _playerRepository.albumDuration;
     final artwork =
-        await _playerRepository.getArtwork(index: event.track.index);
+        await _playerRepository.getTrackArtwork(trackId: event.track.trackId);
     emit(state.copyWith(
       artwork: artwork,
       album: event.album.copyWith(albumDuration: albumDuration),
-      mapAlbumDuration: mapAlbumDuration,
     ));
     add(const PlayerEvent.play());
   }
@@ -100,8 +98,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   Future<void> _rewind(
       _PlayerRewindEvent event, Emitter<PlayerState> emit) async {
     Duration newPosition = Duration(seconds: event.seconds);
-    final trackIndex = state.trackIndex;
-    Duration rewindPosition = state.trackPosition - newPosition;
+    final trackIndex = state.album.trackIndex;
+    Duration rewindPosition = state.album.trackPosition - newPosition;
     // if (rewindPosition < Duration.zero) {
     //   Duration prevTrackPosition =
     //       state.tracks[state.trackIndex - 1].duration - rewindPosition;
@@ -115,7 +113,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   }
 
   Future<void> _push(_PlayerPushEvent event, Emitter<PlayerState> emit) async {
-    final trackIndex = state.trackIndex;
+    final trackIndex = state.album.trackIndex;
     _playerRepository.push(seconds: event.seconds, trackIndex: trackIndex);
   }
 
@@ -133,27 +131,31 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       _PlayerChangePositionInSecondsEvent event,
       Emitter<PlayerState> emit) async {
     if (event.position != null) {
-      emit(state.copyWith(trackPosition: event.position!));
+      emit(state.copyWith(
+          album: state.album.copyWith(trackPosition: event.position!)));
     }
     add(const PlayerEvent.changeState());
   }
 
   Future<void> _changeState(
       _PlayerChangeStateEvent event, Emitter<PlayerState> emit) async {
-    Duration trackDuration = state.album.tracks[state.trackIndex].duration;
     int currentIndex = _playerRepository.currentIndex;
-    if (currentIndex != state.trackIndex) {
-      final artwork = await _playerRepository.getArtwork(index: currentIndex);
+    Duration trackDuration = state.album.tracks[currentIndex].duration;
+    if (currentIndex != state.album.trackIndex) {
+      final artwork = await _playerRepository.getTrackArtwork(
+          trackId: state.album.tracks[currentIndex].trackId);
       emit(state.copyWith(artwork: artwork));
     }
     Duration trackPosition = _playerRepository.trackPosition;
-    Duration position = state.mapAlbumDuration[currentIndex] ?? Duration.zero;
+    Duration position = _playerRepository.getMapAlbumDuration[currentIndex]!;
     final albumPosition = position + trackPosition;
     emit(state.copyWith(
-      trackDuration: trackDuration,
-      trackIndex: currentIndex,
-      trackPosition: trackPosition,
-      album: state.album.copyWith(albumPosition: albumPosition),
+      album: state.album.copyWith(
+        albumPosition: albumPosition,
+        trackIndex: currentIndex,
+        trackPosition: trackPosition,
+        trackDuration: trackDuration,
+      ),
     ));
   }
 

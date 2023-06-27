@@ -29,7 +29,9 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       _SearchAlbumEvent event, Emitter<AlbumState> emit) async {
     List<Album> albums = await _albumRepository.searchAlbum();
     if (albums.isNotEmpty) {
-      emit(AlbumState.haveAlbum(albums: albums));
+      emit(AlbumState.haveAlbum(
+        albums: albums,
+      ));
     } else {
       emit(const AlbumState.empty());
     }
@@ -43,6 +45,30 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
     );
   }
 
+  Future<void> _openAlbumFolder(
+      _AlbumOpenAlbumFolderEvent event, Emitter<AlbumState> emit) async {
+    final track = event.album.tracks[event.trackIndex];
+    final trackArtwork =
+        await _albumRepository.getTrackArtwork(trackId: track.trackId);
+    state.maybeMap(
+      orElse: () {},
+      haveAlbum: (state) async {
+        List<Album> albums = [];
+        for (var i = 0; i < state.albums.length; i++) {
+          final album = state.albums[i];
+          if (event.album.albumId == album.albumId) {
+            final newAlbum = album.copyWith(trackArtwork: trackArtwork);
+            albums.add(newAlbum);
+          } else {
+            albums.add(album);
+          }
+        }
+
+        emit(state.copyWith(albums: albums));
+      },
+    );
+  }
+
   @override
   AlbumState fromJson(Map<String, dynamic> json) {
     return AlbumState.fromJson(json);
@@ -51,24 +77,5 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   @override
   Map<String, dynamic> toJson(AlbumState state) {
     return state.toJson();
-  }
-
-  Future<void> _openAlbumFolder(
-      _AlbumOpenAlbumFolderEvent event, Emitter<AlbumState> emit) async {
-    state.maybeMap(
-      orElse: () {},
-      haveAlbum: (state) {
-        List<Album> albums = [];
-        for (var i = 0; i < state.albums.length; i++) {
-          final album = state.albums[i];
-          if (event.album.id == album.id) {
-            albums.add(event.album);
-          } else {
-            albums.add(album);
-          }
-        }
-        emit(state.copyWith(albums: albums));
-      },
-    );
   }
 }

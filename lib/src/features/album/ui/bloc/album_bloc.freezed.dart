@@ -20,21 +20,21 @@ mixin _$AlbumEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() search,
     required TResult Function() initial,
-    required TResult Function(Album album) openAlbumFolder,
+    required TResult Function(Album album, int trackIndex) openAlbumFolder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
     TResult? Function()? initial,
-    TResult? Function(Album album)? openAlbumFolder,
+    TResult? Function(Album album, int trackIndex)? openAlbumFolder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
     TResult Function()? initial,
-    TResult Function(Album album)? openAlbumFolder,
+    TResult Function(Album album, int trackIndex)? openAlbumFolder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() search,
     required TResult Function() initial,
-    required TResult Function(Album album) openAlbumFolder,
+    required TResult Function(Album album, int trackIndex) openAlbumFolder,
   }) {
     return search();
   }
@@ -130,7 +130,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
     TResult? Function()? initial,
-    TResult? Function(Album album)? openAlbumFolder,
+    TResult? Function(Album album, int trackIndex)? openAlbumFolder,
   }) {
     return search?.call();
   }
@@ -140,7 +140,7 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
     TResult Function()? initial,
-    TResult Function(Album album)? openAlbumFolder,
+    TResult Function(Album album, int trackIndex)? openAlbumFolder,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -228,7 +228,7 @@ class _$_AlbumInitialEvent implements _AlbumInitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() search,
     required TResult Function() initial,
-    required TResult Function(Album album) openAlbumFolder,
+    required TResult Function(Album album, int trackIndex) openAlbumFolder,
   }) {
     return initial();
   }
@@ -238,7 +238,7 @@ class _$_AlbumInitialEvent implements _AlbumInitialEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
     TResult? Function()? initial,
-    TResult? Function(Album album)? openAlbumFolder,
+    TResult? Function(Album album, int trackIndex)? openAlbumFolder,
   }) {
     return initial?.call();
   }
@@ -248,7 +248,7 @@ class _$_AlbumInitialEvent implements _AlbumInitialEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
     TResult Function()? initial,
-    TResult Function(Album album)? openAlbumFolder,
+    TResult Function(Album album, int trackIndex)? openAlbumFolder,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -303,7 +303,7 @@ abstract class _$$_AlbumOpenAlbumFolderEventCopyWith<$Res> {
           $Res Function(_$_AlbumOpenAlbumFolderEvent) then) =
       __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Album album});
+  $Res call({Album album, int trackIndex});
 
   $AlbumCopyWith<$Res> get album;
 }
@@ -321,12 +321,17 @@ class __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? album = null,
+    Object? trackIndex = null,
   }) {
     return _then(_$_AlbumOpenAlbumFolderEvent(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
               as Album,
+      trackIndex: null == trackIndex
+          ? _value.trackIndex
+          : trackIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -342,14 +347,17 @@ class __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
-  const _$_AlbumOpenAlbumFolderEvent({required this.album});
+  const _$_AlbumOpenAlbumFolderEvent(
+      {required this.album, required this.trackIndex});
 
   @override
   final Album album;
+  @override
+  final int trackIndex;
 
   @override
   String toString() {
-    return 'AlbumEvent.openAlbumFolder(album: $album)';
+    return 'AlbumEvent.openAlbumFolder(album: $album, trackIndex: $trackIndex)';
   }
 
   @override
@@ -357,11 +365,13 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AlbumOpenAlbumFolderEvent &&
-            (identical(other.album, album) || other.album == album));
+            (identical(other.album, album) || other.album == album) &&
+            (identical(other.trackIndex, trackIndex) ||
+                other.trackIndex == trackIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, album);
+  int get hashCode => Object.hash(runtimeType, album, trackIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -375,9 +385,9 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() search,
     required TResult Function() initial,
-    required TResult Function(Album album) openAlbumFolder,
+    required TResult Function(Album album, int trackIndex) openAlbumFolder,
   }) {
-    return openAlbumFolder(album);
+    return openAlbumFolder(album, trackIndex);
   }
 
   @override
@@ -385,9 +395,9 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
     TResult? Function()? initial,
-    TResult? Function(Album album)? openAlbumFolder,
+    TResult? Function(Album album, int trackIndex)? openAlbumFolder,
   }) {
-    return openAlbumFolder?.call(album);
+    return openAlbumFolder?.call(album, trackIndex);
   }
 
   @override
@@ -395,11 +405,11 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
     TResult Function()? initial,
-    TResult Function(Album album)? openAlbumFolder,
+    TResult Function(Album album, int trackIndex)? openAlbumFolder,
     required TResult orElse(),
   }) {
     if (openAlbumFolder != null) {
-      return openAlbumFolder(album);
+      return openAlbumFolder(album, trackIndex);
     }
     return orElse();
   }
@@ -440,10 +450,12 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
 }
 
 abstract class _AlbumOpenAlbumFolderEvent implements AlbumEvent {
-  const factory _AlbumOpenAlbumFolderEvent({required final Album album}) =
-      _$_AlbumOpenAlbumFolderEvent;
+  const factory _AlbumOpenAlbumFolderEvent(
+      {required final Album album,
+      required final int trackIndex}) = _$_AlbumOpenAlbumFolderEvent;
 
   Album get album;
+  int get trackIndex;
   @JsonKey(ignore: true)
   _$$_AlbumOpenAlbumFolderEventCopyWith<_$_AlbumOpenAlbumFolderEvent>
       get copyWith => throw _privateConstructorUsedError;
