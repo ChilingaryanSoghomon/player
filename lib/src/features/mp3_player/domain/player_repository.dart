@@ -1,13 +1,11 @@
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 
 abstract class IAudioPlayerRepository {
-  Stream<Duration> get positionStream;
+  Stream<Duration> get getPositionStream;
 
   int get currentIndex;
   Duration get trackDuration;
   Duration get trackPosition;
-  Map<int, Duration> get getMapAlbumDuration;
-  Duration get albumDuration;
 
   addMusicDirectory({
     required List<Track> tracks,
@@ -26,6 +24,8 @@ abstract class IAudioPlayerRepository {
   Future<void> setSpeed({required double speed});
 
   Future<void> changeTrackProgressBar({required Duration duration});
-  Future<void> changeAlbumProgressBar({required Duration duration});
+  Future<void> changeAlbumProgressBar(
+      {required Duration duration,
+      required Map<int, Duration> mapAlbumDuration});
   Future<List<int>> getTrackArtwork({required int trackId});
 }

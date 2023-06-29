@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 
 class ArrowWidget extends StatelessWidget {
-  const ArrowWidget({super.key});
+  final double width;
+  final double height;
+  const ArrowWidget({
+    super.key,
+    required this.width,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(10, 50),
+      size:  Size(width, height),
       painter: FigurePainter(),
     );
   }
 }
-
-
 
 class FigurePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = Colors.black
-      ..style = PaintingStyle.fill; // Use PaintingStyle.fill to fill the arrowhead
+      ..style =
+          PaintingStyle.fill; // Use PaintingStyle.fill to fill the arrowhead
 
     final path = Path();
     final endPoint = Offset(size.width, size.height);
@@ -38,4 +43,3 @@ class FigurePainter extends CustomPainter {
     return false;
   }
 }
-

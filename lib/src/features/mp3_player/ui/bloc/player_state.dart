@@ -24,9 +24,9 @@ class PlayerState with _$PlayerState {
       trackIndex: 0,
       albumArtwork: [],
       trackArtwork: [],
+      mapAlbumDuration: {},
     ))
     Album album,
-    @Default([]) List<int> artwork,
   }) = Initial;
   factory PlayerState.fromJson(Map<String, Object?> json) =>
       _$PlayerStateFromJson(json);

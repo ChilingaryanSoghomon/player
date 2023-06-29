@@ -1,20 +1,6 @@
 part of 'album_bloc.dart';
 
-enum AlbumStatus {
-  initial,
-  empty,
-  loaded,
-}
 
-// @freezed
-// class AlbumState with _$AlbumState {
-//   const factory AlbumState({
-//     @Default(AlbumStatus.initial) AlbumStatus status,
-//     @Default([]) List<Album> albums,
-//   }) = _LoadedAlbumState;
-//   factory AlbumState.fromJson(Map<String, Object?> json) =>
-//       _$AlbumStateFromJson(json);
-// }
 
 @freezed
 class AlbumState with _$AlbumState {

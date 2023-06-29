@@ -7,8 +7,6 @@ import 'package:player/src/features/track_list/domain/entities/track.dart';
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   final SearchArtwork _searchArtwork;
   final AudioPlayer _player = AudioPlayer();
-  final Map<int, Duration> _mapAlbumDuration = {};
-  List<Track> _tracks = [];
   ConcatenatingAudioSource _concatenatingAudioSource =
       ConcatenatingAudioSource(children: []);
   AudioPlayerRepositoryImpl({
@@ -22,8 +20,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     required int trackIndex,
   }) async {
     final List<UriAudioSource> audioSource = [];
-    _tracks = tracks;
-    _createMapAlbumDuration(tracks);
     for (var track in tracks) {
       final UriAudioSource audio = AudioSource.file(track.path);
       audioSource.add(audio);
@@ -37,18 +33,14 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Map<int, Duration> get getMapAlbumDuration => _mapAlbumDuration;
-  @override
   Duration get trackPosition => _player.position;
   @override
   int get currentIndex => _player.currentIndex ?? 0;
   @override
   Duration get trackDuration => _player.duration ?? Duration.zero;
   @override
-  Stream<Duration> get positionStream => _player.positionStream;
+  Stream<Duration> get getPositionStream => _player.positionStream;
 
-  @override
-  Duration get albumDuration => _albumDuration();
   @override
   Future<void> play() async {
     await _player.play();
@@ -96,11 +88,13 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<void> changeAlbumProgressBar({required Duration duration}) async {
-    for (var index = 0; index < _mapAlbumDuration.length; index++) {
-      final Duration albumPositionByTrack = _mapAlbumDuration[index]!;
+  Future<void> changeAlbumProgressBar(
+      {required Duration duration,
+      required Map<int, Duration> mapAlbumDuration}) async {
+    for (var index = 0; index < mapAlbumDuration.length; index++) {
+      final Duration albumPositionByTrack = mapAlbumDuration[index]!;
       if (duration < albumPositionByTrack) {
-        Duration position = duration - _mapAlbumDuration[index - 1]!;
+        Duration position = duration - mapAlbumDuration[index - 1]!;
         await _player.setAudioSource(_concatenatingAudioSource,
             initialPosition: position, initialIndex: index - 1);
         break;
@@ -109,21 +103,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<List<int>> getTrackArtwork({required int trackId}) =>
-      _searchArtwork.getTrackArtwork(trackId: trackId);
-
-  _createMapAlbumDuration(List<Track> tracks) {
-    Duration duration = Duration.zero;
-    for (var i = 0; i < tracks.length; i++) {
-      _mapAlbumDuration[i] = duration;
-      duration += tracks[i].duration;
-    }
-    return _mapAlbumDuration;
-  }
-
-  Duration _albumDuration() {
-    final int length = _mapAlbumDuration.length;
-    final duration = _mapAlbumDuration[length - 1] ?? Duration.zero;
-    return duration + _tracks.last.duration;
-  }
+  Future<List<int>> getTrackArtwork({required int trackId}) async =>
+      await _searchArtwork.getTrackArtwork(trackId: trackId);
 }

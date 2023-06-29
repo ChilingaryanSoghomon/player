@@ -23,6 +23,7 @@ mixin _$Album {
   List<Track> get tracks => throw _privateConstructorUsedError;
   List<int> get albumArtwork => throw _privateConstructorUsedError;
   List<int> get trackArtwork => throw _privateConstructorUsedError;
+  Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
   int get albumId => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $AlbumCopyWith<$Res> {
       {List<Track> tracks,
       List<int> albumArtwork,
       List<int> trackArtwork,
+      Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
       int albumId,
@@ -72,6 +74,7 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
     Object? tracks = null,
     Object? albumArtwork = null,
     Object? trackArtwork = null,
+    Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
     Object? albumId = null,
@@ -94,6 +97,10 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.trackArtwork
           : trackArtwork // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      mapAlbumDuration: null == mapAlbumDuration
+          ? _value.mapAlbumDuration
+          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
       albumDuration: null == albumDuration
           ? _value.albumDuration
           : albumDuration // ignore: cast_nullable_to_non_nullable
@@ -140,6 +147,7 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
       {List<Track> tracks,
       List<int> albumArtwork,
       List<int> trackArtwork,
+      Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
       int albumId,
@@ -162,6 +170,7 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
     Object? tracks = null,
     Object? albumArtwork = null,
     Object? trackArtwork = null,
+    Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
     Object? albumId = null,
@@ -184,6 +193,10 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value._trackArtwork
           : trackArtwork // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      mapAlbumDuration: null == mapAlbumDuration
+          ? _value._mapAlbumDuration
+          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
       albumDuration: null == albumDuration
           ? _value.albumDuration
           : albumDuration // ignore: cast_nullable_to_non_nullable
@@ -227,6 +240,7 @@ class _$_Album implements _Album {
       {required final List<Track> tracks,
       required final List<int> albumArtwork,
       required final List<int> trackArtwork,
+      required final Map<int, Duration> mapAlbumDuration,
       required this.albumDuration,
       required this.albumPosition,
       required this.albumId,
@@ -237,7 +251,8 @@ class _$_Album implements _Album {
       required this.trackIndex})
       : _tracks = tracks,
         _albumArtwork = albumArtwork,
-        _trackArtwork = trackArtwork;
+        _trackArtwork = trackArtwork,
+        _mapAlbumDuration = mapAlbumDuration;
 
   factory _$_Album.fromJson(Map<String, dynamic> json) =>
       _$$_AlbumFromJson(json);
@@ -266,6 +281,14 @@ class _$_Album implements _Album {
     return EqualUnmodifiableListView(_trackArtwork);
   }
 
+  final Map<int, Duration> _mapAlbumDuration;
+  @override
+  Map<int, Duration> get mapAlbumDuration {
+    if (_mapAlbumDuration is EqualUnmodifiableMapView) return _mapAlbumDuration;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_mapAlbumDuration);
+  }
+
   @override
   final Duration albumDuration;
   @override
@@ -285,7 +308,7 @@ class _$_Album implements _Album {
 
   @override
   String toString() {
-    return 'Album(tracks: $tracks, albumArtwork: $albumArtwork, trackArtwork: $trackArtwork, albumDuration: $albumDuration, albumPosition: $albumPosition, albumId: $albumId, name: $name, artist: $artist, trackPosition: $trackPosition, trackDuration: $trackDuration, trackIndex: $trackIndex)';
+    return 'Album(tracks: $tracks, albumArtwork: $albumArtwork, trackArtwork: $trackArtwork, mapAlbumDuration: $mapAlbumDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, albumId: $albumId, name: $name, artist: $artist, trackPosition: $trackPosition, trackDuration: $trackDuration, trackIndex: $trackIndex)';
   }
 
   @override
@@ -298,6 +321,8 @@ class _$_Album implements _Album {
                 .equals(other._albumArtwork, _albumArtwork) &&
             const DeepCollectionEquality()
                 .equals(other._trackArtwork, _trackArtwork) &&
+            const DeepCollectionEquality()
+                .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
             (identical(other.albumDuration, albumDuration) ||
                 other.albumDuration == albumDuration) &&
             (identical(other.albumPosition, albumPosition) ||
@@ -320,6 +345,7 @@ class _$_Album implements _Album {
       const DeepCollectionEquality().hash(_tracks),
       const DeepCollectionEquality().hash(_albumArtwork),
       const DeepCollectionEquality().hash(_trackArtwork),
+      const DeepCollectionEquality().hash(_mapAlbumDuration),
       albumDuration,
       albumPosition,
       albumId,
@@ -348,6 +374,7 @@ abstract class _Album implements Album {
       {required final List<Track> tracks,
       required final List<int> albumArtwork,
       required final List<int> trackArtwork,
+      required final Map<int, Duration> mapAlbumDuration,
       required final Duration albumDuration,
       required final Duration albumPosition,
       required final int albumId,
@@ -365,6 +392,8 @@ abstract class _Album implements Album {
   List<int> get albumArtwork;
   @override
   List<int> get trackArtwork;
+  @override
+  Map<int, Duration> get mapAlbumDuration;
   @override
   Duration get albumDuration;
   @override

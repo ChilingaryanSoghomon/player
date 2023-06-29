@@ -22,26 +22,32 @@ class AlbumRepositoryImp implements IAlbumRepository {
           await _searchArtwork.getAlbumArtwork(tracks: tracksInAlbum);
       final trackArtwork = await _searchArtwork.getTrackArtwork(
           trackId: tracksInAlbum.first.trackId);
+      final mapAlbumDuration = _createMapAlbumDuration(tracksInAlbum);
+      final albumDuration = _albumDuration(
+          maoAlbumDuration: mapAlbumDuration,
+          trackLastDuration: tracksInAlbum.last.duration);
       myAlbums.add(Album(
         albumPosition: Duration.zero,
-        albumDuration: Duration.zero,
+        albumDuration: albumDuration,
         albumId: album.id,
         name: album.album,
         artist: album.artist == '<unknown>' ? 'unknown' : album.artist ?? '',
         tracks: tracksInAlbum,
-        trackDuration: Duration.zero,
+        trackDuration: tracksInAlbum.first.duration,
         trackPosition: Duration.zero,
         trackIndex: 0,
         albumArtwork: artworkAlbum,
         trackArtwork: trackArtwork,
+        mapAlbumDuration: mapAlbumDuration,
       ));
     }
 
     return myAlbums;
   }
+
   @override
-  Future<List<int>> getTrackArtwork({required int trackId})async =>
-     await _searchArtwork.getTrackArtwork(trackId: trackId);
+  Future<List<int>> getTrackArtwork({required int trackId}) async =>
+      await _searchArtwork.getTrackArtwork(trackId: trackId);
 
   Future<List<Track>> _queryFromAlbumId({required int albumId}) async {
     final List<SongModel> songs = await _audioQuery.querySongs();
@@ -67,5 +73,23 @@ class AlbumRepositoryImp implements IAlbumRepository {
       }
     }
     return tracks;
+  }
+
+  Map<int, Duration> _createMapAlbumDuration(List<Track> tracks) {
+    final Map<int, Duration> mapAlbumDuration = {};
+    Duration duration = Duration.zero;
+    for (var i = 0; i < tracks.length; i++) {
+      mapAlbumDuration[i] = duration;
+      duration += tracks[i].duration;
+    }
+    return mapAlbumDuration;
+  }
+
+  Duration _albumDuration(
+      {required Map<int, Duration> maoAlbumDuration,
+      required Duration trackLastDuration}) {
+    final int length = maoAlbumDuration.length;
+    final duration = maoAlbumDuration[length - 1] ?? Duration.zero;
+    return duration + trackLastDuration;
   }
 }

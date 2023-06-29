@@ -34,7 +34,7 @@ Future<void> setup() async {
       () => AudioPlayerRepositoryImpl(searchArtwork: getIt<SearchArtwork>()));
 
   getIt.registerLazySingleton<TrackRepositoryImp>(
-      () => TrackRepositoryImp(audioQuery: audioQuery));
+      () => TrackRepositoryImp(searchArtwork: getIt<SearchArtwork>()));
 
   getIt.registerLazySingleton<AlbumRepositoryImp>(() => AlbumRepositoryImp(
       audioQuery: audioQuery, searchArtwork: getIt<SearchArtwork>()));

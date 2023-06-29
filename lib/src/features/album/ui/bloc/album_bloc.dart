@@ -47,9 +47,6 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
 
   Future<void> _openAlbumFolder(
       _AlbumOpenAlbumFolderEvent event, Emitter<AlbumState> emit) async {
-    final track = event.album.tracks[event.trackIndex];
-    final trackArtwork =
-        await _albumRepository.getTrackArtwork(trackId: track.trackId);
     state.maybeMap(
       orElse: () {},
       haveAlbum: (state) async {
@@ -57,14 +54,21 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
         for (var i = 0; i < state.albums.length; i++) {
           final album = state.albums[i];
           if (event.album.albumId == album.albumId) {
-            final newAlbum = album.copyWith(trackArtwork: trackArtwork);
+            final newAlbum = album.copyWith(
+              trackArtwork: event.album.trackArtwork,
+              albumArtwork: event.album.albumArtwork,
+              albumDuration: event.album.albumDuration,
+              albumPosition: event.album.albumPosition,
+              trackDuration: event.album.trackDuration,
+              trackPosition: event.album.trackPosition,
+              trackIndex: event.album.trackIndex,
+            );
             albums.add(newAlbum);
           } else {
             albums.add(album);
           }
         }
-
-        emit(state.copyWith(albums: albums));
+        emit(AlbumState.haveAlbum(albums: albums));
       },
     );
   }

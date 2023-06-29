@@ -22,18 +22,15 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
               trackPosition: Duration.zero,
               trackIndex: 0,
               albumArtwork: [],
-              trackArtwork: [])
+              trackArtwork: [],
+              mapAlbumDuration: {})
           : Album.fromJson(json['album'] as Map<String, dynamic>),
-      artwork:
-          (json['artwork'] as List<dynamic>?)?.map((e) => e as int).toList() ??
-              const [],
     );
 
 Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
       'status': _$PlayerStatusEnumMap[instance.status]!,
       'trackSpeed': instance.trackSpeed,
       'album': instance.album,
-      'artwork': instance.artwork,
     };
 
 const _$PlayerStatusEnumMap = {

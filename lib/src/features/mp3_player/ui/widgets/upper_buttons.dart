@@ -24,8 +24,9 @@ class UpperButtonsWidget extends StatelessWidget {
           builder: (context, state) {
             return ElevatedButton(
               onPressed: () {
-                context.read<AlbumBloc>().add(AlbumEvent.openAlbumFolder(
-                    album: state.album, trackIndex: state.album.trackIndex));
+                context
+                    .read<AlbumBloc>()
+                    .add(AlbumEvent.openAlbumFolder(album: state.album));
                 Navigator.of(context).pushNamed(AppRouts.albumScreen);
               },
               child: const Text('Open Folder'),

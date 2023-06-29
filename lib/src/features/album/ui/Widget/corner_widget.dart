@@ -2,12 +2,18 @@
 import 'package:flutter/material.dart';
 
 class CornerWidget extends StatelessWidget {
-  const CornerWidget({super.key});
+  final double width;
+  final double height;
+  const CornerWidget({
+    super.key,
+    required this.width,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(30, 50),
+      size:  Size(width, height),
       painter: CornerFigurePainter(),
     );
   }
