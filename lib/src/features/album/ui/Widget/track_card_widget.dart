@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
+import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 import 'package:player/src/features/track_list/domain/entities/track.dart';
 
 import '../../../mp3_player/ui/bloc/player_bloc.dart';
@@ -30,6 +31,7 @@ class TrackCardWidget extends StatelessWidget {
               context
                   .read<PlayerBloc>()
                   .add(PlayerEvent.addMusic(album: album, track: track));
+                  context.read<SplashBloc>().add(const SplashEvent.playing());
               Navigator.of(context).pushNamed(AppRouts.playerScreen);
             },
             leading: album.trackArtwork.isNotEmpty
