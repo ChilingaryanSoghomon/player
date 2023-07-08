@@ -38,6 +38,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
 
   Future<void> _playing(
       _SplashPlayingEvent event, Emitter<SplashState> emit) async {
+    // emit(const SplashState.empty());
     emit(const SplashState.havePlayingTrack());
   }
 
@@ -58,45 +59,3 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
     return state.toJson();
   }
 }
-
-
-// class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
-//   final SplashRepository _splashRepository;
-//   SplashBloc({required SplashRepository splashRepository})
-//       : _splashRepository = splashRepository,
-//         super(const SplashState()) {
-//     on<SplashEvent>((event, emit) async {
-//       await event.map<Future<void>>(
-//         initial: (event) => _initial(event, emit),
-//         playing: (event) => _playing(event, emit),
-//         // empty: (event) async => await _empty(event, emit),
-//       );
-//     });
-//   }
-//   Future<void> _initial(
-//       _SplashInitialEvent event, Emitter<SplashState> emit) async {
-//     if (state.status == AppStatus.initial || state.status == AppStatus.empty) {
-//       emit(state.copyWith(status: AppStatus.empty));
-//     } else {
-//       emit(state.copyWith(status: AppStatus.haveAnAlbum));
-//     }
-//   }
-
-//   Future<void> _playing(
-//       _SplashPlayingEvent event, Emitter<SplashState> emit) async {
-//     emit(state.copyWith(status: AppStatus.empty));
-
-//     emit(state.copyWith(status: AppStatus.haveAnAlbum));
-//   }
-
-//   @override
-//   SplashState? fromJson(Map<String, dynamic> json) {
-//     add(const SplashEvent.initial());
-//     return SplashState.fromJson(json);
-//   }
-
-//   @override
-//   Map<String, dynamic>? toJson(SplashState state) {
-//     return state.toJson();
-//   }
-// }

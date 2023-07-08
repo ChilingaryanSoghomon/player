@@ -2,7 +2,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   final SearchArtwork _searchArtwork;

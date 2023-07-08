@@ -1,4 +1,4 @@
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 abstract class IAudioPlayerRepository {
   Stream<Duration> get getPositionStream;

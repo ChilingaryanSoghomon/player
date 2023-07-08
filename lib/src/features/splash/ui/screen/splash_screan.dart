@@ -18,10 +18,10 @@ class SplashScreen extends StatelessWidget {
               context
                   .read<AlbumBloc>()
                   .add(AlbumEvent.getAlbum(albums: state.albums));
-              Navigator.of(context).pushNamed(AppRouts.albumScreen);
+              Navigator.of(context).pushReplacementNamed(AppRouts.albumScreen);
             },
             havePlayingTrack: (_) =>
-                Navigator.of(context).pushNamed(AppRouts.playerScreen),
+                Navigator.of(context).pushReplacementNamed(AppRouts.playerScreen),
           );
         },
         child: const Center(

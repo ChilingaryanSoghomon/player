@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 part 'player_event.dart';
 part 'player_state.dart';
@@ -28,7 +28,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     on<PlayerEvent>((event, emit) async {
       await event.map<Future<void>>(
         initial: (event) => _initial(event, emit),
-        addMusic: (event) => _addMusic(event, emit),
+        addTrack: (event) => _addTrack(event, emit),
+        keepPlayingAlbum: (event) => _keepPlayingAlbum(event, emit),
         play: (event) => _playEvent(event, emit),
         pause: (event) => _pauseEvent(event, emit),
         prev: (event) => _prevTrack(event, emit),
@@ -58,12 +59,12 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     }
   }
 
-  Future<void> _addMusic(
-      _PlayerAddMusicEvent event, Emitter<PlayerState> emit) async {
+  Future<void> _addTrack(
+      _PlayerAddTrackEvent event, Emitter<PlayerState> emit) async {
     _playerRepository.addMusicDirectory(
       tracks: event.album.tracks,
-      trackIndex: event.album.trackIndex,
-      trackPosition: event.album.trackPosition,
+      trackIndex: event.track.index,
+      trackPosition: event.track.position,
     );
     final artwork =
         await _playerRepository.getTrackArtwork(trackId: event.track.trackId);
@@ -72,6 +73,17 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
         trackArtwork: artwork,
       ),
     ));
+    add(const PlayerEvent.play());
+  }
+
+  Future<void> _keepPlayingAlbum(
+      _PlayerKeepPlayingAlbumEvent event, Emitter<PlayerState> emit) async {
+    _playerRepository.addMusicDirectory(
+      tracks: event.album.tracks,
+      trackIndex: event.album.trackIndex,
+      trackPosition: event.album.trackPosition,
+    );
+    emit(state.copyWith(album: event.album));
     add(const PlayerEvent.play());
   }
 
@@ -142,8 +154,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       add(const PlayerEvent.changeState());
     }
   }
-
-
 
   Future<void> _changeState(
       _PlayerChangeStateEvent event, Emitter<PlayerState> emit) async {

@@ -25,7 +25,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
     listener: (context, state) {
       context
           .read<AlbumBloc>()
-          .add(AlbumEvent.openAlbumFolder(album: state.album));
+          .add(AlbumEvent.changeAlbum(album: state.album));
     },
     child:
      Scaffold(

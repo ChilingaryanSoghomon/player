@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:on_audio_query/on_audio_query.dart';
 
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class SearchArtwork {
   final OnAudioQuery _audioQuery;

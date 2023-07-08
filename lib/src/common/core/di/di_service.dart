@@ -8,7 +8,7 @@ import 'package:player/src/features/album/data/album_repository.dart';
 import 'package:player/src/features/album/data/search_album_repository.dart';
 import 'package:player/src/features/mp3_player/data/audio_player_repository.dart';
 import 'package:player/src/features/splash/data/splash_repository.dart';
-import 'package:player/src/features/track_list/data/track_repository.dart';
+import 'package:player/src/features/tracks/data/track_repository.dart';
 
 GetIt getIt = GetIt.instance;
 

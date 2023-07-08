@@ -7,7 +7,7 @@ import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 import '../../../mp3_player/ui/bloc/player_bloc.dart';
 
@@ -52,12 +52,14 @@ class TrackCardWidget extends StatelessWidget {
                   orElse: () => Container(),
                   haveAlbum: (value) => ListTile(
                     onTap: () {
-                      context.read<PlayerBloc>().add(PlayerEvent.addMusic(
-                          album: tempAlbum, track: tempTrack));
+                      context
+                          .read<PlayerBloc>()
+                          .add(PlayerEvent.keepPlayingAlbum(album: tempAlbum));
                       context
                           .read<SplashBloc>()
                           .add(const SplashEvent.playing());
-                      Navigator.of(context).pushNamed(AppRouts.playerScreen);
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppRouts.playerScreen);
                     },
                     leading: tempAlbum.trackArtwork.isNotEmpty
                         ? Image.memory(

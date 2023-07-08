@@ -21,13 +21,14 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       await event.map(
         search: (event) => _search(event, emit),
         initial: (event) => _initial(event, emit),
-        openAlbumFolder: (event) => _openAlbumFolder(event, emit),
         getAlbum: (event) => _getAlbum(event, emit),
+        changeAlbum: (event) => _changeAlbum(event, emit),
       );
     });
   }
 
-  Future<void>  _getAlbum(_AlbumGetAlbumEvent event, Emitter<AlbumState> emit)async {
+  Future<void> _getAlbum(
+      _AlbumGetAlbumEvent event, Emitter<AlbumState> emit) async {
     emit(AlbumState.haveAlbum(albums: event.albums));
   }
 
@@ -42,7 +43,6 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   }
 
   _initial(_AlbumInitialEvent event, Emitter<AlbumState> emit) {
-    add(const AlbumEvent.search());
     state.map(
       initial: (_) => add(const AlbumEvent.search()),
       empty: (_) => add(const AlbumEvent.search()),
@@ -54,11 +54,11 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
     );
   }
 
-  Future<void> _openAlbumFolder(
+  Future<void> _changeAlbum(
       _AlbumOpenAlbumFolderEvent event, Emitter<AlbumState> emit) async {
     state.maybeMap(
       orElse: () {},
-      haveAlbum: (state) async {
+      haveAlbum: (state){
         List<Album> newAlbumList = List.from(state.albums);
         final index = newAlbumList
             .indexWhere((album) => album.albumId == event.album.albumId);
@@ -67,13 +67,6 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       },
     );
   }
-
-  // AlbumState _albumInitialState() {
-  //   state.map(
-  //     loading: (_) => add(const AlbumEvent.search()),
-  //     empty: (_) => add(const AlbumEvent.search()),
-  //   );
-  // }
 
   @override
   AlbumState fromJson(Map<String, dynamic> json) {
@@ -84,5 +77,4 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   Map<String, dynamic> toJson(AlbumState state) {
     return state.toJson();
   }
-  
 }

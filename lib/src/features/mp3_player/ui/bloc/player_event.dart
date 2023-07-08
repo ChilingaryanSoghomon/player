@@ -5,11 +5,14 @@ class PlayerEvent with _$PlayerEvent {
 
   const factory PlayerEvent.initial()= _PlayerInitialEvent;
 
-  const factory PlayerEvent.addMusic({
+  const factory PlayerEvent.addTrack({
     required Album album,
-    // required List<Track> tracks,
     required Track track,
-  }) = _PlayerAddMusicEvent;
+  }) = _PlayerAddTrackEvent;
+
+  const factory PlayerEvent.keepPlayingAlbum({
+    required Album album,
+  }) = _PlayerKeepPlayingAlbumEvent;
 
   const factory PlayerEvent.changeTrackPositionInSeconds({
     required Duration? position,

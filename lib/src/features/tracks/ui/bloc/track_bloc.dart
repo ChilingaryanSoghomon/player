@@ -5,7 +5,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
-import 'package:player/src/features/track_list/domain/repository/track_repository.dart';
+import 'package:player/src/features/tracks/domain/repository/track_repository.dart';
 
 part 'track_bloc.freezed.dart';
 part 'track_bloc.g.dart';

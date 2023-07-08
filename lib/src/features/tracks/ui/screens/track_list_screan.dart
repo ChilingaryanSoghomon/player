@@ -2,11 +2,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_assets.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
-import 'package:player/src/features/track_list/ui/bloc/track_bloc.dart';
+import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 
 class TrackListScreen extends StatelessWidget {
   const TrackListScreen({super.key});
@@ -40,10 +41,10 @@ class TrackListScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               context.read<PlayerBloc>().add(
-                                  PlayerEvent.addMusic(
+                                  PlayerEvent.addTrack(
                                       track: track, album: state.album));
                               // context.go(AppRouts.playerScreen);
-                              // Navigator.of(context).pushNamed(AppRouts.playerScreen);
+                              Navigator.of(context).pushReplacementNamed(AppRouts.playerScreen);
                               context
                                   .read<SplashBloc>()
                                   .add(const SplashEvent.playing());

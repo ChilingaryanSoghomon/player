@@ -19,7 +19,8 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -35,7 +36,8 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -51,7 +53,8 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -68,7 +71,9 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -87,7 +92,8 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -106,7 +112,8 @@ mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -182,7 +189,8 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -201,7 +209,8 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -220,7 +229,8 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -243,7 +253,9 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -265,7 +277,8 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -287,7 +300,8 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -315,10 +329,10 @@ abstract class _PlayerInitialEvent implements PlayerEvent {
 }
 
 /// @nodoc
-abstract class _$$_PlayerAddMusicEventCopyWith<$Res> {
-  factory _$$_PlayerAddMusicEventCopyWith(_$_PlayerAddMusicEvent value,
-          $Res Function(_$_PlayerAddMusicEvent) then) =
-      __$$_PlayerAddMusicEventCopyWithImpl<$Res>;
+abstract class _$$_PlayerAddTrackEventCopyWith<$Res> {
+  factory _$$_PlayerAddTrackEventCopyWith(_$_PlayerAddTrackEvent value,
+          $Res Function(_$_PlayerAddTrackEvent) then) =
+      __$$_PlayerAddTrackEventCopyWithImpl<$Res>;
   @useResult
   $Res call({Album album, Track track});
 
@@ -327,11 +341,11 @@ abstract class _$$_PlayerAddMusicEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlayerAddMusicEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerAddMusicEvent>
-    implements _$$_PlayerAddMusicEventCopyWith<$Res> {
-  __$$_PlayerAddMusicEventCopyWithImpl(_$_PlayerAddMusicEvent _value,
-      $Res Function(_$_PlayerAddMusicEvent) _then)
+class __$$_PlayerAddTrackEventCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerAddTrackEvent>
+    implements _$$_PlayerAddTrackEventCopyWith<$Res> {
+  __$$_PlayerAddTrackEventCopyWithImpl(_$_PlayerAddTrackEvent _value,
+      $Res Function(_$_PlayerAddTrackEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -340,7 +354,7 @@ class __$$_PlayerAddMusicEventCopyWithImpl<$Res>
     Object? album = null,
     Object? track = null,
   }) {
-    return _then(_$_PlayerAddMusicEvent(
+    return _then(_$_PlayerAddTrackEvent(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -371,25 +385,24 @@ class __$$_PlayerAddMusicEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
-  const _$_PlayerAddMusicEvent({required this.album, required this.track});
+class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
+  const _$_PlayerAddTrackEvent({required this.album, required this.track});
 
   @override
   final Album album;
-// required List<Track> tracks,
   @override
   final Track track;
 
   @override
   String toString() {
-    return 'PlayerEvent.addMusic(album: $album, track: $track)';
+    return 'PlayerEvent.addTrack(album: $album, track: $track)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerAddMusicEvent &&
+            other is _$_PlayerAddTrackEvent &&
             (identical(other.album, album) || other.album == album) &&
             (identical(other.track, track) || other.track == track));
   }
@@ -400,15 +413,16 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerAddMusicEventCopyWith<_$_PlayerAddMusicEvent> get copyWith =>
-      __$$_PlayerAddMusicEventCopyWithImpl<_$_PlayerAddMusicEvent>(
+  _$$_PlayerAddTrackEventCopyWith<_$_PlayerAddTrackEvent> get copyWith =>
+      __$$_PlayerAddTrackEventCopyWithImpl<_$_PlayerAddTrackEvent>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -420,14 +434,15 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
     required TResult Function() changeState,
   }) {
-    return addMusic(album, track);
+    return addTrack(album, track);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -439,14 +454,15 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
     TResult? Function()? changeState,
   }) {
-    return addMusic?.call(album, track);
+    return addTrack?.call(album, track);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -459,8 +475,8 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult Function()? changeState,
     required TResult orElse(),
   }) {
-    if (addMusic != null) {
-      return addMusic(album, track);
+    if (addTrack != null) {
+      return addTrack(album, track);
     }
     return orElse();
   }
@@ -469,7 +485,9 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -484,14 +502,15 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
         changeAlbumProgressBar,
     required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
-    return addMusic(this);
+    return addTrack(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -506,14 +525,15 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
         changeAlbumProgressBar,
     TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
-    return addMusic?.call(this);
+    return addTrack?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -529,23 +549,246 @@ class _$_PlayerAddMusicEvent implements _PlayerAddMusicEvent {
     TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
-    if (addMusic != null) {
-      return addMusic(this);
+    if (addTrack != null) {
+      return addTrack(this);
     }
     return orElse();
   }
 }
 
-abstract class _PlayerAddMusicEvent implements PlayerEvent {
-  const factory _PlayerAddMusicEvent(
+abstract class _PlayerAddTrackEvent implements PlayerEvent {
+  const factory _PlayerAddTrackEvent(
       {required final Album album,
-      required final Track track}) = _$_PlayerAddMusicEvent;
+      required final Track track}) = _$_PlayerAddTrackEvent;
 
-  Album get album; // required List<Track> tracks,
+  Album get album;
   Track get track;
   @JsonKey(ignore: true)
-  _$$_PlayerAddMusicEventCopyWith<_$_PlayerAddMusicEvent> get copyWith =>
+  _$$_PlayerAddTrackEventCopyWith<_$_PlayerAddTrackEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PlayerKeepPlayingAlbumEventCopyWith<$Res> {
+  factory _$$_PlayerKeepPlayingAlbumEventCopyWith(
+          _$_PlayerKeepPlayingAlbumEvent value,
+          $Res Function(_$_PlayerKeepPlayingAlbumEvent) then) =
+      __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Album album});
+
+  $AlbumCopyWith<$Res> get album;
+}
+
+/// @nodoc
+class __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerKeepPlayingAlbumEvent>
+    implements _$$_PlayerKeepPlayingAlbumEventCopyWith<$Res> {
+  __$$_PlayerKeepPlayingAlbumEventCopyWithImpl(
+      _$_PlayerKeepPlayingAlbumEvent _value,
+      $Res Function(_$_PlayerKeepPlayingAlbumEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? album = null,
+  }) {
+    return _then(_$_PlayerKeepPlayingAlbumEvent(
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AlbumCopyWith<$Res> get album {
+    return $AlbumCopyWith<$Res>(_value.album, (value) {
+      return _then(_value.copyWith(album: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
+  const _$_PlayerKeepPlayingAlbumEvent({required this.album});
+
+  @override
+  final Album album;
+
+  @override
+  String toString() {
+    return 'PlayerEvent.keepPlayingAlbum(album: $album)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PlayerKeepPlayingAlbumEvent &&
+            (identical(other.album, album) || other.album == album));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, album);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PlayerKeepPlayingAlbumEventCopyWith<_$_PlayerKeepPlayingAlbumEvent>
+      get copyWith => __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<
+          _$_PlayerKeepPlayingAlbumEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
+    required TResult Function(Duration? position) changeTrackPositionInSeconds,
+    required TResult Function() play,
+    required TResult Function() pause,
+    required TResult Function() prev,
+    required TResult Function() next,
+    required TResult Function(int seconds) rewind,
+    required TResult Function(int seconds) push,
+    required TResult Function(Duration newPosition) changeTrackProgressBar,
+    required TResult Function(Duration newPosition) changeAlbumProgressBar,
+    required TResult Function() changeState,
+  }) {
+    return keepPlayingAlbum(album);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
+    TResult? Function(Duration? position)? changeTrackPositionInSeconds,
+    TResult? Function()? play,
+    TResult? Function()? pause,
+    TResult? Function()? prev,
+    TResult? Function()? next,
+    TResult? Function(int seconds)? rewind,
+    TResult? Function(int seconds)? push,
+    TResult? Function(Duration newPosition)? changeTrackProgressBar,
+    TResult? Function(Duration newPosition)? changeAlbumProgressBar,
+    TResult? Function()? changeState,
+  }) {
+    return keepPlayingAlbum?.call(album);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
+    TResult Function(Duration? position)? changeTrackPositionInSeconds,
+    TResult Function()? play,
+    TResult Function()? pause,
+    TResult Function()? prev,
+    TResult Function()? next,
+    TResult Function(int seconds)? rewind,
+    TResult Function(int seconds)? push,
+    TResult Function(Duration newPosition)? changeTrackProgressBar,
+    TResult Function(Duration newPosition)? changeAlbumProgressBar,
+    TResult Function()? changeState,
+    required TResult orElse(),
+  }) {
+    if (keepPlayingAlbum != null) {
+      return keepPlayingAlbum(album);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlayerInitialEvent value) initial,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
+    required TResult Function(_PlayerChangePositionInSecondsEvent value)
+        changeTrackPositionInSeconds,
+    required TResult Function(_PlayerPlayEvent value) play,
+    required TResult Function(_PlayerPauseEvent value) pause,
+    required TResult Function(_PlayerPrevEvent value) prev,
+    required TResult Function(_PlayerNextEvent value) next,
+    required TResult Function(_PlayerRewindEvent value) rewind,
+    required TResult Function(_PlayerPushEvent value) push,
+    required TResult Function(_PlayerChangeTrackProgressBarEvent value)
+        changeTrackProgressBar,
+    required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
+        changeAlbumProgressBar,
+    required TResult Function(_PlayerChangeStateEvent value) changeState,
+  }) {
+    return keepPlayingAlbum(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlayerInitialEvent value)? initial,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
+    TResult? Function(_PlayerChangePositionInSecondsEvent value)?
+        changeTrackPositionInSeconds,
+    TResult? Function(_PlayerPlayEvent value)? play,
+    TResult? Function(_PlayerPauseEvent value)? pause,
+    TResult? Function(_PlayerPrevEvent value)? prev,
+    TResult? Function(_PlayerNextEvent value)? next,
+    TResult? Function(_PlayerRewindEvent value)? rewind,
+    TResult? Function(_PlayerPushEvent value)? push,
+    TResult? Function(_PlayerChangeTrackProgressBarEvent value)?
+        changeTrackProgressBar,
+    TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
+        changeAlbumProgressBar,
+    TResult? Function(_PlayerChangeStateEvent value)? changeState,
+  }) {
+    return keepPlayingAlbum?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlayerInitialEvent value)? initial,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
+    TResult Function(_PlayerChangePositionInSecondsEvent value)?
+        changeTrackPositionInSeconds,
+    TResult Function(_PlayerPlayEvent value)? play,
+    TResult Function(_PlayerPauseEvent value)? pause,
+    TResult Function(_PlayerPrevEvent value)? prev,
+    TResult Function(_PlayerNextEvent value)? next,
+    TResult Function(_PlayerRewindEvent value)? rewind,
+    TResult Function(_PlayerPushEvent value)? push,
+    TResult Function(_PlayerChangeTrackProgressBarEvent value)?
+        changeTrackProgressBar,
+    TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
+        changeAlbumProgressBar,
+    TResult Function(_PlayerChangeStateEvent value)? changeState,
+    required TResult orElse(),
+  }) {
+    if (keepPlayingAlbum != null) {
+      return keepPlayingAlbum(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerKeepPlayingAlbumEvent implements PlayerEvent {
+  const factory _PlayerKeepPlayingAlbumEvent({required final Album album}) =
+      _$_PlayerKeepPlayingAlbumEvent;
+
+  Album get album;
+  @JsonKey(ignore: true)
+  _$$_PlayerKeepPlayingAlbumEventCopyWith<_$_PlayerKeepPlayingAlbumEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -620,7 +863,8 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -639,7 +883,8 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -658,7 +903,8 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -681,7 +927,9 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -703,7 +951,8 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -725,7 +974,8 @@ class _$_PlayerChangePositionInSecondsEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -799,7 +1049,8 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -818,7 +1069,8 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -837,7 +1089,8 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -860,7 +1113,9 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -882,7 +1137,8 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -904,7 +1160,8 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -970,7 +1227,8 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -989,7 +1247,8 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1008,7 +1267,8 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1031,7 +1291,9 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -1053,7 +1315,8 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -1075,7 +1338,8 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -1141,7 +1405,8 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -1160,7 +1425,8 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1179,7 +1445,8 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1202,7 +1469,9 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -1224,7 +1493,8 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -1246,7 +1516,8 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -1312,7 +1583,8 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -1331,7 +1603,8 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1350,7 +1623,8 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1373,7 +1647,9 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -1395,7 +1671,8 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -1417,7 +1694,8 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -1510,7 +1788,8 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -1529,7 +1808,8 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1548,7 +1828,8 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1571,7 +1852,9 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -1593,7 +1876,8 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -1615,7 +1899,8 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -1713,7 +1998,8 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -1732,7 +2018,8 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1751,7 +2038,8 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1774,7 +2062,9 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -1796,7 +2086,8 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -1818,7 +2109,8 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -1923,7 +2215,8 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -1942,7 +2235,8 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -1961,7 +2255,8 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -1984,7 +2279,9 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -2006,7 +2303,8 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -2028,7 +2326,8 @@ class _$_PlayerChangeTrackProgressBarEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -2135,7 +2434,8 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -2154,7 +2454,8 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -2173,7 +2474,8 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -2196,7 +2498,9 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -2218,7 +2522,8 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -2240,7 +2545,8 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,
@@ -2315,7 +2621,8 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Album album, Track track) addMusic,
+    required TResult Function(Album album, Track track) addTrack,
+    required TResult Function(Album album) keepPlayingAlbum,
     required TResult Function(Duration? position) changeTrackPositionInSeconds,
     required TResult Function() play,
     required TResult Function() pause,
@@ -2334,7 +2641,8 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addMusic,
+    TResult? Function(Album album, Track track)? addTrack,
+    TResult? Function(Album album)? keepPlayingAlbum,
     TResult? Function(Duration? position)? changeTrackPositionInSeconds,
     TResult? Function()? play,
     TResult? Function()? pause,
@@ -2353,7 +2661,8 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Album album, Track track)? addMusic,
+    TResult Function(Album album, Track track)? addTrack,
+    TResult Function(Album album)? keepPlayingAlbum,
     TResult Function(Duration? position)? changeTrackPositionInSeconds,
     TResult Function()? play,
     TResult Function()? pause,
@@ -2376,7 +2685,9 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddMusicEvent value) addMusic,
+    required TResult Function(_PlayerAddTrackEvent value) addTrack,
+    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
+        keepPlayingAlbum,
     required TResult Function(_PlayerChangePositionInSecondsEvent value)
         changeTrackPositionInSeconds,
     required TResult Function(_PlayerPlayEvent value) play,
@@ -2398,7 +2709,8 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult? Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult? Function(_PlayerPlayEvent value)? play,
@@ -2420,7 +2732,8 @@ class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddMusicEvent value)? addMusic,
+    TResult Function(_PlayerAddTrackEvent value)? addTrack,
+    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
     TResult Function(_PlayerChangePositionInSecondsEvent value)?
         changeTrackPositionInSeconds,
     TResult Function(_PlayerPlayEvent value)? play,

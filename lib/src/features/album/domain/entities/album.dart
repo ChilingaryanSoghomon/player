@@ -1,6 +1,6 @@
 //ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:player/src/features/track_list/domain/entities/track.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 part 'album.freezed.dart';
 part 'album.g.dart';

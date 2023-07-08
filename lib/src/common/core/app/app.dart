@@ -10,12 +10,12 @@ import 'package:player/src/features/mp3_player/ui/screens/player_screen.dart';
 import 'package:player/src/features/splash/data/splash_repository.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 import 'package:player/src/features/splash/ui/screen/splash_screan.dart';
-import 'package:player/src/features/track_list/ui/bloc/track_bloc.dart';
-import 'package:player/src/features/track_list/ui/screens/track_list_screan.dart';
+import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
+import 'package:player/src/features/tracks/ui/screens/track_list_screan.dart';
 
 import '../../../features/album/data/album_repository.dart';
 import '../../../features/mp3_player/data/audio_player_repository.dart';
-import '../../../features/track_list/data/track_repository.dart';
+import '../../../features/tracks/data/track_repository.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

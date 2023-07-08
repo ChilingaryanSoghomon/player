@@ -7,8 +7,8 @@ import 'package:player/src/features/album/ui/Widget/album_card_widget.dart';
 import 'package:player/src/features/album/ui/Widget/track_card_widget.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/Widget/corner_widget.dart';
-import 'package:player/src/features/track_list/domain/entities/track.dart';
-import 'package:player/src/features/track_list/ui/bloc/track_bloc.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
+import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 
 // class AlbumScreenWidget extends StatefulWidget {
 //   const AlbumScreenWidget({super.key});
@@ -142,7 +142,7 @@ class AlbumItemWidget extends StatelessWidget {
               context
                   .read<TrackBloc>()
                   .add(TrackEvent.clickAlbum(album: album));
-              Navigator.of(context).pushNamed(AppRouts.trackListScreen);
+              Navigator.of(context).pushReplacementNamed(AppRouts.trackListScreen);
             },
             child: AlbumCardWidget(album: album),
           ),
