@@ -10,17 +10,12 @@
             "request": "launch",
             "program": "lib/main.dart"
         },
-        {
-            "name": "pleyer",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "pleyer (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
+        // {
+        //     "name": "pleyer (profile mode)",
+        //     "request": "launch",
+        //     "type": "dart",
+        //     "flutterMode": "profile"
+        // },
         {
             "name": "pleyer (release mode)",
             "request": "launch",

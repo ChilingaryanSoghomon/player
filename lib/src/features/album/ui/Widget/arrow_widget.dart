@@ -24,16 +24,16 @@ class FigurePainter extends CustomPainter {
     final paint = Paint()
       ..color = Colors.black
       ..style =
-          PaintingStyle.fill; // Use PaintingStyle.fill to fill the arrowhead
+          PaintingStyle.fill;
 
     final path = Path();
     final endPoint = Offset(size.width, size.height);
-    final arrowWidth = 8; // Width of the arrowhead
+    final arrowWidth = 8;
 
     path.moveTo(endPoint.dx, endPoint.dy);
     path.lineTo(endPoint.dx - arrowWidth, endPoint.dy - arrowWidth);
     path.lineTo(endPoint.dx - arrowWidth, endPoint.dy + arrowWidth);
-    path.close(); // Close the path to complete the arrowhead shape
+    path.close(); 
 
     canvas.drawPath(path, paint);
   }

@@ -11,7 +11,7 @@ class Album with _$Album {
     required List<Track> tracks,
     required List<int> albumArtwork,
     required List<int> trackArtwork,
-     required Map<int, Duration> mapAlbumDuration,
+    required Map<int, Duration> mapAlbumDuration,
     required Duration albumDuration,
     required Duration albumPosition,
     required int albumId,

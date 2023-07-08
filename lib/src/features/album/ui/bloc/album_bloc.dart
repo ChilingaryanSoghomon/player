@@ -16,32 +16,41 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   final IAlbumRepository _albumRepository;
   AlbumBloc({required IAlbumRepository albumRepository})
       : _albumRepository = albumRepository,
-        super(const AlbumState.loading()) {
+        super(const AlbumState.initial()) {
     on<AlbumEvent>((event, emit) async {
       await event.map(
         search: (event) => _search(event, emit),
         initial: (event) => _initial(event, emit),
         openAlbumFolder: (event) => _openAlbumFolder(event, emit),
+        getAlbum: (event) => _getAlbum(event, emit),
       );
     });
   }
+
+  Future<void>  _getAlbum(_AlbumGetAlbumEvent event, Emitter<AlbumState> emit)async {
+    emit(AlbumState.haveAlbum(albums: event.albums));
+  }
+
   Future<void> _search(
       _SearchAlbumEvent event, Emitter<AlbumState> emit) async {
     List<Album> albums = await _albumRepository.searchAlbum();
     if (albums.isNotEmpty) {
-      emit(AlbumState.haveAlbum(
-        albums: albums,
-      ));
+      emit(AlbumState.haveAlbum(albums: albums));
     } else {
       emit(const AlbumState.empty());
     }
   }
 
   _initial(_AlbumInitialEvent event, Emitter<AlbumState> emit) {
-    state.maybeWhen(
-      orElse: () {},
-      loading: () => add(const AlbumEvent.search()),
-      empty: () => add(const AlbumEvent.search()),
+    add(const AlbumEvent.search());
+    state.map(
+      initial: (_) => add(const AlbumEvent.search()),
+      empty: (_) => add(const AlbumEvent.search()),
+      haveAlbum: (state) {
+        if (state.albums.isEmpty) {
+          add(const AlbumEvent.search());
+        }
+      },
     );
   }
 
@@ -50,28 +59,21 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
     state.maybeMap(
       orElse: () {},
       haveAlbum: (state) async {
-        List<Album> albums = [];
-        for (var i = 0; i < state.albums.length; i++) {
-          final album = state.albums[i];
-          if (event.album.albumId == album.albumId) {
-            final newAlbum = album.copyWith(
-              trackArtwork: event.album.trackArtwork,
-              albumArtwork: event.album.albumArtwork,
-              albumDuration: event.album.albumDuration,
-              albumPosition: event.album.albumPosition,
-              trackDuration: event.album.trackDuration,
-              trackPosition: event.album.trackPosition,
-              trackIndex: event.album.trackIndex,
-            );
-            albums.add(newAlbum);
-          } else {
-            albums.add(album);
-          }
-        }
-        emit(AlbumState.haveAlbum(albums: albums));
+        List<Album> newAlbumList = List.from(state.albums);
+        final index = newAlbumList
+            .indexWhere((album) => album.albumId == event.album.albumId);
+        newAlbumList[index] = event.album;
+        emit(AlbumState.haveAlbum(albums: newAlbumList));
       },
     );
   }
+
+  // AlbumState _albumInitialState() {
+  //   state.map(
+  //     loading: (_) => add(const AlbumEvent.search()),
+  //     empty: (_) => add(const AlbumEvent.search()),
+  //   );
+  // }
 
   @override
   AlbumState fromJson(Map<String, dynamic> json) {
@@ -82,4 +84,5 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
   Map<String, dynamic> toJson(AlbumState state) {
     return state.toJson();
   }
+  
 }

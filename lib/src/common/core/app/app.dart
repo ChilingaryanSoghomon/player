@@ -7,6 +7,7 @@ import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/screens/album_screen.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/screens/player_screen.dart';
+import 'package:player/src/features/splash/data/splash_repository.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 import 'package:player/src/features/splash/ui/screen/splash_screan.dart';
 import 'package:player/src/features/track_list/ui/bloc/track_bloc.dart';
@@ -24,7 +25,8 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => SplashBloc()..add((const SplashEvent.initial())),
+          create: (_) => SplashBloc(splashRepository: getIt<SplashRepository>())
+            ..add((const SplashEvent.initial())),
         ),
         BlocProvider(
           create: (_) =>

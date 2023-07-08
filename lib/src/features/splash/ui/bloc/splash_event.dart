@@ -6,4 +6,5 @@ class SplashEvent with _$SplashEvent {
   // const factory SplashEvent.empty() = _SplashEmptyEvent;
   const factory SplashEvent.initial() = _SplashInitialEvent;
   const factory SplashEvent.playing() = _SplashPlayingEvent;
+  const factory SplashEvent.searchAlbum() = _SplashSearchAlbumEvent;
 }

@@ -20,18 +20,21 @@ mixin _$SplashEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() playing,
+    required TResult Function() searchAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? playing,
+    TResult? Function()? searchAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? playing,
+    TResult Function()? searchAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SplashEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SplashInitialEvent value) initial,
     required TResult Function(_SplashPlayingEvent value) playing,
+    required TResult Function(_SplashSearchAlbumEvent value) searchAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SplashInitialEvent value)? initial,
     TResult? Function(_SplashPlayingEvent value)? playing,
+    TResult? Function(_SplashSearchAlbumEvent value)? searchAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SplashInitialEvent value)? initial,
     TResult Function(_SplashPlayingEvent value)? playing,
+    TResult Function(_SplashSearchAlbumEvent value)? searchAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() playing,
+    required TResult Function() searchAlbum,
   }) {
     return initial();
   }
@@ -123,6 +130,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? playing,
+    TResult? Function()? searchAlbum,
   }) {
     return initial?.call();
   }
@@ -132,6 +140,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? playing,
+    TResult Function()? searchAlbum,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,6 +154,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SplashInitialEvent value) initial,
     required TResult Function(_SplashPlayingEvent value) playing,
+    required TResult Function(_SplashSearchAlbumEvent value) searchAlbum,
   }) {
     return initial(this);
   }
@@ -154,6 +164,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SplashInitialEvent value)? initial,
     TResult? Function(_SplashPlayingEvent value)? playing,
+    TResult? Function(_SplashSearchAlbumEvent value)? searchAlbum,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +174,7 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SplashInitialEvent value)? initial,
     TResult Function(_SplashPlayingEvent value)? playing,
+    TResult Function(_SplashSearchAlbumEvent value)? searchAlbum,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -216,6 +228,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() playing,
+    required TResult Function() searchAlbum,
   }) {
     return playing();
   }
@@ -225,6 +238,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? playing,
+    TResult? Function()? searchAlbum,
   }) {
     return playing?.call();
   }
@@ -234,6 +248,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? playing,
+    TResult Function()? searchAlbum,
     required TResult orElse(),
   }) {
     if (playing != null) {
@@ -247,6 +262,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SplashInitialEvent value) initial,
     required TResult Function(_SplashPlayingEvent value) playing,
+    required TResult Function(_SplashSearchAlbumEvent value) searchAlbum,
   }) {
     return playing(this);
   }
@@ -256,6 +272,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SplashInitialEvent value)? initial,
     TResult? Function(_SplashPlayingEvent value)? playing,
+    TResult? Function(_SplashSearchAlbumEvent value)? searchAlbum,
   }) {
     return playing?.call(this);
   }
@@ -265,6 +282,7 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SplashInitialEvent value)? initial,
     TResult Function(_SplashPlayingEvent value)? playing,
+    TResult Function(_SplashSearchAlbumEvent value)? searchAlbum,
     required TResult orElse(),
   }) {
     if (playing != null) {
@@ -278,18 +296,178 @@ abstract class _SplashPlayingEvent implements SplashEvent {
   const factory _SplashPlayingEvent() = _$_SplashPlayingEvent;
 }
 
+/// @nodoc
+abstract class _$$_SplashSearchAlbumEventCopyWith<$Res> {
+  factory _$$_SplashSearchAlbumEventCopyWith(_$_SplashSearchAlbumEvent value,
+          $Res Function(_$_SplashSearchAlbumEvent) then) =
+      __$$_SplashSearchAlbumEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SplashSearchAlbumEventCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$_SplashSearchAlbumEvent>
+    implements _$$_SplashSearchAlbumEventCopyWith<$Res> {
+  __$$_SplashSearchAlbumEventCopyWithImpl(_$_SplashSearchAlbumEvent _value,
+      $Res Function(_$_SplashSearchAlbumEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SplashSearchAlbumEvent implements _SplashSearchAlbumEvent {
+  const _$_SplashSearchAlbumEvent();
+
+  @override
+  String toString() {
+    return 'SplashEvent.searchAlbum()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SplashSearchAlbumEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() playing,
+    required TResult Function() searchAlbum,
+  }) {
+    return searchAlbum();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? playing,
+    TResult? Function()? searchAlbum,
+  }) {
+    return searchAlbum?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? playing,
+    TResult Function()? searchAlbum,
+    required TResult orElse(),
+  }) {
+    if (searchAlbum != null) {
+      return searchAlbum();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashInitialEvent value) initial,
+    required TResult Function(_SplashPlayingEvent value) playing,
+    required TResult Function(_SplashSearchAlbumEvent value) searchAlbum,
+  }) {
+    return searchAlbum(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SplashInitialEvent value)? initial,
+    TResult? Function(_SplashPlayingEvent value)? playing,
+    TResult? Function(_SplashSearchAlbumEvent value)? searchAlbum,
+  }) {
+    return searchAlbum?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashInitialEvent value)? initial,
+    TResult Function(_SplashPlayingEvent value)? playing,
+    TResult Function(_SplashSearchAlbumEvent value)? searchAlbum,
+    required TResult orElse(),
+  }) {
+    if (searchAlbum != null) {
+      return searchAlbum(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SplashSearchAlbumEvent implements SplashEvent {
+  const factory _SplashSearchAlbumEvent() = _$_SplashSearchAlbumEvent;
+}
+
 SplashState _$SplashStateFromJson(Map<String, dynamic> json) {
-  return Initial.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'empty':
+      return _SplashEmptyState.fromJson(json);
+    case 'haveAnAlbum':
+      return _SplashHaveAnAlbumState.fromJson(json);
+    case 'havePlayingTrack':
+      return _SplashHavePlayingTrackState.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'SplashState',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$SplashState {
-  AppStatus get status => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SplashStateCopyWith<SplashState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(List<Album> albums) haveAnAlbum,
+    required TResult Function() havePlayingTrack,
+  }) =>
       throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function(List<Album> albums)? haveAnAlbum,
+    TResult? Function()? havePlayingTrack,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(List<Album> albums)? haveAnAlbum,
+    TResult Function()? havePlayingTrack,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashEmptyState value) empty,
+    required TResult Function(_SplashHaveAnAlbumState value) haveAnAlbum,
+    required TResult Function(_SplashHavePlayingTrackState value)
+        havePlayingTrack,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SplashEmptyState value)? empty,
+    TResult? Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult? Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashEmptyState value)? empty,
+    TResult Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -297,8 +475,6 @@ abstract class $SplashStateCopyWith<$Res> {
   factory $SplashStateCopyWith(
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
-  @useResult
-  $Res call({AppStatus status});
 }
 
 /// @nodoc
@@ -310,103 +486,428 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
 
-  @pragma('vm:prefer-inline')
+/// @nodoc
+abstract class _$$_SplashEmptyStateCopyWith<$Res> {
+  factory _$$_SplashEmptyStateCopyWith(
+          _$_SplashEmptyState value, $Res Function(_$_SplashEmptyState) then) =
+      __$$_SplashEmptyStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SplashEmptyStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$_SplashEmptyState>
+    implements _$$_SplashEmptyStateCopyWith<$Res> {
+  __$$_SplashEmptyStateCopyWithImpl(
+      _$_SplashEmptyState _value, $Res Function(_$_SplashEmptyState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SplashEmptyState implements _SplashEmptyState {
+  const _$_SplashEmptyState({final String? $type}) : $type = $type ?? 'empty';
+
+  factory _$_SplashEmptyState.fromJson(Map<String, dynamic> json) =>
+      _$$_SplashEmptyStateFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
-  $Res call({
-    Object? status = null,
+  String toString() {
+    return 'SplashState.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SplashEmptyState);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(List<Album> albums) haveAnAlbum,
+    required TResult Function() havePlayingTrack,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AppStatus,
-    ) as $Val);
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function(List<Album> albums)? haveAnAlbum,
+    TResult? Function()? havePlayingTrack,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(List<Album> albums)? haveAnAlbum,
+    TResult Function()? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashEmptyState value) empty,
+    required TResult Function(_SplashHaveAnAlbumState value) haveAnAlbum,
+    required TResult Function(_SplashHavePlayingTrackState value)
+        havePlayingTrack,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SplashEmptyState value)? empty,
+    TResult? Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult? Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashEmptyState value)? empty,
+    TResult Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SplashEmptyStateToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract class _$$InitialCopyWith<$Res> implements $SplashStateCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AppStatus status});
+abstract class _SplashEmptyState implements SplashState {
+  const factory _SplashEmptyState() = _$_SplashEmptyState;
+
+  factory _SplashEmptyState.fromJson(Map<String, dynamic> json) =
+      _$_SplashEmptyState.fromJson;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+abstract class _$$_SplashHaveAnAlbumStateCopyWith<$Res> {
+  factory _$$_SplashHaveAnAlbumStateCopyWith(_$_SplashHaveAnAlbumState value,
+          $Res Function(_$_SplashHaveAnAlbumState) then) =
+      __$$_SplashHaveAnAlbumStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Album> albums});
+}
+
+/// @nodoc
+class __$$_SplashHaveAnAlbumStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$_SplashHaveAnAlbumState>
+    implements _$$_SplashHaveAnAlbumStateCopyWith<$Res> {
+  __$$_SplashHaveAnAlbumStateCopyWithImpl(_$_SplashHaveAnAlbumState _value,
+      $Res Function(_$_SplashHaveAnAlbumState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? albums = null,
   }) {
-    return _then(_$Initial(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AppStatus,
+    return _then(_$_SplashHaveAnAlbumState(
+      albums: null == albums
+          ? _value._albums
+          : albums // ignore: cast_nullable_to_non_nullable
+              as List<Album>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$Initial implements Initial {
-  const _$Initial({this.status = AppStatus.empty});
+class _$_SplashHaveAnAlbumState implements _SplashHaveAnAlbumState {
+  const _$_SplashHaveAnAlbumState(
+      {required final List<Album> albums, final String? $type})
+      : _albums = albums,
+        $type = $type ?? 'haveAnAlbum';
 
-  factory _$Initial.fromJson(Map<String, dynamic> json) =>
-      _$$InitialFromJson(json);
+  factory _$_SplashHaveAnAlbumState.fromJson(Map<String, dynamic> json) =>
+      _$$_SplashHaveAnAlbumStateFromJson(json);
 
+  final List<Album> _albums;
   @override
-  @JsonKey()
-  final AppStatus status;
+  List<Album> get albums {
+    if (_albums is EqualUnmodifiableListView) return _albums;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_albums);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'SplashState(status: $status)';
+    return 'SplashState.haveAnAlbum(albums: $albums)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Initial &&
-            (identical(other.status, status) || other.status == status));
+            other is _$_SplashHaveAnAlbumState &&
+            const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialCopyWith<_$Initial> get copyWith =>
-      __$$InitialCopyWithImpl<_$Initial>(this, _$identity);
+  _$$_SplashHaveAnAlbumStateCopyWith<_$_SplashHaveAnAlbumState> get copyWith =>
+      __$$_SplashHaveAnAlbumStateCopyWithImpl<_$_SplashHaveAnAlbumState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(List<Album> albums) haveAnAlbum,
+    required TResult Function() havePlayingTrack,
+  }) {
+    return haveAnAlbum(albums);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function(List<Album> albums)? haveAnAlbum,
+    TResult? Function()? havePlayingTrack,
+  }) {
+    return haveAnAlbum?.call(albums);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(List<Album> albums)? haveAnAlbum,
+    TResult Function()? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (haveAnAlbum != null) {
+      return haveAnAlbum(albums);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashEmptyState value) empty,
+    required TResult Function(_SplashHaveAnAlbumState value) haveAnAlbum,
+    required TResult Function(_SplashHavePlayingTrackState value)
+        havePlayingTrack,
+  }) {
+    return haveAnAlbum(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SplashEmptyState value)? empty,
+    TResult? Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult? Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+  }) {
+    return haveAnAlbum?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashEmptyState value)? empty,
+    TResult Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (haveAnAlbum != null) {
+      return haveAnAlbum(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InitialToJson(
+    return _$$_SplashHaveAnAlbumStateToJson(
       this,
     );
   }
 }
 
-abstract class Initial implements SplashState {
-  const factory Initial({final AppStatus status}) = _$Initial;
+abstract class _SplashHaveAnAlbumState implements SplashState {
+  const factory _SplashHaveAnAlbumState({required final List<Album> albums}) =
+      _$_SplashHaveAnAlbumState;
 
-  factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
+  factory _SplashHaveAnAlbumState.fromJson(Map<String, dynamic> json) =
+      _$_SplashHaveAnAlbumState.fromJson;
 
-  @override
-  AppStatus get status;
-  @override
+  List<Album> get albums;
   @JsonKey(ignore: true)
-  _$$InitialCopyWith<_$Initial> get copyWith =>
+  _$$_SplashHaveAnAlbumStateCopyWith<_$_SplashHaveAnAlbumState> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SplashHavePlayingTrackStateCopyWith<$Res> {
+  factory _$$_SplashHavePlayingTrackStateCopyWith(
+          _$_SplashHavePlayingTrackState value,
+          $Res Function(_$_SplashHavePlayingTrackState) then) =
+      __$$_SplashHavePlayingTrackStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SplashHavePlayingTrackStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$_SplashHavePlayingTrackState>
+    implements _$$_SplashHavePlayingTrackStateCopyWith<$Res> {
+  __$$_SplashHavePlayingTrackStateCopyWithImpl(
+      _$_SplashHavePlayingTrackState _value,
+      $Res Function(_$_SplashHavePlayingTrackState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SplashHavePlayingTrackState implements _SplashHavePlayingTrackState {
+  const _$_SplashHavePlayingTrackState({final String? $type})
+      : $type = $type ?? 'havePlayingTrack';
+
+  factory _$_SplashHavePlayingTrackState.fromJson(Map<String, dynamic> json) =>
+      _$$_SplashHavePlayingTrackStateFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SplashState.havePlayingTrack()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SplashHavePlayingTrackState);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(List<Album> albums) haveAnAlbum,
+    required TResult Function() havePlayingTrack,
+  }) {
+    return havePlayingTrack();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function(List<Album> albums)? haveAnAlbum,
+    TResult? Function()? havePlayingTrack,
+  }) {
+    return havePlayingTrack?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(List<Album> albums)? haveAnAlbum,
+    TResult Function()? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (havePlayingTrack != null) {
+      return havePlayingTrack();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashEmptyState value) empty,
+    required TResult Function(_SplashHaveAnAlbumState value) haveAnAlbum,
+    required TResult Function(_SplashHavePlayingTrackState value)
+        havePlayingTrack,
+  }) {
+    return havePlayingTrack(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SplashEmptyState value)? empty,
+    TResult? Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult? Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+  }) {
+    return havePlayingTrack?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashEmptyState value)? empty,
+    TResult Function(_SplashHaveAnAlbumState value)? haveAnAlbum,
+    TResult Function(_SplashHavePlayingTrackState value)? havePlayingTrack,
+    required TResult orElse(),
+  }) {
+    if (havePlayingTrack != null) {
+      return havePlayingTrack(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SplashHavePlayingTrackStateToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SplashHavePlayingTrackState implements SplashState {
+  const factory _SplashHavePlayingTrackState() = _$_SplashHavePlayingTrackState;
+
+  factory _SplashHavePlayingTrackState.fromJson(Map<String, dynamic> json) =
+      _$_SplashHavePlayingTrackState.fromJson;
 }
