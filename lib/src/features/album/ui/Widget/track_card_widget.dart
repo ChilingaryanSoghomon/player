@@ -59,7 +59,7 @@ class TrackCardWidget extends StatelessWidget {
                           .read<SplashBloc>()
                           .add(const SplashEvent.playing());
                       Navigator.of(context)
-                          .pushReplacementNamed(AppRouts.playerScreen);
+                          .pop(AppRouts.playerScreen);
                     },
                     leading: tempAlbum.trackArtwork.isNotEmpty
                         ? Image.memory(
@@ -79,9 +79,7 @@ class TrackCardWidget extends StatelessWidget {
             ),
             BlocBuilder<AlbumBloc, AlbumState>(
               builder: (context, state) {
-                // Album tempAlbum = album;
                 if (playerBloc.state.album.albumId == album.albumId) {
-                  // tempAlbum = playerBloc.state.album;
                 }
                 return state.maybeWhen(
                   orElse: () => Container(),

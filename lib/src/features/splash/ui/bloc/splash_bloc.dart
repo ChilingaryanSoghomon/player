@@ -38,7 +38,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
 
   Future<void> _playing(
       _SplashPlayingEvent event, Emitter<SplashState> emit) async {
-    // emit(const SplashState.empty());
     emit(const SplashState.havePlayingTrack());
   }
 

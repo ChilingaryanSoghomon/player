@@ -23,7 +23,7 @@ class UpperButtonsWidget extends StatelessWidget {
           builder: (context, state) {
             return ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(AppRouts.albumScreen);
+                Navigator.of(context).pushNamed(AppRouts.albumScreen);
               },
               child: const Text('Open Folder'),
             );

@@ -18,7 +18,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> with HydratedMixin {
       : _albumRepository = albumRepository,
         super(const AlbumState.initial()) {
     on<AlbumEvent>((event, emit) async {
-      await event.map(
+      await event.map<Future<void>>(
         search: (event) => _search(event, emit),
         initial: (event) => _initial(event, emit),
         getAlbum: (event) => _getAlbum(event, emit),

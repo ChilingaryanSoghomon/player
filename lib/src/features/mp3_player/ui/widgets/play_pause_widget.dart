@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/res/app_colors.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
 import '../../../../common/widgets/costom_change_child_button.dart';
@@ -23,7 +22,6 @@ class PlayPauseWidget extends StatelessWidget {
             size: 75,
             borderRadius: 60,
             child: const Icon(
-              color: AppColors.mainColor,
               size: 50,
               Icons.skip_previous_sharp,
             ),
@@ -39,12 +37,10 @@ class PlayPauseWidget extends StatelessWidget {
                 borderRadius: 60,
                 child: state.status == PlayerStatus.playing
                     ? const Icon(
-                        color: AppColors.mainColor,
                         size: 50,
                         Icons.pause,
                       )
                     : const Icon(
-                        color: AppColors.mainColor,
                         size: 50,
                         Icons.play_arrow_sharp,
                       ),
@@ -56,7 +52,6 @@ class PlayPauseWidget extends StatelessWidget {
             size: 75,
             borderRadius: 60,
             child: const Icon(
-              color: AppColors.mainColor,
               size: 50,
               Icons.skip_next,
             ),

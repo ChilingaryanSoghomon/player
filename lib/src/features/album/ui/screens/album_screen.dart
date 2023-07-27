@@ -142,7 +142,7 @@ class AlbumItemWidget extends StatelessWidget {
               context
                   .read<TrackBloc>()
                   .add(TrackEvent.clickAlbum(album: album));
-              Navigator.of(context).pushReplacementNamed(AppRouts.trackListScreen);
+              Navigator.of(context).pushNamed(AppRouts.trackListScreen);
             },
             child: AlbumCardWidget(album: album),
           ),

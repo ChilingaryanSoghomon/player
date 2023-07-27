@@ -20,21 +20,21 @@ abstract class AppColors {
     },
   );
 
-//  static const MaterialColor mainThemColor = MaterialColor(
-//     0xffFF9800,
-//     <int, Color>{
-//       50:  Color(0xffF9FBE7), //10%
-//       100: Color(0xffF0F4C3), //20%
-//       200: Color(0xffE6EE9C), //30%
-//       300: Color(0xffDCE775), //40%
-//       400: Color(0xffD4E157), //50%
-//       500: Color(0xffCDDC39), //60%
-//       600: Color(0xffC0CA33), //70%
-//       700: Color(0xffAFB42B), //80%
-//       800: Color(0xff9E9D24), //90%
-//       900: Color(0xff827717), //100%
-//     },
-//   );
+ static const MaterialColor primaryGreen = MaterialColor(
+    0xffCDDC39,
+    <int, Color>{
+      50:  Color(0xffF9FBE7), //10%
+      100: Color(0xffF0F4C3), //20%
+      200: Color(0xffE6EE9C), //30%
+      300: Color(0xffDCE775), //40%
+      400: Color(0xffD4E157), //50%
+      500: Color(0xffCDDC39), //60%
+      600: Color(0xffC0CA33), //70%
+      700: Color(0xffAFB42B), //80%
+      800: Color(0xff9E9D24), //90%
+      900: Color(0xff827717), //100%
+    },
+  );
 
 
 
