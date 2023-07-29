@@ -1,4 +1,5 @@
 import 'package:just_audio/just_audio.dart';
+import 'package:player/main.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
@@ -43,7 +44,8 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
 
   @override
   Future<void> play() async {
-    await _player.play();
+    audioHandler.play();
+    // await _player.play();
   }
 
   @override
