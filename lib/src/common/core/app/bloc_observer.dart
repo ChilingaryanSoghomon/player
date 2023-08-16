@@ -14,7 +14,7 @@ class MyBlocObserver extends BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     // log('Transition: $transition');
     // log('bloc: ${bloc.state}');
-    log('bloc: $bloc');
+    // log('bloc: $bloc');
     super.onTransition(bloc, transition);
   }
 
