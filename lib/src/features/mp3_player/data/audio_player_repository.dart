@@ -1,18 +1,19 @@
-import 'package:just_audio/just_audio.dart';
-import 'package:player/main.dart';
+import 'package:audio_service/audio_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
+import 'package:player/src/features/mp3_player/data/audio_helper.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
+  final MyAudioHandler _audioHandler;
   final SearchArtwork _searchArtwork;
-  final AudioPlayer _player = AudioPlayer();
-  ConcatenatingAudioSource _concatenatingAudioSource =
-      ConcatenatingAudioSource(children: []);
+
   AudioPlayerRepositoryImpl({
     required SearchArtwork searchArtwork,
-  }) : _searchArtwork = searchArtwork;
+    required MyAudioHandler audioHandler,
+  })  : _searchArtwork = searchArtwork,
+        _audioHandler = audioHandler;
 
   @override
   addMusicDirectory({
@@ -20,72 +21,67 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     required Duration trackPosition,
     required int trackIndex,
   }) async {
-    final List<UriAudioSource> audioSource = [];
-    for (var track in tracks) {
-      final UriAudioSource audio = AudioSource.file(track.path);
-      audioSource.add(audio);
-    }
-    if (audioSource.isNotEmpty) {
-      _concatenatingAudioSource = ConcatenatingAudioSource(
-          useLazyPreparation: true, children: audioSource);
-      await _player.setAudioSource(_concatenatingAudioSource,
-          initialPosition: trackPosition, initialIndex: trackIndex);
-    }
+    final mediaItems = tracks
+        .map((track) => MediaItem(
+              id: track.path,
+              title: track.name ?? '',
+            ))
+        .toList();
+    _audioHandler.addQueueItems(mediaItems);
   }
 
+
   @override
-  Duration get trackPosition => _player.position;
+  Duration get trackPosition => _audioHandler.player.position;
   @override
-  int get currentIndex => _player.currentIndex ?? 0;
+  int get currentIndex => _audioHandler.player.currentIndex ?? 0;
   @override
-  Duration get trackDuration => _player.duration ?? Duration.zero;
+  Duration get trackDuration => _audioHandler.player.duration ?? Duration.zero;
   @override
-  Stream<Duration> get getPositionStream => _player.positionStream;
+  Stream<Duration> get getPositionStream => _audioHandler.player.positionStream;
 
   @override
   Future<void> play() async {
-    audioHandler.play();
-    // await _player.play();
+    await _audioHandler.play();
   }
 
   @override
   Future<void> pause() async {
-    await _player.pause();
+    await _audioHandler.pause();
   }
 
   @override
   Future<void> next() async {
-    await _player.seekToNext();
+    await _audioHandler.skipToNext();
   }
 
   @override
   Future<void> prev() async {
-    await _player.seekToPrevious();
+    await _audioHandler.skipToNext();
   }
 
   @override
   Future<void> setSpeed({required double speed}) async {
-    _player.setSpeed(speed);
+    _audioHandler.player.setSpeed(speed);
   }
 
   @override
-  Future<void> rewind(
-      {required Duration newPosition, required int trackIndex}) async {
-    _player.seek(newPosition, index: trackIndex);
+  Future<void> rewind({
+    required Duration newPosition,
+  }) async {
+    _audioHandler.seek(newPosition);
   }
 
   @override
-  Future<void> push({required int seconds, required int trackIndex}) async {
-    Duration position = _player.position;
-    Duration rewindPosition = position + Duration(seconds: seconds);
-    await _player.seek(rewindPosition, index: currentIndex);
+  Future<void> push({required Duration newPosition}) async {
+    _audioHandler.seek(newPosition);
   }
 
   @override
   Future<void> changeTrackProgressBar({required Duration duration}) async {
-    int? currentIndex = _player.currentIndex;
+    int? currentIndex = _audioHandler.player.currentIndex;
     if (currentIndex != null) {
-      await _player.seek(duration, index: currentIndex);
+      await _audioHandler.player.seek(duration, index: currentIndex);
     }
   }
 
@@ -93,15 +89,15 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   Future<void> changeAlbumProgressBar(
       {required Duration duration,
       required Map<int, Duration> mapAlbumDuration}) async {
-    for (var index = 0; index < mapAlbumDuration.length; index++) {
-      final Duration albumPositionByTrack = mapAlbumDuration[index]!;
-      if (duration < albumPositionByTrack) {
-        Duration position = duration - mapAlbumDuration[index - 1]!;
-        await _player.setAudioSource(_concatenatingAudioSource,
-            initialPosition: position, initialIndex: index - 1);
-        break;
-      }
-    }
+    // for (var index = 0; index < mapAlbumDuration.length; index++) {
+    //   final Duration albumPositionByTrack = mapAlbumDuration[index]!;
+    //   if (duration < albumPositionByTrack) {
+    //     Duration position = duration - mapAlbumDuration[index - 1]!;
+    //     await _audioHandler.player.setAudioSource(_playlist,
+    //         initialPosition: position, initialIndex: index - 1);
+    //     break;
+    //   }
+    // }
   }
 
   @override
