@@ -1,7 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:player/src/features/mp3_player/data/resources/my_media_controler.dart';
+import 'package:player/src/features/mp3_player/data/media_control/my_media_controler.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class MyAudioHandler extends BaseAudioHandler {

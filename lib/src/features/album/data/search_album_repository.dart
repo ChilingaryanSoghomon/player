@@ -1,17 +1,16 @@
-  import 'package:on_audio_query/on_audio_query.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class SearchAlbumRepository {
-   SearchAlbumRepository({
+  SearchAlbumRepository({
     required OnAudioQuery audioQuery,
     required SearchArtwork searchArtwork,
   })  : _audioQuery = audioQuery,
         _searchArtwork = searchArtwork;
   final OnAudioQuery _audioQuery;
   final SearchArtwork _searchArtwork;
-
 
   Future<List<Album>> searchAlbum() async {
     final List<AlbumModel> albums = await _audioQuery.queryAlbums();
@@ -20,8 +19,6 @@ class SearchAlbumRepository {
       final tracksInAlbum = await _queryFromAlbumId(albumId: album.id);
       final artworkAlbum =
           await _searchArtwork.getAlbumArtwork(tracks: tracksInAlbum);
-      final trackArtwork = await _searchArtwork.getTrackArtwork(
-          trackId: tracksInAlbum.first.trackId);
       final mapAlbumDuration = _createMapAlbumDuration(tracksInAlbum);
       final albumDuration = _albumDuration(
           maoAlbumDuration: mapAlbumDuration,
@@ -37,8 +34,8 @@ class SearchAlbumRepository {
         trackPosition: Duration.zero,
         trackIndex: 0,
         albumArtwork: artworkAlbum,
-        trackArtwork: trackArtwork,
         mapAlbumDuration: mapAlbumDuration,
+        trackId: null,
       ));
     }
 

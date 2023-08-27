@@ -2768,6 +2768,7 @@ PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
 mixin _$PlayerState {
   PlayerStatus get status => throw _privateConstructorUsedError;
   double get trackSpeed => throw _privateConstructorUsedError;
+  Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Album get album => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2782,7 +2783,11 @@ abstract class $PlayerStateCopyWith<$Res> {
           PlayerState value, $Res Function(PlayerState) then) =
       _$PlayerStateCopyWithImpl<$Res, PlayerState>;
   @useResult
-  $Res call({PlayerStatus status, double trackSpeed, Album album});
+  $Res call(
+      {PlayerStatus status,
+      double trackSpeed,
+      Map<int, Duration> mapAlbumDuration,
+      Album album});
 
   $AlbumCopyWith<$Res> get album;
 }
@@ -2802,6 +2807,7 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   $Res call({
     Object? status = null,
     Object? trackSpeed = null,
+    Object? mapAlbumDuration = null,
     Object? album = null,
   }) {
     return _then(_value.copyWith(
@@ -2813,6 +2819,10 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.trackSpeed
           : trackSpeed // ignore: cast_nullable_to_non_nullable
               as double,
+      mapAlbumDuration: null == mapAlbumDuration
+          ? _value.mapAlbumDuration
+          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -2835,7 +2845,11 @@ abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
       __$$InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PlayerStatus status, double trackSpeed, Album album});
+  $Res call(
+      {PlayerStatus status,
+      double trackSpeed,
+      Map<int, Duration> mapAlbumDuration,
+      Album album});
 
   @override
   $AlbumCopyWith<$Res> get album;
@@ -2853,6 +2867,7 @@ class __$$InitialCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? trackSpeed = null,
+    Object? mapAlbumDuration = null,
     Object? album = null,
   }) {
     return _then(_$Initial(
@@ -2864,6 +2879,10 @@ class __$$InitialCopyWithImpl<$Res>
           ? _value.trackSpeed
           : trackSpeed // ignore: cast_nullable_to_non_nullable
               as double,
+      mapAlbumDuration: null == mapAlbumDuration
+          ? _value._mapAlbumDuration
+          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
+              as Map<int, Duration>,
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -2878,6 +2897,7 @@ class _$Initial implements Initial {
   const _$Initial(
       {this.status = PlayerStatus.initial,
       this.trackSpeed = 1.0,
+      final Map<int, Duration> mapAlbumDuration = const {},
       this.album = const Album(
           tracks: [],
           albumDuration: Duration.zero,
@@ -2889,8 +2909,9 @@ class _$Initial implements Initial {
           trackPosition: Duration.zero,
           trackIndex: 0,
           albumArtwork: [],
-          trackArtwork: [],
-          mapAlbumDuration: {})});
+          mapAlbumDuration: {},
+          trackId: null)})
+      : _mapAlbumDuration = mapAlbumDuration;
 
   factory _$Initial.fromJson(Map<String, dynamic> json) =>
       _$$InitialFromJson(json);
@@ -2901,13 +2922,22 @@ class _$Initial implements Initial {
   @override
   @JsonKey()
   final double trackSpeed;
+  final Map<int, Duration> _mapAlbumDuration;
+  @override
+  @JsonKey()
+  Map<int, Duration> get mapAlbumDuration {
+    if (_mapAlbumDuration is EqualUnmodifiableMapView) return _mapAlbumDuration;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_mapAlbumDuration);
+  }
+
   @override
   @JsonKey()
   final Album album;
 
   @override
   String toString() {
-    return 'PlayerState(status: $status, trackSpeed: $trackSpeed, album: $album)';
+    return 'PlayerState(status: $status, trackSpeed: $trackSpeed, mapAlbumDuration: $mapAlbumDuration, album: $album)';
   }
 
   @override
@@ -2918,12 +2948,15 @@ class _$Initial implements Initial {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.trackSpeed, trackSpeed) ||
                 other.trackSpeed == trackSpeed) &&
+            const DeepCollectionEquality()
+                .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
             (identical(other.album, album) || other.album == album));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, trackSpeed, album);
+  int get hashCode => Object.hash(runtimeType, status, trackSpeed,
+      const DeepCollectionEquality().hash(_mapAlbumDuration), album);
 
   @JsonKey(ignore: true)
   @override
@@ -2943,6 +2976,7 @@ abstract class Initial implements PlayerState {
   const factory Initial(
       {final PlayerStatus status,
       final double trackSpeed,
+      final Map<int, Duration> mapAlbumDuration,
       final Album album}) = _$Initial;
 
   factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
@@ -2951,6 +2985,8 @@ abstract class Initial implements PlayerState {
   PlayerStatus get status;
   @override
   double get trackSpeed;
+  @override
+  Map<int, Duration> get mapAlbumDuration;
   @override
   Album get album;
   @override

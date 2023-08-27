@@ -12,6 +12,8 @@ class PlayerState with _$PlayerState {
   const factory PlayerState({
     @Default(PlayerStatus.initial) PlayerStatus status,
     @Default(1.0) double trackSpeed,
+    // TODO
+    @Default({}) Map<int, Duration> mapAlbumDuration,
     @Default(Album(
       tracks: [],
       albumDuration: Duration.zero,
@@ -23,8 +25,8 @@ class PlayerState with _$PlayerState {
       trackPosition: Duration.zero,
       trackIndex: 0,
       albumArtwork: [],
-      trackArtwork: [],
       mapAlbumDuration: {},
+      trackId: null,
     ))
     Album album,
   }) = Initial;

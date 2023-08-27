@@ -22,7 +22,6 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 mixin _$Album {
   List<Track> get tracks => throw _privateConstructorUsedError;
   List<int> get albumArtwork => throw _privateConstructorUsedError;
-  List<int> get trackArtwork => throw _privateConstructorUsedError;
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
@@ -32,6 +31,7 @@ mixin _$Album {
   Duration get trackPosition => throw _privateConstructorUsedError;
   Duration get trackDuration => throw _privateConstructorUsedError;
   int get trackIndex => throw _privateConstructorUsedError;
+  int? get trackId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,6 @@ abstract class $AlbumCopyWith<$Res> {
   $Res call(
       {List<Track> tracks,
       List<int> albumArtwork,
-      List<int> trackArtwork,
       Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
@@ -55,7 +54,8 @@ abstract class $AlbumCopyWith<$Res> {
       String artist,
       Duration trackPosition,
       Duration trackDuration,
-      int trackIndex});
+      int trackIndex,
+      int? trackId});
 }
 
 /// @nodoc
@@ -73,7 +73,6 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   $Res call({
     Object? tracks = null,
     Object? albumArtwork = null,
-    Object? trackArtwork = null,
     Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
@@ -83,6 +82,7 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
     Object? trackPosition = null,
     Object? trackDuration = null,
     Object? trackIndex = null,
+    Object? trackId = freezed,
   }) {
     return _then(_value.copyWith(
       tracks: null == tracks
@@ -92,10 +92,6 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
       albumArtwork: null == albumArtwork
           ? _value.albumArtwork
           : albumArtwork // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      trackArtwork: null == trackArtwork
-          ? _value.trackArtwork
-          : trackArtwork // ignore: cast_nullable_to_non_nullable
               as List<int>,
       mapAlbumDuration: null == mapAlbumDuration
           ? _value.mapAlbumDuration
@@ -133,6 +129,10 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -146,7 +146,6 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
   $Res call(
       {List<Track> tracks,
       List<int> albumArtwork,
-      List<int> trackArtwork,
       Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
@@ -155,7 +154,8 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
       String artist,
       Duration trackPosition,
       Duration trackDuration,
-      int trackIndex});
+      int trackIndex,
+      int? trackId});
 }
 
 /// @nodoc
@@ -169,7 +169,6 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
   $Res call({
     Object? tracks = null,
     Object? albumArtwork = null,
-    Object? trackArtwork = null,
     Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
@@ -179,6 +178,7 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
     Object? trackPosition = null,
     Object? trackDuration = null,
     Object? trackIndex = null,
+    Object? trackId = freezed,
   }) {
     return _then(_$_Album(
       tracks: null == tracks
@@ -188,10 +188,6 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
       albumArtwork: null == albumArtwork
           ? _value._albumArtwork
           : albumArtwork // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      trackArtwork: null == trackArtwork
-          ? _value._trackArtwork
-          : trackArtwork // ignore: cast_nullable_to_non_nullable
               as List<int>,
       mapAlbumDuration: null == mapAlbumDuration
           ? _value._mapAlbumDuration
@@ -229,6 +225,10 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -239,7 +239,6 @@ class _$_Album implements _Album {
   const _$_Album(
       {required final List<Track> tracks,
       required final List<int> albumArtwork,
-      required final List<int> trackArtwork,
       required final Map<int, Duration> mapAlbumDuration,
       required this.albumDuration,
       required this.albumPosition,
@@ -248,10 +247,10 @@ class _$_Album implements _Album {
       required this.artist,
       required this.trackPosition,
       required this.trackDuration,
-      required this.trackIndex})
+      required this.trackIndex,
+      required this.trackId})
       : _tracks = tracks,
         _albumArtwork = albumArtwork,
-        _trackArtwork = trackArtwork,
         _mapAlbumDuration = mapAlbumDuration;
 
   factory _$_Album.fromJson(Map<String, dynamic> json) =>
@@ -271,14 +270,6 @@ class _$_Album implements _Album {
     if (_albumArtwork is EqualUnmodifiableListView) return _albumArtwork;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_albumArtwork);
-  }
-
-  final List<int> _trackArtwork;
-  @override
-  List<int> get trackArtwork {
-    if (_trackArtwork is EqualUnmodifiableListView) return _trackArtwork;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_trackArtwork);
   }
 
   final Map<int, Duration> _mapAlbumDuration;
@@ -305,10 +296,12 @@ class _$_Album implements _Album {
   final Duration trackDuration;
   @override
   final int trackIndex;
+  @override
+  final int? trackId;
 
   @override
   String toString() {
-    return 'Album(tracks: $tracks, albumArtwork: $albumArtwork, trackArtwork: $trackArtwork, mapAlbumDuration: $mapAlbumDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, albumId: $albumId, name: $name, artist: $artist, trackPosition: $trackPosition, trackDuration: $trackDuration, trackIndex: $trackIndex)';
+    return 'Album(tracks: $tracks, albumArtwork: $albumArtwork, mapAlbumDuration: $mapAlbumDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, albumId: $albumId, name: $name, artist: $artist, trackPosition: $trackPosition, trackDuration: $trackDuration, trackIndex: $trackIndex, trackId: $trackId)';
   }
 
   @override
@@ -319,8 +312,6 @@ class _$_Album implements _Album {
             const DeepCollectionEquality().equals(other._tracks, _tracks) &&
             const DeepCollectionEquality()
                 .equals(other._albumArtwork, _albumArtwork) &&
-            const DeepCollectionEquality()
-                .equals(other._trackArtwork, _trackArtwork) &&
             const DeepCollectionEquality()
                 .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
             (identical(other.albumDuration, albumDuration) ||
@@ -335,7 +326,8 @@ class _$_Album implements _Album {
             (identical(other.trackDuration, trackDuration) ||
                 other.trackDuration == trackDuration) &&
             (identical(other.trackIndex, trackIndex) ||
-                other.trackIndex == trackIndex));
+                other.trackIndex == trackIndex) &&
+            (identical(other.trackId, trackId) || other.trackId == trackId));
   }
 
   @JsonKey(ignore: true)
@@ -344,7 +336,6 @@ class _$_Album implements _Album {
       runtimeType,
       const DeepCollectionEquality().hash(_tracks),
       const DeepCollectionEquality().hash(_albumArtwork),
-      const DeepCollectionEquality().hash(_trackArtwork),
       const DeepCollectionEquality().hash(_mapAlbumDuration),
       albumDuration,
       albumPosition,
@@ -353,7 +344,8 @@ class _$_Album implements _Album {
       artist,
       trackPosition,
       trackDuration,
-      trackIndex);
+      trackIndex,
+      trackId);
 
   @JsonKey(ignore: true)
   @override
@@ -373,7 +365,6 @@ abstract class _Album implements Album {
   const factory _Album(
       {required final List<Track> tracks,
       required final List<int> albumArtwork,
-      required final List<int> trackArtwork,
       required final Map<int, Duration> mapAlbumDuration,
       required final Duration albumDuration,
       required final Duration albumPosition,
@@ -382,7 +373,8 @@ abstract class _Album implements Album {
       required final String artist,
       required final Duration trackPosition,
       required final Duration trackDuration,
-      required final int trackIndex}) = _$_Album;
+      required final int trackIndex,
+      required final int? trackId}) = _$_Album;
 
   factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
 
@@ -390,8 +382,6 @@ abstract class _Album implements Album {
   List<Track> get tracks;
   @override
   List<int> get albumArtwork;
-  @override
-  List<int> get trackArtwork;
   @override
   Map<int, Duration> get mapAlbumDuration;
   @override
@@ -410,6 +400,8 @@ abstract class _Album implements Album {
   Duration get trackDuration;
   @override
   int get trackIndex;
+  @override
+  int? get trackId;
   @override
   @JsonKey(ignore: true)
   _$$_AlbumCopyWith<_$_Album> get copyWith =>

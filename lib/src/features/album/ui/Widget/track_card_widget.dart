@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
@@ -58,13 +57,9 @@ class TrackCardWidget extends StatelessWidget {
                       context
                           .read<SplashBloc>()
                           .add(const SplashEvent.playing());
-                      Navigator.of(context)
-                          .pop(AppRouts.playerScreen);
+                      Navigator.of(context).pop(AppRouts.playerScreen);
                     },
-                    leading: tempAlbum.trackArtwork.isNotEmpty
-                        ? Image.memory(
-                            Uint8List.fromList(tempAlbum.trackArtwork))
-                        : const FlutterLogo(size: 56.0),
+                    leading: const FlutterLogo(size: 56.0),
                     title: Text(
                       (tempTrack.name ?? ''),
                       maxLines: 2,
@@ -79,8 +74,7 @@ class TrackCardWidget extends StatelessWidget {
             ),
             BlocBuilder<AlbumBloc, AlbumState>(
               builder: (context, state) {
-                if (playerBloc.state.album.albumId == album.albumId) {
-                }
+                if (playerBloc.state.album.albumId == album.albumId) {}
                 return state.maybeWhen(
                   orElse: () => Container(),
                   haveAlbum: (_) => ProgressBar(

@@ -1,5 +1,5 @@
 import 'package:player/src/common/data/search_artwork.dart';
-import 'package:player/src/features/mp3_player/data/audio_helper.dart';
+import 'package:player/src/features/mp3_player/data/repository/audio_helper.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:player/src/features/tracks/domain/entities/track.dart';

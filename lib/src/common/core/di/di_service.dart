@@ -7,8 +7,8 @@ import 'package:player/src/common/core/app/bloc_observer.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/album/data/album_repository.dart';
 import 'package:player/src/features/album/data/search_album_repository.dart';
-import 'package:player/src/features/mp3_player/data/audio_helper.dart';
-import 'package:player/src/features/mp3_player/data/audio_player_repository.dart';
+import 'package:player/src/features/mp3_player/data/repository/audio_helper.dart';
+import 'package:player/src/features/mp3_player/data/repository/audio_player_repository.dart';
 import 'package:player/src/features/splash/data/splash_repository.dart';
 import 'package:player/src/features/tracks/data/track_repository.dart';
 

@@ -10,7 +10,6 @@ class Album with _$Album {
   const factory Album({
     required List<Track> tracks,
     required List<int> albumArtwork,
-    required List<int> trackArtwork,
     required Map<int, Duration> mapAlbumDuration,
     required Duration albumDuration,
     required Duration albumPosition,
@@ -20,6 +19,7 @@ class Album with _$Album {
     required Duration trackPosition,
     required Duration trackDuration,
     required int trackIndex,
+    required int? trackId,
   }) = _Album;
 
   factory Album.fromJson(Map<String, Object?> json) => _$AlbumFromJson(json);

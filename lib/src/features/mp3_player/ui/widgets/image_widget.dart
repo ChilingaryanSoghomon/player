@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/res/app_assets.dart';
+import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
 class ImageWidget extends StatelessWidget {
@@ -15,20 +16,29 @@ class ImageWidget extends StatelessWidget {
         double size = constraints.maxWidth * 0.06;
         return Padding(
           padding: EdgeInsets.all(size),
-          child: BlocBuilder<PlayerBloc, PlayerState>(
-            buildWhen: (previous, current) =>
+          child: BlocListener<PlayerBloc, PlayerState>(
+            listenWhen: (previous, current) =>
                 previous.album.trackIndex != current.album.trackIndex,
-            builder: (context, state) {
-              if (state.album.tracks.isNotEmpty) {
-                final artwork = state.album.trackArtwork;
-                if (artwork.isNotEmpty) {
-                  return Image.memory(Uint8List.fromList(artwork));
-                }
-              }
-              return const Image(
-                image: AssetImage(AppAssets.shortwave),
-              );
+            listener: (context, state) {
+              context
+                  .read<ArtworkBloc>()
+                  .add(ArtworkEvent.change(trackId: state.album.trackId));
             },
+            child: BlocBuilder<ArtworkBloc, ArtworkState>(
+              buildWhen: (previous, current) =>
+                  previous.albumArtwork != current.albumArtwork,
+              builder: (context, state) {
+                if (state.albumArtwork.isNotEmpty) {
+                  final artwork = state.albumArtwork;
+                  if (artwork.isNotEmpty) {
+                    return Image.memory(Uint8List.fromList(artwork));
+                  }
+                }
+                return const Image(
+                  image: AssetImage(AppAssets.shortwave),
+                );
+              },
+            ),
           ),
         );
       },

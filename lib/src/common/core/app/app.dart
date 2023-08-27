@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/core/di/di_service.dart';
+import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_theme.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/screens/album_screen.dart';
+import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/screens/player_screen.dart';
 import 'package:player/src/features/splash/data/splash_repository.dart';
@@ -14,7 +16,7 @@ import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 import 'package:player/src/features/tracks/ui/screens/track_list_screan.dart';
 
 import '../../../features/album/data/album_repository.dart';
-import '../../../features/mp3_player/data/audio_player_repository.dart';
+import '../../../features/mp3_player/data/repository/audio_player_repository.dart';
 import '../../../features/tracks/data/track_repository.dart';
 
 class App extends StatelessWidget {
@@ -39,6 +41,10 @@ class App extends StatelessWidget {
         BlocProvider(
             create: (_) =>
                 AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())),
+
+        BlocProvider(
+            create: (_) =>
+                ArtworkBloc(searchArtwork: getIt<SearchArtwork>())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
