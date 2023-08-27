@@ -270,6 +270,12 @@ class MyAudioHandler extends BaseAudioHandler {
   //   }
   // }
 
+  Future<void> changeAlbumProgressBar(
+      {required Duration position, required int trackIndex}) async {
+    _player.setAudioSource(_playlist,
+        initialPosition: position, initialIndex: trackIndex);
+  }
+
   @override
   Future<void> addQueueItems(List<MediaItem> mediaItems) async {
     debugPrint('Thses are added ques $mediaItems');
