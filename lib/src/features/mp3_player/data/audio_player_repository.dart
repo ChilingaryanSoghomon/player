@@ -34,7 +34,6 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     );
   }
 
-
   @override
   Duration get trackPosition => _audioHandler.player.position;
   @override
@@ -56,12 +55,12 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
 
   @override
   Future<void> next() async {
-    await _audioHandler.skipToNext();
+    await _audioHandler.next();
   }
 
   @override
   Future<void> prev() async {
-    await _audioHandler.skipToNext();
+    await _audioHandler.prev();
   }
 
   @override
@@ -100,7 +99,7 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
         _audioHandler.changeAlbumProgressBar(
             position: position, trackIndex: index - 1);
         break;
-      } 
+      }
     }
   }
 
