@@ -115,8 +115,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
       _PlayerRewindEvent event, Emitter<PlayerState> emit) async {
     Duration newPosition = Duration(seconds: event.seconds);
     Duration rewindPosition = state.album.trackPosition - newPosition;
-    _playerRepository.rewind(
-        newPosition: rewindPosition);
+    _playerRepository.rewind(newPosition: rewindPosition);
   }
 
   Future<void> _push(_PlayerPushEvent event, Emitter<PlayerState> emit) async {
@@ -133,7 +132,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   Future<void> _changeAlbumProgressBar(_PlayerChangeAlbumProgressBarEvent event,
       Emitter<PlayerState> emit) async {
     await _playerRepository.changeAlbumProgressBar(
-        duration: event.newPosition,
+        nowAlbumDuration: event.newPosition,
         mapAlbumDuration: state.album.mapAlbumDuration);
   }
 

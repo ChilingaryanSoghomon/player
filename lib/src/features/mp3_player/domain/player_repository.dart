@@ -25,7 +25,7 @@ abstract class IAudioPlayerRepository {
 
   Future<void> changeTrackProgressBar({required Duration duration});
   Future<void> changeAlbumProgressBar(
-      {required Duration duration,
+      {required Duration nowAlbumDuration,
       required Map<int, Duration> mapAlbumDuration});
   Future<List<int>> getTrackArtwork({required int trackId});
 }

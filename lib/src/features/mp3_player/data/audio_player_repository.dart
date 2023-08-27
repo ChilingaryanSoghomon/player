@@ -90,17 +90,17 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
 
   @override
   Future<void> changeAlbumProgressBar(
-      {required Duration duration,
+      {required Duration nowAlbumDuration,
       required Map<int, Duration> mapAlbumDuration}) async {
-    // for (var index = 0; index < mapAlbumDuration.length; index++) {
-    //   final Duration albumPositionByTrack = mapAlbumDuration[index]!;
-    //   if (duration < albumPositionByTrack) {
-    //     Duration position = duration - mapAlbumDuration[index - 1]!;
-    //     await _audioHandler.player.setAudioSource(_playlist,
-    //         initialPosition: position, initialIndex: index - 1);
-    //     break;
-    //   }
-    // }
+    for (var index = 0; index < mapAlbumDuration.length; index++) {
+      final Duration albumPositionByTrack = mapAlbumDuration[index]!;
+      if (nowAlbumDuration < albumPositionByTrack) {
+        Duration position = nowAlbumDuration - mapAlbumDuration[index - 1]!;
+        _audioHandler.changeAlbumProgressBar(
+            position: position, trackIndex: index - 1);
+        break;
+      } 
+    }
   }
 
   @override
