@@ -1,4 +1,3 @@
-import 'package:audio_service/audio_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/data/audio_helper.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
@@ -21,15 +20,19 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     required Duration trackPosition,
     required int trackIndex,
   }) async {
-    final mediaItems = tracks
-        .map((track) => MediaItem(
-              id: track.path,
-              title: track.name ?? '',
-            ))
-        .toList();
-    _audioHandler.addQueueItems(mediaItems);
+    // final mediaItems = tracks
+    //     .map((track) => MediaItem(
+    //           id: track.path,
+    //           title: track.name ?? '',
+    //         ))
+    //     .toList();
+    // _audioHandler.addQueueItems(mediaItems);
+    _audioHandler.addMusicDirectory(
+      tracks: tracks,
+      trackPosition: trackPosition,
+      trackIndex: trackIndex,
+    );
   }
-
 
   @override
   Duration get trackPosition => _audioHandler.player.position;

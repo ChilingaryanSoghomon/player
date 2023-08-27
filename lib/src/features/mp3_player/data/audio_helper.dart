@@ -2,10 +2,11 @@ import 'package:audio_service/audio_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:player/src/features/mp3_player/data/resources/my_media_controler.dart';
+import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 class MyAudioHandler extends BaseAudioHandler {
   final _player = AudioPlayer();
-  final _playlist = ConcatenatingAudioSource(children: []);
+  ConcatenatingAudioSource _playlist = ConcatenatingAudioSource(children: []);
 
   MyAudioHandler() {
     _loadEmptyPlaylist();
@@ -28,12 +29,12 @@ class MyAudioHandler extends BaseAudioHandler {
       final playing = _player.playing;
       playbackState.add(playbackState.value.copyWith(
         controls: [
+          MediaControl.skipToPrevious,
           MyMediaControl.rewind,
-          MyMediaControl.seekBackward,
-          // MediaControl.skipToPrevious,
+          // MyMediaControl.seekBackward,
           if (playing) MediaControl.pause else MediaControl.play,
-          // MediaControl.stop,
-          MyMediaControl.seekForward,
+          MyMediaControl.push,
+          // MyMediaControl.seekForward,
           MediaControl.skipToNext,
         ],
         systemActions: const {
@@ -62,30 +63,30 @@ class MyAudioHandler extends BaseAudioHandler {
         bufferedPosition: _player.bufferedPosition,
         speed: _player.speed,
         queueIndex: event.currentIndex!,
-        
       ));
     });
   }
 
-  Stream<PlaybackEvent> get playbackEventStream => _player.playbackEventStream;
-  AudioPlayer get player => _player;
-
-  @override
-  Future<void> addQueueItems(List<MediaItem> mediaItems) async {
-    debugPrint('Thses are added ques $mediaItems');
-    // manage Just Audio
+  addMusicDirectory({
+    required List<Track> tracks,
+    required Duration trackPosition,
+    required int trackIndex,
+  }) async {
     final List<UriAudioSource> audioSource = [];
-    for (var track in mediaItems) {
-      final UriAudioSource audio = AudioSource.file(track.id);
+    for (var track in tracks) {
+      final UriAudioSource audio = AudioSource.file(track.path);
       audioSource.add(audio);
     }
-    // final audioSource = mediaItems.map(_createAudioSource);
-
-    _playlist.addAll(audioSource.toList());
-
-    final newQueue = queue.value..addAll(mediaItems);
-    queue.add(newQueue);
+    if (audioSource.isNotEmpty) {
+      _playlist = ConcatenatingAudioSource(
+          useLazyPreparation: true, children: audioSource);
+      await _player.setAudioSource(_playlist,
+          initialPosition: trackPosition, initialIndex: trackIndex);
+    }
   }
+
+  Stream<PlaybackEvent> get playbackEventStream => _player.playbackEventStream;
+  AudioPlayer get player => _player;
 
   @override
   Future<void> play() => _player.play();
@@ -105,7 +106,7 @@ class MyAudioHandler extends BaseAudioHandler {
   @override
   Future<void> rewind() async {
     final currentPosition = _player.position;
-    final seekDuration = const Duration(seconds: 10);
+    const seekDuration = Duration(seconds: 10);
     final newPosition = currentPosition - seekDuration;
     final newPositionClamped =
         newPosition < Duration.zero ? Duration.zero : newPosition;
@@ -116,12 +117,18 @@ class MyAudioHandler extends BaseAudioHandler {
   }
 
   @override
+  Future<void> stop() async {
+    final newPosition = _player.position + const Duration(seconds: 10);
+    await _player.seek(newPosition);
+  }
+
+  @override
   Future<void> seekBackward(bool begin) async {
     if (begin) {
       await _player.pause();
     } else {
       final currentPosition = _player.position;
-      final seekDuration = const Duration(seconds: 10);
+      const seekDuration = Duration(seconds: 10);
       final newPosition = currentPosition - seekDuration;
       final newPositionClamped =
           newPosition < Duration.zero ? Duration.zero : newPosition;
@@ -136,6 +143,23 @@ class MyAudioHandler extends BaseAudioHandler {
   Future<void> seekForward(bool begin) {
     return _player.play();
     // return super.seekForward(begin);
+  }
+
+  @override
+  Future<void> addQueueItems(List<MediaItem> mediaItems) async {
+    debugPrint('Thses are added ques $mediaItems');
+    // manage Just Audio
+    final List<UriAudioSource> audioSource = [];
+    for (var track in mediaItems) {
+      final UriAudioSource audio = AudioSource.file(track.id);
+      audioSource.add(audio);
+    }
+    // final audioSource = mediaItems.map(_createAudioSource);
+
+    _playlist.addAll(audioSource.toList());
+
+    final newQueue = queue.value..addAll(mediaItems);
+    queue.add(newQueue);
   }
   // void _listenForDurationChanges() {
   //   _player.durationStream.listen((duration) {
@@ -261,10 +285,4 @@ class MyAudioHandler extends BaseAudioHandler {
   //     super.stop();
   //   }
   // }
-
-  @override
-  Future<void> stop() async {
-    await _player.stop();
-    return super.stop();
-  }
 }
