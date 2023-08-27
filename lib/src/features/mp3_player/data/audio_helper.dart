@@ -108,7 +108,6 @@ class MyAudioHandler extends BaseAudioHandler {
 
 // changing the content of the function for the background of the buttons
 // function    skipToNext, rewind, skipToPrevious, stop
-
   @override
   Future<void> skipToPrevious() async {
     final currentPosition = _player.position;
