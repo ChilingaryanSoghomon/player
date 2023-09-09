@@ -7,4 +7,7 @@ class ArtworkEvent with _$ArtworkEvent {
   const factory ArtworkEvent.change({
     required int? trackId,
   }) = _ArtworkChangeEvent;
+  const factory ArtworkEvent.getAlbumsArtworksMap({
+    required List<Album> albums,
+  }) = _ArtworkGetAlbumsArtworksMapEvent;
 }

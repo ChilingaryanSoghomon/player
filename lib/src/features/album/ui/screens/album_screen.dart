@@ -7,6 +7,7 @@ import 'package:player/src/features/album/ui/Widget/album_card_widget.dart';
 import 'package:player/src/features/album/ui/Widget/track_card_widget.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/Widget/corner_widget.dart';
+import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 
@@ -53,6 +54,14 @@ class _AlbumScreenState extends State<AlbumScreen> {
   void initState() {
     super.initState();
     createAlbumItemWidget();
+    final artworkBloc = context.read<ArtworkBloc>();
+    if (artworkBloc.state.mapAlbumArtworks.isEmpty) {
+      final albumBloc = context.read<AlbumBloc>();
+      albumBloc.state.whenOrNull(
+        haveAlbum: (state) =>
+            artworkBloc.add(ArtworkEvent.getAlbumsArtworksMap(albums: state)),
+      );
+    }
   }
 
   void createAlbumItemWidget() {

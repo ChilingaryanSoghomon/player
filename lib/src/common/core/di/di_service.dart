@@ -48,9 +48,8 @@ Future<void> setup() async {
   getIt.registerLazySingleton<SearchArtwork>(
       () => SearchArtwork(audioQuery: audioQuery));
 
-  getIt.registerLazySingleton<SearchAlbumRepository>(() =>
-      SearchAlbumRepository(
-          audioQuery: audioQuery, searchArtwork: getIt<SearchArtwork>()));
+  getIt.registerLazySingleton<SearchAlbumRepository>(
+      () => SearchAlbumRepository(audioQuery: audioQuery));
 
   getIt.registerLazySingleton<SplashRepository>(() =>
       SplashRepository(searchAlbumRepository: getIt<SearchAlbumRepository>()));

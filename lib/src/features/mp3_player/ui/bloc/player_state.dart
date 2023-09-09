@@ -24,7 +24,6 @@ class PlayerState with _$PlayerState {
       trackDuration: Duration.zero,
       trackPosition: Duration.zero,
       trackIndex: 0,
-      albumArtwork: [],
       mapAlbumDuration: {},
       trackId: null,
     ))

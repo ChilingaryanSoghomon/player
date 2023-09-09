@@ -1,7 +1,5 @@
 part of 'album_bloc.dart';
 
-
-
 @freezed
 class AlbumState with _$AlbumState {
   const factory AlbumState.initial() = _LoadingAlbumState;

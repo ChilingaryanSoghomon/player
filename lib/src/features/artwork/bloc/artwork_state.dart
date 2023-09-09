@@ -7,5 +7,6 @@ part of 'artwork_bloc.dart';
 class ArtworkState with _$ArtworkState {
   const factory ArtworkState({
     @Default([]) List<int> albumArtwork,
+    @Default({}) Map<int,List<int>> mapAlbumArtworks,
   }) = _ArtworkState;
 }

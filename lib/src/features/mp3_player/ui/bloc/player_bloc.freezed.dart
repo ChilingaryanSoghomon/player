@@ -2767,7 +2767,7 @@ PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PlayerState {
   PlayerStatus get status => throw _privateConstructorUsedError;
-  double get trackSpeed => throw _privateConstructorUsedError;
+  double get trackSpeed => throw _privateConstructorUsedError; // TODO
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Album get album => throw _privateConstructorUsedError;
 
@@ -2908,7 +2908,6 @@ class _$Initial implements Initial {
           trackDuration: Duration.zero,
           trackPosition: Duration.zero,
           trackIndex: 0,
-          albumArtwork: [],
           mapAlbumDuration: {},
           trackId: null)})
       : _mapAlbumDuration = mapAlbumDuration;
@@ -2922,7 +2921,9 @@ class _$Initial implements Initial {
   @override
   @JsonKey()
   final double trackSpeed;
+// TODO
   final Map<int, Duration> _mapAlbumDuration;
+// TODO
   @override
   @JsonKey()
   Map<int, Duration> get mapAlbumDuration {
@@ -2985,7 +2986,7 @@ abstract class Initial implements PlayerState {
   PlayerStatus get status;
   @override
   double get trackSpeed;
-  @override
+  @override // TODO
   Map<int, Duration> get mapAlbumDuration;
   @override
   Album get album;

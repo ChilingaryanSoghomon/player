@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/res/app_assets.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
+import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
 class AlbumCardWidget extends StatelessWidget {
@@ -26,13 +27,18 @@ class AlbumCardWidget extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: album.albumArtwork.isNotEmpty
-                      ? Image.memory(Uint8List.fromList(album.albumArtwork))
-                      : const Image(
-                          image: AssetImage(AppAssets.shortwave),
-                        ),
+                child: BlocBuilder<ArtworkBloc, ArtworkState>(
+                  builder: (context, state) {
+                    final albumArtwork = state.mapAlbumArtworks[album.albumId];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: albumArtwork != null && albumArtwork.isNotEmpty
+                          ? Image.memory(Uint8List.fromList(albumArtwork))
+                          : const Image(
+                              image: AssetImage(AppAssets.shortwave),
+                            ),
+                    );
+                  },
                 ),
               ),
               Flexible(
