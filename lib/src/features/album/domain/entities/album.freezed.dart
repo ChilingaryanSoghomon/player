@@ -20,8 +20,7 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Album {
-  List<Track> get tracks =>
-      throw _privateConstructorUsedError; // required List<int> albumArtwork,
+  List<Track> get tracks => throw _privateConstructorUsedError;
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
@@ -250,9 +249,7 @@ class _$_Album implements _Album {
     return EqualUnmodifiableListView(_tracks);
   }
 
-// required List<int> albumArtwork,
   final Map<int, Duration> _mapAlbumDuration;
-// required List<int> albumArtwork,
   @override
   Map<int, Duration> get mapAlbumDuration {
     if (_mapAlbumDuration is EqualUnmodifiableMapView) return _mapAlbumDuration;
@@ -356,7 +353,7 @@ abstract class _Album implements Album {
 
   @override
   List<Track> get tracks;
-  @override // required List<int> albumArtwork,
+  @override
   Map<int, Duration> get mapAlbumDuration;
   @override
   Duration get albumDuration;
