@@ -4,6 +4,7 @@ import 'package:player/src/common/core/di/di_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_theme.dart';
+import 'package:player/src/common/res/bloc/theme_bloc.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/screens/album_screen.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
@@ -19,8 +20,8 @@ import '../../../features/album/data/album_repository.dart';
 import '../../../features/mp3_player/data/repository/audio_player_repository.dart';
 import '../../../features/tracks/data/track_repository.dart';
 
-class App extends StatelessWidget {
-  const App({super.key});
+class AppProviders extends StatelessWidget {
+  const AppProviders({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,30 +42,39 @@ class App extends StatelessWidget {
         BlocProvider(
             create: (_) =>
                 AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())),
-
         BlocProvider(
-            create: (_) =>
-                ArtworkBloc(searchArtwork: getIt<SearchArtwork>())),
+            create: (_) => ArtworkBloc(searchArtwork: getIt<SearchArtwork>())),
+        BlocProvider(create: (_) => ThemeBloc()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'player',
-        darkTheme: AppTheme.darkTheme,
-        theme: AppTheme.lightTheme,
-        // initialRoute: AppRouts.playerScreen,
-        home: const SplashScreen(),
-        routes: {
-          AppRouts.playerScreen: (context) => const PlayerScreen(),
-          AppRouts.albumScreen: (context) => const AlbumScreen(),
-          AppRouts.trackListScreen: (context) => const TrackListScreen(),
-        },
-        // builder: (context, child) => const SplashScreen(),
-      ),
-      // child: MaterialApp.router(
-      //   debugShowCheckedModeBanner: false,
-      //   theme: AppTheme.lightTheme,
-      //   routerConfig: router,
-      // ),
+      child: const MyApp(),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ThemeBloc, ThemeMode>(
+      builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'player',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: state,
+          home: const SplashScreen(),
+          routes: {
+            AppRouts.playerScreen: (context) => const PlayerScreen(),
+            AppRouts.albumScreen: (context) => const AlbumScreen(),
+            AppRouts.trackListScreen: (context) => const TrackListScreen(),
+          },
+          // builder: (context, child) => const SplashScreen(),
+        );
+      },
     );
   }
 }

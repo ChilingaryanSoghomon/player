@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
+  static const shadowUpLight = Color.fromARGB(255, 255, 255, 255);
+  static const shadowUpDark = Color.fromARGB(255, 94, 89, 89);
+
+  static const shadowWight = Color.fromARGB(255, 233, 226, 226);
+  static const shadowDark = Color.fromARGB(255, 39, 36, 36);
+
   static const mainColor = Color(0xffFF9800);
   static const dark = Color(0xFF1D1D1D);
 
@@ -20,10 +26,10 @@ abstract class AppColors {
     },
   );
 
- static const MaterialColor primaryGreen = MaterialColor(
+  static const MaterialColor primaryGreen = MaterialColor(
     0xffCDDC39,
     <int, Color>{
-      50:  Color(0xffF9FBE7), //10%
+      50: Color(0xffF9FBE7), //10%
       100: Color(0xffF0F4C3), //20%
       200: Color(0xffE6EE9C), //30%
       300: Color(0xffDCE775), //40%
@@ -36,8 +42,35 @@ abstract class AppColors {
     },
   );
 
+  static const MaterialColor primaryBlack = MaterialColor(
+    0xff000000,
+    <int, Color>{
+      50: Color(0xff333333), // 10%
+      100: Color(0xff666666), // 20%
+      200: Color(0xff999999), // 30%
+      300: Color(0xffCCCCCC), // 40%
+      400: Color(0xffE5E5E5), // 50%
+      500: Color(0xffF2F2F2), // 60%
+      600: Color(0xffF5F5F5), // 70%
+      700: Color(0xffFAFAFA), // 80%
+      800: Color(0xffFCFCFC), // 90%
+      900: Color(0xffFFFFFF), // 100%
+    },
+  );
 
-
+  static const MaterialColor primaryWhite = MaterialColor(
+    0xffffffff,
+    <int, Color>{
+      50: Color(0xffF9F9F9), // 10%
+      100: Color(0xffF0F0F0), // 20%
+      200: Color(0xffE6E6E6), // 30%
+      300: Color(0xffDCDCDC), // 40%
+      400: Color(0xffD4D4D4), // 50%
+      500: Color(0xffCCCCCC), // 60%
+      600: Color(0xffC0C0C0), // 70%
+      700: Color(0xffB7B7B7), // 80%
+      800: Color(0xffADADAD), // 90%
+      900: Color(0xffA3A3A3), // 100%
+    },
+  );
 }
-
-

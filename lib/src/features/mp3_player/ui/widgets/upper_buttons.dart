@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_button_style.dart';
+import 'package:player/src/common/res/bloc/theme_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
 class UpperButtonsWidget extends StatelessWidget {
@@ -30,7 +31,9 @@ class UpperButtonsWidget extends StatelessWidget {
           },
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<ThemeBloc>().add(ThemeChangeEvent());
+          },
           child: const Text('Open File'),
         ),
         OutlinedButton(

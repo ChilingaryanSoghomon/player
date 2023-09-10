@@ -70,21 +70,21 @@ class CustomProgressBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-              decoration: BoxDecoration(
-          // color: Colors.grey[200], 
-          boxShadow:  [
-            BoxShadow(
-              color: Colors.grey.shade400,
-              blurRadius: 15,
-              offset: Offset(2, 2),
-            ),
-            // BoxShadow(
-            //   color: Colors.white,
-            //   blurRadius: 15,
-            //   offset: Offset(-5, -5),
-            // ),
-          ],
-        ),
+        //       decoration: BoxDecoration(
+        //   // color: Colors.grey[200], 
+        //   boxShadow:  [
+        //     BoxShadow(
+        //       color: Colors.grey.shade400,
+        //       blurRadius: 15,
+        //       offset: Offset(2, 2),
+        //     ),
+        //     // BoxShadow(
+        //     //   color: Colors.white,
+        //     //   blurRadius: 15,
+        //     //   offset: Offset(-5, -5),
+        //     // ),
+        //   ],
+        // ),
       child: ProgressBar(
         // baseBarColor: AppColors.mainThemColor[50],
         barCapShape: BarCapShape.square,

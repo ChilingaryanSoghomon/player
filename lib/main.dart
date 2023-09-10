@@ -13,5 +13,5 @@ Future<void> main() async {
         : await getTemporaryDirectory(),
   );
   await di.setup();
-  runApp(const App());
+  runApp(const AppProviders());
 }

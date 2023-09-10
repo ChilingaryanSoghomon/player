@@ -11,35 +11,6 @@ import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 
-// class AlbumScreenWidget extends StatefulWidget {
-//   const AlbumScreenWidget({super.key});
-
-//   @override
-//   State<AlbumScreenWidget> createState() => _AlbumScreenWidgetState();
-// }
-
-// class _AlbumScreenWidgetState extends State<AlbumScreenWidget> {
-//   final List<AlbumItemWidget> _albumItemWidget = [];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final albumBloc = context.read<AlbumBloc>();
-//     albumBloc.state.whenOrNull(
-//       haveAlbum: (albums) {
-//         for (var i = 0; i < albums.length; i++) {
-//           _albumItemWidget.add(
-//             AlbumItemWidget(
-//               key: ValueKey(i),
-//               album: albums[i],
-//               track: albums[i].tracks[albums[i].trackIndex],
-//             ),
-//           );
-//         }
-//       },
-//     );
-//     return const AlbumScreen();
-//   }
-// }
 
 class AlbumScreen extends StatefulWidget {
   const AlbumScreen({super.key});
@@ -83,12 +54,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
     );
   }
 
-  // @override
-  // void didChangeDependencies() {
-  //   createAlbumItemWidget();
-
-  //   super.didChangeDependencies();
-  // }
 
   void rebuildScreen() {
     setState(() {});
@@ -112,12 +77,9 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     ),
                   );
                 } else {
-                  // Navigator.of(context).pushNamed(AppRouts.playerScreen);
-                  // context.read<AlbumBloc>().add(const AlbumEvent.initial());
                   return Center(
                     child: TextButton(
                       onPressed: () => rebuildScreen(),
-                      // context.read<AlbumBloc>().add(AlbumEvent.initial()),
                       child: const Text('search Album'),
                     ),
                   );

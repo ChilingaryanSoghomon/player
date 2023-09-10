@@ -476,22 +476,6 @@ class CustomPressedButton extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-          // color: Colors.grey[300],
-          //   borderRadius: BorderRadius.circular(borderRadius),
-          //   boxShadow: [
-          //     const BoxShadow(
-          //       color: Colors.white,
-          //       blurRadius: 15,
-          //       offset: Offset(-5, -5),
-          //     ),
-          //     BoxShadow(
-          //       color: Colors.grey.shade500,
-          //       blurRadius: 15,
-          //       offset: const Offset(5, 5),
-          //     ),
-          //   ],
-          ),
       alignment: Alignment.center,
       child: Container(
         width: size - 5,
@@ -551,26 +535,9 @@ class CustomButtonNotPress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: size,
       height: size,
-      // decoration: BoxDecoration(
-      //   color: Colors.grey[300],
-      //   borderRadius: BorderRadius.circular(borderRadius),
-      //   boxShadow: [
-      //     const BoxShadow(
-      //       color: Colors.white,
-      //       blurRadius: 15,
-      //       offset: Offset(-5, -5),
-      //     ),
-      //     BoxShadow(
-      //       color: Colors.grey.shade600,
-      //       blurRadius: 15,
-      //       offset: const Offset(5, 5),
-      //     ),
-      //   ],
-      // ),
-      // alignment: Alignment.center,
       child: Container(
         width: size - 5,
         height: size - 5,

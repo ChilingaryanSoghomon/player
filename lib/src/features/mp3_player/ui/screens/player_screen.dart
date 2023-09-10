@@ -28,12 +28,12 @@ class _PlayerScreenState extends State<PlayerScreen> {
           .add(AlbumEvent.changeAlbum(album: state.album));
     },
     child:
-     Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: const SafeArea(
+     const Scaffold(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            // Switch(value: value, onChanged: onChanged),
             Expanded(child: ImageWidget()),
             UpperButtonsWidget(),
             Padding(

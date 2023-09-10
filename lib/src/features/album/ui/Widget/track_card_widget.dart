@@ -1,4 +1,3 @@
-
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +25,7 @@ class TrackCardWidget extends StatelessWidget {
     Album tempAlbum = album;
     Track tempTrack = track;
     bool changeTrack = false;
+    final theme = Theme.of(context);
     return BlocListener<PlayerBloc, PlayerState>(
       listenWhen: (previous, current) =>
           previous.album.trackIndex != current.album.trackIndex,
@@ -59,7 +59,10 @@ class TrackCardWidget extends StatelessWidget {
                           .add(const SplashEvent.playing());
                       Navigator.of(context).pop(AppRouts.playerScreen);
                     },
-                    leading: const FlutterLogo(size: 56.0),
+                    leading: Text(
+                      '${album.tracks.length}/${album.trackIndex}',
+                      style: theme.textTheme.headlineMedium,
+                    ),
                     title: Text(
                       (tempTrack.name ?? ''),
                       maxLines: 2,
