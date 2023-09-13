@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const shadowUpLight = Color.fromARGB(255, 255, 255, 255);
-  static const shadowUpDark = Color.fromARGB(255, 94, 89, 89);
+  static const shadowWight = Colors.white;
 
-  static const shadowWight = Color.fromARGB(255, 233, 226, 226);
-  static const shadowDark = Color.fromARGB(255, 39, 36, 36);
+  static final shadowDark = Colors.white.withOpacity(0.1);
 
   static const mainColor = Color(0xffFF9800);
   static const dark = Color(0xFF1D1D1D);
