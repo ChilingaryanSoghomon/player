@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:player/src/common/widgets/on_horizontal_navigation_widget.dart';
+import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/Widget/arrow_widget.dart';
 import 'package:player/src/features/album/ui/Widget/album_card_widget.dart';
@@ -10,7 +12,6 @@ import 'package:player/src/features/album/ui/Widget/corner_widget.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
-
 
 class AlbumScreen extends StatefulWidget {
   const AlbumScreen({super.key});
@@ -54,39 +55,64 @@ class _AlbumScreenState extends State<AlbumScreen> {
     );
   }
 
-
   void rebuildScreen() {
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<AlbumBloc, AlbumState>(
-          builder: (context, state) {
-            return state.map(
-              initial: (state) =>
-                  const Center(child: CircularProgressIndicator()),
-              empty: (state) => const Center(child: Text('Empty')),
-              haveAlbum: (state) {
-                if (_albumItemWidget.isNotEmpty) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [..._albumItemWidget],
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: TextButton(
-                      onPressed: () => rebuildScreen(),
-                      child: const Text('search Album'),
-                    ),
-                  );
-                }
-              },
-            );
-          },
+        child: OnHorizontalNavigationWidget(
+          doPop: true,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20,bottom: 5,top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      PrimaryButtonWidget(
+                          size: 40,
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Icon(
+                            Icons.arrow_back_rounded,
+                            color: colorScheme.primary,
+                          ),),
+                    ],
+                  ),
+                ),
+                BlocBuilder<AlbumBloc, AlbumState>(
+                  builder: (context, state) {
+                    return state.map(
+                      initial: (state) =>
+                          const Center(child: CircularProgressIndicator()),
+                      empty: (state) => const Center(child: Text('Empty')),
+                      haveAlbum: (state) {
+                        if (_albumItemWidget.isNotEmpty) {
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [..._albumItemWidget],
+                            ),
+                          );
+                        } else {
+                          return Center(
+                            child: TextButton(
+                              onPressed: () => rebuildScreen(),
+                              child: const Text('search Album'),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
