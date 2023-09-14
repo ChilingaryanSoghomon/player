@@ -48,6 +48,7 @@ dependencies:
   path_provider: ^2.0.15
   path: ^1.8.2
   permission_handler: ^10.3.0
+  # percent_indicator: ^4.2.3
   rxdart: ^0.27.7
   shared_preferences: ^2.1.1
 

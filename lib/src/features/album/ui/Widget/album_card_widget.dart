@@ -69,12 +69,16 @@ class AlbumCardWidget extends StatelessWidget {
               }
               return state.maybeMap(
                 orElse: () => const Text('No album available'),
-                haveAlbum: (_) => ProgressBar(
-                  barCapShape: BarCapShape.square,
-                  timeLabelLocation: TimeLabelLocation.sides,
-                  thumbRadius: 0,
-                  progress: tempAlbum.albumPosition,
-                  total: album.albumDuration,
+                haveAlbum: (_) => AbsorbPointer(
+                  absorbing: true,
+                  child: ProgressBar(
+                    barCapShape: BarCapShape.square,
+                    timeLabelLocation: TimeLabelLocation.sides,
+                    timeLabelPadding: 10,
+                    thumbRadius: 0,
+                    progress: tempAlbum.albumPosition,
+                    total: album.albumDuration,
+                  ),
                 ),
               );
             },

@@ -1,13 +1,12 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:player/src/common/navigation/app_Router.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
+import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
-
-import '../../../mp3_player/ui/bloc/player_bloc.dart';
 
 class TrackCardWidget extends StatelessWidget {
   const TrackCardWidget({
@@ -57,7 +56,7 @@ class TrackCardWidget extends StatelessWidget {
                       context
                           .read<SplashBloc>()
                           .add(const SplashEvent.playing());
-                      Navigator.of(context).pop(AppRouts.playerScreen);
+                      Navigator.of(context).pop(AppRouter.player);
                     },
                     leading: Text(
                       '${album.tracks.length}/${album.trackIndex}',
@@ -77,15 +76,18 @@ class TrackCardWidget extends StatelessWidget {
             ),
             BlocBuilder<AlbumBloc, AlbumState>(
               builder: (context, state) {
-                if (playerBloc.state.album.albumId == album.albumId) {}
                 return state.maybeWhen(
                   orElse: () => Container(),
-                  haveAlbum: (_) => ProgressBar(
-                    barCapShape: BarCapShape.square,
-                    timeLabelLocation: TimeLabelLocation.sides,
-                    thumbRadius: 0,
-                    progress: tempAlbum.trackPosition,
-                    total: tempAlbum.trackDuration,
+                  haveAlbum: (_) => AbsorbPointer(
+                    absorbing: true,
+                    child: ProgressBar(
+                      timeLabelPadding: 10,
+                      barCapShape: BarCapShape.square,
+                      timeLabelLocation: TimeLabelLocation.sides,
+                      thumbRadius: 0,
+                      progress: tempAlbum.trackPosition,
+                      total: tempAlbum.trackDuration,
+                    ),
                   ),
                 );
               },

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class ArrowWidget extends StatelessWidget {
@@ -11,20 +12,26 @@ class ArrowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).brightness == Brightness.light
+        ? Colors.black
+        : Colors.white;
     return CustomPaint(
-      size:  Size(width, height),
-      painter: FigurePainter(),
+      size: Size(width, height),
+      painter: FigurePainter(color: color),
     );
   }
 }
 
 class FigurePainter extends CustomPainter {
+  final Color color;
+  FigurePainter({
+    required this.color,
+  });
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
-      ..style =
-          PaintingStyle.fill;
+      ..color = color
+      ..style = PaintingStyle.fill;
 
     final path = Path();
     final endPoint = Offset(size.width, size.height);
@@ -33,7 +40,7 @@ class FigurePainter extends CustomPainter {
     path.moveTo(endPoint.dx, endPoint.dy);
     path.lineTo(endPoint.dx - arrowWidth, endPoint.dy - arrowWidth);
     path.lineTo(endPoint.dx - arrowWidth, endPoint.dy + arrowWidth);
-    path.close(); 
+    path.close();
 
     canvas.drawPath(path, paint);
   }

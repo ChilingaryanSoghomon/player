@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/common/navigation/app_Router.dart';
 
-import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/res/app_assets.dart';
 import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/common/widgets/on_horizontal_navigation_widget.dart';
@@ -19,10 +19,10 @@ class TrackListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      body: SafeArea(
-        child: OnHorizontalNavigationWidget(
-          doPop: true,
+    return OnHorizontalNavigationWidget(
+      doPop: true,
+      child: Scaffold(
+        body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -72,7 +72,7 @@ class TrackListScreen extends StatelessWidget {
                                         // context.go(AppRouts.playerScreen);
                                         Navigator.of(context)
                                             .pushReplacementNamed(
-                                                AppRouts.playerScreen);
+                                                AppRouter.player);
                                         context
                                             .read<SplashBloc>()
                                             .add(const SplashEvent.playing());
