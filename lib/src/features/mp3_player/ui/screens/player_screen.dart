@@ -34,7 +34,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
             children: [
               Expanded(child: ImageWidget()),
               UpperButtonsWidget(),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               AlbumProgressBarrWidget(),
               Padding(
                   padding: EdgeInsets.only(top: 20, bottom: 10),

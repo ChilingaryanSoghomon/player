@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/common/widgets/primary_border_button_widget.dart';
@@ -38,11 +39,47 @@ class UpperButtonsWidget extends StatelessWidget {
         ),
         PrimaryBorderButtonWidget(
           borderRadius: 60,
-          onPressed: () =>
-              context.read<ThemeBloc>().add(ThemeSwitchPrimaryColorEvent()),
+          onPressed: () => _showColorSelectionDialog(context),
           child: const RoundButtonWidget(size: 36),
         )
       ],
+    );
+  }
+
+  void _showColorSelectionDialog(BuildContext context) {
+    Color selectedColor = Theme.of(context).colorScheme.primary;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              //SlidePicker ColorPicker HueRingPicker
+              HueRingPicker(
+                pickerColor: selectedColor,
+                onColorChanged: (color) {
+                  context
+                      .read<ThemeBloc>()
+                      .add(ThemeSwitchPrimaryColorEvent(color: selectedColor));
+                  selectedColor = color;
+                },
+                enableAlpha: true,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  context
+                      .read<ThemeBloc>()
+                      .add(ThemeSwitchPrimaryColorEvent(color: selectedColor));
+                  Navigator.of(context).pop(selectedColor);
+                },
+                child: const Text('Choose'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

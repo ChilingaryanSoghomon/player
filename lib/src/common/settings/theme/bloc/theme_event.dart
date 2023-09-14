@@ -15,4 +15,9 @@ class ThemeChangeThemeEvent extends ThemeEvent {
   });
 }
 
-class ThemeSwitchPrimaryColorEvent extends ThemeEvent {}
+class ThemeSwitchPrimaryColorEvent extends ThemeEvent {
+  final Color color;
+  const ThemeSwitchPrimaryColorEvent({
+    required this.color,
+  });
+}

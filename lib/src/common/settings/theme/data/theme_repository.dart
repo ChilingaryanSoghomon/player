@@ -12,4 +12,12 @@ class ThemeRepository {
   bool isDarkTheme() {
     return _pref.getBool('isDarkTheme') ?? false;
   }
+
+  Future<void> savePrimaryColor(int color) async {
+    await _pref.setInt('primaryColor', color);
+  }
+
+  int? getPrimaryColor() {
+    return _pref.getInt('primaryColor');
+  }
 }

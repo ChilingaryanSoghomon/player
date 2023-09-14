@@ -28,7 +28,7 @@ class FigurePainter extends CustomPainter {
 
     final path = Path();
     final endPoint = Offset(size.width, size.height);
-    final arrowWidth = 8;
+    const arrowWidth = 8;
 
     path.moveTo(endPoint.dx, endPoint.dy);
     path.lineTo(endPoint.dx - arrowWidth, endPoint.dy - arrowWidth);
