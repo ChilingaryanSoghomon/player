@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:go_router/go_router.dart';
+import 'package:player/src/common/navigation/app_router.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 
@@ -18,10 +19,10 @@ class SplashScreen extends StatelessWidget {
               context
                   .read<AlbumBloc>()
                   .add(AlbumEvent.getAlbum(albums: state.albums));
-              Navigator.of(context).pushReplacementNamed(AppRouts.albumScreen);
+              context.pushNamed(AppRouter.album);
             },
-            havePlayingTrack: (_) =>
-                Navigator.of(context).pushReplacementNamed(AppRouts.playerScreen),
+            havePlayingTrack: (_) => 
+            context.pushNamed(AppRouter.player),
           );
         },
         child: const Center(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:go_router/go_router.dart';
+import 'package:player/src/common/navigation/app_router.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/Widget/arrow_widget.dart';
 import 'package:player/src/features/album/ui/Widget/album_card_widget.dart';
@@ -10,7 +11,6 @@ import 'package:player/src/features/album/ui/Widget/corner_widget.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
-
 
 class AlbumScreen extends StatefulWidget {
   const AlbumScreen({super.key});
@@ -53,7 +53,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
       },
     );
   }
-
 
   void rebuildScreen() {
     setState(() {});
@@ -113,7 +112,7 @@ class AlbumItemWidget extends StatelessWidget {
               context
                   .read<TrackBloc>()
                   .add(TrackEvent.clickAlbum(album: album));
-              Navigator.of(context).pushNamed(AppRouts.trackListScreen);
+              context.pushNamed(AppRouter.trackList);
             },
             child: AlbumCardWidget(album: album),
           ),
@@ -132,7 +131,6 @@ class AlbumItemWidget extends StatelessWidget {
               Flexible(
                 child: TrackCardWidget(
                   album: album, track: track,
-                  // track: track,
                 ),
               ),
             ],

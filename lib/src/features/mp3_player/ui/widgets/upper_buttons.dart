@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:go_router/go_router.dart';
+import 'package:player/src/common/navigation/app_router.dart';
 import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/common/widgets/primary_border_button_widget.dart';
 import 'package:player/src/common/widgets/primary_button_widget.dart';
@@ -24,8 +25,7 @@ class UpperButtonsWidget extends StatelessWidget {
         PrimaryButtonWidget(
           size: 40,
           child: Icon(Icons.featured_play_list_outlined, color: primaryColor),
-          onPressed: () =>
-              Navigator.of(context).pushNamed(AppRouts.albumScreen),
+          onPressed: () => context.pushNamed(AppRouter.album)
         ),
         PrimaryButtonWidget(
           onPressed: () => context

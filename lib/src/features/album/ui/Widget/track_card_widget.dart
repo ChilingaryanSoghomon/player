@@ -1,7 +1,8 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:go_router/go_router.dart';
+import 'package:player/src/common/navigation/app_router.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
@@ -57,7 +58,7 @@ class TrackCardWidget extends StatelessWidget {
                       context
                           .read<SplashBloc>()
                           .add(const SplashEvent.playing());
-                      Navigator.of(context).pop(AppRouts.playerScreen);
+                          context.pushNamed(AppRouter.player);
                     },
                     leading: Text(
                       '${album.tracks.length}/${album.trackIndex}',

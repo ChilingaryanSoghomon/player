@@ -2,23 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/core/di/di_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
 import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/common/settings/theme/data/theme_repository.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
-import 'package:player/src/features/album/ui/screens/album_screen.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
-import 'package:player/src/features/mp3_player/ui/screens/player_screen.dart';
 import 'package:player/src/features/splash/data/splash_repository.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
-import 'package:player/src/features/splash/ui/screen/splash_screan.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
-import 'package:player/src/features/tracks/ui/screens/track_list_screen.dart';
 
 import '../../../features/album/data/album_repository.dart';
 import '../../../features/mp3_player/data/repository/audio_player_repository.dart';
 import '../../../features/tracks/data/track_repository.dart';
+import '../../navigation/app_router.dart';
 
 class AppProviders extends StatelessWidget {
   const AppProviders({super.key});
@@ -58,22 +54,19 @@ class MyApp extends StatelessWidget {
   });
 
   @override
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, state) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'player',
           theme: state,
-          // darkTheme: AppTheme.darkTheme,
-          // themeMode: state,
-          home: const SplashScreen(),
-          routes: {
-            AppRouts.playerScreen: (context) => const PlayerScreen(),
-            AppRouts.albumScreen: (context) => const AlbumScreen(),
-            AppRouts.trackListScreen: (context) => const TrackListScreen(),
-          },
-          // builder: (context, child) => const SplashScreen(),
+          routerConfig: AppRouter.router,
+          // routerDelegate: AppRouter.router.routerDelegate,
+          // routeInformationParser: AppRouter.router.routeInformationParser,
+          // routeInformationProvider: AppRouter.router.routeInformationProvider,
         );
       },
     );

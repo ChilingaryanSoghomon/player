@@ -21,7 +21,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
           initial: (event) => _initial(event, emit),
           playing: (event) => _playing(event, emit),
           searchAlbum: (event) => _searchAlbum(event, emit),
-          // empty: (event) async => await _empty(event, emit),
         );
       },
     );
@@ -49,7 +48,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
 
   @override
   SplashState? fromJson(Map<String, dynamic> json) {
-    // add(const SplashEvent.initial());
     return SplashState.fromJson(json);
   }
 
