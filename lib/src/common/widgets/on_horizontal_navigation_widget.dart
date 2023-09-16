@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 
 class OnHorizontalNavigationWidget extends StatelessWidget {
   final Widget child;
@@ -13,11 +15,13 @@ class OnHorizontalNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final splashState = context.read<SplashBloc>().state;
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         double thresholdDistance = 100.0;
         if (details.velocity.pixelsPerSecond.dx > thresholdDistance &&
-            doPop) {
+            doPop &&
+            splashState == const SplashState.havePlayingTrack()) {
           Navigator.of(context).pop();
         } else if (details.velocity.pixelsPerSecond.dx < -thresholdDistance &&
             routLeft != null) {

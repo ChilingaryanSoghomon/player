@@ -1,7 +1,6 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/navigation/app_Router.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
@@ -20,6 +19,7 @@ class TrackCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final splashState = context.read<SplashBloc>().state;
     final playerBloc = context.read<PlayerBloc>();
     Album tempAlbum = album;
     Track tempTrack = track;
@@ -50,16 +50,17 @@ class TrackCardWidget extends StatelessWidget {
                   orElse: () => Container(),
                   haveAlbum: (value) => ListTile(
                     onTap: () {
-                      context
-                          .read<PlayerBloc>()
-                          .add(PlayerEvent.keepPlayingAlbum(album: tempAlbum));
-                      context
-                          .read<SplashBloc>()
-                          .add(const SplashEvent.playing());
-                      Navigator.of(context).pop(AppRouter.player);
+                      if (splashState == const SplashState.havePlayingTrack()) {
+                        context.read<PlayerBloc>().add(
+                            PlayerEvent.keepPlayingAlbum(album: tempAlbum));
+                        context
+                            .read<SplashBloc>()
+                            .add(const SplashEvent.playing());
+                        Navigator.of(context).pop();
+                      }
                     },
                     leading: Text(
-                      '${album.tracks.length}/${album.trackIndex}',
+                      '${album.trackIndex}/${album.tracks.length}',
                       style: theme.textTheme.headlineMedium,
                     ),
                     title: Text(

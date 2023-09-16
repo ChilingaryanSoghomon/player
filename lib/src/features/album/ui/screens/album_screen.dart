@@ -5,6 +5,7 @@ import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/album/ui/Widget/album_item_widget.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
+import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 
 class AlbumScreen extends StatefulWidget {
   const AlbumScreen({super.key});
@@ -54,6 +55,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final splashState = context.read<SplashBloc>().state;
     final colorScheme = Theme.of(context).colorScheme;
     return OnHorizontalNavigationWidget(
       doPop: true,
@@ -70,7 +72,12 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     children: [
                       PrimaryButtonWidget(
                         size: 40,
-                        onPressed: () => Navigator.of(context).pop(),
+                        onPressed: () {
+                          if (splashState ==
+                              const SplashState.havePlayingTrack()) {
+                            Navigator.of(context).pop();
+                          }
+                        },
                         child: Icon(
                           Icons.arrow_back_rounded,
                           color: colorScheme.primary,

@@ -8,6 +8,7 @@ abstract class AppTheme {
       primary: Colors.black,
     ),
     scaffoldBackgroundColor: Colors.grey[300],
+    // scaffoldBackgroundColor: Color.fromARGB(255, 138, 136, 128),
     textTheme: AppTextStyles.txtTheme,
   );
 
