@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/core/di/di_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:player/src/common/navigation/app_Router.dart';
 import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/common/settings/theme/data/theme_repository.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
@@ -69,9 +69,9 @@ class MyApp extends StatelessWidget {
           // themeMode: state,
           home: const SplashScreen(),
           routes: {
-            AppRouts.playerScreen: (context) => const PlayerScreen(),
-            AppRouts.albumScreen: (context) => const AlbumScreen(),
-            AppRouts.trackListScreen: (context) => const TrackListScreen(),
+            AppRouter.player: (context) => const PlayerScreen(),
+            AppRouter.album: (context) => const AlbumScreen(),
+            AppRouter.trackList: (context) => const TrackListScreen(),
           },
           // builder: (context, child) => const SplashScreen(),
         );

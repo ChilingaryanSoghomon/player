@@ -9,7 +9,7 @@ class AlbumProgressBarrWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
             previous.album.albumPosition != current.album.albumPosition ||
@@ -34,7 +34,7 @@ class TrackProgressBarrWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
         buildWhen: (previous, current) =>
             previous.album.trackPosition != current.album.trackPosition ||

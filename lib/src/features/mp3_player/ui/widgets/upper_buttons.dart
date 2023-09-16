@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:player/src/common/navigation/routs_name.dart';
+import 'package:player/src/common/navigation/app_Router.dart';
 import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
-import 'package:player/src/common/widgets/primary_border_button_widget.dart';
 import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/mp3_player/ui/widgets/round_button_widget.dart';
 
@@ -25,8 +24,7 @@ class UpperButtonsWidget extends StatelessWidget {
         PrimaryButtonWidget(
           size: 40,
           child: Icon(Icons.featured_play_list_outlined, color: primaryColor),
-          onPressed: () =>
-              Navigator.of(context).pushNamed(AppRouts.albumScreen),
+          onPressed: () => Navigator.of(context).pushNamed(AppRouter.album),
         ),
         PrimaryButtonWidget(
           onPressed: () => context
@@ -37,7 +35,7 @@ class UpperButtonsWidget extends StatelessWidget {
               ? Icon(Icons.nights_stay_outlined, color: primaryColor)
               : Icon(Icons.sunny, color: primaryColor),
         ),
-        PrimaryBorderButtonWidget(
+        PrimaryButtonWidget(
           borderRadius: 60,
           onPressed: () => _showColorSelectionDialog(context),
           child: const RoundButtonWidget(size: 36),
