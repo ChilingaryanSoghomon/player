@@ -13,8 +13,8 @@ class PlayPauseWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final playerBlok = context.read<PlayerBloc>();
     final primaryColor = Theme.of(context).colorScheme.primary;
-    const size = 75.0;
-    const iconSize = 50.0;
+    final size = MediaQuery.of(context).size.width / 5.5;
+    final iconSize = size * 0.7;
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 30),
       child: Row(

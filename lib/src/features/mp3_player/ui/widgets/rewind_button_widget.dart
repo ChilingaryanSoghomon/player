@@ -10,12 +10,13 @@ class RewindButtonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final primaryColor = theme.colorScheme.primary;
+    final size = MediaQuery.of(context).size.width / 8;
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
       PrimaryButtonWidget(
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.rewind(seconds: 30)),
-        size: 50,
+        size: size,
         child: Text('-30',
             style:
                 theme.textTheme.headlineMedium!.copyWith(color: primaryColor)),
@@ -24,7 +25,7 @@ class RewindButtonsWidget extends StatelessWidget {
         onPressed: () => context
             .read<PlayerBloc>()
             .add(const PlayerEvent.rewind(seconds: 10)),
-        size: 50,
+        size: size,
         child: Text('-10',
             style:
                 theme.textTheme.headlineMedium!.copyWith(color: primaryColor)),
@@ -32,7 +33,7 @@ class RewindButtonsWidget extends StatelessWidget {
       PrimaryButtonWidget(
         onPressed: () =>
             context.read<PlayerBloc>().add(const PlayerEvent.push(seconds: 10)),
-        size: 50,
+        size: size,
         child: Text('+10',
             style:
                 theme.textTheme.headlineMedium!.copyWith(color: primaryColor)),
@@ -40,7 +41,7 @@ class RewindButtonsWidget extends StatelessWidget {
       PrimaryButtonWidget(
         onPressed: () =>
             context.read<PlayerBloc>().add(const PlayerEvent.push(seconds: 30)),
-        size: 50,
+        size: size,
         child: Text('+30',
             style:
                 theme.textTheme.headlineMedium!.copyWith(color: primaryColor)),
