@@ -30,7 +30,6 @@ mixin _$PlayerEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,7 +46,6 @@ mixin _$PlayerEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,7 +62,6 @@ mixin _$PlayerEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,7 +83,6 @@ mixin _$PlayerEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -106,7 +102,6 @@ mixin _$PlayerEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,7 +121,6 @@ mixin _$PlayerEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -200,7 +194,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return initial();
   }
@@ -220,7 +213,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return initial?.call();
   }
@@ -240,7 +232,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -268,7 +259,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return initial(this);
   }
@@ -291,7 +281,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return initial?.call(this);
   }
@@ -314,7 +303,6 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -432,7 +420,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return addTrack(album, track);
   }
@@ -452,7 +439,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return addTrack?.call(album, track);
   }
@@ -472,7 +458,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (addTrack != null) {
@@ -500,7 +485,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return addTrack(this);
   }
@@ -523,7 +507,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return addTrack?.call(this);
   }
@@ -546,7 +529,6 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (addTrack != null) {
@@ -657,7 +639,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return keepPlayingAlbum(album);
   }
@@ -677,7 +658,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return keepPlayingAlbum?.call(album);
   }
@@ -697,7 +677,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (keepPlayingAlbum != null) {
@@ -725,7 +704,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return keepPlayingAlbum(this);
   }
@@ -748,7 +726,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return keepPlayingAlbum?.call(this);
   }
@@ -771,7 +748,6 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (keepPlayingAlbum != null) {
@@ -874,7 +850,6 @@ class _$_PlayerChangePositionInSecondsEvent
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return changeTrackPositionInSeconds(position);
   }
@@ -894,7 +869,6 @@ class _$_PlayerChangePositionInSecondsEvent
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return changeTrackPositionInSeconds?.call(position);
   }
@@ -914,7 +888,6 @@ class _$_PlayerChangePositionInSecondsEvent
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (changeTrackPositionInSeconds != null) {
@@ -942,7 +915,6 @@ class _$_PlayerChangePositionInSecondsEvent
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return changeTrackPositionInSeconds(this);
   }
@@ -965,7 +937,6 @@ class _$_PlayerChangePositionInSecondsEvent
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return changeTrackPositionInSeconds?.call(this);
   }
@@ -988,7 +959,6 @@ class _$_PlayerChangePositionInSecondsEvent
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (changeTrackPositionInSeconds != null) {
@@ -1060,7 +1030,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return play();
   }
@@ -1080,7 +1049,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return play?.call();
   }
@@ -1100,7 +1068,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -1128,7 +1095,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return play(this);
   }
@@ -1151,7 +1117,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return play?.call(this);
   }
@@ -1174,7 +1139,6 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -1238,7 +1202,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return pause();
   }
@@ -1258,7 +1221,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return pause?.call();
   }
@@ -1278,7 +1240,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -1306,7 +1267,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return pause(this);
   }
@@ -1329,7 +1289,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return pause?.call(this);
   }
@@ -1352,7 +1311,6 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -1416,7 +1374,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return prev();
   }
@@ -1436,7 +1393,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return prev?.call();
   }
@@ -1456,7 +1412,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (prev != null) {
@@ -1484,7 +1439,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return prev(this);
   }
@@ -1507,7 +1461,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return prev?.call(this);
   }
@@ -1530,7 +1483,6 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (prev != null) {
@@ -1594,7 +1546,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return next();
   }
@@ -1614,7 +1565,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return next?.call();
   }
@@ -1634,7 +1584,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (next != null) {
@@ -1662,7 +1611,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return next(this);
   }
@@ -1685,7 +1633,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return next?.call(this);
   }
@@ -1708,7 +1655,6 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (next != null) {
@@ -1799,7 +1745,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return rewind(seconds);
   }
@@ -1819,7 +1764,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return rewind?.call(seconds);
   }
@@ -1839,7 +1783,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (rewind != null) {
@@ -1867,7 +1810,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return rewind(this);
   }
@@ -1890,7 +1832,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return rewind?.call(this);
   }
@@ -1913,7 +1854,6 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (rewind != null) {
@@ -2009,7 +1949,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return push(seconds);
   }
@@ -2029,7 +1968,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return push?.call(seconds);
   }
@@ -2049,7 +1987,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -2077,7 +2014,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return push(this);
   }
@@ -2100,7 +2036,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return push?.call(this);
   }
@@ -2123,7 +2058,6 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -2226,7 +2160,6 @@ class _$_PlayerChangeTrackProgressBarEvent
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return changeTrackProgressBar(newPosition);
   }
@@ -2246,7 +2179,6 @@ class _$_PlayerChangeTrackProgressBarEvent
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return changeTrackProgressBar?.call(newPosition);
   }
@@ -2266,7 +2198,6 @@ class _$_PlayerChangeTrackProgressBarEvent
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (changeTrackProgressBar != null) {
@@ -2294,7 +2225,6 @@ class _$_PlayerChangeTrackProgressBarEvent
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return changeTrackProgressBar(this);
   }
@@ -2317,7 +2247,6 @@ class _$_PlayerChangeTrackProgressBarEvent
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return changeTrackProgressBar?.call(this);
   }
@@ -2340,7 +2269,6 @@ class _$_PlayerChangeTrackProgressBarEvent
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (changeTrackProgressBar != null) {
@@ -2445,7 +2373,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
     required TResult Function(int seconds) push,
     required TResult Function(Duration newPosition) changeTrackProgressBar,
     required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
   }) {
     return changeAlbumProgressBar(newPosition);
   }
@@ -2465,7 +2392,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
     TResult? Function(int seconds)? push,
     TResult? Function(Duration newPosition)? changeTrackProgressBar,
     TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
   }) {
     return changeAlbumProgressBar?.call(newPosition);
   }
@@ -2485,7 +2411,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
     TResult Function(int seconds)? push,
     TResult Function(Duration newPosition)? changeTrackProgressBar,
     TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
     required TResult orElse(),
   }) {
     if (changeAlbumProgressBar != null) {
@@ -2513,7 +2438,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
         changeTrackProgressBar,
     required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
         changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
   }) {
     return changeAlbumProgressBar(this);
   }
@@ -2536,7 +2460,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
         changeTrackProgressBar,
     TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
   }) {
     return changeAlbumProgressBar?.call(this);
   }
@@ -2559,7 +2482,6 @@ class _$_PlayerChangeAlbumProgressBarEvent
         changeTrackProgressBar,
     TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
         changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
     required TResult orElse(),
   }) {
     if (changeAlbumProgressBar != null) {
@@ -2581,185 +2503,6 @@ abstract class _PlayerChangeAlbumProgressBarEvent implements PlayerEvent {
       get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-abstract class _$$_PlayerChangeStateEventCopyWith<$Res> {
-  factory _$$_PlayerChangeStateEventCopyWith(_$_PlayerChangeStateEvent value,
-          $Res Function(_$_PlayerChangeStateEvent) then) =
-      __$$_PlayerChangeStateEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PlayerChangeStateEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerChangeStateEvent>
-    implements _$$_PlayerChangeStateEventCopyWith<$Res> {
-  __$$_PlayerChangeStateEventCopyWithImpl(_$_PlayerChangeStateEvent _value,
-      $Res Function(_$_PlayerChangeStateEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PlayerChangeStateEvent implements _PlayerChangeStateEvent {
-  const _$_PlayerChangeStateEvent();
-
-  @override
-  String toString() {
-    return 'PlayerEvent.changeState()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PlayerChangeStateEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Album album, Track track) addTrack,
-    required TResult Function(Album album) keepPlayingAlbum,
-    required TResult Function(Duration? position) changeTrackPositionInSeconds,
-    required TResult Function() play,
-    required TResult Function() pause,
-    required TResult Function() prev,
-    required TResult Function() next,
-    required TResult Function(int seconds) rewind,
-    required TResult Function(int seconds) push,
-    required TResult Function(Duration newPosition) changeTrackProgressBar,
-    required TResult Function(Duration newPosition) changeAlbumProgressBar,
-    required TResult Function() changeState,
-  }) {
-    return changeState();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Album album, Track track)? addTrack,
-    TResult? Function(Album album)? keepPlayingAlbum,
-    TResult? Function(Duration? position)? changeTrackPositionInSeconds,
-    TResult? Function()? play,
-    TResult? Function()? pause,
-    TResult? Function()? prev,
-    TResult? Function()? next,
-    TResult? Function(int seconds)? rewind,
-    TResult? Function(int seconds)? push,
-    TResult? Function(Duration newPosition)? changeTrackProgressBar,
-    TResult? Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult? Function()? changeState,
-  }) {
-    return changeState?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Album album, Track track)? addTrack,
-    TResult Function(Album album)? keepPlayingAlbum,
-    TResult Function(Duration? position)? changeTrackPositionInSeconds,
-    TResult Function()? play,
-    TResult Function()? pause,
-    TResult Function()? prev,
-    TResult Function()? next,
-    TResult Function(int seconds)? rewind,
-    TResult Function(int seconds)? push,
-    TResult Function(Duration newPosition)? changeTrackProgressBar,
-    TResult Function(Duration newPosition)? changeAlbumProgressBar,
-    TResult Function()? changeState,
-    required TResult orElse(),
-  }) {
-    if (changeState != null) {
-      return changeState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerInitialEvent value) initial,
-    required TResult Function(_PlayerAddTrackEvent value) addTrack,
-    required TResult Function(_PlayerKeepPlayingAlbumEvent value)
-        keepPlayingAlbum,
-    required TResult Function(_PlayerChangePositionInSecondsEvent value)
-        changeTrackPositionInSeconds,
-    required TResult Function(_PlayerPlayEvent value) play,
-    required TResult Function(_PlayerPauseEvent value) pause,
-    required TResult Function(_PlayerPrevEvent value) prev,
-    required TResult Function(_PlayerNextEvent value) next,
-    required TResult Function(_PlayerRewindEvent value) rewind,
-    required TResult Function(_PlayerPushEvent value) push,
-    required TResult Function(_PlayerChangeTrackProgressBarEvent value)
-        changeTrackProgressBar,
-    required TResult Function(_PlayerChangeAlbumProgressBarEvent value)
-        changeAlbumProgressBar,
-    required TResult Function(_PlayerChangeStateEvent value) changeState,
-  }) {
-    return changeState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerInitialEvent value)? initial,
-    TResult? Function(_PlayerAddTrackEvent value)? addTrack,
-    TResult? Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
-    TResult? Function(_PlayerChangePositionInSecondsEvent value)?
-        changeTrackPositionInSeconds,
-    TResult? Function(_PlayerPlayEvent value)? play,
-    TResult? Function(_PlayerPauseEvent value)? pause,
-    TResult? Function(_PlayerPrevEvent value)? prev,
-    TResult? Function(_PlayerNextEvent value)? next,
-    TResult? Function(_PlayerRewindEvent value)? rewind,
-    TResult? Function(_PlayerPushEvent value)? push,
-    TResult? Function(_PlayerChangeTrackProgressBarEvent value)?
-        changeTrackProgressBar,
-    TResult? Function(_PlayerChangeAlbumProgressBarEvent value)?
-        changeAlbumProgressBar,
-    TResult? Function(_PlayerChangeStateEvent value)? changeState,
-  }) {
-    return changeState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerInitialEvent value)? initial,
-    TResult Function(_PlayerAddTrackEvent value)? addTrack,
-    TResult Function(_PlayerKeepPlayingAlbumEvent value)? keepPlayingAlbum,
-    TResult Function(_PlayerChangePositionInSecondsEvent value)?
-        changeTrackPositionInSeconds,
-    TResult Function(_PlayerPlayEvent value)? play,
-    TResult Function(_PlayerPauseEvent value)? pause,
-    TResult Function(_PlayerPrevEvent value)? prev,
-    TResult Function(_PlayerNextEvent value)? next,
-    TResult Function(_PlayerRewindEvent value)? rewind,
-    TResult Function(_PlayerPushEvent value)? push,
-    TResult Function(_PlayerChangeTrackProgressBarEvent value)?
-        changeTrackProgressBar,
-    TResult Function(_PlayerChangeAlbumProgressBarEvent value)?
-        changeAlbumProgressBar,
-    TResult Function(_PlayerChangeStateEvent value)? changeState,
-    required TResult orElse(),
-  }) {
-    if (changeState != null) {
-      return changeState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PlayerChangeStateEvent implements PlayerEvent {
-  const factory _PlayerChangeStateEvent() = _$_PlayerChangeStateEvent;
-}
-
 PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
   return Initial.fromJson(json);
 }
@@ -2767,8 +2510,7 @@ PlayerState _$PlayerStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PlayerState {
   PlayerStatus get status => throw _privateConstructorUsedError;
-  double get trackSpeed => throw _privateConstructorUsedError; // TODO
-  Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
+  double get trackSpeed => throw _privateConstructorUsedError;
   Album get album => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2783,11 +2525,7 @@ abstract class $PlayerStateCopyWith<$Res> {
           PlayerState value, $Res Function(PlayerState) then) =
       _$PlayerStateCopyWithImpl<$Res, PlayerState>;
   @useResult
-  $Res call(
-      {PlayerStatus status,
-      double trackSpeed,
-      Map<int, Duration> mapAlbumDuration,
-      Album album});
+  $Res call({PlayerStatus status, double trackSpeed, Album album});
 
   $AlbumCopyWith<$Res> get album;
 }
@@ -2807,7 +2545,6 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   $Res call({
     Object? status = null,
     Object? trackSpeed = null,
-    Object? mapAlbumDuration = null,
     Object? album = null,
   }) {
     return _then(_value.copyWith(
@@ -2819,10 +2556,6 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.trackSpeed
           : trackSpeed // ignore: cast_nullable_to_non_nullable
               as double,
-      mapAlbumDuration: null == mapAlbumDuration
-          ? _value.mapAlbumDuration
-          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
-              as Map<int, Duration>,
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -2845,11 +2578,7 @@ abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
       __$$InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {PlayerStatus status,
-      double trackSpeed,
-      Map<int, Duration> mapAlbumDuration,
-      Album album});
+  $Res call({PlayerStatus status, double trackSpeed, Album album});
 
   @override
   $AlbumCopyWith<$Res> get album;
@@ -2867,7 +2596,6 @@ class __$$InitialCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? trackSpeed = null,
-    Object? mapAlbumDuration = null,
     Object? album = null,
   }) {
     return _then(_$Initial(
@@ -2879,10 +2607,6 @@ class __$$InitialCopyWithImpl<$Res>
           ? _value.trackSpeed
           : trackSpeed // ignore: cast_nullable_to_non_nullable
               as double,
-      mapAlbumDuration: null == mapAlbumDuration
-          ? _value._mapAlbumDuration
-          : mapAlbumDuration // ignore: cast_nullable_to_non_nullable
-              as Map<int, Duration>,
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -2897,7 +2621,6 @@ class _$Initial implements Initial {
   const _$Initial(
       {this.status = PlayerStatus.initial,
       this.trackSpeed = 1.0,
-      final Map<int, Duration> mapAlbumDuration = const {},
       this.album = const Album(
           tracks: [],
           albumDuration: Duration.zero,
@@ -2909,8 +2632,7 @@ class _$Initial implements Initial {
           trackPosition: Duration.zero,
           trackIndex: 0,
           mapAlbumDuration: {},
-          trackId: null)})
-      : _mapAlbumDuration = mapAlbumDuration;
+          trackId: null)});
 
   factory _$Initial.fromJson(Map<String, dynamic> json) =>
       _$$InitialFromJson(json);
@@ -2921,24 +2643,13 @@ class _$Initial implements Initial {
   @override
   @JsonKey()
   final double trackSpeed;
-// TODO
-  final Map<int, Duration> _mapAlbumDuration;
-// TODO
-  @override
-  @JsonKey()
-  Map<int, Duration> get mapAlbumDuration {
-    if (_mapAlbumDuration is EqualUnmodifiableMapView) return _mapAlbumDuration;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_mapAlbumDuration);
-  }
-
   @override
   @JsonKey()
   final Album album;
 
   @override
   String toString() {
-    return 'PlayerState(status: $status, trackSpeed: $trackSpeed, mapAlbumDuration: $mapAlbumDuration, album: $album)';
+    return 'PlayerState(status: $status, trackSpeed: $trackSpeed, album: $album)';
   }
 
   @override
@@ -2949,15 +2660,12 @@ class _$Initial implements Initial {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.trackSpeed, trackSpeed) ||
                 other.trackSpeed == trackSpeed) &&
-            const DeepCollectionEquality()
-                .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
             (identical(other.album, album) || other.album == album));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, trackSpeed,
-      const DeepCollectionEquality().hash(_mapAlbumDuration), album);
+  int get hashCode => Object.hash(runtimeType, status, trackSpeed, album);
 
   @JsonKey(ignore: true)
   @override
@@ -2977,7 +2685,6 @@ abstract class Initial implements PlayerState {
   const factory Initial(
       {final PlayerStatus status,
       final double trackSpeed,
-      final Map<int, Duration> mapAlbumDuration,
       final Album album}) = _$Initial;
 
   factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
@@ -2986,8 +2693,6 @@ abstract class Initial implements PlayerState {
   PlayerStatus get status;
   @override
   double get trackSpeed;
-  @override // TODO
-  Map<int, Duration> get mapAlbumDuration;
   @override
   Album get album;
   @override

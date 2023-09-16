@@ -12,8 +12,6 @@ class PlayerState with _$PlayerState {
   const factory PlayerState({
     @Default(PlayerStatus.initial) PlayerStatus status,
     @Default(1.0) double trackSpeed,
-    // TODO
-    @Default({}) Map<int, Duration> mapAlbumDuration,
     @Default(Album(
       tracks: [],
       albumDuration: Duration.zero,

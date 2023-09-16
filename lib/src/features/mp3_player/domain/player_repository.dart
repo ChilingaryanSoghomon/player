@@ -7,7 +7,7 @@ abstract class IAudioPlayerRepository {
   Duration get trackDuration;
   Duration get trackPosition;
 
-  addMusicDirectory({
+  Future<void> addMusicDirectory({
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,

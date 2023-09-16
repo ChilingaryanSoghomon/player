@@ -15,7 +15,7 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
         _audioHandler = audioHandler;
 
   @override
-  addMusicDirectory({
+ Future<void>  addMusicDirectory({
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,
