@@ -11,6 +11,7 @@ abstract class IAudioPlayerRepository {
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,
+    required double speed,
   });
 
   Future<void> pause();

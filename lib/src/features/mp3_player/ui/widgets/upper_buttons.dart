@@ -32,8 +32,8 @@ class UpperButtonsWidget extends StatelessWidget {
                   .add(TrackEvent.clickAlbum(album: playerBloc.state.album));
               Navigator.of(context).pushNamed(AppRouter.trackList);
             },
-            child: Icon(Icons.track_changes,
-                color: primaryColor, size: iconSize),
+            child:
+                Icon(Icons.track_changes, color: primaryColor, size: iconSize),
           ),
           Column(
             children: [
@@ -42,16 +42,16 @@ class UpperButtonsWidget extends StatelessWidget {
                 onPressed: () => _showColorSelectionDialog(context),
                 child: RoundButtonWidget(size: size),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 35),
             ],
           ),
           PrimaryButtonWidget(
             size: size,
             onPressed: () {
-
+              return showVolumeSlider(context);
             },
-            child: Icon(Icons.speed_rounded,
-                color: primaryColor, size: iconSize),
+            child:
+                Icon(Icons.speed_rounded, color: primaryColor, size: iconSize),
           ),
           Column(
             children: [
@@ -64,7 +64,7 @@ class UpperButtonsWidget extends StatelessWidget {
                         color: primaryColor, size: iconSize)
                     : Icon(Icons.sunny, color: primaryColor, size: iconSize),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 35),
             ],
           ),
           PrimaryButtonWidget(
@@ -74,11 +74,70 @@ class UpperButtonsWidget extends StatelessWidget {
               color: primaryColor,
               size: iconSize,
             ),
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AppRouter.album),
+            onPressed: () => Navigator.of(context).pushNamed(AppRouter.album),
           ),
         ],
       ),
+    );
+  }
+
+  void showVolumeSlider(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (BuildContext context) {
+        final playerBloc = context.read<PlayerBloc>();
+        const double min = 0.25;
+        const double max = 2.0;
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 45),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text('$min'), Text('$max')],
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: BlocBuilder<PlayerBloc, PlayerState>(
+                  buildWhen: (p, c) => p.trackSpeed != c.trackSpeed,
+                  builder: (context, state) {
+                    return Slider(
+                      value: state.trackSpeed,
+                      onChanged: (double speed) {
+                        return playerBloc
+                            .add(PlayerEvent.changeSpeed(speed: speed));
+                      },
+                      min: min,
+                      max: max,
+                    );
+                  },
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 0.5),
+                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 0.75),
+                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.0),
+                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.25),
+                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.5),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -117,5 +176,23 @@ class UpperButtonsWidget extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class ChooseSpeedWidget extends StatelessWidget {
+  const ChooseSpeedWidget({
+    super.key,
+    required this.playerBloc,
+    required this.speed,
+  });
+
+  final PlayerBloc playerBloc;
+  final double speed;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: () => playerBloc.add(PlayerEvent.changeSpeed(speed: speed)),
+        child: Text('$speed'));
   }
 }

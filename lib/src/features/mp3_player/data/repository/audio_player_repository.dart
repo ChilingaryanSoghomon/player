@@ -15,24 +15,21 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
         _audioHandler = audioHandler;
 
   @override
- Future<void>  addMusicDirectory({
+  Future<void> addMusicDirectory({
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,
+    required double speed,
   }) async {
-    // final mediaItems = tracks
-    //     .map((track) => MediaItem(
-    //           id: track.path,
-    //           title: track.name ?? '',
-    //         ))
-    //     .toList();
-    // _audioHandler.addQueueItems(mediaItems);
     _audioHandler.addMusicDirectory(
       tracks: tracks,
       trackPosition: trackPosition,
       trackIndex: trackIndex,
+      speed: speed,
     );
   }
+
+  // Stream<PlaybackEvent> get playbackEventStream => _player.playbackEventStream;
 
   @override
   Duration get trackPosition => _audioHandler.player.position;
@@ -64,9 +61,8 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<void> setSpeed({required double speed}) async {
-    _audioHandler.player.setSpeed(speed);
-  }
+  Future<void> setSpeed({required double speed}) async =>
+      _audioHandler.setSpeed(speed);
 
   @override
   Future<void> rewind({

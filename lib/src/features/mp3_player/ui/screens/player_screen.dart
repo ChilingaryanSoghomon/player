@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/widgets/audio_progress_bar_widget.dart';
@@ -25,11 +26,17 @@ class _PlayerScreenState extends State<PlayerScreen> {
       listener: (context, state) => context
           .read<AlbumBloc>()
           .add(AlbumEvent.changeAlbum(album: state.album)),
-      child: const Scaffold(
+      child: Scaffold(
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              PrimaryButtonWidget(
+                onPressed: () {
+                  return showLicensePage(context: context);
+                },
+                child: Icon(Icons.speed_rounded),
+              ),
               Expanded(child: ImageWidget()),
               UpperButtonsWidget(),
               SizedBox(height: 20),
@@ -48,3 +55,32 @@ class _PlayerScreenState extends State<PlayerScreen> {
     );
   }
 }
+
+class TopBarrWidget extends StatelessWidget {
+  const TopBarrWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 25, bottom: 18, top: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          PrimaryButtonWidget(
+            size: 40,
+            onPressed: () {},
+            child: Icon(
+              Icons.settings,
+              color: colorScheme.primary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+

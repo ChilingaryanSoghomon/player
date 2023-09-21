@@ -41,4 +41,8 @@ const factory PlayerEvent.changeAlbumProgressBar({
     required Duration newPosition,
   }) = _PlayerChangeAlbumProgressBarEvent;
 
+const factory PlayerEvent.changeSpeed({
+    required double speed,
+  }) = _PlayerSpeedEvent;
+
 }

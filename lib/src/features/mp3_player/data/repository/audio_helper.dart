@@ -69,6 +69,7 @@ class MyAudioHandler extends BaseAudioHandler {
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,
+    required double speed,
   }) async {
     final List<UriAudioSource> audioSource = [];
     for (var track in tracks) {
@@ -80,6 +81,7 @@ class MyAudioHandler extends BaseAudioHandler {
           useLazyPreparation: true, children: audioSource);
       await _player.setAudioSource(_playlist,
           initialPosition: trackPosition, initialIndex: trackIndex);
+      setSpeed(speed);
     }
   }
 
@@ -87,10 +89,16 @@ class MyAudioHandler extends BaseAudioHandler {
   AudioPlayer get player => _player;
 
   @override
-  Future<void> play() async => _player.play();
+  Future<void> play() {
+    _player.play();
+    return super.play();
+  }
 
   @override
-  Future<void> pause() async => _player.pause();
+  Future<void> pause() {
+    _player.pause();
+    return super.pause();
+  }
 
   @override
   Future<void> seek(Duration position) =>
@@ -105,6 +113,12 @@ class MyAudioHandler extends BaseAudioHandler {
   Future<void> next() async => _player.seekToNext();
 
   Future<void> prev() async => _player.seekToPrevious();
+
+  @override
+  Future<void> setSpeed(double speed) {
+    _player.setSpeed(speed);
+    return super.setSpeed(speed);
+  }
 
 // changing the content of the function for the background of the buttons
 // function    skipToNext, rewind, skipToPrevious, stop
@@ -133,6 +147,7 @@ class MyAudioHandler extends BaseAudioHandler {
       await _player.play();
     }
   }
+
   @override
   Future<void> skipToNext() async {
     final newPosition = _player.position + const Duration(seconds: 30);
@@ -145,7 +160,6 @@ class MyAudioHandler extends BaseAudioHandler {
     await _player.seek(newPosition);
   }
   //****
-
 
   // @override
   // Future<void> addQueueItems(List<MediaItem> mediaItems) async {
