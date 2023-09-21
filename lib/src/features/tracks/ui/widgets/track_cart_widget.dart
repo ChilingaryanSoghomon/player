@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/formaters/format_duration.dart';
+import 'package:player/src/common/formatters/format_duration.dart';
 import 'package:player/src/common/navigation/app_Router.dart';
 
 import 'package:player/src/common/res/app_assets.dart';

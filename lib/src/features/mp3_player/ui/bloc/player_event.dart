@@ -3,6 +3,10 @@ part of 'player_bloc.dart';
 @freezed
 class PlayerEvent with _$PlayerEvent {
 
+  const factory PlayerEvent.addPlaybackEvent({
+    required MyPlaybackEvent playbackEvent,
+  }) = _PlayerAddPlaybackEventEvent;
+
   const factory PlayerEvent.initial()= _PlayerInitialEvent;
 
   const factory PlayerEvent.addTrack({
@@ -14,9 +18,6 @@ class PlayerEvent with _$PlayerEvent {
     required Album album,
   }) = _PlayerKeepPlayingAlbumEvent;
 
-  const factory PlayerEvent.changeTrackPositionInSeconds({
-    required Duration? position,
-  }) = _PlayerChangePositionInSecondsEvent;
 
   const factory PlayerEvent.play() = _PlayerPlayEvent;
 

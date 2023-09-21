@@ -1,9 +1,10 @@
-// ignore: depend_on_referenced_packages
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:player/src/common/formaters/format_duration.dart';
+import 'package:player/src/common/formatters/format_duration.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
-import 'package:player/src/features/mp3_player/domain/player_repository.dart';
+import 'package:player/src/features/mp3_player/domain/entities/my_playback_event.dart';
+import 'package:player/src/features/mp3_player/domain/repository/player_repository.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 
 part 'player_event.dart';
@@ -17,15 +18,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   PlayerBloc({required IAudioPlayerRepository playerRepository})
       : _playerRepository = playerRepository,
         super(const PlayerState()) {
-    _playerRepository.getPositionStream
-        .map((position) => position.inSeconds)
-        .distinct()
-        .map((event) => Duration(seconds: event))
-        .distinct()
-        .listen((event) async {
-      if (state.status != PlayerStatus.initial) {
-        add(PlayerEvent.changeTrackPositionInSeconds(position: event));
-      }
+    _playerRepository.playbackEventSubject.listen((event) async {
+      add(PlayerEvent.addPlaybackEvent(playbackEvent: event));
     }, cancelOnError: false);
 
     on<PlayerEvent>((event, emit) async {
@@ -39,8 +33,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
           next: (event) => _nextTrack(event, emit),
           rewind: (event) => _rewind(event, emit),
           push: (event) => _push(event, emit),
-          changeTrackPositionInSeconds: (event) =>
-              _changeTrackPositionInSeconds(event, emit),
+          addPlaybackEvent: (event) =>
+              _addPlaybackEvent(event, emit),
           changeTrackProgressBar: (event) =>
               _changeTrackProgressBar(event, emit),
           changeAlbumProgressBar: (event) =>
@@ -145,13 +139,24 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     emit(state.copyWith(trackSpeed: event.speed));
   }
 
-  Future<void> _changeTrackPositionInSeconds(
-      _PlayerChangePositionInSecondsEvent event,
+  Future<void> _addPlaybackEvent(
+      _PlayerAddPlaybackEventEvent event,
       Emitter<PlayerState> emit) async {
-    if (event.position != null) {
+    final currentStatus = state.status;
+    final currentTrackPositionInSeconds = state.album.trackPosition.inSeconds;
+    final newPositionInSeconds = event.playbackEvent.trackPosition.inSeconds;
+
+    if (currentStatus != PlayerStatus.initial &&
+        newPositionInSeconds != currentTrackPositionInSeconds) {
       emit(state.copyWith(
-          album: state.album.copyWith(trackPosition: event.position!)));
+          album: state.album
+              .copyWith(trackPosition: event.playbackEvent.trackPosition)));
       _changeState(emit);
+    }
+    if (event.playbackEvent.playing) {
+      emit(state.copyWith(status: PlayerStatus.playing));
+    } else {
+      emit(state.copyWith(status: PlayerStatus.paused));
     }
   }
 

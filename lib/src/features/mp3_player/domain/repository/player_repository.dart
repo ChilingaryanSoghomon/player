@@ -1,8 +1,12 @@
+import 'package:player/src/features/mp3_player/domain/entities/my_playback_event.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
+import 'package:rxdart/subjects.dart';
 
 abstract class IAudioPlayerRepository {
   Stream<Duration> get getPositionStream;
 
+  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject;
+  
   int get currentIndex;
   Duration get trackDuration;
   Duration get trackPosition;

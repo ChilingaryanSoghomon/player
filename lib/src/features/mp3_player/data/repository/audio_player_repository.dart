@@ -1,19 +1,41 @@
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/data/repository/audio_helper.dart';
-import 'package:player/src/features/mp3_player/domain/player_repository.dart';
+import 'package:player/src/features/mp3_player/domain/entities/my_playback_event.dart';
+import 'package:player/src/features/mp3_player/domain/repository/player_repository.dart';
 // ignore: depend_on_referenced_packages
 import 'package:player/src/features/tracks/domain/entities/track.dart';
+import 'package:rxdart/rxdart.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   final MyAudioHandler _audioHandler;
   final SearchArtwork _searchArtwork;
+  late BehaviorSubject<MyPlaybackEvent> _playbackEventSubject;
 
   AudioPlayerRepositoryImpl({
     required SearchArtwork searchArtwork,
     required MyAudioHandler audioHandler,
   })  : _searchArtwork = searchArtwork,
-        _audioHandler = audioHandler;
+        _audioHandler = audioHandler {
+    _playbackEventSubject = BehaviorSubject<MyPlaybackEvent>.seeded(
+      MyPlaybackEvent(
+        trackPosition: _audioHandler.player.position,
+        playing: _audioHandler.player.playing,
+      ),
+    );
 
+    Rx.combineLatest2(
+      _audioHandler.player.positionStream,
+      _audioHandler.player.playingStream,
+      (Duration position, bool isPlaying) {
+        return MyPlaybackEvent(
+          trackPosition: position,
+          playing: isPlaying,
+        );
+      },
+    ).listen((playbackEvent) {
+      _playbackEventSubject.add(playbackEvent);
+    });
+  }
   @override
   Future<void> addMusicDirectory({
     required List<Track> tracks,
@@ -29,7 +51,9 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
     );
   }
 
-  // Stream<PlaybackEvent> get playbackEventStream => _player.playbackEventStream;
+  @override
+  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject => _playbackEventSubject;
+
 
   @override
   Duration get trackPosition => _audioHandler.player.position;
