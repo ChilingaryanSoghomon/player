@@ -18,6 +18,8 @@ class AlbumCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     return Card(
       elevation: 5,
       child: Column(
@@ -30,8 +32,9 @@ class AlbumCardWidget extends StatelessWidget {
                 child: BlocBuilder<ArtworkBloc, ArtworkState>(
                   builder: (context, state) {
                     final albumArtwork = state.mapAlbumArtworks[album.albumId];
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    return Container(
+                      color: primaryColor,
+                      padding: const EdgeInsets.all(1.0),
                       child: albumArtwork != null && albumArtwork.isNotEmpty
                           ? Image.memory(Uint8List.fromList(albumArtwork))
                           : const Image(

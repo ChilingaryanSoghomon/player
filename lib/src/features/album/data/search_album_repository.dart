@@ -11,6 +11,7 @@ class SearchAlbumRepository {
     final List<AlbumModel> albums = await _audioQuery.queryAlbums();
     final List<Album> myAlbums = [];
     for (var album in albums) {
+      final artist =album.artist == '<unknown>' ? 'unknown' : album.artist ?? '';
       final tracksInAlbum = await _queryFromAlbumId(albumId: album.id);
       final mapAlbumDuration = _createMapAlbumDuration(tracksInAlbum);
       final albumDuration = _albumDuration(
@@ -21,7 +22,7 @@ class SearchAlbumRepository {
         albumDuration: albumDuration,
         albumId: album.id,
         name: album.album,
-        artist: album.artist == '<unknown>' ? 'unknown' : album.artist ?? '',
+        artist: artist,
         tracks: tracksInAlbum,
         trackDuration: tracksInAlbum.first.duration,
         trackPosition: Duration.zero,

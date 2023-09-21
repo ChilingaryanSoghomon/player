@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:player/src/features/album/ui/screens/album_screen.dart';
 import 'package:player/src/features/mp3_player/ui/screens/player_screen.dart';
-import 'package:player/src/features/splash/ui/screen/splash_screan.dart';
+import 'package:player/src/features/splash/ui/screen/splash_screen.dart';
 import 'package:player/src/features/tracks/ui/screens/track_list_screen.dart';
 
 final GlobalKey<NavigatorState> shellNavKey = GlobalKey<NavigatorState>();

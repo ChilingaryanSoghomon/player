@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:player/src/common/res/app_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: depend_on_referenced_packages
-import 'package:player/src/common/settings/theme/data/theme_repository.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:player/src/features/settings/theme/data/theme_repository.dart';
 
 part 'theme_event.dart';
 

@@ -67,10 +67,10 @@ class TrackCardWidget extends StatelessWidget {
                       (tempTrack.name ?? ''),
                       maxLines: 2,
                     ),
-                    trailing: GestureDetector(
-                      onTap: () {},
-                      child: const Icon(Icons.more_vert),
-                    ),
+                    // trailing: GestureDetector(
+                    //   onTap: () {},
+                    //   child: const Icon(Icons.more_vert),
+                    // ),
                   ),
                 );
               },

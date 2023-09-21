@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:player/src/common/navigation/app_Router.dart';
-import 'package:player/src/common/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/widgets/round_button_widget.dart';
+import 'package:player/src/features/settings/theme/bloc/theme_bloc.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 
 class UpperButtonsWidget extends StatelessWidget {
