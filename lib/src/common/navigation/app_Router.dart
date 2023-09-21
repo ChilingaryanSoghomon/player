@@ -7,7 +7,7 @@ import 'package:player/src/features/tracks/ui/screens/track_list_screen.dart';
 
 final GlobalKey<NavigatorState> shellNavKey = GlobalKey<NavigatorState>();
 
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
+// final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRouter {
   static final registrationNavigatorKey = GlobalKey<NavigatorState>();

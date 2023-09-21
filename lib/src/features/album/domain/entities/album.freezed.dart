@@ -24,11 +24,13 @@ mixin _$Album {
   Map<int, Duration> get mapAlbumDuration => throw _privateConstructorUsedError;
   Duration get albumDuration => throw _privateConstructorUsedError;
   Duration get albumPosition => throw _privateConstructorUsedError;
+  Duration get trackPosition => throw _privateConstructorUsedError;
+  Duration get trackDuration => throw _privateConstructorUsedError;
+  String get albumTimeLeft => throw _privateConstructorUsedError;
+  String get trackTimeLeft => throw _privateConstructorUsedError;
   int get albumId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get artist => throw _privateConstructorUsedError;
-  Duration get trackPosition => throw _privateConstructorUsedError;
-  Duration get trackDuration => throw _privateConstructorUsedError;
   int get trackIndex => throw _privateConstructorUsedError;
   int? get trackId => throw _privateConstructorUsedError;
 
@@ -47,11 +49,13 @@ abstract class $AlbumCopyWith<$Res> {
       Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
+      Duration trackPosition,
+      Duration trackDuration,
+      String albumTimeLeft,
+      String trackTimeLeft,
       int albumId,
       String name,
       String artist,
-      Duration trackPosition,
-      Duration trackDuration,
       int trackIndex,
       int? trackId});
 }
@@ -73,11 +77,13 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
     Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
+    Object? trackPosition = null,
+    Object? trackDuration = null,
+    Object? albumTimeLeft = null,
+    Object? trackTimeLeft = null,
     Object? albumId = null,
     Object? name = null,
     Object? artist = null,
-    Object? trackPosition = null,
-    Object? trackDuration = null,
     Object? trackIndex = null,
     Object? trackId = freezed,
   }) {
@@ -98,6 +104,22 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.albumPosition
           : albumPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
+      trackPosition: null == trackPosition
+          ? _value.trackPosition
+          : trackPosition // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      trackDuration: null == trackDuration
+          ? _value.trackDuration
+          : trackDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      albumTimeLeft: null == albumTimeLeft
+          ? _value.albumTimeLeft
+          : albumTimeLeft // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackTimeLeft: null == trackTimeLeft
+          ? _value.trackTimeLeft
+          : trackTimeLeft // ignore: cast_nullable_to_non_nullable
+              as String,
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
@@ -110,14 +132,6 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      trackPosition: null == trackPosition
-          ? _value.trackPosition
-          : trackPosition // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      trackDuration: null == trackDuration
-          ? _value.trackDuration
-          : trackDuration // ignore: cast_nullable_to_non_nullable
-              as Duration,
       trackIndex: null == trackIndex
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
@@ -141,11 +155,13 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
       Map<int, Duration> mapAlbumDuration,
       Duration albumDuration,
       Duration albumPosition,
+      Duration trackPosition,
+      Duration trackDuration,
+      String albumTimeLeft,
+      String trackTimeLeft,
       int albumId,
       String name,
       String artist,
-      Duration trackPosition,
-      Duration trackDuration,
       int trackIndex,
       int? trackId});
 }
@@ -163,11 +179,13 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
     Object? mapAlbumDuration = null,
     Object? albumDuration = null,
     Object? albumPosition = null,
+    Object? trackPosition = null,
+    Object? trackDuration = null,
+    Object? albumTimeLeft = null,
+    Object? trackTimeLeft = null,
     Object? albumId = null,
     Object? name = null,
     Object? artist = null,
-    Object? trackPosition = null,
-    Object? trackDuration = null,
     Object? trackIndex = null,
     Object? trackId = freezed,
   }) {
@@ -188,6 +206,22 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value.albumPosition
           : albumPosition // ignore: cast_nullable_to_non_nullable
               as Duration,
+      trackPosition: null == trackPosition
+          ? _value.trackPosition
+          : trackPosition // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      trackDuration: null == trackDuration
+          ? _value.trackDuration
+          : trackDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      albumTimeLeft: null == albumTimeLeft
+          ? _value.albumTimeLeft
+          : albumTimeLeft // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackTimeLeft: null == trackTimeLeft
+          ? _value.trackTimeLeft
+          : trackTimeLeft // ignore: cast_nullable_to_non_nullable
+              as String,
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
@@ -200,14 +234,6 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      trackPosition: null == trackPosition
-          ? _value.trackPosition
-          : trackPosition // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      trackDuration: null == trackDuration
-          ? _value.trackDuration
-          : trackDuration // ignore: cast_nullable_to_non_nullable
-              as Duration,
       trackIndex: null == trackIndex
           ? _value.trackIndex
           : trackIndex // ignore: cast_nullable_to_non_nullable
@@ -228,11 +254,13 @@ class _$_Album implements _Album {
       required final Map<int, Duration> mapAlbumDuration,
       required this.albumDuration,
       required this.albumPosition,
+      required this.trackPosition,
+      required this.trackDuration,
+      required this.albumTimeLeft,
+      required this.trackTimeLeft,
       required this.albumId,
       required this.name,
       required this.artist,
-      required this.trackPosition,
-      required this.trackDuration,
       required this.trackIndex,
       required this.trackId})
       : _tracks = tracks,
@@ -262,15 +290,19 @@ class _$_Album implements _Album {
   @override
   final Duration albumPosition;
   @override
+  final Duration trackPosition;
+  @override
+  final Duration trackDuration;
+  @override
+  final String albumTimeLeft;
+  @override
+  final String trackTimeLeft;
+  @override
   final int albumId;
   @override
   final String name;
   @override
   final String artist;
-  @override
-  final Duration trackPosition;
-  @override
-  final Duration trackDuration;
   @override
   final int trackIndex;
   @override
@@ -278,7 +310,7 @@ class _$_Album implements _Album {
 
   @override
   String toString() {
-    return 'Album(tracks: $tracks, mapAlbumDuration: $mapAlbumDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, albumId: $albumId, name: $name, artist: $artist, trackPosition: $trackPosition, trackDuration: $trackDuration, trackIndex: $trackIndex, trackId: $trackId)';
+    return 'Album(tracks: $tracks, mapAlbumDuration: $mapAlbumDuration, albumDuration: $albumDuration, albumPosition: $albumPosition, trackPosition: $trackPosition, trackDuration: $trackDuration, albumTimeLeft: $albumTimeLeft, trackTimeLeft: $trackTimeLeft, albumId: $albumId, name: $name, artist: $artist, trackIndex: $trackIndex, trackId: $trackId)';
   }
 
   @override
@@ -293,13 +325,17 @@ class _$_Album implements _Album {
                 other.albumDuration == albumDuration) &&
             (identical(other.albumPosition, albumPosition) ||
                 other.albumPosition == albumPosition) &&
-            (identical(other.albumId, albumId) || other.albumId == albumId) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.artist, artist) || other.artist == artist) &&
             (identical(other.trackPosition, trackPosition) ||
                 other.trackPosition == trackPosition) &&
             (identical(other.trackDuration, trackDuration) ||
                 other.trackDuration == trackDuration) &&
+            (identical(other.albumTimeLeft, albumTimeLeft) ||
+                other.albumTimeLeft == albumTimeLeft) &&
+            (identical(other.trackTimeLeft, trackTimeLeft) ||
+                other.trackTimeLeft == trackTimeLeft) &&
+            (identical(other.albumId, albumId) || other.albumId == albumId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
             (identical(other.trackIndex, trackIndex) ||
                 other.trackIndex == trackIndex) &&
             (identical(other.trackId, trackId) || other.trackId == trackId));
@@ -313,11 +349,13 @@ class _$_Album implements _Album {
       const DeepCollectionEquality().hash(_mapAlbumDuration),
       albumDuration,
       albumPosition,
+      trackPosition,
+      trackDuration,
+      albumTimeLeft,
+      trackTimeLeft,
       albumId,
       name,
       artist,
-      trackPosition,
-      trackDuration,
       trackIndex,
       trackId);
 
@@ -341,11 +379,13 @@ abstract class _Album implements Album {
       required final Map<int, Duration> mapAlbumDuration,
       required final Duration albumDuration,
       required final Duration albumPosition,
+      required final Duration trackPosition,
+      required final Duration trackDuration,
+      required final String albumTimeLeft,
+      required final String trackTimeLeft,
       required final int albumId,
       required final String name,
       required final String artist,
-      required final Duration trackPosition,
-      required final Duration trackDuration,
       required final int trackIndex,
       required final int? trackId}) = _$_Album;
 
@@ -360,15 +400,19 @@ abstract class _Album implements Album {
   @override
   Duration get albumPosition;
   @override
+  Duration get trackPosition;
+  @override
+  Duration get trackDuration;
+  @override
+  String get albumTimeLeft;
+  @override
+  String get trackTimeLeft;
+  @override
   int get albumId;
   @override
   String get name;
   @override
   String get artist;
-  @override
-  Duration get trackPosition;
-  @override
-  Duration get trackDuration;
   @override
   int get trackIndex;
   @override

@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:player/src/common/formaters/format_duration.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/mp3_player/domain/player_repository.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
@@ -153,12 +154,18 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     Duration trackPosition = _playerRepository.trackPosition;
     Duration position = state.album.mapAlbumDuration[currentIndex]!;
     final albumPosition = position + trackPosition;
+    final albumTimeLeft =
+        '-${formatDuration(state.album.albumDuration - albumPosition)}';
+    final trackTimeLeft =
+        '-${formatDuration(state.album.trackDuration - trackPosition)}';
     emit(state.copyWith(
       album: state.album.copyWith(
         albumPosition: albumPosition,
         trackIndex: currentIndex,
         trackPosition: trackPosition,
         trackDuration: trackDuration,
+        albumTimeLeft: albumTimeLeft,
+        trackTimeLeft: trackTimeLeft,
       ),
     ));
   }

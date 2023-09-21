@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/common/formaters/format_duration.dart';
 import 'package:player/src/common/navigation/app_Router.dart';
 
 import 'package:player/src/common/res/app_assets.dart';
@@ -74,9 +75,8 @@ class TrackCartWidget extends StatelessWidget {
                                   style: const TextStyle(fontSize: 18),
                                   maxLines: 1),
                             ),
-                            Divider(
-                                color:primaryColor),
-                            Text(formatDuration(track.duration.inSeconds),
+                            Divider(color: primaryColor),
+                            Text(formatDurationWithZero(track.duration),
                                 style: const TextStyle(fontSize: 18)),
                             // Text(
                             //     track.artist == '<unknown>'
@@ -98,10 +98,10 @@ class TrackCartWidget extends StatelessWidget {
               child: TextButton(
                 onPressed: () {},
                 style: AppButtonStyle.moreVert,
-                child:  Icon(
+                child: Icon(
                   Icons.more_vert,
                   size: 25,
-                  color:primaryColor ,
+                  color: primaryColor,
                 ),
               ),
             ),
@@ -109,25 +109,5 @@ class TrackCartWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String formatDuration(int durationInSeconds) {
-    if (durationInSeconds < 60) {
-      return '${durationInSeconds.toString().padLeft(2, '0')}s';
-    } else {
-      int minutes = (durationInSeconds ~/ 60) % 60;
-      int hours = durationInSeconds ~/ 3600;
-      int seconds = durationInSeconds % 60;
-
-      String formattedMinutes = minutes.toString().padLeft(2, '0');
-      String formattedHours = hours.toString().padLeft(2, '0');
-      String formattedSeconds = seconds.toString().padLeft(2, '0');
-
-      if (hours > 0) {
-        return '$formattedHours:$formattedMinutes:$formattedSeconds';
-      } else {
-        return '$formattedMinutes:$formattedSeconds';
-      }
-    }
   }
 }

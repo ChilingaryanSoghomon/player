@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 
 class AlbumProgressBarrWidget extends StatelessWidget {
@@ -17,6 +19,7 @@ class AlbumProgressBarrWidget extends StatelessWidget {
         builder: (context, state) => CustomProgressBarWidget(
           progress: state.album.albumPosition,
           total: state.album.albumDuration,
+          timeLeft: state.album.albumTimeLeft,
           function: (Duration duration) {
             context
                 .read<PlayerBloc>()
@@ -42,6 +45,7 @@ class TrackProgressBarrWidget extends StatelessWidget {
         builder: (context, state) => CustomProgressBarWidget(
           progress: state.album.trackPosition,
           total: state.album.trackDuration,
+          timeLeft: state.album.trackTimeLeft,
           function: (Duration duration) {
             context
                 .read<PlayerBloc>()
@@ -55,34 +59,43 @@ class TrackProgressBarrWidget extends StatelessWidget {
 
 class CustomProgressBarWidget extends StatelessWidget {
   const CustomProgressBarWidget({
-    super.key,
-    required Duration progress,
-    required Duration total,
+    Key? key,
+    required this.progress,
+    required this.total,
     required this.function,
-  })  : _progress = progress,
-        _total = total;
+    required this.timeLeft,
+  }) : super(key: key);
 
-  final Duration _progress;
-  final Duration _total;
+  final Duration progress;
+  final Duration total;
   final Function(Duration duration) function;
+  final String timeLeft;
 
   @override
   Widget build(BuildContext context) {
-    return ProgressBar(
-      timeLabelLocation: TimeLabelLocation.below,
-      thumbRadius: 8,
-      thumbGlowRadius: 25,
-
-      // baseBarColor: AppColors.mainThemColor[50],
-      // bufferedBarColor: AppColors.mainThemColor[100],
-      // progressBarColor: AppColors.mainThemColor[200],
-      barCapShape: BarCapShape.square,
-      barHeight: 8,
-
-      progress: _progress,
-      total: _total,
-      onSeek: (duration) => function(duration),
-
+    return Stack(
+      children: [
+        Positioned(
+          bottom: -1.5,
+          left: 0,
+          right: 0,
+          child: Text(
+            timeLeft,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+        ProgressBar(
+          timeLabelLocation: TimeLabelLocation.below,
+          thumbRadius: 8,
+          thumbGlowRadius: 25,
+          barCapShape: BarCapShape.square,
+          barHeight: 8,
+          progress: progress,
+          total: total,
+          onSeek: (duration) => function(duration),
+        ),
+      ],
     );
   }
 }

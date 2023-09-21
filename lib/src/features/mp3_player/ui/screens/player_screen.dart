@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/common/widgets/primary_button_widget.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/mp3_player/ui/widgets/audio_progress_bar_widget.dart';
@@ -35,9 +34,9 @@ class _PlayerScreenState extends State<PlayerScreen> {
               UpperButtonsWidget(),
               SizedBox(height: 20),
               AlbumProgressBarrWidget(),
-              Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 10),
-                  child: TrackProgressBarrWidget()),
+              SizedBox(height: 20),
+              TrackProgressBarrWidget(),
+              SizedBox(height: 10),
               RewindButtonsWidget(),
               SizedBox(height: 15),
               PlayPauseWidget(),
@@ -49,33 +48,3 @@ class _PlayerScreenState extends State<PlayerScreen> {
     );
   }
 }
-
-class TopBarrWidget extends StatelessWidget {
-  const TopBarrWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Padding(
-      padding: const EdgeInsets.only(right: 25, bottom: 18, top: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          PrimaryButtonWidget(
-            size: 40,
-            onPressed: () {},
-            child: Icon(
-              Icons.settings,
-              color: colorScheme.primary,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
