@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:player/src/common/formatters/format_duration.dart';
@@ -33,8 +32,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
           next: (event) => _nextTrack(event, emit),
           rewind: (event) => _rewind(event, emit),
           push: (event) => _push(event, emit),
-          addPlaybackEvent: (event) =>
-              _addPlaybackEvent(event, emit),
+          addPlaybackEvent: (event) => _addPlaybackEvent(event, emit),
           changeTrackProgressBar: (event) =>
               _changeTrackProgressBar(event, emit),
           changeAlbumProgressBar: (event) =>
@@ -140,8 +138,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
   }
 
   Future<void> _addPlaybackEvent(
-      _PlayerAddPlaybackEventEvent event,
-      Emitter<PlayerState> emit) async {
+      _PlayerAddPlaybackEventEvent event, Emitter<PlayerState> emit) async {
     final currentStatus = state.status;
     final currentTrackPositionInSeconds = state.album.trackPosition.inSeconds;
     final newPositionInSeconds = event.playbackEvent.trackPosition.inSeconds;
@@ -162,7 +159,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
 
   Future<void> _changeState(Emitter<PlayerState> emit) async {
     int currentIndex = _playerRepository.currentIndex;
-    Duration trackDuration = state.album.tracks[currentIndex].duration;
+    final track = state.album.tracks[currentIndex];
+    Duration trackDuration = track.duration;
     if (currentIndex != state.album.trackIndex) {
       final trackId = state.album.tracks[currentIndex].trackId;
       emit(state.copyWith(album: state.album.copyWith(trackId: trackId)));
@@ -175,6 +173,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     final trackTimeLeft =
         '-${formatDuration(state.album.trackDuration - trackPosition)}';
     emit(state.copyWith(
+      trackName: track.name ?? '',
       album: state.album.copyWith(
         albumPosition: albumPosition,
         trackIndex: currentIndex,

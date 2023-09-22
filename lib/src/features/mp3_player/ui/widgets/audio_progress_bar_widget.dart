@@ -13,20 +13,43 @@ class AlbumProgressBarrWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
-        buildWhen: (previous, current) =>
-            previous.album.albumPosition != current.album.albumPosition ||
-            previous.album.albumDuration != current.album.albumDuration,
-        builder: (context, state) => CustomProgressBarWidget(
-          progress: state.album.albumPosition,
-          total: state.album.albumDuration,
-          timeLeft: state.album.albumTimeLeft,
-          function: (Duration duration) {
-            context
-                .read<PlayerBloc>()
-                .add(PlayerEvent.changeAlbumProgressBar(newPosition: duration));
-          },
-        ),
-      ),
+          buildWhen: (previous, current) =>
+              previous.album.albumPosition != current.album.albumPosition ||
+              previous.album.albumDuration != current.album.albumDuration,
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.album.name,
+                        style: const TextStyle(fontSize: 16),
+                        maxLines: 1,
+                      ),
+                      Text(
+                        '${state.album.trackIndex}/${state.album.tracks.length}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+                CustomProgressBarWidget(
+                  progress: state.album.albumPosition,
+                  total: state.album.albumDuration,
+                  timeLeft: state.album.albumTimeLeft,
+                  function: (Duration duration) {
+                    context.read<PlayerBloc>().add(
+                        PlayerEvent.changeAlbumProgressBar(
+                            newPosition: duration));
+                  },
+                ),
+              ],
+            );
+          }),
     );
   }
 }
@@ -39,20 +62,34 @@ class TrackProgressBarrWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: BlocBuilder<PlayerBloc, PlayerState>(
-        buildWhen: (previous, current) =>
-            previous.album.trackPosition != current.album.trackPosition ||
-            previous.album.trackDuration != current.album.trackDuration,
-        builder: (context, state) => CustomProgressBarWidget(
-          progress: state.album.trackPosition,
-          total: state.album.trackDuration,
-          timeLeft: state.album.trackTimeLeft,
-          function: (Duration duration) {
-            context
-                .read<PlayerBloc>()
-                .add(PlayerEvent.changeTrackProgressBar(newPosition: duration));
-          },
-        ),
-      ),
+          buildWhen: (previous, current) =>
+              previous.album.trackPosition != current.album.trackPosition ||
+              previous.album.trackDuration != current.album.trackDuration,
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: Text(
+                    state.trackName,
+                    style: const TextStyle(fontSize: 16),
+                    maxLines: 1,
+                  ),
+                ),
+                CustomProgressBarWidget(
+                  progress: state.album.trackPosition,
+                  total: state.album.trackDuration,
+                  timeLeft: state.album.trackTimeLeft,
+                  function: (Duration duration) {
+                    context.read<PlayerBloc>().add(
+                        PlayerEvent.changeTrackProgressBar(
+                            newPosition: duration));
+                  },
+                ),
+              ],
+            );
+          }),
     );
   }
 }
@@ -76,7 +113,7 @@ class CustomProgressBarWidget extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          bottom: -1.5,
+          bottom: -2.5,
           left: 0,
           right: 0,
           child: Text(

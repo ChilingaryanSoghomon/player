@@ -19,7 +19,7 @@ class AlbumCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).colorScheme.primary;
-
+    final  artworkWidth = MediaQuery.of(context).size.width * 0.35;
     return Card(
       elevation: 5,
       child: Column(
@@ -33,6 +33,7 @@ class AlbumCardWidget extends StatelessWidget {
                   builder: (context, state) {
                     final albumArtwork = state.mapAlbumArtworks[album.albumId];
                     return Container(
+                      width: artworkWidth,
                       color: primaryColor,
                       padding: const EdgeInsets.all(1.0),
                       child: albumArtwork != null && albumArtwork.isNotEmpty

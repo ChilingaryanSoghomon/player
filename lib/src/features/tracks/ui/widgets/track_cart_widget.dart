@@ -6,7 +6,6 @@ import 'package:player/src/common/formatters/format_duration.dart';
 import 'package:player/src/common/navigation/app_Router.dart';
 
 import 'package:player/src/common/res/app_assets.dart';
-import 'package:player/src/common/res/app_button_style.dart';
 import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/mp3_player/ui/bloc/player_bloc.dart';
 import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
@@ -27,6 +26,7 @@ class TrackCartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).colorScheme.primary;
+    final  artworkWidth = MediaQuery.of(context).size.width * 0.35;
     return Card(
       elevation: 5,
       child: Padding(
@@ -52,6 +52,7 @@ class TrackCartWidget extends StatelessWidget {
                         children: [
                           const SizedBox(height: 5),
                           Container(
+                            width: artworkWidth,
                             padding: const EdgeInsets.all(1),
                             color: primaryColor,
                             child: artwork.isNotEmpty
@@ -68,7 +69,6 @@ class TrackCartWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
                         child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Center(
                               child: Text(('${track.name}'),
@@ -78,13 +78,6 @@ class TrackCartWidget extends StatelessWidget {
                             Divider(color: primaryColor),
                             Text(formatDurationWithZero(track.duration),
                                 style: const TextStyle(fontSize: 18)),
-                            // Text(
-                            //     track.artist == '<unknown>'
-                            //         ? 'unknown'
-                            //         : track.artist ?? '',
-                            //     style: const TextStyle(fontSize: 18),
-                            //     maxLines: 1),
-                            // const Divider(),
                           ],
                         ),
                       ),
@@ -93,18 +86,18 @@ class TrackCartWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: TextButton(
-                onPressed: () {},
-                style: AppButtonStyle.moreVert,
-                child: Icon(
-                  Icons.more_vert,
-                  size: 25,
-                  color: primaryColor,
-                ),
-              ),
-            ),
+            // Flexible(
+            //   flex: 1,
+            //   child: TextButton(
+            //     onPressed: () {},
+            //     style: AppButtonStyle.moreVert,
+            //     child: Icon(
+            //       Icons.more_vert,
+            //       size: 25,
+            //       color: primaryColor,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

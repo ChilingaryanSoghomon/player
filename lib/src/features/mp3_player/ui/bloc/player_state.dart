@@ -12,6 +12,7 @@ class PlayerState with _$PlayerState {
   const factory PlayerState({
     @Default(PlayerStatus.initial) PlayerStatus status,
     @Default(1.0) double trackSpeed,
+    @Default('') String trackName,
     @Default(Album(
       tracks: [],
       albumDuration: Duration.zero,
