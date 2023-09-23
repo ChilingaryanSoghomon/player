@@ -6,7 +6,10 @@ abstract class AppColors {
   static final shadowDark = Colors.white.withOpacity(0.1);
 
   static const mainColor = Color(0xffFF9800);
+
   static const dark = Color(0xFF1D1D1D);
+
+  static const lightBackground = Color(0xFFC7C7C7);
 
   static const MaterialColor mainThemColor = MaterialColor(
     0xffFF9800,

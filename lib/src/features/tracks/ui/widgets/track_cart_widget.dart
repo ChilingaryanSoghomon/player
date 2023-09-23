@@ -26,7 +26,8 @@ class TrackCartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).colorScheme.primary;
-    final  artworkWidth = MediaQuery.of(context).size.width * 0.35;
+    final artworkWidth = MediaQuery.of(context).size.width * 0.35;
+    final artworkHight = artworkWidth * 0.6;
     return Card(
       elevation: 5,
       child: Padding(
@@ -53,13 +54,20 @@ class TrackCartWidget extends StatelessWidget {
                           const SizedBox(height: 5),
                           Container(
                             width: artworkWidth,
+                            height: artworkHight,
                             padding: const EdgeInsets.all(1),
-                            color: primaryColor,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: primaryColor)),
                             child: artwork.isNotEmpty
-                                ? Image.memory(Uint8List.fromList(artwork))
+                                ? Image.memory(
+                                    Uint8List.fromList(artwork),
+                                    fit: BoxFit.fill,
+                                  )
                                 : const Image(
-                                    image: AssetImage(AppAssets.shortwave)),
-                          ),
+                                    image: AssetImage(AppAssets.re),
+                                    fit: BoxFit.fill,
+                                  ),
+                          )
                         ],
                       ),
                     ),

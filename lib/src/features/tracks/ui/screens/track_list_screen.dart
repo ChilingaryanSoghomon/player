@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/features/splash/ui/widgets/splash_widget.dart';
 
-import 'package:player/src/common/widgets/my_app_bar_widget.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
+import 'package:player/src/features/tracks/ui/widgets/track_app_bar_widget.dart';
 import 'package:player/src/features/tracks/ui/widgets/track_cart_widget.dart';
 
 class TrackListScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class TrackListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWidget(context),
+      appBar: TrackAppBarWidget(context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -21,7 +22,7 @@ class TrackListScreen extends StatelessWidget {
             builder: (context, state) {
               return state.map(
                 loading: (state) =>
-                    const Center(child: CircularProgressIndicator()),
+                    const Center(child: SplashWidget()),
                 empty: (state) => const Center(child: Text('Empty')),
                 loaded: (state) => ListView.separated(
                   itemCount: state.album.tracks.length,

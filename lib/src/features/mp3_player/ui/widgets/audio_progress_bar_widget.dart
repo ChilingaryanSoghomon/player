@@ -123,6 +123,7 @@ class CustomProgressBarWidget extends StatelessWidget {
           ),
         ),
         ProgressBar(
+          thumbCanPaintOutsideBar: false,
           timeLabelLocation: TimeLabelLocation.below,
           thumbRadius: 8,
           thumbGlowRadius: 25,

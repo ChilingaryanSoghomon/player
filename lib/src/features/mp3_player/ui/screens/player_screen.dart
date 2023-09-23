@@ -19,6 +19,7 @@ class PlayerScreen extends StatefulWidget {
 class _PlayerScreenState extends State<PlayerScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocListener<PlayerBloc, PlayerState>(
       listenWhen: (previous, current) =>
           previous.album.albumPosition != current.album.albumPosition ||
@@ -27,9 +28,12 @@ class _PlayerScreenState extends State<PlayerScreen> {
           .read<AlbumBloc>()
           .add(AlbumEvent.changeAlbum(album: state.album)),
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: theme.scaffoldBackgroundColor,
+          foregroundColor: theme.colorScheme.primary,
+           automaticallyImplyLeading: false, 
+        ),
         endDrawer: const DrawerWidget(),
-        appBar:
-            AppBar(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
         body: const SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -38,7 +42,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
               UpperButtonsWidget(),
               SizedBox(height: 20),
               AlbumProgressBarrWidget(),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               TrackProgressBarrWidget(),
               SizedBox(height: 10),
               RewindButtonsWidget(),
