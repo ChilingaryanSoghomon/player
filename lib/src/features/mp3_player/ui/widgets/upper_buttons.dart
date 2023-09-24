@@ -35,15 +35,10 @@ class UpperButtonsWidget extends StatelessWidget {
             child:
                 Icon(Icons.track_changes, color: primaryColor, size: iconSize),
           ),
-          Column(
-            children: [
-              PrimaryButtonWidget(
-                borderRadius: 60,
-                onPressed: () => _showColorSelectionDialog(context),
-                child: RoundButtonWidget(size: size),
-              ),
-              const SizedBox(height: 35),
-            ],
+          PrimaryButtonWidget(
+            borderRadius: 60,
+            onPressed: () => _showColorSelectionDialog(context),
+            child: RoundButtonWidget(size: size),
           ),
           PrimaryButtonWidget(
             size: size,
@@ -53,19 +48,14 @@ class UpperButtonsWidget extends StatelessWidget {
             child:
                 Icon(Icons.speed_rounded, color: primaryColor, size: iconSize),
           ),
-          Column(
-            children: [
-              PrimaryButtonWidget(
-                onPressed: () => context.read<ThemeBloc>().add(
-                    ThemeChangeThemeEvent(theme: Theme.of(context).brightness)),
-                size: size,
-                child: theme.brightness == Brightness.light
-                    ? Icon(Icons.nights_stay_outlined,
-                        color: primaryColor, size: iconSize)
-                    : Icon(Icons.sunny, color: primaryColor, size: iconSize),
-              ),
-              const SizedBox(height: 35),
-            ],
+          PrimaryButtonWidget(
+            onPressed: () => context.read<ThemeBloc>().add(
+                ThemeChangeThemeEvent(theme: Theme.of(context).brightness)),
+            size: size,
+            child: theme.brightness == Brightness.light
+                ? Icon(Icons.nights_stay_outlined,
+                    color: primaryColor, size: iconSize)
+                : Icon(Icons.sunny, color: primaryColor, size: iconSize),
           ),
           PrimaryButtonWidget(
             size: size,

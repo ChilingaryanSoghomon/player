@@ -1,4 +1,4 @@
-package com.popupbits.flutter_audiobooks_app;
+package com.popupbits.Rhythmix;
 import android.app.Application;
 import java.security.KeyStore;
 import javax.net.ssl.*;

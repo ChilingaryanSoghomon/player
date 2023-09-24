@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.popupbits.flutter_audiobooks_app">
+    package="com.popupbits.Rhythmix">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -7,7 +7,7 @@
 
    <application
         android:name="${applicationName}"
-        android:label="flutter_audiobooks_app"
+        android:label="Rhythmix"
         android:icon="@mipmap/ic_launcher">
         <service android:exported="true" android:name="com.ryanheise.audioservice.AudioService">
             <intent-filter>

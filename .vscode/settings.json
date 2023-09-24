@@ -6,5 +6,6 @@
         "Splashinitial",
         "Trackartworks"
     ],
-    "cmake.sourceDirectory": "/home/monch/Project/MY/player/windows"
+    "cmake.sourceDirectory": "/home/monch/Project/MY/player/windows",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
