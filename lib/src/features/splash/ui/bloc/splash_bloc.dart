@@ -49,7 +49,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> with HydratedMixin {
 
   @override
   SplashState? fromJson(Map<String, dynamic> json) {
-    // add(const SplashEvent.initial());
     return SplashState.fromJson(json);
   }
 

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/common/core/di/di_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/common/navigation/app_Router.dart';
-import 'package:player/src/features/album/data/album_repository.dart';
+import 'package:player/src/features/album/data/search_album_repository.dart';
 import 'package:player/src/features/album/ui/bloc/album_bloc.dart';
 import 'package:player/src/features/album/ui/screens/album_screen.dart';
 import 'package:player/src/features/artwork/bloc/artwork_bloc.dart';
@@ -18,7 +18,6 @@ import 'package:player/src/features/splash/ui/screen/splash_screen.dart';
 import 'package:player/src/features/tracks/data/track_repository.dart';
 import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 import 'package:player/src/features/tracks/ui/screens/track_list_screen.dart';
-
 
 class AppProviders extends StatelessWidget {
   const AppProviders({super.key});
@@ -41,7 +40,8 @@ class AppProviders extends StatelessWidget {
         ),
         BlocProvider(
             create: (_) =>
-                AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())),
+                AlbumBloc(albumRepository: getIt<AlbumRepositoryImp>())
+                  ..add(const AlbumEvent.initial())),
         BlocProvider(
             create: (_) => ArtworkBloc(searchArtwork: getIt<SearchArtwork>())),
         BlocProvider(

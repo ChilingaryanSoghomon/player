@@ -5,7 +5,6 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:player/src/common/core/app/bloc_observer.dart';
 import 'package:player/src/common/data/search_artwork.dart';
-import 'package:player/src/features/album/data/album_repository.dart';
 import 'package:player/src/features/album/data/search_album_repository.dart';
 import 'package:player/src/features/mp3_player/data/repository/audio_helper.dart';
 import 'package:player/src/features/mp3_player/data/repository/audio_player_repository.dart';
@@ -49,18 +48,17 @@ Future<void> setup() async {
 
   final audioHandler = await initAudioService();
 
-
   getIt.registerLazySingleton<ThemeRepository>(
       () => ThemeRepository(pref: pref));
 
   getIt.registerLazySingleton<SearchArtwork>(
       () => SearchArtwork(audioQuery: audioQuery));
 
-  getIt.registerLazySingleton<SearchAlbumRepository>(
-      () => SearchAlbumRepository(audioQuery: audioQuery));
+  getIt.registerLazySingleton<AlbumRepositoryImp>(
+      () => AlbumRepositoryImp(audioQuery: audioQuery));
 
   getIt.registerLazySingleton<SplashRepository>(() =>
-      SplashRepository(searchAlbumRepository: getIt<SearchAlbumRepository>()));
+      SplashRepository(searchAlbumRepository: getIt<AlbumRepositoryImp>()));
 
   getIt.registerLazySingleton<AudioPlayerRepositoryImpl>(() =>
       AudioPlayerRepositoryImpl(
@@ -68,8 +66,4 @@ Future<void> setup() async {
 
   getIt.registerLazySingleton<TrackRepositoryImp>(
       () => TrackRepositoryImp(searchArtwork: getIt<SearchArtwork>()));
-
-  getIt.registerLazySingleton<AlbumRepositoryImp>(() => AlbumRepositoryImp(
-      searchAlbumRepository: getIt<SearchAlbumRepository>(),
-      searchArtwork: getIt<SearchArtwork>()));
 }

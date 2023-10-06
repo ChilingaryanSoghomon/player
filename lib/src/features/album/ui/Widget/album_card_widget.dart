@@ -46,7 +46,7 @@ class AlbumCardWidget extends StatelessWidget {
                               fit: BoxFit.fill,
                             )
                           : const Image(
-                              image: AssetImage(AppAssets.slMin),
+                              image: AssetImage(AppAssets.re),
                               fit: BoxFit.fill,
                             ),
                     );

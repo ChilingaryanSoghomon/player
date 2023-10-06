@@ -6,6 +6,7 @@ import 'package:player/src/features/splash/ui/bloc/splash_bloc.dart';
 class MyAppBarWidget extends AppBar {
   MyAppBarWidget(BuildContext context, {super.key})
       : super(
+        elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 5, top: 5),

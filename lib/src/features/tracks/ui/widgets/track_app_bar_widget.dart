@@ -6,6 +6,7 @@ import 'package:player/src/features/tracks/ui/bloc/track_bloc.dart';
 class TrackAppBarWidget extends AppBar {
   TrackAppBarWidget(BuildContext context, {super.key})
       : super(
+        elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           title: const _AppBarTitleWidget(),
           centerTitle: true,
