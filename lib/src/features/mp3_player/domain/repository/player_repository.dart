@@ -3,20 +3,17 @@ import 'package:player/src/features/tracks/domain/entities/track.dart';
 import 'package:rxdart/subjects.dart';
 
 abstract class IAudioPlayerRepository {
-  Stream<Duration> get getPositionStream;
-
-  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject;
-  
-  int get currentIndex;
-  Duration get trackDuration;
-  Duration get trackPosition;
-
   Future<void> addMusicDirectory({
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,
     required double speed,
   });
+
+  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject;
+
+  int get currentIndex;
+  Duration get trackPosition;
 
   Future<void> pause();
   Future<void> play();
@@ -32,5 +29,6 @@ abstract class IAudioPlayerRepository {
   Future<void> changeAlbumProgressBar(
       {required Duration nowAlbumDuration,
       required Map<int, Duration> mapAlbumDuration});
-  Future<List<int>> getTrackArtwork({required int trackId});
+
+  Future<void> changeMediaItem({required Track track});
 }

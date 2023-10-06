@@ -1,3 +1,4 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:player/src/common/data/search_artwork.dart';
 import 'package:player/src/features/mp3_player/data/repository/audio_helper.dart';
 import 'package:player/src/features/mp3_player/domain/entities/my_playback_event.dart';
@@ -8,14 +9,12 @@ import 'package:rxdart/rxdart.dart';
 
 class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   final MyAudioHandler _audioHandler;
-  final SearchArtwork _searchArtwork;
   late BehaviorSubject<MyPlaybackEvent> _playbackEventSubject;
 
   AudioPlayerRepositoryImpl({
     required SearchArtwork searchArtwork,
     required MyAudioHandler audioHandler,
-  })  : _searchArtwork = searchArtwork,
-        _audioHandler = audioHandler {
+  }) : _audioHandler = audioHandler {
     _playbackEventSubject = BehaviorSubject<MyPlaybackEvent>.seeded(
       MyPlaybackEvent(
         trackPosition: _audioHandler.player.position,
@@ -36,6 +35,7 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
       _playbackEventSubject.add(playbackEvent);
     });
   }
+
   @override
   Future<void> addMusicDirectory({
     required List<Track> tracks,
@@ -52,17 +52,13 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject => _playbackEventSubject;
-
+  BehaviorSubject<MyPlaybackEvent> get playbackEventSubject =>
+      _playbackEventSubject;
 
   @override
   Duration get trackPosition => _audioHandler.player.position;
   @override
   int get currentIndex => _audioHandler.player.currentIndex ?? 0;
-  @override
-  Duration get trackDuration => _audioHandler.player.duration ?? Duration.zero;
-  @override
-  Stream<Duration> get getPositionStream => _audioHandler.player.positionStream;
 
   @override
   Future<void> play() async {
@@ -124,6 +120,13 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<List<int>> getTrackArtwork({required int trackId}) async =>
-      await _searchArtwork.getTrackArtwork(trackId: trackId);
+  Future<void> changeMediaItem({required Track track}) async {
+    final newMediaItem = MediaItem(
+      id: track.trackId.toString(),
+      album: track.album,
+      title: track.name ?? '',
+      artUri: Uri.parse(track.path),
+    );
+    _audioHandler.mediaItem.add(newMediaItem);
+  }
 }

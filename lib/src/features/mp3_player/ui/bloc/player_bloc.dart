@@ -162,8 +162,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> with HydratedMixin {
     final track = state.album.tracks[currentIndex];
     Duration trackDuration = track.duration;
     if (currentIndex != state.album.trackIndex) {
-      final trackId = state.album.tracks[currentIndex].trackId;
-      emit(state.copyWith(album: state.album.copyWith(trackId: trackId)));
+      emit(state.copyWith(album: state.album.copyWith(trackId: track.trackId)));
+      _playerRepository.changeMediaItem(track: track);
     }
     Duration trackPosition = _playerRepository.trackPosition;
     Duration position = state.album.mapAlbumDuration[currentIndex]!;

@@ -43,7 +43,7 @@ class UpperButtonsWidget extends StatelessWidget {
           PrimaryButtonWidget(
             size: size,
             onPressed: () {
-              return showVolumeSlider(context);
+              return _showVolumeSlider(context);
             },
             child:
                 Icon(Icons.speed_rounded, color: primaryColor, size: iconSize),
@@ -71,7 +71,7 @@ class UpperButtonsWidget extends StatelessWidget {
     );
   }
 
-  void showVolumeSlider(BuildContext context) {
+  void _showVolumeSlider(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -86,45 +86,47 @@ class UpperButtonsWidget extends StatelessWidget {
         const double max = 2.0;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('$min'), Text('$max')],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: BlocBuilder<PlayerBloc, PlayerState>(
-                  buildWhen: (p, c) => p.trackSpeed != c.trackSpeed,
-                  builder: (context, state) {
-                    return Slider(
-                      value: state.trackSpeed,
-                      onChanged: (double speed) {
-                        return playerBloc
-                            .add(PlayerEvent.changeSpeed(speed: speed));
-                      },
-                      min: min,
-                      max: max,
-                    );
-                  },
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: BlocBuilder<PlayerBloc, PlayerState>(
+            builder: (context, state) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 0.5),
-                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 0.75),
-                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.0),
-                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.25),
-                  ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.5),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 45),
+                    child: Text(state.trackSpeed.toStringAsFixed(2)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: BlocBuilder<PlayerBloc, PlayerState>(
+                      buildWhen: (p, c) => p.trackSpeed != c.trackSpeed,
+                      builder: (context, state) {
+                        return Slider(
+                          value: state.trackSpeed,
+                          onChanged: (double speed) {
+                            return playerBloc
+                                .add(PlayerEvent.changeSpeed(speed: speed));
+                          },
+                          min: min,
+                          max: max,
+                        );
+                      },
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: min),
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: 0.75),
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.0),
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.25),
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: 1.5),
+                      ChooseSpeedWidget(playerBloc: playerBloc, speed: max),
+                    ],
+                  ),
                 ],
-              ),
-            ],
+              );
+            },
           ),
         );
       },
@@ -183,6 +185,9 @@ class ChooseSpeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => playerBloc.add(PlayerEvent.changeSpeed(speed: speed)),
-        child: Text('$speed'));
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Text('$speed'),
+        ));
   }
 }

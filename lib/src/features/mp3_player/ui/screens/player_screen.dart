@@ -30,7 +30,6 @@ class _PlayerScreenState extends State<PlayerScreen> {
       child: Scaffold(
         appBar: AppBar(
         elevation: 0,
-
           backgroundColor: theme.scaffoldBackgroundColor,
           foregroundColor: theme.colorScheme.primary,
            automaticallyImplyLeading: false, 
