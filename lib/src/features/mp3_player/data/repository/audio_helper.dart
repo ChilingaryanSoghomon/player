@@ -159,22 +159,5 @@ class MyAudioHandler extends BaseAudioHandler {
     final newPosition = _player.position + const Duration(seconds: 10);
     await _player.seek(newPosition);
   }
-  //****
 
-  // @override
-  // Future<void> addQueueItems(List<MediaItem> mediaItems) async {
-  //   debugPrint('Thses are added ques $mediaItems');
-  //   // manage Just Audio
-  //   final List<UriAudioSource> audioSource = [];
-  //   for (var track in mediaItems) {
-  //     final UriAudioSource audio = AudioSource.file(track.id);
-  //     audioSource.add(audio);
-  //   }
-  //   // final audioSource = mediaItems.map(_createAudioSource);
-
-  //   _playlist.addAll(audioSource.toList());
-
-  //   final newQueue = queue.value..addAll(mediaItems);
-  //   queue.add(newQueue);
-  // }
 }
