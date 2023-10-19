@@ -71,13 +71,13 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<void> next() async {
-    await _audioHandler.next();
+  Future<void> prev() async {
+    await _audioHandler.skipToPrevious();
   }
 
   @override
-  Future<void> prev() async {
-    await _audioHandler.prev();
+  Future<void> next() async {
+    await _audioHandler.skipToNext();
   }
 
   @override
