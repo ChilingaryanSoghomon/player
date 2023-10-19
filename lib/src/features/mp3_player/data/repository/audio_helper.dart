@@ -29,11 +29,11 @@ class MyAudioHandler extends BaseAudioHandler {
       final playing = _player.playing;
       playbackState.add(playbackState.value.copyWith(
         controls: [
-          MyMediaControl.rewind30,
+          MediaControl.skipToPrevious,
           MyMediaControl.rewind10,
           if (playing) MediaControl.pause else MediaControl.play,
           MyMediaControl.push10,
-          MyMediaControl.push30,
+          MediaControl.skipToNext,
         ],
         systemActions: const {
           // MediaAction.seek,
@@ -110,9 +110,9 @@ class MyAudioHandler extends BaseAudioHandler {
         initialPosition: position, initialIndex: trackIndex);
   }
 
-  Future<void> next() async => _player.seekToNext();
+  // Future<void> prev() async => _player.seekToPrevious();
 
-  Future<void> prev() async => _player.seekToPrevious();
+  // Future<void> next() async => _player.seekToNext();
 
   @override
   Future<void> setSpeed(double speed) {
@@ -124,15 +124,16 @@ class MyAudioHandler extends BaseAudioHandler {
 // function    skipToNext, rewind, skipToPrevious, stop
   @override
   Future<void> skipToPrevious() async {
-    final currentPosition = _player.position;
-    const seekDuration = Duration(seconds: 30);
-    final newPosition = currentPosition - seekDuration;
-    final newPositionClamped =
-        newPosition < Duration.zero ? Duration.zero : newPosition;
-    await _player.seek(newPositionClamped, index: _player.currentIndex);
-    if (_player.playing) {
-      await _player.play();
-    }
+    _player.seekToPrevious();
+    // final currentPosition = _player.position;
+    // const seekDuration = Duration(seconds: 30);
+    // final newPosition = currentPosition - seekDuration;
+    // final newPositionClamped =
+    //     newPosition < Duration.zero ? Duration.zero : newPosition;
+    // await _player.seek(newPositionClamped, index: _player.currentIndex);
+    // if (_player.playing) {
+    //   await _player.play();
+    // }
   }
 
   @override
@@ -150,8 +151,9 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> skipToNext() async {
-    final newPosition = _player.position + const Duration(seconds: 30);
-    await _player.seek(newPosition);
+    _player.seekToNext();
+    // final newPosition = _player.position + const Duration(seconds: 30);
+    // await _player.seek(newPosition);
   }
 
   @override
@@ -159,5 +161,4 @@ class MyAudioHandler extends BaseAudioHandler {
     final newPosition = _player.position + const Duration(seconds: 10);
     await _player.seek(newPosition);
   }
-
 }

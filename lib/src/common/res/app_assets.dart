@@ -15,4 +15,6 @@ abstract class AppAssets {
 
   static const re = 'assets/images/re.png';
 
+  static const slMin = 'assets/images/sl_min.jpg';
+  
 }

@@ -3,7 +3,7 @@ import 'package:player/src/features/album/domain/entities/album.dart';
 import 'package:player/src/features/album/domain/repositories/album_repository.dart';
 import 'package:player/src/features/tracks/domain/entities/track.dart';
 
-class AlbumRepositoryImp  implements IAlbumRepository{
+class AlbumRepositoryImp implements IAlbumRepository {
   AlbumRepositoryImp({
     required OnAudioQuery audioQuery,
   }) : _audioQuery = audioQuery;
@@ -26,9 +26,9 @@ class AlbumRepositoryImp  implements IAlbumRepository{
     final List<Album> newAlbums = [];
     final existingAlbumIds = albums.map((a) => a.albumId).toSet();
     for (var albumModel in albumModels) {
-      if (!existingAlbumIds.contains(albumModel.id)) {
-        var newAlbum = await _searchAlbum(albumModel);
-        newAlbums.add(newAlbum);
+        if (!existingAlbumIds.contains(albumModel.id)) {
+      var newAlbum = await _searchAlbum(albumModel);
+      newAlbums.add(newAlbum);
       } else {
         newAlbums.add(albums.firstWhere((a) => a.albumId == albumModel.id));
       }
@@ -62,7 +62,8 @@ class AlbumRepositoryImp  implements IAlbumRepository{
   }
 
   Future<List<Track>> _queryFromAlbumId({required int albumId}) async {
-    final List<SongModel> songs = await _audioQuery.querySongs();
+    final List<SongModel> songs =
+        await _audioQuery.querySongs(sortType: SongSortType.DISPLAY_NAME);
     final List<Track> tracks = [];
     int trackIndex = 0;
 
