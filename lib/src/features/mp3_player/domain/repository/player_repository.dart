@@ -21,7 +21,7 @@ abstract class IAudioPlayerRepository {
   Future<void> prev();
 
   Future<void> rewind({required Duration newPosition});
-  Future<void> push({required Duration newPosition});
+  Future<void> forward({required Duration newPosition});
 
   Future<void> setSpeed({required double speed});
 
