@@ -26,11 +26,16 @@ class AlbumRepositoryImp implements IAlbumRepository {
     final List<Album> newAlbums = [];
     final existingAlbumIds = albums.map((a) => a.albumId).toSet();
     for (var albumModel in albumModels) {
-        if (!existingAlbumIds.contains(albumModel.id)) {
-      var newAlbum = await _searchAlbum(albumModel);
-      newAlbums.add(newAlbum);
+      if (!existingAlbumIds.contains(albumModel.id)) {
+        var newAlbum = await _searchAlbum(albumModel);
+        newAlbums.add(newAlbum);
       } else {
-        newAlbums.add(albums.firstWhere((a) => a.albumId == albumModel.id));
+        final existingAlbum =
+            albums.firstWhere((a) => a.albumId == albumModel.id);
+        final newTracks =
+            await _queryFromAlbumId(albumId: existingAlbum.albumId);
+        final updatedAlbum = existingAlbum.copyWith(tracks: newTracks);
+        newAlbums.add(updatedAlbum);
       }
     }
     return newAlbums;
