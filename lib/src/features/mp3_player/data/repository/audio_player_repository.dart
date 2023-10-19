@@ -92,7 +92,7 @@ class AudioPlayerRepositoryImpl implements IAudioPlayerRepository {
   }
 
   @override
-  Future<void> push({required Duration newPosition}) async {
+  Future<void> forward({required Duration newPosition}) async {
     _audioHandler.seek(newPosition);
   }
 
