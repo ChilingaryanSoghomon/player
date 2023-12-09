@@ -1,14 +1,24 @@
 import 'package:audio_service/audio_service.dart';
 
 class MyMediaControl {
-  static const rewind10 = MediaControl(
-    androidIcon: 'drawable/group_8',
+  // static const rewind10 = MediaControl(
+  //   androidIcon: 'drawable/rewind_30',
+  //   label: 'rewind_10',
+  //   action: MediaAction.rewind,
+  // );
+  // static const push10 = MediaControl(
+  //   androidIcon: 'drawable/forward_30',
+  //   label: 'Stop',
+  //   action: MediaAction.stop,
+  // ); 
+   static const rewind10 = MediaControl(
+    androidIcon: 'drawable/group_18',
     label: 'rewind_10',
     action: MediaAction.rewind,
   );
   static const push10 = MediaControl(
-    androidIcon: 'drawable/group_9',
-    label: 'push_10',
+    androidIcon: 'drawable/group_19',
+    label: 'Stop',
     action: MediaAction.stop,
   );
   // static const rewind30 = MediaControl(

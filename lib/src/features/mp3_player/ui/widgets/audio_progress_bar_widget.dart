@@ -25,10 +25,13 @@ class AlbumProgressBarrWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.album.name,
-                        style: const TextStyle(fontSize: 16),
-                        maxLines: 1,
+                      Expanded(
+                        child: Text(
+                          state.album.name,
+                          style: const TextStyle(fontSize: 16),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       Text(
                         '${state.album.trackIndex}/${state.album.tracks.length}',
@@ -75,6 +78,7 @@ class TrackProgressBarrWidget extends StatelessWidget {
                     state.trackName,
                     style: const TextStyle(fontSize: 16),
                     maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 CustomProgressBarWidget(

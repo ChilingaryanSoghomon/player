@@ -6,39 +6,23 @@ part of 'album_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LoadingAlbumState _$$_LoadingAlbumStateFromJson(Map<String, dynamic> json) =>
-    _$_LoadingAlbumState(
-      $type: json['runtimeType'] as String?,
+_$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
+      status: $enumDecodeNullable(_$AlbumStatusEnumMap, json['status']) ??
+          AlbumStatus.initial,
+      albums: (json['albums'] as List<dynamic>?)
+              ?.map((e) => Album.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$$_LoadingAlbumStateToJson(
-        _$_LoadingAlbumState instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
-
-_$_EmptyAlbumState _$$_EmptyAlbumStateFromJson(Map<String, dynamic> json) =>
-    _$_EmptyAlbumState(
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$_EmptyAlbumStateToJson(_$_EmptyAlbumState instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
-
-_$_AlbumHaveAlbumState _$$_AlbumHaveAlbumStateFromJson(
-        Map<String, dynamic> json) =>
-    _$_AlbumHaveAlbumState(
-      albums: (json['albums'] as List<dynamic>)
-          .map((e) => Album.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$_AlbumHaveAlbumStateToJson(
-        _$_AlbumHaveAlbumState instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
+      'status': _$AlbumStatusEnumMap[instance.status]!,
       'albums': instance.albums,
-      'runtimeType': instance.$type,
     };
+
+const _$AlbumStatusEnumMap = {
+  AlbumStatus.initial: 'initial',
+  AlbumStatus.empty: 'empty',
+  AlbumStatus.haveAlbum: 'haveAlbum',
+  AlbumStatus.error: 'error',
+};

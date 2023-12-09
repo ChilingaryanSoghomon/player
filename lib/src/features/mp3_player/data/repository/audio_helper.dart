@@ -11,9 +11,6 @@ class MyAudioHandler extends BaseAudioHandler {
   MyAudioHandler() {
     _loadEmptyPlaylist();
     _notifyAudioHandlerAboutPlaybackEvents();
-    // _listenForDurationChanges();
-    // _listenForCurrentSongIndexChanges();
-    // _listenForSequenceStateChanges();
   }
 
   Future<void> _loadEmptyPlaylist() async {
@@ -24,10 +21,11 @@ class MyAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void _notifyAudioHandlerAboutPlaybackEvents() {
+  Future<void> _notifyAudioHandlerAboutPlaybackEvents() async {
     _player.playbackEventStream.listen((PlaybackEvent event) {
       final playing = _player.playing;
       playbackState.add(playbackState.value.copyWith(
+        
         controls: [
           MediaControl.skipToPrevious,
           MyMediaControl.rewind10,
@@ -65,7 +63,7 @@ class MyAudioHandler extends BaseAudioHandler {
     });
   }
 
-  addMusicDirectory({
+   Future<void>  addMusicDirectory({
     required List<Track> tracks,
     required Duration trackPosition,
     required int trackIndex,

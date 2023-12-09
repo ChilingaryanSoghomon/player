@@ -8,16 +8,16 @@
             "name": "pleyer",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main.dart"
+            "program": "lib/main.dart",
         },
-        // {
-        //     "name": "pleyer (profile mode)",
-        //     "request": "launch",
-        //     "type": "dart",
-        //     "flutterMode": "profile"
-        // },
         {
-            "name": "pleyer (release mode)",
+            "name": "player (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "player (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
