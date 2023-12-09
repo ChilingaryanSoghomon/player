@@ -19,23 +19,24 @@ class AlbumRepositoryImp implements IAlbumRepository {
 
     return myAlbums;
   }
-
+  
   @override
   Future<List<Album>> updateAlbums({required List<Album> albums}) async {
     final List<AlbumModel> albumModels = await _audioQuery.queryAlbums();
     final List<Album> newAlbums = [];
-    final existingAlbumIds = albums.map((a) => a.albumId).toSet();
-    for (var albumModel in albumModels) {
-      if (!existingAlbumIds.contains(albumModel.id)) {
-        var newAlbum = await _searchAlbum(albumModel);
+    final existingAlbumName = albums.map((a) => a.name).toSet();
+    for (final albumModel in albumModels) {
+      if (!existingAlbumName.contains(albumModel.album)) {
+        final newAlbum = await _searchAlbum(albumModel);
         newAlbums.add(newAlbum);
       } else {
         final existingAlbum =
-            albums.firstWhere((a) => a.albumId == albumModel.id);
-        final newTracks =
-            await _queryFromAlbumId(albumId: existingAlbum.albumId);
-        final updatedAlbum = existingAlbum.copyWith(tracks: newTracks);
-        newAlbums.add(updatedAlbum);
+            albums.firstWhere((a) => a.name == albumModel.album);
+        // final newTracks =
+        //     await _queryFromAlbumId(albumId: existingAlbum.albumId);
+        // final updatedAlbum = existingAlbum.copyWith(tracks: newTracks);
+        // newAlbums.add(updatedAlbum);
+        newAlbums.add(existingAlbum);
       }
     }
     return newAlbums;

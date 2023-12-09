@@ -26,6 +26,7 @@ class TrackCardWidget extends StatelessWidget {
     bool changeTrack = false;
     final theme = Theme.of(context);
     return BlocListener<PlayerBloc, PlayerState>(
+      bloc: playerBloc,
       listenWhen: (previous, current) =>
           previous.album.trackIndex != current.album.trackIndex,
       listener: (context, state) {
@@ -46,9 +47,7 @@ class TrackCardWidget extends StatelessWidget {
               },
               builder: (context, state) {
                 changeTrack = false;
-                return state.maybeMap(
-                  orElse: () => Container(),
-                  haveAlbum: (value) => ListTile(
+                return  ListTile(
                     onTap: () {
                       if (splashState == const SplashState.havePlayingTrack()) {
                         context.read<PlayerBloc>().add(
@@ -71,15 +70,12 @@ class TrackCardWidget extends StatelessWidget {
                     //   onTap: () {},
                     //   child: const Icon(Icons.more_vert),
                     // ),
-                  ),
                 );
               },
             ),
             BlocBuilder<AlbumBloc, AlbumState>(
               builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => Container(),
-                  haveAlbum: (_) => AbsorbPointer(
+                return  AbsorbPointer(
                     absorbing: true,
                     child: ProgressBar(
                       timeLabelPadding: 10,
@@ -89,7 +85,6 @@ class TrackCardWidget extends StatelessWidget {
                       progress: tempAlbum.trackPosition,
                       total: tempAlbum.trackDuration,
                     ),
-                  ),
                 );
               },
             ),

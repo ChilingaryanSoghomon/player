@@ -817,67 +817,18 @@ abstract class _AlbumGetAlbumEvent implements AlbumEvent {
 }
 
 AlbumState _$AlbumStateFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'initial':
-      return _LoadingAlbumState.fromJson(json);
-    case 'empty':
-      return _EmptyAlbumState.fromJson(json);
-    case 'haveAlbum':
-      return _AlbumHaveAlbumState.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'AlbumState',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return Initial.fromJson(json);
 }
 
 /// @nodoc
 mixin _$AlbumState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<Album> albums) haveAlbum,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? haveAlbum,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<Album> albums)? haveAlbum,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingAlbumState value) initial,
-    required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingAlbumState value)? initial,
-    TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingAlbumState value)? initial,
-    TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  AlbumStatus get status => throw _privateConstructorUsedError;
+  List<Album> get albums => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AlbumStateCopyWith<AlbumState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -885,6 +836,8 @@ abstract class $AlbumStateCopyWith<$Res> {
   factory $AlbumStateCopyWith(
           AlbumState value, $Res Function(AlbumState) then) =
       _$AlbumStateCopyWithImpl<$Res, AlbumState>;
+  @useResult
+  $Res call({AlbumStatus status, List<Album> albums});
 }
 
 /// @nodoc
@@ -896,282 +849,53 @@ class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? albums = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AlbumStatus,
+      albums: null == albums
+          ? _value.albums
+          : albums // ignore: cast_nullable_to_non_nullable
+              as List<Album>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_LoadingAlbumStateCopyWith<$Res> {
-  factory _$$_LoadingAlbumStateCopyWith(_$_LoadingAlbumState value,
-          $Res Function(_$_LoadingAlbumState) then) =
-      __$$_LoadingAlbumStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingAlbumStateCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$_LoadingAlbumState>
-    implements _$$_LoadingAlbumStateCopyWith<$Res> {
-  __$$_LoadingAlbumStateCopyWithImpl(
-      _$_LoadingAlbumState _value, $Res Function(_$_LoadingAlbumState) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_LoadingAlbumState implements _LoadingAlbumState {
-  const _$_LoadingAlbumState({final String? $type})
-      : $type = $type ?? 'initial';
-
-  factory _$_LoadingAlbumState.fromJson(Map<String, dynamic> json) =>
-      _$$_LoadingAlbumStateFromJson(json);
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
+abstract class _$$InitialCopyWith<$Res> implements $AlbumStateCopyWith<$Res> {
+  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
+      __$$InitialCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'AlbumState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingAlbumState);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<Album> albums) haveAlbum,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? haveAlbum,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<Album> albums)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingAlbumState value) initial,
-    required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingAlbumState value)? initial,
-    TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingAlbumState value)? initial,
-    TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_LoadingAlbumStateToJson(
-      this,
-    );
-  }
-}
-
-abstract class _LoadingAlbumState implements AlbumState {
-  const factory _LoadingAlbumState() = _$_LoadingAlbumState;
-
-  factory _LoadingAlbumState.fromJson(Map<String, dynamic> json) =
-      _$_LoadingAlbumState.fromJson;
-}
-
-/// @nodoc
-abstract class _$$_EmptyAlbumStateCopyWith<$Res> {
-  factory _$$_EmptyAlbumStateCopyWith(
-          _$_EmptyAlbumState value, $Res Function(_$_EmptyAlbumState) then) =
-      __$$_EmptyAlbumStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EmptyAlbumStateCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$_EmptyAlbumState>
-    implements _$$_EmptyAlbumStateCopyWith<$Res> {
-  __$$_EmptyAlbumStateCopyWithImpl(
-      _$_EmptyAlbumState _value, $Res Function(_$_EmptyAlbumState) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_EmptyAlbumState implements _EmptyAlbumState {
-  const _$_EmptyAlbumState({final String? $type}) : $type = $type ?? 'empty';
-
-  factory _$_EmptyAlbumState.fromJson(Map<String, dynamic> json) =>
-      _$$_EmptyAlbumStateFromJson(json);
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AlbumState.empty()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmptyAlbumState);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<Album> albums) haveAlbum,
-  }) {
-    return empty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? haveAlbum,
-  }) {
-    return empty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<Album> albums)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingAlbumState value) initial,
-    required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
-  }) {
-    return empty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingAlbumState value)? initial,
-    TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
-  }) {
-    return empty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingAlbumState value)? initial,
-    TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_EmptyAlbumStateToJson(
-      this,
-    );
-  }
-}
-
-abstract class _EmptyAlbumState implements AlbumState {
-  const factory _EmptyAlbumState() = _$_EmptyAlbumState;
-
-  factory _EmptyAlbumState.fromJson(Map<String, dynamic> json) =
-      _$_EmptyAlbumState.fromJson;
-}
-
-/// @nodoc
-abstract class _$$_AlbumHaveAlbumStateCopyWith<$Res> {
-  factory _$$_AlbumHaveAlbumStateCopyWith(_$_AlbumHaveAlbumState value,
-          $Res Function(_$_AlbumHaveAlbumState) then) =
-      __$$_AlbumHaveAlbumStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Album> albums});
+  $Res call({AlbumStatus status, List<Album> albums});
 }
 
 /// @nodoc
-class __$$_AlbumHaveAlbumStateCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$_AlbumHaveAlbumState>
-    implements _$$_AlbumHaveAlbumStateCopyWith<$Res> {
-  __$$_AlbumHaveAlbumStateCopyWithImpl(_$_AlbumHaveAlbumState _value,
-      $Res Function(_$_AlbumHaveAlbumState) _then)
+class __$$InitialCopyWithImpl<$Res>
+    extends _$AlbumStateCopyWithImpl<$Res, _$Initial>
+    implements _$$InitialCopyWith<$Res> {
+  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? albums = null,
   }) {
-    return _then(_$_AlbumHaveAlbumState(
+    return _then(_$Initial(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AlbumStatus,
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -1182,136 +906,71 @@ class __$$_AlbumHaveAlbumStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AlbumHaveAlbumState implements _AlbumHaveAlbumState {
-  const _$_AlbumHaveAlbumState(
-      {required final List<Album> albums, final String? $type})
-      : _albums = albums,
-        $type = $type ?? 'haveAlbum';
+class _$Initial implements Initial {
+  const _$Initial(
+      {this.status = AlbumStatus.initial, final List<Album> albums = const []})
+      : _albums = albums;
 
-  factory _$_AlbumHaveAlbumState.fromJson(Map<String, dynamic> json) =>
-      _$$_AlbumHaveAlbumStateFromJson(json);
+  factory _$Initial.fromJson(Map<String, dynamic> json) =>
+      _$$InitialFromJson(json);
 
+  @override
+  @JsonKey()
+  final AlbumStatus status;
   final List<Album> _albums;
   @override
+  @JsonKey()
   List<Album> get albums {
     if (_albums is EqualUnmodifiableListView) return _albums;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_albums);
   }
 
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
   @override
   String toString() {
-    return 'AlbumState.haveAlbum(albums: $albums)';
+    return 'AlbumState(status: $status, albums: $albums)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AlbumHaveAlbumState &&
+            other is _$Initial &&
+            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
+  int get hashCode => Object.hash(
+      runtimeType, status, const DeepCollectionEquality().hash(_albums));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlbumHaveAlbumStateCopyWith<_$_AlbumHaveAlbumState> get copyWith =>
-      __$$_AlbumHaveAlbumStateCopyWithImpl<_$_AlbumHaveAlbumState>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<Album> albums) haveAlbum,
-  }) {
-    return haveAlbum(albums);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<Album> albums)? haveAlbum,
-  }) {
-    return haveAlbum?.call(albums);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<Album> albums)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (haveAlbum != null) {
-      return haveAlbum(albums);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadingAlbumState value) initial,
-    required TResult Function(_EmptyAlbumState value) empty,
-    required TResult Function(_AlbumHaveAlbumState value) haveAlbum,
-  }) {
-    return haveAlbum(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadingAlbumState value)? initial,
-    TResult? Function(_EmptyAlbumState value)? empty,
-    TResult? Function(_AlbumHaveAlbumState value)? haveAlbum,
-  }) {
-    return haveAlbum?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadingAlbumState value)? initial,
-    TResult Function(_EmptyAlbumState value)? empty,
-    TResult Function(_AlbumHaveAlbumState value)? haveAlbum,
-    required TResult orElse(),
-  }) {
-    if (haveAlbum != null) {
-      return haveAlbum(this);
-    }
-    return orElse();
-  }
+  _$$InitialCopyWith<_$Initial> get copyWith =>
+      __$$InitialCopyWithImpl<_$Initial>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AlbumHaveAlbumStateToJson(
+    return _$$InitialToJson(
       this,
     );
   }
 }
 
-abstract class _AlbumHaveAlbumState implements AlbumState {
-  const factory _AlbumHaveAlbumState({required final List<Album> albums}) =
-      _$_AlbumHaveAlbumState;
+abstract class Initial implements AlbumState {
+  const factory Initial({final AlbumStatus status, final List<Album> albums}) =
+      _$Initial;
 
-  factory _AlbumHaveAlbumState.fromJson(Map<String, dynamic> json) =
-      _$_AlbumHaveAlbumState.fromJson;
+  factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
 
+  @override
+  AlbumStatus get status;
+  @override
   List<Album> get albums;
+  @override
   @JsonKey(ignore: true)
-  _$$_AlbumHaveAlbumStateCopyWith<_$_AlbumHaveAlbumState> get copyWith =>
+  _$$InitialCopyWith<_$Initial> get copyWith =>
       throw _privateConstructorUsedError;
 }

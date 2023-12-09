@@ -26,7 +26,6 @@ class PrimaryButtonWidget extends StatelessWidget {
           height: size,
           decoration: BoxDecoration(
             color: theme.scaffoldBackgroundColor,
-            // color: Colors.white12,
             borderRadius: borderRadius != null
                 ? BorderRadius.circular(borderRadius!)
                 : BorderRadius.circular(60),
