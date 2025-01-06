@@ -15,7 +15,7 @@
 
    <application
         android:name="${applicationName}"
-        android:label="Rhythmix"
+        android:label="music and player mp3 audiobook"
         android:icon="@mipmap/ic_launcher">
         <service android:exported="true" android:name="com.ryanheise.audioservice.AudioService">
             <intent-filter>
