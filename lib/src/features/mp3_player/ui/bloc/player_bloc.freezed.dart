@@ -12,7 +12,7 @@ part of 'player_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PlayerEvent {
@@ -146,14 +146,17 @@ class _$PlayerEventCopyWithImpl<$Res, $Val extends PlayerEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_PlayerAddPlaybackEventEventCopyWith<$Res> {
-  factory _$$_PlayerAddPlaybackEventEventCopyWith(
-          _$_PlayerAddPlaybackEventEvent value,
-          $Res Function(_$_PlayerAddPlaybackEventEvent) then) =
-      __$$_PlayerAddPlaybackEventEventCopyWithImpl<$Res>;
+abstract class _$$PlayerAddPlaybackEventEventImplCopyWith<$Res> {
+  factory _$$PlayerAddPlaybackEventEventImplCopyWith(
+          _$PlayerAddPlaybackEventEventImpl value,
+          $Res Function(_$PlayerAddPlaybackEventEventImpl) then) =
+      __$$PlayerAddPlaybackEventEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MyPlaybackEvent playbackEvent});
 
@@ -161,20 +164,22 @@ abstract class _$$_PlayerAddPlaybackEventEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlayerAddPlaybackEventEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerAddPlaybackEventEvent>
-    implements _$$_PlayerAddPlaybackEventEventCopyWith<$Res> {
-  __$$_PlayerAddPlaybackEventEventCopyWithImpl(
-      _$_PlayerAddPlaybackEventEvent _value,
-      $Res Function(_$_PlayerAddPlaybackEventEvent) _then)
+class __$$PlayerAddPlaybackEventEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerAddPlaybackEventEventImpl>
+    implements _$$PlayerAddPlaybackEventEventImplCopyWith<$Res> {
+  __$$PlayerAddPlaybackEventEventImplCopyWithImpl(
+      _$PlayerAddPlaybackEventEventImpl _value,
+      $Res Function(_$PlayerAddPlaybackEventEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? playbackEvent = null,
   }) {
-    return _then(_$_PlayerAddPlaybackEventEvent(
+    return _then(_$PlayerAddPlaybackEventEventImpl(
       playbackEvent: null == playbackEvent
           ? _value.playbackEvent
           : playbackEvent // ignore: cast_nullable_to_non_nullable
@@ -182,6 +187,8 @@ class __$$_PlayerAddPlaybackEventEventCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MyPlaybackEventCopyWith<$Res> get playbackEvent {
@@ -193,8 +200,9 @@ class __$$_PlayerAddPlaybackEventEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerAddPlaybackEventEvent implements _PlayerAddPlaybackEventEvent {
-  const _$_PlayerAddPlaybackEventEvent({required this.playbackEvent});
+class _$PlayerAddPlaybackEventEventImpl
+    implements _PlayerAddPlaybackEventEvent {
+  const _$PlayerAddPlaybackEventEventImpl({required this.playbackEvent});
 
   @override
   final MyPlaybackEvent playbackEvent;
@@ -205,10 +213,10 @@ class _$_PlayerAddPlaybackEventEvent implements _PlayerAddPlaybackEventEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerAddPlaybackEventEvent &&
+            other is _$PlayerAddPlaybackEventEventImpl &&
             (identical(other.playbackEvent, playbackEvent) ||
                 other.playbackEvent == playbackEvent));
   }
@@ -216,12 +224,14 @@ class _$_PlayerAddPlaybackEventEvent implements _PlayerAddPlaybackEventEvent {
   @override
   int get hashCode => Object.hash(runtimeType, playbackEvent);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerAddPlaybackEventEventCopyWith<_$_PlayerAddPlaybackEventEvent>
-      get copyWith => __$$_PlayerAddPlaybackEventEventCopyWithImpl<
-          _$_PlayerAddPlaybackEventEvent>(this, _$identity);
+  _$$PlayerAddPlaybackEventEventImplCopyWith<_$PlayerAddPlaybackEventEventImpl>
+      get copyWith => __$$PlayerAddPlaybackEventEventImplCopyWithImpl<
+          _$PlayerAddPlaybackEventEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -363,34 +373,40 @@ class _$_PlayerAddPlaybackEventEvent implements _PlayerAddPlaybackEventEvent {
 abstract class _PlayerAddPlaybackEventEvent implements PlayerEvent {
   const factory _PlayerAddPlaybackEventEvent(
           {required final MyPlaybackEvent playbackEvent}) =
-      _$_PlayerAddPlaybackEventEvent;
+      _$PlayerAddPlaybackEventEventImpl;
 
   MyPlaybackEvent get playbackEvent;
-  @JsonKey(ignore: true)
-  _$$_PlayerAddPlaybackEventEventCopyWith<_$_PlayerAddPlaybackEventEvent>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerAddPlaybackEventEventImplCopyWith<_$PlayerAddPlaybackEventEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerInitialEventCopyWith<$Res> {
-  factory _$$_PlayerInitialEventCopyWith(_$_PlayerInitialEvent value,
-          $Res Function(_$_PlayerInitialEvent) then) =
-      __$$_PlayerInitialEventCopyWithImpl<$Res>;
+abstract class _$$PlayerInitialEventImplCopyWith<$Res> {
+  factory _$$PlayerInitialEventImplCopyWith(_$PlayerInitialEventImpl value,
+          $Res Function(_$PlayerInitialEventImpl) then) =
+      __$$PlayerInitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PlayerInitialEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerInitialEvent>
-    implements _$$_PlayerInitialEventCopyWith<$Res> {
-  __$$_PlayerInitialEventCopyWithImpl(
-      _$_PlayerInitialEvent _value, $Res Function(_$_PlayerInitialEvent) _then)
+class __$$PlayerInitialEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerInitialEventImpl>
+    implements _$$PlayerInitialEventImplCopyWith<$Res> {
+  __$$PlayerInitialEventImplCopyWithImpl(_$PlayerInitialEventImpl _value,
+      $Res Function(_$PlayerInitialEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_PlayerInitialEvent implements _PlayerInitialEvent {
-  const _$_PlayerInitialEvent();
+class _$PlayerInitialEventImpl implements _PlayerInitialEvent {
+  const _$PlayerInitialEventImpl();
 
   @override
   String toString() {
@@ -398,9 +414,9 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PlayerInitialEvent);
+        (other.runtimeType == runtimeType && other is _$PlayerInitialEventImpl);
   }
 
   @override
@@ -544,14 +560,14 @@ class _$_PlayerInitialEvent implements _PlayerInitialEvent {
 }
 
 abstract class _PlayerInitialEvent implements PlayerEvent {
-  const factory _PlayerInitialEvent() = _$_PlayerInitialEvent;
+  const factory _PlayerInitialEvent() = _$PlayerInitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_PlayerAddTrackEventCopyWith<$Res> {
-  factory _$$_PlayerAddTrackEventCopyWith(_$_PlayerAddTrackEvent value,
-          $Res Function(_$_PlayerAddTrackEvent) then) =
-      __$$_PlayerAddTrackEventCopyWithImpl<$Res>;
+abstract class _$$PlayerAddTrackEventImplCopyWith<$Res> {
+  factory _$$PlayerAddTrackEventImplCopyWith(_$PlayerAddTrackEventImpl value,
+          $Res Function(_$PlayerAddTrackEventImpl) then) =
+      __$$PlayerAddTrackEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Album album, Track track});
 
@@ -560,20 +576,22 @@ abstract class _$$_PlayerAddTrackEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlayerAddTrackEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerAddTrackEvent>
-    implements _$$_PlayerAddTrackEventCopyWith<$Res> {
-  __$$_PlayerAddTrackEventCopyWithImpl(_$_PlayerAddTrackEvent _value,
-      $Res Function(_$_PlayerAddTrackEvent) _then)
+class __$$PlayerAddTrackEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerAddTrackEventImpl>
+    implements _$$PlayerAddTrackEventImplCopyWith<$Res> {
+  __$$PlayerAddTrackEventImplCopyWithImpl(_$PlayerAddTrackEventImpl _value,
+      $Res Function(_$PlayerAddTrackEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? album = null,
     Object? track = null,
   }) {
-    return _then(_$_PlayerAddTrackEvent(
+    return _then(_$PlayerAddTrackEventImpl(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -585,6 +603,8 @@ class __$$_PlayerAddTrackEventCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -593,6 +613,8 @@ class __$$_PlayerAddTrackEventCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TrackCopyWith<$Res> get track {
@@ -604,8 +626,8 @@ class __$$_PlayerAddTrackEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
-  const _$_PlayerAddTrackEvent({required this.album, required this.track});
+class _$PlayerAddTrackEventImpl implements _PlayerAddTrackEvent {
+  const _$PlayerAddTrackEventImpl({required this.album, required this.track});
 
   @override
   final Album album;
@@ -618,10 +640,10 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerAddTrackEvent &&
+            other is _$PlayerAddTrackEventImpl &&
             (identical(other.album, album) || other.album == album) &&
             (identical(other.track, track) || other.track == track));
   }
@@ -629,11 +651,13 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
   @override
   int get hashCode => Object.hash(runtimeType, album, track);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerAddTrackEventCopyWith<_$_PlayerAddTrackEvent> get copyWith =>
-      __$$_PlayerAddTrackEventCopyWithImpl<_$_PlayerAddTrackEvent>(
+  _$$PlayerAddTrackEventImplCopyWith<_$PlayerAddTrackEventImpl> get copyWith =>
+      __$$PlayerAddTrackEventImplCopyWithImpl<_$PlayerAddTrackEventImpl>(
           this, _$identity);
 
   @override
@@ -776,21 +800,24 @@ class _$_PlayerAddTrackEvent implements _PlayerAddTrackEvent {
 abstract class _PlayerAddTrackEvent implements PlayerEvent {
   const factory _PlayerAddTrackEvent(
       {required final Album album,
-      required final Track track}) = _$_PlayerAddTrackEvent;
+      required final Track track}) = _$PlayerAddTrackEventImpl;
 
   Album get album;
   Track get track;
-  @JsonKey(ignore: true)
-  _$$_PlayerAddTrackEventCopyWith<_$_PlayerAddTrackEvent> get copyWith =>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerAddTrackEventImplCopyWith<_$PlayerAddTrackEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerKeepPlayingAlbumEventCopyWith<$Res> {
-  factory _$$_PlayerKeepPlayingAlbumEventCopyWith(
-          _$_PlayerKeepPlayingAlbumEvent value,
-          $Res Function(_$_PlayerKeepPlayingAlbumEvent) then) =
-      __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>;
+abstract class _$$PlayerKeepPlayingAlbumEventImplCopyWith<$Res> {
+  factory _$$PlayerKeepPlayingAlbumEventImplCopyWith(
+          _$PlayerKeepPlayingAlbumEventImpl value,
+          $Res Function(_$PlayerKeepPlayingAlbumEventImpl) then) =
+      __$$PlayerKeepPlayingAlbumEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Album album});
 
@@ -798,20 +825,22 @@ abstract class _$$_PlayerKeepPlayingAlbumEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerKeepPlayingAlbumEvent>
-    implements _$$_PlayerKeepPlayingAlbumEventCopyWith<$Res> {
-  __$$_PlayerKeepPlayingAlbumEventCopyWithImpl(
-      _$_PlayerKeepPlayingAlbumEvent _value,
-      $Res Function(_$_PlayerKeepPlayingAlbumEvent) _then)
+class __$$PlayerKeepPlayingAlbumEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerKeepPlayingAlbumEventImpl>
+    implements _$$PlayerKeepPlayingAlbumEventImplCopyWith<$Res> {
+  __$$PlayerKeepPlayingAlbumEventImplCopyWithImpl(
+      _$PlayerKeepPlayingAlbumEventImpl _value,
+      $Res Function(_$PlayerKeepPlayingAlbumEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? album = null,
   }) {
-    return _then(_$_PlayerKeepPlayingAlbumEvent(
+    return _then(_$PlayerKeepPlayingAlbumEventImpl(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -819,6 +848,8 @@ class __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -830,8 +861,9 @@ class __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
-  const _$_PlayerKeepPlayingAlbumEvent({required this.album});
+class _$PlayerKeepPlayingAlbumEventImpl
+    implements _PlayerKeepPlayingAlbumEvent {
+  const _$PlayerKeepPlayingAlbumEventImpl({required this.album});
 
   @override
   final Album album;
@@ -842,22 +874,24 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerKeepPlayingAlbumEvent &&
+            other is _$PlayerKeepPlayingAlbumEventImpl &&
             (identical(other.album, album) || other.album == album));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, album);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerKeepPlayingAlbumEventCopyWith<_$_PlayerKeepPlayingAlbumEvent>
-      get copyWith => __$$_PlayerKeepPlayingAlbumEventCopyWithImpl<
-          _$_PlayerKeepPlayingAlbumEvent>(this, _$identity);
+  _$$PlayerKeepPlayingAlbumEventImplCopyWith<_$PlayerKeepPlayingAlbumEventImpl>
+      get copyWith => __$$PlayerKeepPlayingAlbumEventImplCopyWithImpl<
+          _$PlayerKeepPlayingAlbumEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -998,34 +1032,40 @@ class _$_PlayerKeepPlayingAlbumEvent implements _PlayerKeepPlayingAlbumEvent {
 
 abstract class _PlayerKeepPlayingAlbumEvent implements PlayerEvent {
   const factory _PlayerKeepPlayingAlbumEvent({required final Album album}) =
-      _$_PlayerKeepPlayingAlbumEvent;
+      _$PlayerKeepPlayingAlbumEventImpl;
 
   Album get album;
-  @JsonKey(ignore: true)
-  _$$_PlayerKeepPlayingAlbumEventCopyWith<_$_PlayerKeepPlayingAlbumEvent>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerKeepPlayingAlbumEventImplCopyWith<_$PlayerKeepPlayingAlbumEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerPlayEventCopyWith<$Res> {
-  factory _$$_PlayerPlayEventCopyWith(
-          _$_PlayerPlayEvent value, $Res Function(_$_PlayerPlayEvent) then) =
-      __$$_PlayerPlayEventCopyWithImpl<$Res>;
+abstract class _$$PlayerPlayEventImplCopyWith<$Res> {
+  factory _$$PlayerPlayEventImplCopyWith(_$PlayerPlayEventImpl value,
+          $Res Function(_$PlayerPlayEventImpl) then) =
+      __$$PlayerPlayEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PlayerPlayEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerPlayEvent>
-    implements _$$_PlayerPlayEventCopyWith<$Res> {
-  __$$_PlayerPlayEventCopyWithImpl(
-      _$_PlayerPlayEvent _value, $Res Function(_$_PlayerPlayEvent) _then)
+class __$$PlayerPlayEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerPlayEventImpl>
+    implements _$$PlayerPlayEventImplCopyWith<$Res> {
+  __$$PlayerPlayEventImplCopyWithImpl(
+      _$PlayerPlayEventImpl _value, $Res Function(_$PlayerPlayEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_PlayerPlayEvent implements _PlayerPlayEvent {
-  const _$_PlayerPlayEvent();
+class _$PlayerPlayEventImpl implements _PlayerPlayEvent {
+  const _$PlayerPlayEventImpl();
 
   @override
   String toString() {
@@ -1033,9 +1073,9 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PlayerPlayEvent);
+        (other.runtimeType == runtimeType && other is _$PlayerPlayEventImpl);
   }
 
   @override
@@ -1179,29 +1219,32 @@ class _$_PlayerPlayEvent implements _PlayerPlayEvent {
 }
 
 abstract class _PlayerPlayEvent implements PlayerEvent {
-  const factory _PlayerPlayEvent() = _$_PlayerPlayEvent;
+  const factory _PlayerPlayEvent() = _$PlayerPlayEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_PlayerPauseEventCopyWith<$Res> {
-  factory _$$_PlayerPauseEventCopyWith(
-          _$_PlayerPauseEvent value, $Res Function(_$_PlayerPauseEvent) then) =
-      __$$_PlayerPauseEventCopyWithImpl<$Res>;
+abstract class _$$PlayerPauseEventImplCopyWith<$Res> {
+  factory _$$PlayerPauseEventImplCopyWith(_$PlayerPauseEventImpl value,
+          $Res Function(_$PlayerPauseEventImpl) then) =
+      __$$PlayerPauseEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PlayerPauseEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerPauseEvent>
-    implements _$$_PlayerPauseEventCopyWith<$Res> {
-  __$$_PlayerPauseEventCopyWithImpl(
-      _$_PlayerPauseEvent _value, $Res Function(_$_PlayerPauseEvent) _then)
+class __$$PlayerPauseEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerPauseEventImpl>
+    implements _$$PlayerPauseEventImplCopyWith<$Res> {
+  __$$PlayerPauseEventImplCopyWithImpl(_$PlayerPauseEventImpl _value,
+      $Res Function(_$PlayerPauseEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_PlayerPauseEvent implements _PlayerPauseEvent {
-  const _$_PlayerPauseEvent();
+class _$PlayerPauseEventImpl implements _PlayerPauseEvent {
+  const _$PlayerPauseEventImpl();
 
   @override
   String toString() {
@@ -1209,9 +1252,9 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PlayerPauseEvent);
+        (other.runtimeType == runtimeType && other is _$PlayerPauseEventImpl);
   }
 
   @override
@@ -1355,29 +1398,32 @@ class _$_PlayerPauseEvent implements _PlayerPauseEvent {
 }
 
 abstract class _PlayerPauseEvent implements PlayerEvent {
-  const factory _PlayerPauseEvent() = _$_PlayerPauseEvent;
+  const factory _PlayerPauseEvent() = _$PlayerPauseEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_PlayerPrevEventCopyWith<$Res> {
-  factory _$$_PlayerPrevEventCopyWith(
-          _$_PlayerPrevEvent value, $Res Function(_$_PlayerPrevEvent) then) =
-      __$$_PlayerPrevEventCopyWithImpl<$Res>;
+abstract class _$$PlayerPrevEventImplCopyWith<$Res> {
+  factory _$$PlayerPrevEventImplCopyWith(_$PlayerPrevEventImpl value,
+          $Res Function(_$PlayerPrevEventImpl) then) =
+      __$$PlayerPrevEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PlayerPrevEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerPrevEvent>
-    implements _$$_PlayerPrevEventCopyWith<$Res> {
-  __$$_PlayerPrevEventCopyWithImpl(
-      _$_PlayerPrevEvent _value, $Res Function(_$_PlayerPrevEvent) _then)
+class __$$PlayerPrevEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerPrevEventImpl>
+    implements _$$PlayerPrevEventImplCopyWith<$Res> {
+  __$$PlayerPrevEventImplCopyWithImpl(
+      _$PlayerPrevEventImpl _value, $Res Function(_$PlayerPrevEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_PlayerPrevEvent implements _PlayerPrevEvent {
-  const _$_PlayerPrevEvent();
+class _$PlayerPrevEventImpl implements _PlayerPrevEvent {
+  const _$PlayerPrevEventImpl();
 
   @override
   String toString() {
@@ -1385,9 +1431,9 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PlayerPrevEvent);
+        (other.runtimeType == runtimeType && other is _$PlayerPrevEventImpl);
   }
 
   @override
@@ -1531,29 +1577,32 @@ class _$_PlayerPrevEvent implements _PlayerPrevEvent {
 }
 
 abstract class _PlayerPrevEvent implements PlayerEvent {
-  const factory _PlayerPrevEvent() = _$_PlayerPrevEvent;
+  const factory _PlayerPrevEvent() = _$PlayerPrevEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_PlayerNextEventCopyWith<$Res> {
-  factory _$$_PlayerNextEventCopyWith(
-          _$_PlayerNextEvent value, $Res Function(_$_PlayerNextEvent) then) =
-      __$$_PlayerNextEventCopyWithImpl<$Res>;
+abstract class _$$PlayerNextEventImplCopyWith<$Res> {
+  factory _$$PlayerNextEventImplCopyWith(_$PlayerNextEventImpl value,
+          $Res Function(_$PlayerNextEventImpl) then) =
+      __$$PlayerNextEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PlayerNextEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerNextEvent>
-    implements _$$_PlayerNextEventCopyWith<$Res> {
-  __$$_PlayerNextEventCopyWithImpl(
-      _$_PlayerNextEvent _value, $Res Function(_$_PlayerNextEvent) _then)
+class __$$PlayerNextEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerNextEventImpl>
+    implements _$$PlayerNextEventImplCopyWith<$Res> {
+  __$$PlayerNextEventImplCopyWithImpl(
+      _$PlayerNextEventImpl _value, $Res Function(_$PlayerNextEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_PlayerNextEvent implements _PlayerNextEvent {
-  const _$_PlayerNextEvent();
+class _$PlayerNextEventImpl implements _PlayerNextEvent {
+  const _$PlayerNextEventImpl();
 
   @override
   String toString() {
@@ -1561,9 +1610,9 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PlayerNextEvent);
+        (other.runtimeType == runtimeType && other is _$PlayerNextEventImpl);
   }
 
   @override
@@ -1707,32 +1756,34 @@ class _$_PlayerNextEvent implements _PlayerNextEvent {
 }
 
 abstract class _PlayerNextEvent implements PlayerEvent {
-  const factory _PlayerNextEvent() = _$_PlayerNextEvent;
+  const factory _PlayerNextEvent() = _$PlayerNextEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_PlayerRewindEventCopyWith<$Res> {
-  factory _$$_PlayerRewindEventCopyWith(_$_PlayerRewindEvent value,
-          $Res Function(_$_PlayerRewindEvent) then) =
-      __$$_PlayerRewindEventCopyWithImpl<$Res>;
+abstract class _$$PlayerRewindEventImplCopyWith<$Res> {
+  factory _$$PlayerRewindEventImplCopyWith(_$PlayerRewindEventImpl value,
+          $Res Function(_$PlayerRewindEventImpl) then) =
+      __$$PlayerRewindEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int seconds});
 }
 
 /// @nodoc
-class __$$_PlayerRewindEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerRewindEvent>
-    implements _$$_PlayerRewindEventCopyWith<$Res> {
-  __$$_PlayerRewindEventCopyWithImpl(
-      _$_PlayerRewindEvent _value, $Res Function(_$_PlayerRewindEvent) _then)
+class __$$PlayerRewindEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerRewindEventImpl>
+    implements _$$PlayerRewindEventImplCopyWith<$Res> {
+  __$$PlayerRewindEventImplCopyWithImpl(_$PlayerRewindEventImpl _value,
+      $Res Function(_$PlayerRewindEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? seconds = null,
   }) {
-    return _then(_$_PlayerRewindEvent(
+    return _then(_$PlayerRewindEventImpl(
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
@@ -1743,8 +1794,8 @@ class __$$_PlayerRewindEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerRewindEvent implements _PlayerRewindEvent {
-  const _$_PlayerRewindEvent({required this.seconds});
+class _$PlayerRewindEventImpl implements _PlayerRewindEvent {
+  const _$PlayerRewindEventImpl({required this.seconds});
 
   @override
   final int seconds;
@@ -1755,21 +1806,23 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerRewindEvent &&
+            other is _$PlayerRewindEventImpl &&
             (identical(other.seconds, seconds) || other.seconds == seconds));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, seconds);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerRewindEventCopyWith<_$_PlayerRewindEvent> get copyWith =>
-      __$$_PlayerRewindEventCopyWithImpl<_$_PlayerRewindEvent>(
+  _$$PlayerRewindEventImplCopyWith<_$PlayerRewindEventImpl> get copyWith =>
+      __$$PlayerRewindEventImplCopyWithImpl<_$PlayerRewindEventImpl>(
           this, _$identity);
 
   @override
@@ -1911,37 +1964,42 @@ class _$_PlayerRewindEvent implements _PlayerRewindEvent {
 
 abstract class _PlayerRewindEvent implements PlayerEvent {
   const factory _PlayerRewindEvent({required final int seconds}) =
-      _$_PlayerRewindEvent;
+      _$PlayerRewindEventImpl;
 
   int get seconds;
-  @JsonKey(ignore: true)
-  _$$_PlayerRewindEventCopyWith<_$_PlayerRewindEvent> get copyWith =>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerRewindEventImplCopyWith<_$PlayerRewindEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerPushEventCopyWith<$Res> {
-  factory _$$_PlayerPushEventCopyWith(
-          _$_PlayerPushEvent value, $Res Function(_$_PlayerPushEvent) then) =
-      __$$_PlayerPushEventCopyWithImpl<$Res>;
+abstract class _$$PlayerPushEventImplCopyWith<$Res> {
+  factory _$$PlayerPushEventImplCopyWith(_$PlayerPushEventImpl value,
+          $Res Function(_$PlayerPushEventImpl) then) =
+      __$$PlayerPushEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int seconds});
 }
 
 /// @nodoc
-class __$$_PlayerPushEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerPushEvent>
-    implements _$$_PlayerPushEventCopyWith<$Res> {
-  __$$_PlayerPushEventCopyWithImpl(
-      _$_PlayerPushEvent _value, $Res Function(_$_PlayerPushEvent) _then)
+class __$$PlayerPushEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerPushEventImpl>
+    implements _$$PlayerPushEventImplCopyWith<$Res> {
+  __$$PlayerPushEventImplCopyWithImpl(
+      _$PlayerPushEventImpl _value, $Res Function(_$PlayerPushEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? seconds = null,
   }) {
-    return _then(_$_PlayerPushEvent(
+    return _then(_$PlayerPushEventImpl(
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
@@ -1952,8 +2010,8 @@ class __$$_PlayerPushEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerPushEvent implements _PlayerPushEvent {
-  const _$_PlayerPushEvent({required this.seconds});
+class _$PlayerPushEventImpl implements _PlayerPushEvent {
+  const _$PlayerPushEventImpl({required this.seconds});
 
   @override
   final int seconds;
@@ -1964,21 +2022,24 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerPushEvent &&
+            other is _$PlayerPushEventImpl &&
             (identical(other.seconds, seconds) || other.seconds == seconds));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, seconds);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerPushEventCopyWith<_$_PlayerPushEvent> get copyWith =>
-      __$$_PlayerPushEventCopyWithImpl<_$_PlayerPushEvent>(this, _$identity);
+  _$$PlayerPushEventImplCopyWith<_$PlayerPushEventImpl> get copyWith =>
+      __$$PlayerPushEventImplCopyWithImpl<_$PlayerPushEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2119,40 +2180,45 @@ class _$_PlayerPushEvent implements _PlayerPushEvent {
 
 abstract class _PlayerPushEvent implements PlayerEvent {
   const factory _PlayerPushEvent({required final int seconds}) =
-      _$_PlayerPushEvent;
+      _$PlayerPushEventImpl;
 
   int get seconds;
-  @JsonKey(ignore: true)
-  _$$_PlayerPushEventCopyWith<_$_PlayerPushEvent> get copyWith =>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerPushEventImplCopyWith<_$PlayerPushEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerChangeTrackProgressBarEventCopyWith<$Res> {
-  factory _$$_PlayerChangeTrackProgressBarEventCopyWith(
-          _$_PlayerChangeTrackProgressBarEvent value,
-          $Res Function(_$_PlayerChangeTrackProgressBarEvent) then) =
-      __$$_PlayerChangeTrackProgressBarEventCopyWithImpl<$Res>;
+abstract class _$$PlayerChangeTrackProgressBarEventImplCopyWith<$Res> {
+  factory _$$PlayerChangeTrackProgressBarEventImplCopyWith(
+          _$PlayerChangeTrackProgressBarEventImpl value,
+          $Res Function(_$PlayerChangeTrackProgressBarEventImpl) then) =
+      __$$PlayerChangeTrackProgressBarEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration newPosition});
 }
 
 /// @nodoc
-class __$$_PlayerChangeTrackProgressBarEventCopyWithImpl<$Res>
+class __$$PlayerChangeTrackProgressBarEventImplCopyWithImpl<$Res>
     extends _$PlayerEventCopyWithImpl<$Res,
-        _$_PlayerChangeTrackProgressBarEvent>
-    implements _$$_PlayerChangeTrackProgressBarEventCopyWith<$Res> {
-  __$$_PlayerChangeTrackProgressBarEventCopyWithImpl(
-      _$_PlayerChangeTrackProgressBarEvent _value,
-      $Res Function(_$_PlayerChangeTrackProgressBarEvent) _then)
+        _$PlayerChangeTrackProgressBarEventImpl>
+    implements _$$PlayerChangeTrackProgressBarEventImplCopyWith<$Res> {
+  __$$PlayerChangeTrackProgressBarEventImplCopyWithImpl(
+      _$PlayerChangeTrackProgressBarEventImpl _value,
+      $Res Function(_$PlayerChangeTrackProgressBarEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? newPosition = null,
   }) {
-    return _then(_$_PlayerChangeTrackProgressBarEvent(
+    return _then(_$PlayerChangeTrackProgressBarEventImpl(
       newPosition: null == newPosition
           ? _value.newPosition
           : newPosition // ignore: cast_nullable_to_non_nullable
@@ -2163,9 +2229,9 @@ class __$$_PlayerChangeTrackProgressBarEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerChangeTrackProgressBarEvent
+class _$PlayerChangeTrackProgressBarEventImpl
     implements _PlayerChangeTrackProgressBarEvent {
-  const _$_PlayerChangeTrackProgressBarEvent({required this.newPosition});
+  const _$PlayerChangeTrackProgressBarEventImpl({required this.newPosition});
 
   @override
   final Duration newPosition;
@@ -2176,10 +2242,10 @@ class _$_PlayerChangeTrackProgressBarEvent
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerChangeTrackProgressBarEvent &&
+            other is _$PlayerChangeTrackProgressBarEventImpl &&
             (identical(other.newPosition, newPosition) ||
                 other.newPosition == newPosition));
   }
@@ -2187,13 +2253,15 @@ class _$_PlayerChangeTrackProgressBarEvent
   @override
   int get hashCode => Object.hash(runtimeType, newPosition);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerChangeTrackProgressBarEventCopyWith<
-          _$_PlayerChangeTrackProgressBarEvent>
-      get copyWith => __$$_PlayerChangeTrackProgressBarEventCopyWithImpl<
-          _$_PlayerChangeTrackProgressBarEvent>(this, _$identity);
+  _$$PlayerChangeTrackProgressBarEventImplCopyWith<
+          _$PlayerChangeTrackProgressBarEventImpl>
+      get copyWith => __$$PlayerChangeTrackProgressBarEventImplCopyWithImpl<
+          _$PlayerChangeTrackProgressBarEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2335,41 +2403,46 @@ class _$_PlayerChangeTrackProgressBarEvent
 abstract class _PlayerChangeTrackProgressBarEvent implements PlayerEvent {
   const factory _PlayerChangeTrackProgressBarEvent(
           {required final Duration newPosition}) =
-      _$_PlayerChangeTrackProgressBarEvent;
+      _$PlayerChangeTrackProgressBarEventImpl;
 
   Duration get newPosition;
-  @JsonKey(ignore: true)
-  _$$_PlayerChangeTrackProgressBarEventCopyWith<
-          _$_PlayerChangeTrackProgressBarEvent>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerChangeTrackProgressBarEventImplCopyWith<
+          _$PlayerChangeTrackProgressBarEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerChangeAlbumProgressBarEventCopyWith<$Res> {
-  factory _$$_PlayerChangeAlbumProgressBarEventCopyWith(
-          _$_PlayerChangeAlbumProgressBarEvent value,
-          $Res Function(_$_PlayerChangeAlbumProgressBarEvent) then) =
-      __$$_PlayerChangeAlbumProgressBarEventCopyWithImpl<$Res>;
+abstract class _$$PlayerChangeAlbumProgressBarEventImplCopyWith<$Res> {
+  factory _$$PlayerChangeAlbumProgressBarEventImplCopyWith(
+          _$PlayerChangeAlbumProgressBarEventImpl value,
+          $Res Function(_$PlayerChangeAlbumProgressBarEventImpl) then) =
+      __$$PlayerChangeAlbumProgressBarEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration newPosition});
 }
 
 /// @nodoc
-class __$$_PlayerChangeAlbumProgressBarEventCopyWithImpl<$Res>
+class __$$PlayerChangeAlbumProgressBarEventImplCopyWithImpl<$Res>
     extends _$PlayerEventCopyWithImpl<$Res,
-        _$_PlayerChangeAlbumProgressBarEvent>
-    implements _$$_PlayerChangeAlbumProgressBarEventCopyWith<$Res> {
-  __$$_PlayerChangeAlbumProgressBarEventCopyWithImpl(
-      _$_PlayerChangeAlbumProgressBarEvent _value,
-      $Res Function(_$_PlayerChangeAlbumProgressBarEvent) _then)
+        _$PlayerChangeAlbumProgressBarEventImpl>
+    implements _$$PlayerChangeAlbumProgressBarEventImplCopyWith<$Res> {
+  __$$PlayerChangeAlbumProgressBarEventImplCopyWithImpl(
+      _$PlayerChangeAlbumProgressBarEventImpl _value,
+      $Res Function(_$PlayerChangeAlbumProgressBarEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? newPosition = null,
   }) {
-    return _then(_$_PlayerChangeAlbumProgressBarEvent(
+    return _then(_$PlayerChangeAlbumProgressBarEventImpl(
       newPosition: null == newPosition
           ? _value.newPosition
           : newPosition // ignore: cast_nullable_to_non_nullable
@@ -2380,9 +2453,9 @@ class __$$_PlayerChangeAlbumProgressBarEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerChangeAlbumProgressBarEvent
+class _$PlayerChangeAlbumProgressBarEventImpl
     implements _PlayerChangeAlbumProgressBarEvent {
-  const _$_PlayerChangeAlbumProgressBarEvent({required this.newPosition});
+  const _$PlayerChangeAlbumProgressBarEventImpl({required this.newPosition});
 
   @override
   final Duration newPosition;
@@ -2393,10 +2466,10 @@ class _$_PlayerChangeAlbumProgressBarEvent
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerChangeAlbumProgressBarEvent &&
+            other is _$PlayerChangeAlbumProgressBarEventImpl &&
             (identical(other.newPosition, newPosition) ||
                 other.newPosition == newPosition));
   }
@@ -2404,13 +2477,15 @@ class _$_PlayerChangeAlbumProgressBarEvent
   @override
   int get hashCode => Object.hash(runtimeType, newPosition);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerChangeAlbumProgressBarEventCopyWith<
-          _$_PlayerChangeAlbumProgressBarEvent>
-      get copyWith => __$$_PlayerChangeAlbumProgressBarEventCopyWithImpl<
-          _$_PlayerChangeAlbumProgressBarEvent>(this, _$identity);
+  _$$PlayerChangeAlbumProgressBarEventImplCopyWith<
+          _$PlayerChangeAlbumProgressBarEventImpl>
+      get copyWith => __$$PlayerChangeAlbumProgressBarEventImplCopyWithImpl<
+          _$PlayerChangeAlbumProgressBarEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2552,38 +2627,43 @@ class _$_PlayerChangeAlbumProgressBarEvent
 abstract class _PlayerChangeAlbumProgressBarEvent implements PlayerEvent {
   const factory _PlayerChangeAlbumProgressBarEvent(
           {required final Duration newPosition}) =
-      _$_PlayerChangeAlbumProgressBarEvent;
+      _$PlayerChangeAlbumProgressBarEventImpl;
 
   Duration get newPosition;
-  @JsonKey(ignore: true)
-  _$$_PlayerChangeAlbumProgressBarEventCopyWith<
-          _$_PlayerChangeAlbumProgressBarEvent>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerChangeAlbumProgressBarEventImplCopyWith<
+          _$PlayerChangeAlbumProgressBarEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlayerSpeedEventCopyWith<$Res> {
-  factory _$$_PlayerSpeedEventCopyWith(
-          _$_PlayerSpeedEvent value, $Res Function(_$_PlayerSpeedEvent) then) =
-      __$$_PlayerSpeedEventCopyWithImpl<$Res>;
+abstract class _$$PlayerSpeedEventImplCopyWith<$Res> {
+  factory _$$PlayerSpeedEventImplCopyWith(_$PlayerSpeedEventImpl value,
+          $Res Function(_$PlayerSpeedEventImpl) then) =
+      __$$PlayerSpeedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double speed});
 }
 
 /// @nodoc
-class __$$_PlayerSpeedEventCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$_PlayerSpeedEvent>
-    implements _$$_PlayerSpeedEventCopyWith<$Res> {
-  __$$_PlayerSpeedEventCopyWithImpl(
-      _$_PlayerSpeedEvent _value, $Res Function(_$_PlayerSpeedEvent) _then)
+class __$$PlayerSpeedEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayerSpeedEventImpl>
+    implements _$$PlayerSpeedEventImplCopyWith<$Res> {
+  __$$PlayerSpeedEventImplCopyWithImpl(_$PlayerSpeedEventImpl _value,
+      $Res Function(_$PlayerSpeedEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? speed = null,
   }) {
-    return _then(_$_PlayerSpeedEvent(
+    return _then(_$PlayerSpeedEventImpl(
       speed: null == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
@@ -2594,8 +2674,8 @@ class __$$_PlayerSpeedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayerSpeedEvent implements _PlayerSpeedEvent {
-  const _$_PlayerSpeedEvent({required this.speed});
+class _$PlayerSpeedEventImpl implements _PlayerSpeedEvent {
+  const _$PlayerSpeedEventImpl({required this.speed});
 
   @override
   final double speed;
@@ -2606,21 +2686,24 @@ class _$_PlayerSpeedEvent implements _PlayerSpeedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerSpeedEvent &&
+            other is _$PlayerSpeedEventImpl &&
             (identical(other.speed, speed) || other.speed == speed));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, speed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerSpeedEventCopyWith<_$_PlayerSpeedEvent> get copyWith =>
-      __$$_PlayerSpeedEventCopyWithImpl<_$_PlayerSpeedEvent>(this, _$identity);
+  _$$PlayerSpeedEventImplCopyWith<_$PlayerSpeedEventImpl> get copyWith =>
+      __$$PlayerSpeedEventImplCopyWithImpl<_$PlayerSpeedEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2761,11 +2844,14 @@ class _$_PlayerSpeedEvent implements _PlayerSpeedEvent {
 
 abstract class _PlayerSpeedEvent implements PlayerEvent {
   const factory _PlayerSpeedEvent({required final double speed}) =
-      _$_PlayerSpeedEvent;
+      _$PlayerSpeedEventImpl;
 
   double get speed;
-  @JsonKey(ignore: true)
-  _$$_PlayerSpeedEventCopyWith<_$_PlayerSpeedEvent> get copyWith =>
+
+  /// Create a copy of PlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayerSpeedEventImplCopyWith<_$PlayerSpeedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2780,8 +2866,12 @@ mixin _$PlayerState {
   String get trackName => throw _privateConstructorUsedError;
   Album get album => throw _privateConstructorUsedError;
 
+  /// Serializes this PlayerState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlayerStateCopyWith<PlayerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2808,6 +2898,8 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2836,6 +2928,8 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
     ) as $Val);
   }
 
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -2846,9 +2940,11 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $PlayerStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2859,12 +2955,15 @@ abstract class _$$InitialCopyWith<$Res> implements $PlayerStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$PlayerStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$PlayerStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2873,7 +2972,7 @@ class __$$InitialCopyWithImpl<$Res>
     Object? trackName = null,
     Object? album = null,
   }) {
-    return _then(_$Initial(
+    return _then(_$InitialImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -2896,8 +2995,8 @@ class __$$InitialCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Initial implements Initial {
-  const _$Initial(
+class _$InitialImpl implements Initial {
+  const _$InitialImpl(
       {this.status = PlayerStatus.initial,
       this.trackSpeed = 1.0,
       this.trackName = '',
@@ -2916,8 +3015,8 @@ class _$Initial implements Initial {
           mapAlbumDuration: {},
           trackId: null)});
 
-  factory _$Initial.fromJson(Map<String, dynamic> json) =>
-      _$$InitialFromJson(json);
+  factory _$InitialImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InitialImplFromJson(json);
 
   @override
   @JsonKey()
@@ -2938,10 +3037,10 @@ class _$Initial implements Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Initial &&
+            other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.trackSpeed, trackSpeed) ||
                 other.trackSpeed == trackSpeed) &&
@@ -2950,20 +3049,22 @@ class _$Initial implements Initial {
             (identical(other.album, album) || other.album == album));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, status, trackSpeed, trackName, album);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialCopyWith<_$Initial> get copyWith =>
-      __$$InitialCopyWithImpl<_$Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InitialToJson(
+    return _$$InitialImplToJson(
       this,
     );
   }
@@ -2974,9 +3075,9 @@ abstract class Initial implements PlayerState {
       {final PlayerStatus status,
       final double trackSpeed,
       final String trackName,
-      final Album album}) = _$Initial;
+      final Album album}) = _$InitialImpl;
 
-  factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
+  factory Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
 
   @override
   PlayerStatus get status;
@@ -2986,8 +3087,11 @@ abstract class Initial implements PlayerState {
   String get trackName;
   @override
   Album get album;
+
+  /// Create a copy of PlayerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$InitialCopyWith<_$Initial> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

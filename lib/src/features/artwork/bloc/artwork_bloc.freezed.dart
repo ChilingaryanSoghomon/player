@@ -12,7 +12,7 @@ part of 'artwork_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ArtworkEvent {
@@ -75,31 +75,36 @@ class _$ArtworkEventCopyWithImpl<$Res, $Val extends ArtworkEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_ArtworkChangeEventCopyWith<$Res> {
-  factory _$$_ArtworkChangeEventCopyWith(_$_ArtworkChangeEvent value,
-          $Res Function(_$_ArtworkChangeEvent) then) =
-      __$$_ArtworkChangeEventCopyWithImpl<$Res>;
+abstract class _$$ArtworkChangeEventImplCopyWith<$Res> {
+  factory _$$ArtworkChangeEventImplCopyWith(_$ArtworkChangeEventImpl value,
+          $Res Function(_$ArtworkChangeEventImpl) then) =
+      __$$ArtworkChangeEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? trackId});
 }
 
 /// @nodoc
-class __$$_ArtworkChangeEventCopyWithImpl<$Res>
-    extends _$ArtworkEventCopyWithImpl<$Res, _$_ArtworkChangeEvent>
-    implements _$$_ArtworkChangeEventCopyWith<$Res> {
-  __$$_ArtworkChangeEventCopyWithImpl(
-      _$_ArtworkChangeEvent _value, $Res Function(_$_ArtworkChangeEvent) _then)
+class __$$ArtworkChangeEventImplCopyWithImpl<$Res>
+    extends _$ArtworkEventCopyWithImpl<$Res, _$ArtworkChangeEventImpl>
+    implements _$$ArtworkChangeEventImplCopyWith<$Res> {
+  __$$ArtworkChangeEventImplCopyWithImpl(_$ArtworkChangeEventImpl _value,
+      $Res Function(_$ArtworkChangeEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? trackId = freezed,
   }) {
-    return _then(_$_ArtworkChangeEvent(
+    return _then(_$ArtworkChangeEventImpl(
       trackId: freezed == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
@@ -110,8 +115,8 @@ class __$$_ArtworkChangeEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArtworkChangeEvent implements _ArtworkChangeEvent {
-  const _$_ArtworkChangeEvent({required this.trackId});
+class _$ArtworkChangeEventImpl implements _ArtworkChangeEvent {
+  const _$ArtworkChangeEventImpl({required this.trackId});
 
   @override
   final int? trackId;
@@ -122,21 +127,23 @@ class _$_ArtworkChangeEvent implements _ArtworkChangeEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArtworkChangeEvent &&
+            other is _$ArtworkChangeEventImpl &&
             (identical(other.trackId, trackId) || other.trackId == trackId));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, trackId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArtworkChangeEventCopyWith<_$_ArtworkChangeEvent> get copyWith =>
-      __$$_ArtworkChangeEventCopyWithImpl<_$_ArtworkChangeEvent>(
+  _$$ArtworkChangeEventImplCopyWith<_$ArtworkChangeEventImpl> get copyWith =>
+      __$$ArtworkChangeEventImplCopyWithImpl<_$ArtworkChangeEventImpl>(
           this, _$identity);
 
   @override
@@ -207,40 +214,45 @@ class _$_ArtworkChangeEvent implements _ArtworkChangeEvent {
 
 abstract class _ArtworkChangeEvent implements ArtworkEvent {
   const factory _ArtworkChangeEvent({required final int? trackId}) =
-      _$_ArtworkChangeEvent;
+      _$ArtworkChangeEventImpl;
 
   int? get trackId;
-  @JsonKey(ignore: true)
-  _$$_ArtworkChangeEventCopyWith<_$_ArtworkChangeEvent> get copyWith =>
+
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ArtworkChangeEventImplCopyWith<_$ArtworkChangeEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ArtworkGetAlbumsArtworksMapEventCopyWith<$Res> {
-  factory _$$_ArtworkGetAlbumsArtworksMapEventCopyWith(
-          _$_ArtworkGetAlbumsArtworksMapEvent value,
-          $Res Function(_$_ArtworkGetAlbumsArtworksMapEvent) then) =
-      __$$_ArtworkGetAlbumsArtworksMapEventCopyWithImpl<$Res>;
+abstract class _$$ArtworkGetAlbumsArtworksMapEventImplCopyWith<$Res> {
+  factory _$$ArtworkGetAlbumsArtworksMapEventImplCopyWith(
+          _$ArtworkGetAlbumsArtworksMapEventImpl value,
+          $Res Function(_$ArtworkGetAlbumsArtworksMapEventImpl) then) =
+      __$$ArtworkGetAlbumsArtworksMapEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Album> albums});
 }
 
 /// @nodoc
-class __$$_ArtworkGetAlbumsArtworksMapEventCopyWithImpl<$Res>
+class __$$ArtworkGetAlbumsArtworksMapEventImplCopyWithImpl<$Res>
     extends _$ArtworkEventCopyWithImpl<$Res,
-        _$_ArtworkGetAlbumsArtworksMapEvent>
-    implements _$$_ArtworkGetAlbumsArtworksMapEventCopyWith<$Res> {
-  __$$_ArtworkGetAlbumsArtworksMapEventCopyWithImpl(
-      _$_ArtworkGetAlbumsArtworksMapEvent _value,
-      $Res Function(_$_ArtworkGetAlbumsArtworksMapEvent) _then)
+        _$ArtworkGetAlbumsArtworksMapEventImpl>
+    implements _$$ArtworkGetAlbumsArtworksMapEventImplCopyWith<$Res> {
+  __$$ArtworkGetAlbumsArtworksMapEventImplCopyWithImpl(
+      _$ArtworkGetAlbumsArtworksMapEventImpl _value,
+      $Res Function(_$ArtworkGetAlbumsArtworksMapEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? albums = null,
   }) {
-    return _then(_$_ArtworkGetAlbumsArtworksMapEvent(
+    return _then(_$ArtworkGetAlbumsArtworksMapEventImpl(
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -251,9 +263,10 @@ class __$$_ArtworkGetAlbumsArtworksMapEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArtworkGetAlbumsArtworksMapEvent
+class _$ArtworkGetAlbumsArtworksMapEventImpl
     implements _ArtworkGetAlbumsArtworksMapEvent {
-  const _$_ArtworkGetAlbumsArtworksMapEvent({required final List<Album> albums})
+  const _$ArtworkGetAlbumsArtworksMapEventImpl(
+      {required final List<Album> albums})
       : _albums = albums;
 
   final List<Album> _albums;
@@ -270,10 +283,10 @@ class _$_ArtworkGetAlbumsArtworksMapEvent
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArtworkGetAlbumsArtworksMapEvent &&
+            other is _$ArtworkGetAlbumsArtworksMapEventImpl &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
@@ -281,13 +294,15 @@ class _$_ArtworkGetAlbumsArtworksMapEvent
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArtworkGetAlbumsArtworksMapEventCopyWith<
-          _$_ArtworkGetAlbumsArtworksMapEvent>
-      get copyWith => __$$_ArtworkGetAlbumsArtworksMapEventCopyWithImpl<
-          _$_ArtworkGetAlbumsArtworksMapEvent>(this, _$identity);
+  _$$ArtworkGetAlbumsArtworksMapEventImplCopyWith<
+          _$ArtworkGetAlbumsArtworksMapEventImpl>
+      get copyWith => __$$ArtworkGetAlbumsArtworksMapEventImplCopyWithImpl<
+          _$ArtworkGetAlbumsArtworksMapEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -358,12 +373,15 @@ class _$_ArtworkGetAlbumsArtworksMapEvent
 abstract class _ArtworkGetAlbumsArtworksMapEvent implements ArtworkEvent {
   const factory _ArtworkGetAlbumsArtworksMapEvent(
           {required final List<Album> albums}) =
-      _$_ArtworkGetAlbumsArtworksMapEvent;
+      _$ArtworkGetAlbumsArtworksMapEventImpl;
 
   List<Album> get albums;
-  @JsonKey(ignore: true)
-  _$$_ArtworkGetAlbumsArtworksMapEventCopyWith<
-          _$_ArtworkGetAlbumsArtworksMapEvent>
+
+  /// Create a copy of ArtworkEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ArtworkGetAlbumsArtworksMapEventImplCopyWith<
+          _$ArtworkGetAlbumsArtworksMapEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -373,7 +391,9 @@ mixin _$ArtworkState {
   Map<int, List<int>> get mapAlbumArtworks =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArtworkState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArtworkStateCopyWith<ArtworkState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -397,6 +417,8 @@ class _$ArtworkStateCopyWithImpl<$Res, $Val extends ArtworkState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArtworkState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -417,31 +439,33 @@ class _$ArtworkStateCopyWithImpl<$Res, $Val extends ArtworkState>
 }
 
 /// @nodoc
-abstract class _$$_ArtworkStateCopyWith<$Res>
+abstract class _$$ArtworkStateImplCopyWith<$Res>
     implements $ArtworkStateCopyWith<$Res> {
-  factory _$$_ArtworkStateCopyWith(
-          _$_ArtworkState value, $Res Function(_$_ArtworkState) then) =
-      __$$_ArtworkStateCopyWithImpl<$Res>;
+  factory _$$ArtworkStateImplCopyWith(
+          _$ArtworkStateImpl value, $Res Function(_$ArtworkStateImpl) then) =
+      __$$ArtworkStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<int> albumArtwork, Map<int, List<int>> mapAlbumArtworks});
 }
 
 /// @nodoc
-class __$$_ArtworkStateCopyWithImpl<$Res>
-    extends _$ArtworkStateCopyWithImpl<$Res, _$_ArtworkState>
-    implements _$$_ArtworkStateCopyWith<$Res> {
-  __$$_ArtworkStateCopyWithImpl(
-      _$_ArtworkState _value, $Res Function(_$_ArtworkState) _then)
+class __$$ArtworkStateImplCopyWithImpl<$Res>
+    extends _$ArtworkStateCopyWithImpl<$Res, _$ArtworkStateImpl>
+    implements _$$ArtworkStateImplCopyWith<$Res> {
+  __$$ArtworkStateImplCopyWithImpl(
+      _$ArtworkStateImpl _value, $Res Function(_$ArtworkStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArtworkState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? albumArtwork = null,
     Object? mapAlbumArtworks = null,
   }) {
-    return _then(_$_ArtworkState(
+    return _then(_$ArtworkStateImpl(
       albumArtwork: null == albumArtwork
           ? _value._albumArtwork
           : albumArtwork // ignore: cast_nullable_to_non_nullable
@@ -456,8 +480,8 @@ class __$$_ArtworkStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArtworkState implements _ArtworkState {
-  const _$_ArtworkState(
+class _$ArtworkStateImpl implements _ArtworkState {
+  const _$ArtworkStateImpl(
       {final List<int> albumArtwork = const [],
       final Map<int, List<int>> mapAlbumArtworks = const {}})
       : _albumArtwork = albumArtwork,
@@ -487,10 +511,10 @@ class _$_ArtworkState implements _ArtworkState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArtworkState &&
+            other is _$ArtworkStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._albumArtwork, _albumArtwork) &&
             const DeepCollectionEquality()
@@ -503,24 +527,29 @@ class _$_ArtworkState implements _ArtworkState {
       const DeepCollectionEquality().hash(_albumArtwork),
       const DeepCollectionEquality().hash(_mapAlbumArtworks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArtworkState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArtworkStateCopyWith<_$_ArtworkState> get copyWith =>
-      __$$_ArtworkStateCopyWithImpl<_$_ArtworkState>(this, _$identity);
+  _$$ArtworkStateImplCopyWith<_$ArtworkStateImpl> get copyWith =>
+      __$$ArtworkStateImplCopyWithImpl<_$ArtworkStateImpl>(this, _$identity);
 }
 
 abstract class _ArtworkState implements ArtworkState {
   const factory _ArtworkState(
       {final List<int> albumArtwork,
-      final Map<int, List<int>> mapAlbumArtworks}) = _$_ArtworkState;
+      final Map<int, List<int>> mapAlbumArtworks}) = _$ArtworkStateImpl;
 
   @override
   List<int> get albumArtwork;
   @override
   Map<int, List<int>> get mapAlbumArtworks;
+
+  /// Create a copy of ArtworkState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ArtworkStateCopyWith<_$_ArtworkState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ArtworkStateImplCopyWith<_$ArtworkStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

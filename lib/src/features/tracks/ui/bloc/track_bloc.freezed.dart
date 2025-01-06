@@ -12,7 +12,7 @@ part of 'track_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TrackEvent {
@@ -50,7 +50,9 @@ mixin _$TrackEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TrackEventCopyWith<TrackEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +78,8 @@ class _$TrackEventCopyWithImpl<$Res, $Val extends TrackEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +93,8 @@ class _$TrackEventCopyWithImpl<$Res, $Val extends TrackEvent>
     ) as $Val);
   }
 
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -99,11 +105,11 @@ class _$TrackEventCopyWithImpl<$Res, $Val extends TrackEvent>
 }
 
 /// @nodoc
-abstract class _$$_ClickAlbumTrackEventCopyWith<$Res>
+abstract class _$$ClickAlbumTrackEventImplCopyWith<$Res>
     implements $TrackEventCopyWith<$Res> {
-  factory _$$_ClickAlbumTrackEventCopyWith(_$_ClickAlbumTrackEvent value,
-          $Res Function(_$_ClickAlbumTrackEvent) then) =
-      __$$_ClickAlbumTrackEventCopyWithImpl<$Res>;
+  factory _$$ClickAlbumTrackEventImplCopyWith(_$ClickAlbumTrackEventImpl value,
+          $Res Function(_$ClickAlbumTrackEventImpl) then) =
+      __$$ClickAlbumTrackEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Album album});
@@ -113,19 +119,21 @@ abstract class _$$_ClickAlbumTrackEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
-    extends _$TrackEventCopyWithImpl<$Res, _$_ClickAlbumTrackEvent>
-    implements _$$_ClickAlbumTrackEventCopyWith<$Res> {
-  __$$_ClickAlbumTrackEventCopyWithImpl(_$_ClickAlbumTrackEvent _value,
-      $Res Function(_$_ClickAlbumTrackEvent) _then)
+class __$$ClickAlbumTrackEventImplCopyWithImpl<$Res>
+    extends _$TrackEventCopyWithImpl<$Res, _$ClickAlbumTrackEventImpl>
+    implements _$$ClickAlbumTrackEventImplCopyWith<$Res> {
+  __$$ClickAlbumTrackEventImplCopyWithImpl(_$ClickAlbumTrackEventImpl _value,
+      $Res Function(_$ClickAlbumTrackEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? album = null,
   }) {
-    return _then(_$_ClickAlbumTrackEvent(
+    return _then(_$ClickAlbumTrackEventImpl(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -136,8 +144,8 @@ class __$$_ClickAlbumTrackEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
-  const _$_ClickAlbumTrackEvent({required this.album});
+class _$ClickAlbumTrackEventImpl implements _ClickAlbumTrackEvent {
+  const _$ClickAlbumTrackEventImpl({required this.album});
 
   @override
   final Album album;
@@ -148,22 +156,25 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClickAlbumTrackEvent &&
+            other is _$ClickAlbumTrackEventImpl &&
             (identical(other.album, album) || other.album == album));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, album);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClickAlbumTrackEventCopyWith<_$_ClickAlbumTrackEvent> get copyWith =>
-      __$$_ClickAlbumTrackEventCopyWithImpl<_$_ClickAlbumTrackEvent>(
-          this, _$identity);
+  _$$ClickAlbumTrackEventImplCopyWith<_$ClickAlbumTrackEventImpl>
+      get copyWith =>
+          __$$ClickAlbumTrackEventImplCopyWithImpl<_$ClickAlbumTrackEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -224,14 +235,17 @@ class _$_ClickAlbumTrackEvent implements _ClickAlbumTrackEvent {
 
 abstract class _ClickAlbumTrackEvent implements TrackEvent {
   const factory _ClickAlbumTrackEvent({required final Album album}) =
-      _$_ClickAlbumTrackEvent;
+      _$ClickAlbumTrackEventImpl;
 
   @override
   Album get album;
+
+  /// Create a copy of TrackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ClickAlbumTrackEventCopyWith<_$_ClickAlbumTrackEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ClickAlbumTrackEventImplCopyWith<_$ClickAlbumTrackEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TrackState _$TrackStateFromJson(Map<String, dynamic> json) {
@@ -295,6 +309,8 @@ mixin _$TrackState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this TrackState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -314,32 +330,38 @@ class _$TrackStateCopyWithImpl<$Res, $Val extends TrackState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_LoadingTrackStateCopyWith<$Res> {
-  factory _$$_LoadingTrackStateCopyWith(_$_LoadingTrackState value,
-          $Res Function(_$_LoadingTrackState) then) =
-      __$$_LoadingTrackStateCopyWithImpl<$Res>;
+abstract class _$$LoadingTrackStateImplCopyWith<$Res> {
+  factory _$$LoadingTrackStateImplCopyWith(_$LoadingTrackStateImpl value,
+          $Res Function(_$LoadingTrackStateImpl) then) =
+      __$$LoadingTrackStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingTrackStateCopyWithImpl<$Res>
-    extends _$TrackStateCopyWithImpl<$Res, _$_LoadingTrackState>
-    implements _$$_LoadingTrackStateCopyWith<$Res> {
-  __$$_LoadingTrackStateCopyWithImpl(
-      _$_LoadingTrackState _value, $Res Function(_$_LoadingTrackState) _then)
+class __$$LoadingTrackStateImplCopyWithImpl<$Res>
+    extends _$TrackStateCopyWithImpl<$Res, _$LoadingTrackStateImpl>
+    implements _$$LoadingTrackStateImplCopyWith<$Res> {
+  __$$LoadingTrackStateImplCopyWithImpl(_$LoadingTrackStateImpl _value,
+      $Res Function(_$LoadingTrackStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_LoadingTrackState implements _LoadingTrackState {
-  const _$_LoadingTrackState({final String? $type})
+class _$LoadingTrackStateImpl implements _LoadingTrackState {
+  const _$LoadingTrackStateImpl({final String? $type})
       : $type = $type ?? 'loading';
 
-  factory _$_LoadingTrackState.fromJson(Map<String, dynamic> json) =>
-      _$$_LoadingTrackStateFromJson(json);
+  factory _$LoadingTrackStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoadingTrackStateImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -350,12 +372,12 @@ class _$_LoadingTrackState implements _LoadingTrackState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingTrackState);
+        (other.runtimeType == runtimeType && other is _$LoadingTrackStateImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -429,42 +451,45 @@ class _$_LoadingTrackState implements _LoadingTrackState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoadingTrackStateToJson(
+    return _$$LoadingTrackStateImplToJson(
       this,
     );
   }
 }
 
 abstract class _LoadingTrackState implements TrackState {
-  const factory _LoadingTrackState() = _$_LoadingTrackState;
+  const factory _LoadingTrackState() = _$LoadingTrackStateImpl;
 
   factory _LoadingTrackState.fromJson(Map<String, dynamic> json) =
-      _$_LoadingTrackState.fromJson;
+      _$LoadingTrackStateImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_EmptyTrackStateCopyWith<$Res> {
-  factory _$$_EmptyTrackStateCopyWith(
-          _$_EmptyTrackState value, $Res Function(_$_EmptyTrackState) then) =
-      __$$_EmptyTrackStateCopyWithImpl<$Res>;
+abstract class _$$EmptyTrackStateImplCopyWith<$Res> {
+  factory _$$EmptyTrackStateImplCopyWith(_$EmptyTrackStateImpl value,
+          $Res Function(_$EmptyTrackStateImpl) then) =
+      __$$EmptyTrackStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EmptyTrackStateCopyWithImpl<$Res>
-    extends _$TrackStateCopyWithImpl<$Res, _$_EmptyTrackState>
-    implements _$$_EmptyTrackStateCopyWith<$Res> {
-  __$$_EmptyTrackStateCopyWithImpl(
-      _$_EmptyTrackState _value, $Res Function(_$_EmptyTrackState) _then)
+class __$$EmptyTrackStateImplCopyWithImpl<$Res>
+    extends _$TrackStateCopyWithImpl<$Res, _$EmptyTrackStateImpl>
+    implements _$$EmptyTrackStateImplCopyWith<$Res> {
+  __$$EmptyTrackStateImplCopyWithImpl(
+      _$EmptyTrackStateImpl _value, $Res Function(_$EmptyTrackStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmptyTrackState implements _EmptyTrackState {
-  const _$_EmptyTrackState({final String? $type}) : $type = $type ?? 'empty';
+class _$EmptyTrackStateImpl implements _EmptyTrackState {
+  const _$EmptyTrackStateImpl({final String? $type}) : $type = $type ?? 'empty';
 
-  factory _$_EmptyTrackState.fromJson(Map<String, dynamic> json) =>
-      _$$_EmptyTrackStateFromJson(json);
+  factory _$EmptyTrackStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmptyTrackStateImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -475,12 +500,12 @@ class _$_EmptyTrackState implements _EmptyTrackState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmptyTrackState);
+        (other.runtimeType == runtimeType && other is _$EmptyTrackStateImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -554,24 +579,24 @@ class _$_EmptyTrackState implements _EmptyTrackState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmptyTrackStateToJson(
+    return _$$EmptyTrackStateImplToJson(
       this,
     );
   }
 }
 
 abstract class _EmptyTrackState implements TrackState {
-  const factory _EmptyTrackState() = _$_EmptyTrackState;
+  const factory _EmptyTrackState() = _$EmptyTrackStateImpl;
 
   factory _EmptyTrackState.fromJson(Map<String, dynamic> json) =
-      _$_EmptyTrackState.fromJson;
+      _$EmptyTrackStateImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_LoadedTrackStateCopyWith<$Res> {
-  factory _$$_LoadedTrackStateCopyWith(
-          _$_LoadedTrackState value, $Res Function(_$_LoadedTrackState) then) =
-      __$$_LoadedTrackStateCopyWithImpl<$Res>;
+abstract class _$$LoadedTrackStateImplCopyWith<$Res> {
+  factory _$$LoadedTrackStateImplCopyWith(_$LoadedTrackStateImpl value,
+          $Res Function(_$LoadedTrackStateImpl) then) =
+      __$$LoadedTrackStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Album album, List<List<int>> artworks});
 
@@ -579,20 +604,22 @@ abstract class _$$_LoadedTrackStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedTrackStateCopyWithImpl<$Res>
-    extends _$TrackStateCopyWithImpl<$Res, _$_LoadedTrackState>
-    implements _$$_LoadedTrackStateCopyWith<$Res> {
-  __$$_LoadedTrackStateCopyWithImpl(
-      _$_LoadedTrackState _value, $Res Function(_$_LoadedTrackState) _then)
+class __$$LoadedTrackStateImplCopyWithImpl<$Res>
+    extends _$TrackStateCopyWithImpl<$Res, _$LoadedTrackStateImpl>
+    implements _$$LoadedTrackStateImplCopyWith<$Res> {
+  __$$LoadedTrackStateImplCopyWithImpl(_$LoadedTrackStateImpl _value,
+      $Res Function(_$LoadedTrackStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? album = null,
     Object? artworks = null,
   }) {
-    return _then(_$_LoadedTrackState(
+    return _then(_$LoadedTrackStateImpl(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -604,6 +631,8 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -615,16 +644,16 @@ class __$$_LoadedTrackStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LoadedTrackState implements _LoadedTrackState {
-  const _$_LoadedTrackState(
+class _$LoadedTrackStateImpl implements _LoadedTrackState {
+  const _$LoadedTrackStateImpl(
       {required this.album,
       required final List<List<int>> artworks,
       final String? $type})
       : _artworks = artworks,
         $type = $type ?? 'loaded';
 
-  factory _$_LoadedTrackState.fromJson(Map<String, dynamic> json) =>
-      _$$_LoadedTrackStateFromJson(json);
+  factory _$LoadedTrackStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoadedTrackStateImplFromJson(json);
 
 // required List<Track> tracks,
   @override
@@ -646,24 +675,27 @@ class _$_LoadedTrackState implements _LoadedTrackState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedTrackState &&
+            other is _$LoadedTrackStateImpl &&
             (identical(other.album, album) || other.album == album) &&
             const DeepCollectionEquality().equals(other._artworks, _artworks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, album, const DeepCollectionEquality().hash(_artworks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedTrackStateCopyWith<_$_LoadedTrackState> get copyWith =>
-      __$$_LoadedTrackStateCopyWithImpl<_$_LoadedTrackState>(this, _$identity);
+  _$$LoadedTrackStateImplCopyWith<_$LoadedTrackStateImpl> get copyWith =>
+      __$$LoadedTrackStateImplCopyWithImpl<_$LoadedTrackStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -735,7 +767,7 @@ class _$_LoadedTrackState implements _LoadedTrackState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoadedTrackStateToJson(
+    return _$$LoadedTrackStateImplToJson(
       this,
     );
   }
@@ -744,15 +776,18 @@ class _$_LoadedTrackState implements _LoadedTrackState {
 abstract class _LoadedTrackState implements TrackState {
   const factory _LoadedTrackState(
       {required final Album album,
-      required final List<List<int>> artworks}) = _$_LoadedTrackState;
+      required final List<List<int>> artworks}) = _$LoadedTrackStateImpl;
 
   factory _LoadedTrackState.fromJson(Map<String, dynamic> json) =
-      _$_LoadedTrackState.fromJson;
+      _$LoadedTrackStateImpl.fromJson;
 
 // required List<Track> tracks,
   Album get album;
   List<List<int>> get artworks;
-  @JsonKey(ignore: true)
-  _$$_LoadedTrackStateCopyWith<_$_LoadedTrackState> get copyWith =>
+
+  /// Create a copy of TrackState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedTrackStateImplCopyWith<_$LoadedTrackStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

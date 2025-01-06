@@ -12,7 +12,7 @@ part of 'album.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Album _$AlbumFromJson(Map<String, dynamic> json) {
   return _Album.fromJson(json);
@@ -34,8 +34,12 @@ mixin _$Album {
   int get trackIndex => throw _privateConstructorUsedError;
   int? get trackId => throw _privateConstructorUsedError;
 
+  /// Serializes this Album to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Album
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AlbumCopyWith<Album> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -70,6 +74,8 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Album
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,9 +151,10 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
 }
 
 /// @nodoc
-abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
-  factory _$$_AlbumCopyWith(_$_Album value, $Res Function(_$_Album) then) =
-      __$$_AlbumCopyWithImpl<$Res>;
+abstract class _$$AlbumImplCopyWith<$Res> implements $AlbumCopyWith<$Res> {
+  factory _$$AlbumImplCopyWith(
+          _$AlbumImpl value, $Res Function(_$AlbumImpl) then) =
+      __$$AlbumImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -167,11 +174,15 @@ abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
-    implements _$$_AlbumCopyWith<$Res> {
-  __$$_AlbumCopyWithImpl(_$_Album _value, $Res Function(_$_Album) _then)
+class __$$AlbumImplCopyWithImpl<$Res>
+    extends _$AlbumCopyWithImpl<$Res, _$AlbumImpl>
+    implements _$$AlbumImplCopyWith<$Res> {
+  __$$AlbumImplCopyWithImpl(
+      _$AlbumImpl _value, $Res Function(_$AlbumImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Album
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +200,7 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
     Object? trackIndex = null,
     Object? trackId = freezed,
   }) {
-    return _then(_$_Album(
+    return _then(_$AlbumImpl(
       tracks: null == tracks
           ? _value._tracks
           : tracks // ignore: cast_nullable_to_non_nullable
@@ -248,8 +259,8 @@ class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Album implements _Album {
-  const _$_Album(
+class _$AlbumImpl implements _Album {
+  const _$AlbumImpl(
       {required final List<Track> tracks,
       required final Map<int, Duration> mapAlbumDuration,
       required this.albumDuration,
@@ -266,8 +277,8 @@ class _$_Album implements _Album {
       : _tracks = tracks,
         _mapAlbumDuration = mapAlbumDuration;
 
-  factory _$_Album.fromJson(Map<String, dynamic> json) =>
-      _$$_AlbumFromJson(json);
+  factory _$AlbumImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AlbumImplFromJson(json);
 
   final List<Track> _tracks;
   @override
@@ -314,10 +325,10 @@ class _$_Album implements _Album {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Album &&
+            other is _$AlbumImpl &&
             const DeepCollectionEquality().equals(other._tracks, _tracks) &&
             const DeepCollectionEquality()
                 .equals(other._mapAlbumDuration, _mapAlbumDuration) &&
@@ -341,7 +352,7 @@ class _$_Album implements _Album {
             (identical(other.trackId, trackId) || other.trackId == trackId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -359,15 +370,17 @@ class _$_Album implements _Album {
       trackIndex,
       trackId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Album
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlbumCopyWith<_$_Album> get copyWith =>
-      __$$_AlbumCopyWithImpl<_$_Album>(this, _$identity);
+  _$$AlbumImplCopyWith<_$AlbumImpl> get copyWith =>
+      __$$AlbumImplCopyWithImpl<_$AlbumImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AlbumToJson(
+    return _$$AlbumImplToJson(
       this,
     );
   }
@@ -387,9 +400,9 @@ abstract class _Album implements Album {
       required final String name,
       required final String artist,
       required final int trackIndex,
-      required final int? trackId}) = _$_Album;
+      required final int? trackId}) = _$AlbumImpl;
 
-  factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
+  factory _Album.fromJson(Map<String, dynamic> json) = _$AlbumImpl.fromJson;
 
   @override
   List<Track> get tracks;
@@ -417,8 +430,11 @@ abstract class _Album implements Album {
   int get trackIndex;
   @override
   int? get trackId;
+
+  /// Create a copy of Album
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AlbumCopyWith<_$_Album> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AlbumImplCopyWith<_$AlbumImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

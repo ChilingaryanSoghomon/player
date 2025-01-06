@@ -12,14 +12,16 @@ part of 'my_playback_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MyPlaybackEvent {
   Duration get trackPosition => throw _privateConstructorUsedError;
   bool get playing => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyPlaybackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyPlaybackEventCopyWith<MyPlaybackEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$MyPlaybackEventCopyWithImpl<$Res, $Val extends MyPlaybackEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyPlaybackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -63,31 +67,33 @@ class _$MyPlaybackEventCopyWithImpl<$Res, $Val extends MyPlaybackEvent>
 }
 
 /// @nodoc
-abstract class _$$_PlaybackCopyWith<$Res>
+abstract class _$$PlaybackImplCopyWith<$Res>
     implements $MyPlaybackEventCopyWith<$Res> {
-  factory _$$_PlaybackCopyWith(
-          _$_Playback value, $Res Function(_$_Playback) then) =
-      __$$_PlaybackCopyWithImpl<$Res>;
+  factory _$$PlaybackImplCopyWith(
+          _$PlaybackImpl value, $Res Function(_$PlaybackImpl) then) =
+      __$$PlaybackImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Duration trackPosition, bool playing});
 }
 
 /// @nodoc
-class __$$_PlaybackCopyWithImpl<$Res>
-    extends _$MyPlaybackEventCopyWithImpl<$Res, _$_Playback>
-    implements _$$_PlaybackCopyWith<$Res> {
-  __$$_PlaybackCopyWithImpl(
-      _$_Playback _value, $Res Function(_$_Playback) _then)
+class __$$PlaybackImplCopyWithImpl<$Res>
+    extends _$MyPlaybackEventCopyWithImpl<$Res, _$PlaybackImpl>
+    implements _$$PlaybackImplCopyWith<$Res> {
+  __$$PlaybackImplCopyWithImpl(
+      _$PlaybackImpl _value, $Res Function(_$PlaybackImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyPlaybackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? trackPosition = null,
     Object? playing = null,
   }) {
-    return _then(_$_Playback(
+    return _then(_$PlaybackImpl(
       trackPosition: null == trackPosition
           ? _value.trackPosition
           : trackPosition // ignore: cast_nullable_to_non_nullable
@@ -102,8 +108,8 @@ class __$$_PlaybackCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Playback implements _Playback {
-  const _$_Playback({required this.trackPosition, required this.playing});
+class _$PlaybackImpl implements _Playback {
+  const _$PlaybackImpl({required this.trackPosition, required this.playing});
 
   @override
   final Duration trackPosition;
@@ -116,10 +122,10 @@ class _$_Playback implements _Playback {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Playback &&
+            other is _$PlaybackImpl &&
             (identical(other.trackPosition, trackPosition) ||
                 other.trackPosition == trackPosition) &&
             (identical(other.playing, playing) || other.playing == playing));
@@ -128,24 +134,29 @@ class _$_Playback implements _Playback {
   @override
   int get hashCode => Object.hash(runtimeType, trackPosition, playing);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyPlaybackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaybackCopyWith<_$_Playback> get copyWith =>
-      __$$_PlaybackCopyWithImpl<_$_Playback>(this, _$identity);
+  _$$PlaybackImplCopyWith<_$PlaybackImpl> get copyWith =>
+      __$$PlaybackImplCopyWithImpl<_$PlaybackImpl>(this, _$identity);
 }
 
 abstract class _Playback implements MyPlaybackEvent {
   const factory _Playback(
       {required final Duration trackPosition,
-      required final bool playing}) = _$_Playback;
+      required final bool playing}) = _$PlaybackImpl;
 
   @override
   Duration get trackPosition;
   @override
   bool get playing;
+
+  /// Create a copy of MyPlaybackEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_PlaybackCopyWith<_$_Playback> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlaybackImplCopyWith<_$PlaybackImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

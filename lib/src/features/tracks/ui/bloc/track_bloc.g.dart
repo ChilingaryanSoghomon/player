@@ -6,37 +6,43 @@ part of 'track_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LoadingTrackState _$$_LoadingTrackStateFromJson(Map<String, dynamic> json) =>
-    _$_LoadingTrackState(
+_$LoadingTrackStateImpl _$$LoadingTrackStateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LoadingTrackStateImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_LoadingTrackStateToJson(
-        _$_LoadingTrackState instance) =>
+Map<String, dynamic> _$$LoadingTrackStateImplToJson(
+        _$LoadingTrackStateImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_EmptyTrackState _$$_EmptyTrackStateFromJson(Map<String, dynamic> json) =>
-    _$_EmptyTrackState(
+_$EmptyTrackStateImpl _$$EmptyTrackStateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EmptyTrackStateImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_EmptyTrackStateToJson(_$_EmptyTrackState instance) =>
+Map<String, dynamic> _$$EmptyTrackStateImplToJson(
+        _$EmptyTrackStateImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_LoadedTrackState _$$_LoadedTrackStateFromJson(Map<String, dynamic> json) =>
-    _$_LoadedTrackState(
+_$LoadedTrackStateImpl _$$LoadedTrackStateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LoadedTrackStateImpl(
       album: Album.fromJson(json['album'] as Map<String, dynamic>),
       artworks: (json['artworks'] as List<dynamic>)
-          .map((e) => (e as List<dynamic>).map((e) => e as int).toList())
+          .map((e) =>
+              (e as List<dynamic>).map((e) => (e as num).toInt()).toList())
           .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_LoadedTrackStateToJson(_$_LoadedTrackState instance) =>
+Map<String, dynamic> _$$LoadedTrackStateImplToJson(
+        _$LoadedTrackStateImpl instance) =>
     <String, dynamic>{
       'album': instance.album,
       'artworks': instance.artworks,

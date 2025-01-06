@@ -6,40 +6,42 @@ part of 'splash_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SplashEmptyState _$$_SplashEmptyStateFromJson(Map<String, dynamic> json) =>
-    _$_SplashEmptyState(
+_$SplashEmptyStateImpl _$$SplashEmptyStateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SplashEmptyStateImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_SplashEmptyStateToJson(_$_SplashEmptyState instance) =>
+Map<String, dynamic> _$$SplashEmptyStateImplToJson(
+        _$SplashEmptyStateImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_SplashHaveAnAlbumState _$$_SplashHaveAnAlbumStateFromJson(
+_$SplashHaveAnAlbumStateImpl _$$SplashHaveAnAlbumStateImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SplashHaveAnAlbumState(
+    _$SplashHaveAnAlbumStateImpl(
       albums: (json['albums'] as List<dynamic>)
           .map((e) => Album.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_SplashHaveAnAlbumStateToJson(
-        _$_SplashHaveAnAlbumState instance) =>
+Map<String, dynamic> _$$SplashHaveAnAlbumStateImplToJson(
+        _$SplashHaveAnAlbumStateImpl instance) =>
     <String, dynamic>{
       'albums': instance.albums,
       'runtimeType': instance.$type,
     };
 
-_$_SplashHavePlayingTrackState _$$_SplashHavePlayingTrackStateFromJson(
+_$SplashHavePlayingTrackStateImpl _$$SplashHavePlayingTrackStateImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SplashHavePlayingTrackState(
+    _$SplashHavePlayingTrackStateImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_SplashHavePlayingTrackStateToJson(
-        _$_SplashHavePlayingTrackState instance) =>
+Map<String, dynamic> _$$SplashHavePlayingTrackStateImplToJson(
+        _$SplashHavePlayingTrackStateImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };

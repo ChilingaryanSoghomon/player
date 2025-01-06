@@ -6,27 +6,33 @@ part of 'album.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Album _$$_AlbumFromJson(Map<String, dynamic> json) => _$_Album(
+_$AlbumImpl _$$AlbumImplFromJson(Map<String, dynamic> json) => _$AlbumImpl(
       tracks: (json['tracks'] as List<dynamic>)
           .map((e) => Track.fromJson(e as Map<String, dynamic>))
           .toList(),
       mapAlbumDuration: (json['mapAlbumDuration'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(int.parse(k), Duration(microseconds: e as int)),
+        (k, e) =>
+            MapEntry(int.parse(k), Duration(microseconds: (e as num).toInt())),
       ),
-      albumDuration: Duration(microseconds: json['albumDuration'] as int),
-      albumPosition: Duration(microseconds: json['albumPosition'] as int),
-      trackPosition: Duration(microseconds: json['trackPosition'] as int),
-      trackDuration: Duration(microseconds: json['trackDuration'] as int),
+      albumDuration:
+          Duration(microseconds: (json['albumDuration'] as num).toInt()),
+      albumPosition:
+          Duration(microseconds: (json['albumPosition'] as num).toInt()),
+      trackPosition:
+          Duration(microseconds: (json['trackPosition'] as num).toInt()),
+      trackDuration:
+          Duration(microseconds: (json['trackDuration'] as num).toInt()),
       albumTimeLeft: json['albumTimeLeft'] as String,
       trackTimeLeft: json['trackTimeLeft'] as String,
-      albumId: json['albumId'] as int,
+      albumId: (json['albumId'] as num).toInt(),
       name: json['name'] as String,
       artist: json['artist'] as String,
-      trackIndex: json['trackIndex'] as int,
-      trackId: json['trackId'] as int?,
+      trackIndex: (json['trackIndex'] as num).toInt(),
+      trackId: (json['trackId'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$_AlbumToJson(_$_Album instance) => <String, dynamic>{
+Map<String, dynamic> _$$AlbumImplToJson(_$AlbumImpl instance) =>
+    <String, dynamic>{
       'tracks': instance.tracks,
       'mapAlbumDuration': instance.mapAlbumDuration
           .map((k, e) => MapEntry(k.toString(), e.inMicroseconds)),

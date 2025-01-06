@@ -28,7 +28,7 @@
       </intent-filter>
     </receiver> 
   </application>
-    package="com.popupbits.Rhythmix">
+    package="com.Rhythmix.player">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

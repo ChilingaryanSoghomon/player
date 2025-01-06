@@ -6,7 +6,8 @@ part of 'album_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
+_$InitialImpl _$$InitialImplFromJson(Map<String, dynamic> json) =>
+    _$InitialImpl(
       status: $enumDecodeNullable(_$AlbumStatusEnumMap, json['status']) ??
           AlbumStatus.initial,
       albums: (json['albums'] as List<dynamic>?)
@@ -15,7 +16,8 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
           const [],
     );
 
-Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
+Map<String, dynamic> _$$InitialImplToJson(_$InitialImpl instance) =>
+    <String, dynamic>{
       'status': _$AlbumStatusEnumMap[instance.status]!,
       'albums': instance.albums,
     };

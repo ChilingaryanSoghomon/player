@@ -12,7 +12,7 @@ part of 'track.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Track _$TrackFromJson(Map<String, dynamic> json) {
   return _Track.fromJson(json);
@@ -29,8 +29,12 @@ mixin _$Track {
   Duration get duration => throw _privateConstructorUsedError;
   Duration get position => throw _privateConstructorUsedError;
 
+  /// Serializes this Track to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Track
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TrackCopyWith<Track> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -60,6 +64,8 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Track
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,9 +116,10 @@ class _$TrackCopyWithImpl<$Res, $Val extends Track>
 }
 
 /// @nodoc
-abstract class _$$_TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
-  factory _$$_TrackCopyWith(_$_Track value, $Res Function(_$_Track) then) =
-      __$$_TrackCopyWithImpl<$Res>;
+abstract class _$$TrackImplCopyWith<$Res> implements $TrackCopyWith<$Res> {
+  factory _$$TrackImplCopyWith(
+          _$TrackImpl value, $Res Function(_$TrackImpl) then) =
+      __$$TrackImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,11 +134,15 @@ abstract class _$$_TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
-    implements _$$_TrackCopyWith<$Res> {
-  __$$_TrackCopyWithImpl(_$_Track _value, $Res Function(_$_Track) _then)
+class __$$TrackImplCopyWithImpl<$Res>
+    extends _$TrackCopyWithImpl<$Res, _$TrackImpl>
+    implements _$$TrackImplCopyWith<$Res> {
+  __$$TrackImplCopyWithImpl(
+      _$TrackImpl _value, $Res Function(_$TrackImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Track
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +155,7 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
     Object? duration = null,
     Object? position = null,
   }) {
-    return _then(_$_Track(
+    return _then(_$TrackImpl(
       trackId: null == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
@@ -183,8 +194,8 @@ class __$$_TrackCopyWithImpl<$Res> extends _$TrackCopyWithImpl<$Res, _$_Track>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Track implements _Track {
-  const _$_Track(
+class _$TrackImpl implements _Track {
+  const _$TrackImpl(
       {required this.trackId,
       required this.index,
       required this.path,
@@ -194,8 +205,8 @@ class _$_Track implements _Track {
       required this.duration,
       required this.position});
 
-  factory _$_Track.fromJson(Map<String, dynamic> json) =>
-      _$$_TrackFromJson(json);
+  factory _$TrackImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrackImplFromJson(json);
 
   @override
   final int trackId;
@@ -220,10 +231,10 @@ class _$_Track implements _Track {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Track &&
+            other is _$TrackImpl &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.path, path) || other.path == path) &&
@@ -236,20 +247,22 @@ class _$_Track implements _Track {
                 other.position == position));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, trackId, index, path, name,
       album, artist, duration, position);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Track
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrackCopyWith<_$_Track> get copyWith =>
-      __$$_TrackCopyWithImpl<_$_Track>(this, _$identity);
+  _$$TrackImplCopyWith<_$TrackImpl> get copyWith =>
+      __$$TrackImplCopyWithImpl<_$TrackImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrackToJson(
+    return _$$TrackImplToJson(
       this,
     );
   }
@@ -264,9 +277,9 @@ abstract class _Track implements Track {
       required final String? album,
       required final String? artist,
       required final Duration duration,
-      required final Duration position}) = _$_Track;
+      required final Duration position}) = _$TrackImpl;
 
-  factory _Track.fromJson(Map<String, dynamic> json) = _$_Track.fromJson;
+  factory _Track.fromJson(Map<String, dynamic> json) = _$TrackImpl.fromJson;
 
   @override
   int get trackId;
@@ -284,8 +297,11 @@ abstract class _Track implements Track {
   Duration get duration;
   @override
   Duration get position;
+
+  /// Create a copy of Track
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_TrackCopyWith<_$_Track> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TrackImplCopyWith<_$TrackImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

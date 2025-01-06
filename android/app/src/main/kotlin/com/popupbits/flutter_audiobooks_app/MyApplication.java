@@ -1,4 +1,4 @@
-package com.popupbits.Rhythmix;
+package com.Rhythmix.player;
 import android.app.Application;
 import java.security.KeyStore;
 import javax.net.ssl.*;

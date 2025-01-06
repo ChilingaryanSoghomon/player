@@ -12,7 +12,7 @@ part of 'album_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AlbumEvent {
@@ -90,28 +90,34 @@ class _$AlbumEventCopyWithImpl<$Res, $Val extends AlbumEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_AlbumInitialEventCopyWith<$Res> {
-  factory _$$_AlbumInitialEventCopyWith(_$_AlbumInitialEvent value,
-          $Res Function(_$_AlbumInitialEvent) then) =
-      __$$_AlbumInitialEventCopyWithImpl<$Res>;
+abstract class _$$AlbumInitialEventImplCopyWith<$Res> {
+  factory _$$AlbumInitialEventImplCopyWith(_$AlbumInitialEventImpl value,
+          $Res Function(_$AlbumInitialEventImpl) then) =
+      __$$AlbumInitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AlbumInitialEventCopyWithImpl<$Res>
-    extends _$AlbumEventCopyWithImpl<$Res, _$_AlbumInitialEvent>
-    implements _$$_AlbumInitialEventCopyWith<$Res> {
-  __$$_AlbumInitialEventCopyWithImpl(
-      _$_AlbumInitialEvent _value, $Res Function(_$_AlbumInitialEvent) _then)
+class __$$AlbumInitialEventImplCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$AlbumInitialEventImpl>
+    implements _$$AlbumInitialEventImplCopyWith<$Res> {
+  __$$AlbumInitialEventImplCopyWithImpl(_$AlbumInitialEventImpl _value,
+      $Res Function(_$AlbumInitialEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_AlbumInitialEvent implements _AlbumInitialEvent {
-  const _$_AlbumInitialEvent();
+class _$AlbumInitialEventImpl implements _AlbumInitialEvent {
+  const _$AlbumInitialEventImpl();
 
   @override
   String toString() {
@@ -119,9 +125,9 @@ class _$_AlbumInitialEvent implements _AlbumInitialEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AlbumInitialEvent);
+        (other.runtimeType == runtimeType && other is _$AlbumInitialEventImpl);
   }
 
   @override
@@ -209,29 +215,32 @@ class _$_AlbumInitialEvent implements _AlbumInitialEvent {
 }
 
 abstract class _AlbumInitialEvent implements AlbumEvent {
-  const factory _AlbumInitialEvent() = _$_AlbumInitialEvent;
+  const factory _AlbumInitialEvent() = _$AlbumInitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_SearchAlbumEventCopyWith<$Res> {
-  factory _$$_SearchAlbumEventCopyWith(
-          _$_SearchAlbumEvent value, $Res Function(_$_SearchAlbumEvent) then) =
-      __$$_SearchAlbumEventCopyWithImpl<$Res>;
+abstract class _$$SearchAlbumEventImplCopyWith<$Res> {
+  factory _$$SearchAlbumEventImplCopyWith(_$SearchAlbumEventImpl value,
+          $Res Function(_$SearchAlbumEventImpl) then) =
+      __$$SearchAlbumEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SearchAlbumEventCopyWithImpl<$Res>
-    extends _$AlbumEventCopyWithImpl<$Res, _$_SearchAlbumEvent>
-    implements _$$_SearchAlbumEventCopyWith<$Res> {
-  __$$_SearchAlbumEventCopyWithImpl(
-      _$_SearchAlbumEvent _value, $Res Function(_$_SearchAlbumEvent) _then)
+class __$$SearchAlbumEventImplCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$SearchAlbumEventImpl>
+    implements _$$SearchAlbumEventImplCopyWith<$Res> {
+  __$$SearchAlbumEventImplCopyWithImpl(_$SearchAlbumEventImpl _value,
+      $Res Function(_$SearchAlbumEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_SearchAlbumEvent implements _SearchAlbumEvent {
-  const _$_SearchAlbumEvent();
+class _$SearchAlbumEventImpl implements _SearchAlbumEvent {
+  const _$SearchAlbumEventImpl();
 
   @override
   String toString() {
@@ -239,9 +248,9 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SearchAlbumEvent);
+        (other.runtimeType == runtimeType && other is _$SearchAlbumEventImpl);
   }
 
   @override
@@ -329,32 +338,34 @@ class _$_SearchAlbumEvent implements _SearchAlbumEvent {
 }
 
 abstract class _SearchAlbumEvent implements AlbumEvent {
-  const factory _SearchAlbumEvent() = _$_SearchAlbumEvent;
+  const factory _SearchAlbumEvent() = _$SearchAlbumEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateAlbumEventCopyWith<$Res> {
-  factory _$$_UpdateAlbumEventCopyWith(
-          _$_UpdateAlbumEvent value, $Res Function(_$_UpdateAlbumEvent) then) =
-      __$$_UpdateAlbumEventCopyWithImpl<$Res>;
+abstract class _$$UpdateAlbumEventImplCopyWith<$Res> {
+  factory _$$UpdateAlbumEventImplCopyWith(_$UpdateAlbumEventImpl value,
+          $Res Function(_$UpdateAlbumEventImpl) then) =
+      __$$UpdateAlbumEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Album> albums});
 }
 
 /// @nodoc
-class __$$_UpdateAlbumEventCopyWithImpl<$Res>
-    extends _$AlbumEventCopyWithImpl<$Res, _$_UpdateAlbumEvent>
-    implements _$$_UpdateAlbumEventCopyWith<$Res> {
-  __$$_UpdateAlbumEventCopyWithImpl(
-      _$_UpdateAlbumEvent _value, $Res Function(_$_UpdateAlbumEvent) _then)
+class __$$UpdateAlbumEventImplCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$UpdateAlbumEventImpl>
+    implements _$$UpdateAlbumEventImplCopyWith<$Res> {
+  __$$UpdateAlbumEventImplCopyWithImpl(_$UpdateAlbumEventImpl _value,
+      $Res Function(_$UpdateAlbumEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? albums = null,
   }) {
-    return _then(_$_UpdateAlbumEvent(
+    return _then(_$UpdateAlbumEventImpl(
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -365,8 +376,8 @@ class __$$_UpdateAlbumEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateAlbumEvent implements _UpdateAlbumEvent {
-  const _$_UpdateAlbumEvent({required final List<Album> albums})
+class _$UpdateAlbumEventImpl implements _UpdateAlbumEvent {
+  const _$UpdateAlbumEventImpl({required final List<Album> albums})
       : _albums = albums;
 
   final List<Album> _albums;
@@ -383,10 +394,10 @@ class _$_UpdateAlbumEvent implements _UpdateAlbumEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateAlbumEvent &&
+            other is _$UpdateAlbumEventImpl &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
@@ -394,11 +405,14 @@ class _$_UpdateAlbumEvent implements _UpdateAlbumEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateAlbumEventCopyWith<_$_UpdateAlbumEvent> get copyWith =>
-      __$$_UpdateAlbumEventCopyWithImpl<_$_UpdateAlbumEvent>(this, _$identity);
+  _$$UpdateAlbumEventImplCopyWith<_$UpdateAlbumEventImpl> get copyWith =>
+      __$$UpdateAlbumEventImplCopyWithImpl<_$UpdateAlbumEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -483,20 +497,23 @@ class _$_UpdateAlbumEvent implements _UpdateAlbumEvent {
 
 abstract class _UpdateAlbumEvent implements AlbumEvent {
   const factory _UpdateAlbumEvent({required final List<Album> albums}) =
-      _$_UpdateAlbumEvent;
+      _$UpdateAlbumEventImpl;
 
   List<Album> get albums;
-  @JsonKey(ignore: true)
-  _$$_UpdateAlbumEventCopyWith<_$_UpdateAlbumEvent> get copyWith =>
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateAlbumEventImplCopyWith<_$UpdateAlbumEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AlbumOpenAlbumFolderEventCopyWith<$Res> {
-  factory _$$_AlbumOpenAlbumFolderEventCopyWith(
-          _$_AlbumOpenAlbumFolderEvent value,
-          $Res Function(_$_AlbumOpenAlbumFolderEvent) then) =
-      __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>;
+abstract class _$$AlbumOpenAlbumFolderEventImplCopyWith<$Res> {
+  factory _$$AlbumOpenAlbumFolderEventImplCopyWith(
+          _$AlbumOpenAlbumFolderEventImpl value,
+          $Res Function(_$AlbumOpenAlbumFolderEventImpl) then) =
+      __$$AlbumOpenAlbumFolderEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Album album});
 
@@ -504,20 +521,22 @@ abstract class _$$_AlbumOpenAlbumFolderEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>
-    extends _$AlbumEventCopyWithImpl<$Res, _$_AlbumOpenAlbumFolderEvent>
-    implements _$$_AlbumOpenAlbumFolderEventCopyWith<$Res> {
-  __$$_AlbumOpenAlbumFolderEventCopyWithImpl(
-      _$_AlbumOpenAlbumFolderEvent _value,
-      $Res Function(_$_AlbumOpenAlbumFolderEvent) _then)
+class __$$AlbumOpenAlbumFolderEventImplCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$AlbumOpenAlbumFolderEventImpl>
+    implements _$$AlbumOpenAlbumFolderEventImplCopyWith<$Res> {
+  __$$AlbumOpenAlbumFolderEventImplCopyWithImpl(
+      _$AlbumOpenAlbumFolderEventImpl _value,
+      $Res Function(_$AlbumOpenAlbumFolderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? album = null,
   }) {
-    return _then(_$_AlbumOpenAlbumFolderEvent(
+    return _then(_$AlbumOpenAlbumFolderEventImpl(
       album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
@@ -525,6 +544,8 @@ class __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AlbumCopyWith<$Res> get album {
@@ -536,8 +557,8 @@ class __$$_AlbumOpenAlbumFolderEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
-  const _$_AlbumOpenAlbumFolderEvent({required this.album});
+class _$AlbumOpenAlbumFolderEventImpl implements _AlbumOpenAlbumFolderEvent {
+  const _$AlbumOpenAlbumFolderEventImpl({required this.album});
 
   @override
   final Album album;
@@ -548,22 +569,24 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AlbumOpenAlbumFolderEvent &&
+            other is _$AlbumOpenAlbumFolderEventImpl &&
             (identical(other.album, album) || other.album == album));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, album);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlbumOpenAlbumFolderEventCopyWith<_$_AlbumOpenAlbumFolderEvent>
-      get copyWith => __$$_AlbumOpenAlbumFolderEventCopyWithImpl<
-          _$_AlbumOpenAlbumFolderEvent>(this, _$identity);
+  _$$AlbumOpenAlbumFolderEventImplCopyWith<_$AlbumOpenAlbumFolderEventImpl>
+      get copyWith => __$$AlbumOpenAlbumFolderEventImplCopyWithImpl<
+          _$AlbumOpenAlbumFolderEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -648,37 +671,42 @@ class _$_AlbumOpenAlbumFolderEvent implements _AlbumOpenAlbumFolderEvent {
 
 abstract class _AlbumOpenAlbumFolderEvent implements AlbumEvent {
   const factory _AlbumOpenAlbumFolderEvent({required final Album album}) =
-      _$_AlbumOpenAlbumFolderEvent;
+      _$AlbumOpenAlbumFolderEventImpl;
 
   Album get album;
-  @JsonKey(ignore: true)
-  _$$_AlbumOpenAlbumFolderEventCopyWith<_$_AlbumOpenAlbumFolderEvent>
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AlbumOpenAlbumFolderEventImplCopyWith<_$AlbumOpenAlbumFolderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AlbumGetAlbumEventCopyWith<$Res> {
-  factory _$$_AlbumGetAlbumEventCopyWith(_$_AlbumGetAlbumEvent value,
-          $Res Function(_$_AlbumGetAlbumEvent) then) =
-      __$$_AlbumGetAlbumEventCopyWithImpl<$Res>;
+abstract class _$$AlbumGetAlbumEventImplCopyWith<$Res> {
+  factory _$$AlbumGetAlbumEventImplCopyWith(_$AlbumGetAlbumEventImpl value,
+          $Res Function(_$AlbumGetAlbumEventImpl) then) =
+      __$$AlbumGetAlbumEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Album> albums});
 }
 
 /// @nodoc
-class __$$_AlbumGetAlbumEventCopyWithImpl<$Res>
-    extends _$AlbumEventCopyWithImpl<$Res, _$_AlbumGetAlbumEvent>
-    implements _$$_AlbumGetAlbumEventCopyWith<$Res> {
-  __$$_AlbumGetAlbumEventCopyWithImpl(
-      _$_AlbumGetAlbumEvent _value, $Res Function(_$_AlbumGetAlbumEvent) _then)
+class __$$AlbumGetAlbumEventImplCopyWithImpl<$Res>
+    extends _$AlbumEventCopyWithImpl<$Res, _$AlbumGetAlbumEventImpl>
+    implements _$$AlbumGetAlbumEventImplCopyWith<$Res> {
+  __$$AlbumGetAlbumEventImplCopyWithImpl(_$AlbumGetAlbumEventImpl _value,
+      $Res Function(_$AlbumGetAlbumEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? albums = null,
   }) {
-    return _then(_$_AlbumGetAlbumEvent(
+    return _then(_$AlbumGetAlbumEventImpl(
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -689,8 +717,8 @@ class __$$_AlbumGetAlbumEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AlbumGetAlbumEvent implements _AlbumGetAlbumEvent {
-  const _$_AlbumGetAlbumEvent({required final List<Album> albums})
+class _$AlbumGetAlbumEventImpl implements _AlbumGetAlbumEvent {
+  const _$AlbumGetAlbumEventImpl({required final List<Album> albums})
       : _albums = albums;
 
   final List<Album> _albums;
@@ -707,10 +735,10 @@ class _$_AlbumGetAlbumEvent implements _AlbumGetAlbumEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AlbumGetAlbumEvent &&
+            other is _$AlbumGetAlbumEventImpl &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
@@ -718,11 +746,13 @@ class _$_AlbumGetAlbumEvent implements _AlbumGetAlbumEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlbumGetAlbumEventCopyWith<_$_AlbumGetAlbumEvent> get copyWith =>
-      __$$_AlbumGetAlbumEventCopyWithImpl<_$_AlbumGetAlbumEvent>(
+  _$$AlbumGetAlbumEventImplCopyWith<_$AlbumGetAlbumEventImpl> get copyWith =>
+      __$$AlbumGetAlbumEventImplCopyWithImpl<_$AlbumGetAlbumEventImpl>(
           this, _$identity);
 
   @override
@@ -808,11 +838,14 @@ class _$_AlbumGetAlbumEvent implements _AlbumGetAlbumEvent {
 
 abstract class _AlbumGetAlbumEvent implements AlbumEvent {
   const factory _AlbumGetAlbumEvent({required final List<Album> albums}) =
-      _$_AlbumGetAlbumEvent;
+      _$AlbumGetAlbumEventImpl;
 
   List<Album> get albums;
-  @JsonKey(ignore: true)
-  _$$_AlbumGetAlbumEventCopyWith<_$_AlbumGetAlbumEvent> get copyWith =>
+
+  /// Create a copy of AlbumEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AlbumGetAlbumEventImplCopyWith<_$AlbumGetAlbumEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -825,8 +858,12 @@ mixin _$AlbumState {
   AlbumStatus get status => throw _privateConstructorUsedError;
   List<Album> get albums => throw _privateConstructorUsedError;
 
+  /// Serializes this AlbumState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AlbumState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AlbumStateCopyWith<AlbumState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -850,6 +887,8 @@ class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AlbumState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -870,28 +909,33 @@ class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> implements $AlbumStateCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $AlbumStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AlbumStatus status, List<Album> albums});
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AlbumStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AlbumState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? albums = null,
   }) {
-    return _then(_$Initial(
+    return _then(_$InitialImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -906,13 +950,13 @@ class __$$InitialCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Initial implements Initial {
-  const _$Initial(
+class _$InitialImpl implements Initial {
+  const _$InitialImpl(
       {this.status = AlbumStatus.initial, final List<Album> albums = const []})
       : _albums = albums;
 
-  factory _$Initial.fromJson(Map<String, dynamic> json) =>
-      _$$InitialFromJson(json);
+  factory _$InitialImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InitialImplFromJson(json);
 
   @override
   @JsonKey()
@@ -932,28 +976,30 @@ class _$Initial implements Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Initial &&
+            other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, status, const DeepCollectionEquality().hash(_albums));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AlbumState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialCopyWith<_$Initial> get copyWith =>
-      __$$InitialCopyWithImpl<_$Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InitialToJson(
+    return _$$InitialImplToJson(
       this,
     );
   }
@@ -961,16 +1007,19 @@ class _$Initial implements Initial {
 
 abstract class Initial implements AlbumState {
   const factory Initial({final AlbumStatus status, final List<Album> albums}) =
-      _$Initial;
+      _$InitialImpl;
 
-  factory Initial.fromJson(Map<String, dynamic> json) = _$Initial.fromJson;
+  factory Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
 
   @override
   AlbumStatus get status;
   @override
   List<Album> get albums;
+
+  /// Create a copy of AlbumState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$InitialCopyWith<_$Initial> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

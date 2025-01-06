@@ -6,18 +6,19 @@ part of 'track.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Track _$$_TrackFromJson(Map<String, dynamic> json) => _$_Track(
-      trackId: json['trackId'] as int,
-      index: json['index'] as int,
+_$TrackImpl _$$TrackImplFromJson(Map<String, dynamic> json) => _$TrackImpl(
+      trackId: (json['trackId'] as num).toInt(),
+      index: (json['index'] as num).toInt(),
       path: json['path'] as String,
       name: json['name'] as String?,
       album: json['album'] as String?,
       artist: json['artist'] as String?,
-      duration: Duration(microseconds: json['duration'] as int),
-      position: Duration(microseconds: json['position'] as int),
+      duration: Duration(microseconds: (json['duration'] as num).toInt()),
+      position: Duration(microseconds: (json['position'] as num).toInt()),
     );
 
-Map<String, dynamic> _$$_TrackToJson(_$_Track instance) => <String, dynamic>{
+Map<String, dynamic> _$$TrackImplToJson(_$TrackImpl instance) =>
+    <String, dynamic>{
       'trackId': instance.trackId,
       'index': instance.index,
       'path': instance.path,

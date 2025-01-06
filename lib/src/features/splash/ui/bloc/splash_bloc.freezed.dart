@@ -12,7 +12,7 @@ part of 'splash_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SplashEvent {
@@ -78,28 +78,34 @@ class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_SplashInitialEventCopyWith<$Res> {
-  factory _$$_SplashInitialEventCopyWith(_$_SplashInitialEvent value,
-          $Res Function(_$_SplashInitialEvent) then) =
-      __$$_SplashInitialEventCopyWithImpl<$Res>;
+abstract class _$$SplashInitialEventImplCopyWith<$Res> {
+  factory _$$SplashInitialEventImplCopyWith(_$SplashInitialEventImpl value,
+          $Res Function(_$SplashInitialEventImpl) then) =
+      __$$SplashInitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SplashInitialEventCopyWithImpl<$Res>
-    extends _$SplashEventCopyWithImpl<$Res, _$_SplashInitialEvent>
-    implements _$$_SplashInitialEventCopyWith<$Res> {
-  __$$_SplashInitialEventCopyWithImpl(
-      _$_SplashInitialEvent _value, $Res Function(_$_SplashInitialEvent) _then)
+class __$$SplashInitialEventImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$SplashInitialEventImpl>
+    implements _$$SplashInitialEventImplCopyWith<$Res> {
+  __$$SplashInitialEventImplCopyWithImpl(_$SplashInitialEventImpl _value,
+      $Res Function(_$SplashInitialEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_SplashInitialEvent implements _SplashInitialEvent {
-  const _$_SplashInitialEvent();
+class _$SplashInitialEventImpl implements _SplashInitialEvent {
+  const _$SplashInitialEventImpl();
 
   @override
   String toString() {
@@ -107,9 +113,9 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SplashInitialEvent);
+        (other.runtimeType == runtimeType && other is _$SplashInitialEventImpl);
   }
 
   @override
@@ -185,29 +191,32 @@ class _$_SplashInitialEvent implements _SplashInitialEvent {
 }
 
 abstract class _SplashInitialEvent implements SplashEvent {
-  const factory _SplashInitialEvent() = _$_SplashInitialEvent;
+  const factory _SplashInitialEvent() = _$SplashInitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_SplashPlayingEventCopyWith<$Res> {
-  factory _$$_SplashPlayingEventCopyWith(_$_SplashPlayingEvent value,
-          $Res Function(_$_SplashPlayingEvent) then) =
-      __$$_SplashPlayingEventCopyWithImpl<$Res>;
+abstract class _$$SplashPlayingEventImplCopyWith<$Res> {
+  factory _$$SplashPlayingEventImplCopyWith(_$SplashPlayingEventImpl value,
+          $Res Function(_$SplashPlayingEventImpl) then) =
+      __$$SplashPlayingEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SplashPlayingEventCopyWithImpl<$Res>
-    extends _$SplashEventCopyWithImpl<$Res, _$_SplashPlayingEvent>
-    implements _$$_SplashPlayingEventCopyWith<$Res> {
-  __$$_SplashPlayingEventCopyWithImpl(
-      _$_SplashPlayingEvent _value, $Res Function(_$_SplashPlayingEvent) _then)
+class __$$SplashPlayingEventImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$SplashPlayingEventImpl>
+    implements _$$SplashPlayingEventImplCopyWith<$Res> {
+  __$$SplashPlayingEventImplCopyWithImpl(_$SplashPlayingEventImpl _value,
+      $Res Function(_$SplashPlayingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_SplashPlayingEvent implements _SplashPlayingEvent {
-  const _$_SplashPlayingEvent();
+class _$SplashPlayingEventImpl implements _SplashPlayingEvent {
+  const _$SplashPlayingEventImpl();
 
   @override
   String toString() {
@@ -215,9 +224,9 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SplashPlayingEvent);
+        (other.runtimeType == runtimeType && other is _$SplashPlayingEventImpl);
   }
 
   @override
@@ -293,29 +302,34 @@ class _$_SplashPlayingEvent implements _SplashPlayingEvent {
 }
 
 abstract class _SplashPlayingEvent implements SplashEvent {
-  const factory _SplashPlayingEvent() = _$_SplashPlayingEvent;
+  const factory _SplashPlayingEvent() = _$SplashPlayingEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_SplashSearchAlbumEventCopyWith<$Res> {
-  factory _$$_SplashSearchAlbumEventCopyWith(_$_SplashSearchAlbumEvent value,
-          $Res Function(_$_SplashSearchAlbumEvent) then) =
-      __$$_SplashSearchAlbumEventCopyWithImpl<$Res>;
+abstract class _$$SplashSearchAlbumEventImplCopyWith<$Res> {
+  factory _$$SplashSearchAlbumEventImplCopyWith(
+          _$SplashSearchAlbumEventImpl value,
+          $Res Function(_$SplashSearchAlbumEventImpl) then) =
+      __$$SplashSearchAlbumEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SplashSearchAlbumEventCopyWithImpl<$Res>
-    extends _$SplashEventCopyWithImpl<$Res, _$_SplashSearchAlbumEvent>
-    implements _$$_SplashSearchAlbumEventCopyWith<$Res> {
-  __$$_SplashSearchAlbumEventCopyWithImpl(_$_SplashSearchAlbumEvent _value,
-      $Res Function(_$_SplashSearchAlbumEvent) _then)
+class __$$SplashSearchAlbumEventImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$SplashSearchAlbumEventImpl>
+    implements _$$SplashSearchAlbumEventImplCopyWith<$Res> {
+  __$$SplashSearchAlbumEventImplCopyWithImpl(
+      _$SplashSearchAlbumEventImpl _value,
+      $Res Function(_$SplashSearchAlbumEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_SplashSearchAlbumEvent implements _SplashSearchAlbumEvent {
-  const _$_SplashSearchAlbumEvent();
+class _$SplashSearchAlbumEventImpl implements _SplashSearchAlbumEvent {
+  const _$SplashSearchAlbumEventImpl();
 
   @override
   String toString() {
@@ -323,10 +337,10 @@ class _$_SplashSearchAlbumEvent implements _SplashSearchAlbumEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SplashSearchAlbumEvent);
+            other is _$SplashSearchAlbumEventImpl);
   }
 
   @override
@@ -402,7 +416,7 @@ class _$_SplashSearchAlbumEvent implements _SplashSearchAlbumEvent {
 }
 
 abstract class _SplashSearchAlbumEvent implements SplashEvent {
-  const factory _SplashSearchAlbumEvent() = _$_SplashSearchAlbumEvent;
+  const factory _SplashSearchAlbumEvent() = _$SplashSearchAlbumEventImpl;
 }
 
 SplashState _$SplashStateFromJson(Map<String, dynamic> json) {
@@ -467,6 +481,8 @@ mixin _$SplashState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this SplashState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -486,31 +502,38 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_SplashEmptyStateCopyWith<$Res> {
-  factory _$$_SplashEmptyStateCopyWith(
-          _$_SplashEmptyState value, $Res Function(_$_SplashEmptyState) then) =
-      __$$_SplashEmptyStateCopyWithImpl<$Res>;
+abstract class _$$SplashEmptyStateImplCopyWith<$Res> {
+  factory _$$SplashEmptyStateImplCopyWith(_$SplashEmptyStateImpl value,
+          $Res Function(_$SplashEmptyStateImpl) then) =
+      __$$SplashEmptyStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SplashEmptyStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$_SplashEmptyState>
-    implements _$$_SplashEmptyStateCopyWith<$Res> {
-  __$$_SplashEmptyStateCopyWithImpl(
-      _$_SplashEmptyState _value, $Res Function(_$_SplashEmptyState) _then)
+class __$$SplashEmptyStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashEmptyStateImpl>
+    implements _$$SplashEmptyStateImplCopyWith<$Res> {
+  __$$SplashEmptyStateImplCopyWithImpl(_$SplashEmptyStateImpl _value,
+      $Res Function(_$SplashEmptyStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_SplashEmptyState implements _SplashEmptyState {
-  const _$_SplashEmptyState({final String? $type}) : $type = $type ?? 'empty';
+class _$SplashEmptyStateImpl implements _SplashEmptyState {
+  const _$SplashEmptyStateImpl({final String? $type})
+      : $type = $type ?? 'empty';
 
-  factory _$_SplashEmptyState.fromJson(Map<String, dynamic> json) =>
-      _$$_SplashEmptyStateFromJson(json);
+  factory _$SplashEmptyStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SplashEmptyStateImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -521,12 +544,12 @@ class _$_SplashEmptyState implements _SplashEmptyState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SplashEmptyState);
+        (other.runtimeType == runtimeType && other is _$SplashEmptyStateImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -601,42 +624,46 @@ class _$_SplashEmptyState implements _SplashEmptyState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SplashEmptyStateToJson(
+    return _$$SplashEmptyStateImplToJson(
       this,
     );
   }
 }
 
 abstract class _SplashEmptyState implements SplashState {
-  const factory _SplashEmptyState() = _$_SplashEmptyState;
+  const factory _SplashEmptyState() = _$SplashEmptyStateImpl;
 
   factory _SplashEmptyState.fromJson(Map<String, dynamic> json) =
-      _$_SplashEmptyState.fromJson;
+      _$SplashEmptyStateImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_SplashHaveAnAlbumStateCopyWith<$Res> {
-  factory _$$_SplashHaveAnAlbumStateCopyWith(_$_SplashHaveAnAlbumState value,
-          $Res Function(_$_SplashHaveAnAlbumState) then) =
-      __$$_SplashHaveAnAlbumStateCopyWithImpl<$Res>;
+abstract class _$$SplashHaveAnAlbumStateImplCopyWith<$Res> {
+  factory _$$SplashHaveAnAlbumStateImplCopyWith(
+          _$SplashHaveAnAlbumStateImpl value,
+          $Res Function(_$SplashHaveAnAlbumStateImpl) then) =
+      __$$SplashHaveAnAlbumStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Album> albums});
 }
 
 /// @nodoc
-class __$$_SplashHaveAnAlbumStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$_SplashHaveAnAlbumState>
-    implements _$$_SplashHaveAnAlbumStateCopyWith<$Res> {
-  __$$_SplashHaveAnAlbumStateCopyWithImpl(_$_SplashHaveAnAlbumState _value,
-      $Res Function(_$_SplashHaveAnAlbumState) _then)
+class __$$SplashHaveAnAlbumStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashHaveAnAlbumStateImpl>
+    implements _$$SplashHaveAnAlbumStateImplCopyWith<$Res> {
+  __$$SplashHaveAnAlbumStateImplCopyWithImpl(
+      _$SplashHaveAnAlbumStateImpl _value,
+      $Res Function(_$SplashHaveAnAlbumStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? albums = null,
   }) {
-    return _then(_$_SplashHaveAnAlbumState(
+    return _then(_$SplashHaveAnAlbumStateImpl(
       albums: null == albums
           ? _value._albums
           : albums // ignore: cast_nullable_to_non_nullable
@@ -647,14 +674,14 @@ class __$$_SplashHaveAnAlbumStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SplashHaveAnAlbumState implements _SplashHaveAnAlbumState {
-  const _$_SplashHaveAnAlbumState(
+class _$SplashHaveAnAlbumStateImpl implements _SplashHaveAnAlbumState {
+  const _$SplashHaveAnAlbumStateImpl(
       {required final List<Album> albums, final String? $type})
       : _albums = albums,
         $type = $type ?? 'haveAnAlbum';
 
-  factory _$_SplashHaveAnAlbumState.fromJson(Map<String, dynamic> json) =>
-      _$$_SplashHaveAnAlbumStateFromJson(json);
+  factory _$SplashHaveAnAlbumStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SplashHaveAnAlbumStateImplFromJson(json);
 
   final List<Album> _albums;
   @override
@@ -673,24 +700,26 @@ class _$_SplashHaveAnAlbumState implements _SplashHaveAnAlbumState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SplashHaveAnAlbumState &&
+            other is _$SplashHaveAnAlbumStateImpl &&
             const DeepCollectionEquality().equals(other._albums, _albums));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_albums));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SplashHaveAnAlbumStateCopyWith<_$_SplashHaveAnAlbumState> get copyWith =>
-      __$$_SplashHaveAnAlbumStateCopyWithImpl<_$_SplashHaveAnAlbumState>(
-          this, _$identity);
+  _$$SplashHaveAnAlbumStateImplCopyWith<_$SplashHaveAnAlbumStateImpl>
+      get copyWith => __$$SplashHaveAnAlbumStateImplCopyWithImpl<
+          _$SplashHaveAnAlbumStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -763,7 +792,7 @@ class _$_SplashHaveAnAlbumState implements _SplashHaveAnAlbumState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SplashHaveAnAlbumStateToJson(
+    return _$$SplashHaveAnAlbumStateImplToJson(
       this,
     );
   }
@@ -771,43 +800,51 @@ class _$_SplashHaveAnAlbumState implements _SplashHaveAnAlbumState {
 
 abstract class _SplashHaveAnAlbumState implements SplashState {
   const factory _SplashHaveAnAlbumState({required final List<Album> albums}) =
-      _$_SplashHaveAnAlbumState;
+      _$SplashHaveAnAlbumStateImpl;
 
   factory _SplashHaveAnAlbumState.fromJson(Map<String, dynamic> json) =
-      _$_SplashHaveAnAlbumState.fromJson;
+      _$SplashHaveAnAlbumStateImpl.fromJson;
 
   List<Album> get albums;
-  @JsonKey(ignore: true)
-  _$$_SplashHaveAnAlbumStateCopyWith<_$_SplashHaveAnAlbumState> get copyWith =>
-      throw _privateConstructorUsedError;
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SplashHaveAnAlbumStateImplCopyWith<_$SplashHaveAnAlbumStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SplashHavePlayingTrackStateCopyWith<$Res> {
-  factory _$$_SplashHavePlayingTrackStateCopyWith(
-          _$_SplashHavePlayingTrackState value,
-          $Res Function(_$_SplashHavePlayingTrackState) then) =
-      __$$_SplashHavePlayingTrackStateCopyWithImpl<$Res>;
+abstract class _$$SplashHavePlayingTrackStateImplCopyWith<$Res> {
+  factory _$$SplashHavePlayingTrackStateImplCopyWith(
+          _$SplashHavePlayingTrackStateImpl value,
+          $Res Function(_$SplashHavePlayingTrackStateImpl) then) =
+      __$$SplashHavePlayingTrackStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SplashHavePlayingTrackStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$_SplashHavePlayingTrackState>
-    implements _$$_SplashHavePlayingTrackStateCopyWith<$Res> {
-  __$$_SplashHavePlayingTrackStateCopyWithImpl(
-      _$_SplashHavePlayingTrackState _value,
-      $Res Function(_$_SplashHavePlayingTrackState) _then)
+class __$$SplashHavePlayingTrackStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashHavePlayingTrackStateImpl>
+    implements _$$SplashHavePlayingTrackStateImplCopyWith<$Res> {
+  __$$SplashHavePlayingTrackStateImplCopyWithImpl(
+      _$SplashHavePlayingTrackStateImpl _value,
+      $Res Function(_$SplashHavePlayingTrackStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_SplashHavePlayingTrackState implements _SplashHavePlayingTrackState {
-  const _$_SplashHavePlayingTrackState({final String? $type})
+class _$SplashHavePlayingTrackStateImpl
+    implements _SplashHavePlayingTrackState {
+  const _$SplashHavePlayingTrackStateImpl({final String? $type})
       : $type = $type ?? 'havePlayingTrack';
 
-  factory _$_SplashHavePlayingTrackState.fromJson(Map<String, dynamic> json) =>
-      _$$_SplashHavePlayingTrackStateFromJson(json);
+  factory _$SplashHavePlayingTrackStateImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SplashHavePlayingTrackStateImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -818,13 +855,13 @@ class _$_SplashHavePlayingTrackState implements _SplashHavePlayingTrackState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SplashHavePlayingTrackState);
+            other is _$SplashHavePlayingTrackStateImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -899,15 +936,16 @@ class _$_SplashHavePlayingTrackState implements _SplashHavePlayingTrackState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SplashHavePlayingTrackStateToJson(
+    return _$$SplashHavePlayingTrackStateImplToJson(
       this,
     );
   }
 }
 
 abstract class _SplashHavePlayingTrackState implements SplashState {
-  const factory _SplashHavePlayingTrackState() = _$_SplashHavePlayingTrackState;
+  const factory _SplashHavePlayingTrackState() =
+      _$SplashHavePlayingTrackStateImpl;
 
   factory _SplashHavePlayingTrackState.fromJson(Map<String, dynamic> json) =
-      _$_SplashHavePlayingTrackState.fromJson;
+      _$SplashHavePlayingTrackStateImpl.fromJson;
 }

@@ -12,7 +12,7 @@ import package_info_plus
 import path_provider_foundation
 import sentry_flutter
 import shared_preferences_foundation
-import sqflite
+import sqflite_darwin
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   AudioServicePlugin.register(with: registry.registrar(forPlugin: "AudioServicePlugin"))

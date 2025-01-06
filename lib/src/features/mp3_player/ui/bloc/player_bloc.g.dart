@@ -6,7 +6,8 @@ part of 'player_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
+_$InitialImpl _$$InitialImplFromJson(Map<String, dynamic> json) =>
+    _$InitialImpl(
       status: $enumDecodeNullable(_$PlayerStatusEnumMap, json['status']) ??
           PlayerStatus.initial,
       trackSpeed: (json['trackSpeed'] as num?)?.toDouble() ?? 1.0,
@@ -29,7 +30,8 @@ _$Initial _$$InitialFromJson(Map<String, dynamic> json) => _$Initial(
           : Album.fromJson(json['album'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$InitialToJson(_$Initial instance) => <String, dynamic>{
+Map<String, dynamic> _$$InitialImplToJson(_$InitialImpl instance) =>
+    <String, dynamic>{
       'status': _$PlayerStatusEnumMap[instance.status]!,
       'trackSpeed': instance.trackSpeed,
       'trackName': instance.trackName,
